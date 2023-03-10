@@ -4,8 +4,8 @@ import {Game} from './game.js';
 
 const config = {
   type: Phaser.AUTO,
-  width: 800,
-  height: 500,
+  width: 1600,
+  height: 1000,
   backgroundColor: '#7e7e81',
   scene: [Game],
   scale: {
@@ -22,3 +22,5 @@ const config = {
 }
 
 var game = new Phaser.Game(config);
+
+game.scene.start();
