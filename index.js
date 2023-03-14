@@ -1,4 +1,5 @@
-import {Game} from './game.js';
+import {Intro} from './scenas/intro.js';
+import {Aula} from './scenas/aula.js';
 
 
 
@@ -6,8 +7,9 @@ const config = {
   type: Phaser.AUTO,
   width: 1600,
   height: 1000,
-  backgroundColor: '#7e7e81',
-  scene: [Game],
+  backgroundColor: '#000',
+  // transparent: true,
+  scene: [Intro, Aula],
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH

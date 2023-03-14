@@ -3,16 +3,16 @@ body{
     /* display: flex;
     justify-content: center;
     align-items: center; */
-    background-image: url('../images/facci.jpeg');
+    background-image: url('../assets/images/facci.jpeg');
     background-position: center;
-    background-size: cover;
-
+    background-size: cover
+    
 }
 .content {
     backdrop-filter: blur(10px);
   }
 .custom-button {
-    background-color: #7e7e81;
+    background-color: #dadddf00;
     border: none;
     color: white;
     padding: 16px 32px;

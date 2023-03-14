@@ -1,23 +1,24 @@
-export class Game extends Phaser.Scene {
+export class Intro extends Phaser.Scene {
   constructor() {
-    super({ key: "game" });
+    super({ key: "intro" });
   }
 
   preload() {
-    this.load.image("background", "images/faccia1.png");
-    this.load.image("play", "images/Play.png");
-    this.load.image("score", "images/score.png");
-    this.load.image("avatar", "images/avatar.png");
-    this.load.image("fullscreen", "images/fullscreen.png");
-    this.load.image("mute", "images/Mute.png");
-    this.load.image("sound", "images/Sound.png");
-    this.load.image("facciando", "images/facciando.png");
-    this.load.audio("musica", "music/GrassyWorld.mp3");
+    this.load.image("background", "assets/images/facci.png");
+    this.load.image("play", "assets/images/Play.png");
+    this.load.image("score", "assets/images/score.png");
+    this.load.image("avatar", "assets/images/avatar.png");
+    this.load.image("fullscreen", "assets/images/fullscreen.png");
+    this.load.image("mute", "assets/images/Mute.png");
+    this.load.image("sound", "assets/images/Sound.png");
+    this.load.image("facciando", "assets/images/facciando.png");
+    this.load.audio("musica", "assets/music/GrassyWorld.mp3");
     // Cargar el archivo CSS
     this.load.css("styles", "styles/index.css");
   }
 
   create() {
+    // fondo dinamico
     var sprite = this.add.sprite(1500, 500, 'background');
     sprite.setScale(1.6);
   
@@ -31,12 +32,14 @@ export class Game extends Phaser.Scene {
     });
    
   
-    //update(background);
+    //letras facciando
      var facciando = this.add.image(800, 100, "facciando");
     facciando.setScale(1.5);
 
     var play = this.add.image(800, 340, "play");
     play.setScale(0.75);
+    play.setName("play");
+
     var score = this.add.image(800, 510, "score");
     score.setScale(0.75);
     var avatar = this.add.image(800, 680, "avatar");
@@ -48,10 +51,10 @@ export class Game extends Phaser.Scene {
     var fullscreenButton = this.add
       .image(1000, 850, "fullscreen")
       .setInteractive();
-    blurButton(play);
-    blurButton(score);
-    blurButton(avatar);
-    blurButton(btnSosund);
+    blurButton(play, "play", this);
+    blurButton(score, "score", this);
+    blurButton(avatar, "avatar", this);
+    // blurButton(btnSosund);
     // desenfoque(background);
 
     //Full Screen
@@ -69,7 +72,7 @@ export class Game extends Phaser.Scene {
     // Music
 
     var music = this.sound.add("musica", { loop: true });
-    //music.play();
+    // music.play();
 
     // Agrega el botón de sonido a la escena
     btnSosund.setInteractive();
@@ -124,7 +127,7 @@ function onClick() {
   alert("Hola mundo!");
 }
 
-function blurButton(boton) {
+function blurButton(boton, namebtn, escena) {
   // Hacer que la imagen sea interactiva
   boton.setInteractive();
 
@@ -141,8 +144,17 @@ function blurButton(boton) {
 
   boton.on("pointerdown", function () {
     // Acción cuando se hace clic en la imagen
+    // alert("Haz precionado el botón" + namebtn);
+    if (namebtn === "play") {
+      escena.cameras.main.fadeOut(500); // Desvanecer la pantalla durante 500 milisegundos
+      escena.time.delayedCall(500, () => { // Esperar 500 milisegundos antes de cambiar de escena
+        escena.scene.start("aula");
+      }, [], escena);
+      
 
-    alert("Haz precionado el botón");
+    }
+
+
   });
 }
 
