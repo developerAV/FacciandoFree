@@ -2,13 +2,13 @@ import {Intro} from './scenas/intro.js';
 import {Aula} from './scenas/aula.js';
 
 
-
+// Configuración del juego
 const config = {
   type: Phaser.AUTO,
   width: 1600,
   height: 1000,
   backgroundColor: '#000',
-  // transparent: true,
+  // transparent: true, // Comentado porque no se usa
   scene: [Intro, Aula],
   scale: {
     mode: Phaser.Scale.FIT,
@@ -23,6 +23,8 @@ const config = {
   }
 }
 
-var game = new Phaser.Game(config);
+// Creación del juego con la configuración especificada
+const game = new Phaser.Game(config);
 
+// Iniciar la primera escena
 game.scene.start();

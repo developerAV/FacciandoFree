@@ -4,14 +4,14 @@ export class Intro extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("background", "assets/images/facci.png");
-    this.load.image("play", "assets/images/Play.png");
-    this.load.image("score", "assets/images/score.png");
-    this.load.image("avatar", "assets/images/avatar.png");
-    this.load.image("fullscreen", "assets/images/fullscreen.png");
-    this.load.image("mute", "assets/images/Mute.png");
-    this.load.image("sound", "assets/images/Sound.png");
-    this.load.image("facciando", "assets/images/facciando.png");
+    this.load.image("background", "assets/images/img_intro/facci.png");
+    this.load.image("play", "assets/images/img_intro/Play.png");
+    this.load.image("score", "assets/images/img_intro/score.png");
+    this.load.image("avatar", "assets/images/img_intro/avatar.png");
+    this.load.image("fullscreen", "assets/images/img_intro/fullscreen.png");
+    this.load.image("mute", "assets/images/img_intro/Mute.png");
+    this.load.image("sound", "assets/images/img_intro/Sound.png");
+    this.load.image("facciando", "assets/images/img_intro/facciando.png");
     this.load.audio("musica", "assets/music/GrassyWorld.mp3");
     // Cargar el archivo CSS
     this.load.css("styles", "styles/index.css");
@@ -19,11 +19,10 @@ export class Intro extends Phaser.Scene {
 
   create() {
     // fondo dinamico
-    var sprite = this.add.sprite(1500, 500, 'background');
-    sprite.setScale(1.6);
-  
-    var tween = this.tweens.add({
-      targets: sprite,
+    const background = this.add.sprite(1500, 500, 'background').setScale(1.6);
+
+    const tween = this.tweens.add({
+      targets: background,
       x: 100,
       ease: 'Power',
       duration: 100000,
@@ -33,29 +32,20 @@ export class Intro extends Phaser.Scene {
    
   
     //letras facciando
-     var facciando = this.add.image(800, 100, "facciando");
-    facciando.setScale(1.5);
+     const facciando = this.add.image(800, 100, "facciando").setScale(1.5);
 
-    var play = this.add.image(800, 340, "play");
-    play.setScale(0.75);
-    play.setName("play");
+    // add music 
+    const play = this.add.image(800, 340, "play").setScale(0.75).setName("play");
 
-    var score = this.add.image(800, 510, "score");
-    score.setScale(0.75);
-    var avatar = this.add.image(800, 680, "avatar");
-    avatar.setScale(0.75);
-    var btnSosund = this.add.image(0, 0, "sound");
-    btnSosund.setScale(0.65);
+    const score = this.add.image(800, 510, "score" ).setScale(0.75).setName("score");
 
-    //facciando.setScale(0.5);
-    var fullscreenButton = this.add
-      .image(1000, 850, "fullscreen")
-      .setInteractive();
-    blurButton(play, "play", this);
-    blurButton(score, "score", this);
-    blurButton(avatar, "avatar", this);
-    // blurButton(btnSosund);
-    // desenfoque(background);
+    const avatar = this.add.image(800, 680, "avatar").setScale(0.75).setName("avatar");
+    
+    const btnSosund = this.add.image(0, 0, "sound").setScale(0.65).setName("sound");
+
+
+    const fullscreenButton = this.add.image(1000, 850, "fullscreen").setInteractive();
+
 
     //Full Screen
     fullscreenButton.on(
@@ -69,10 +59,16 @@ export class Intro extends Phaser.Scene {
       this
     );
 
+    //construir boton con enfoque y funciones (nameBoton, Escena)
+    blurButton(play,  this);
+    blurButton(score, this);
+    blurButton(avatar, this);
+    // blurButton(btnSosund);
+    // desenfoque(background);
     // Music
 
-    var music = this.sound.add("musica", { loop: true });
-    // music.play();
+    const music = this.sound.add("musica", { loop: true });
+    music.play();
 
     // Agrega el botón de sonido a la escena
     btnSosund.setInteractive();
@@ -100,52 +96,25 @@ export class Intro extends Phaser.Scene {
     stylesheet.href = "styles/index.css";
     document.head.appendChild(stylesheet);
 
-    // Crear el botón
-    // var boton = this.add.dom(100, 100, 'button', 'width: 100px; height: 50px; color: white; background-color: #F00', 'Click me!');
-    var boton = this.add.dom(
-      400,
-      100,
-      "button",
-      "width: 100px; height: 50px; color: white; background-color: #F00",
-      "Click me!"
-    );
-
-    boton.setClassName("custom-button");
-    boton.node.classList.add("custom-button");
-    boton
-      .setInteractive() // hace que el botón sea interactivo (es decir, puede hacer clic en él)
-      .on("pointerdown", onClick);
-    // Agregar el botón a un contenedor
-    var contenedor = this.add.container(0, 0, [boton]);
-
-    // Añadir el contenedor a la escena
-    this.add.existing(contenedor);
+   
     
   }
 }
-function onClick() {
-  alert("Hola mundo!");
-}
 
-function blurButton(boton, namebtn, escena) {
+
+function blurButton(boton, escena) {
   // Hacer que la imagen sea interactiva
   boton.setInteractive();
 
   // Agregar eventos a la imagen
-  boton.on("pointerover", function () {
-    boton.setTint(0xaaaaa);
-  });
+  boton.on("pointerover",  () =>{boton.setTint(0xaaaaa);});
 
-  boton.on("pointerout", function () {
-    boton.setTint(0xcccccc);
-
-    // boton.style.cursor = 'default';
-  });
+  boton.on("pointerout",  ()=> {boton.setTint(0xcccccc);});
 
   boton.on("pointerdown", function () {
     // Acción cuando se hace clic en la imagen
     // alert("Haz precionado el botón" + namebtn);
-    if (namebtn === "play") {
+    if (boton.name === "play") {
       escena.cameras.main.fadeOut(500); // Desvanecer la pantalla durante 500 milisegundos
       escena.time.delayedCall(500, () => { // Esperar 500 milisegundos antes de cambiar de escena
         escena.scene.start("aula");
@@ -153,16 +122,16 @@ function blurButton(boton, namebtn, escena) {
       
 
     }
+    else if(boton.name=== "score"){
+      console.log("score");
+    }
+    else if (boton.name=== "avatar"){
+
+    }
+    else if (boton.name==="music"){
+      
+    }
 
 
   });
-}
-
-function desenfoque(imagen) {
-  // Crear el filtro de desenfoque
-  var blurFilter = this.add.shader("Blur", 400, 300, 800, 500);
-  blurFilter.setRenderToTexture();
-
-  // Aplicar el filtro a la imagen
-  imagen.setMask(blurFilter);
 }
