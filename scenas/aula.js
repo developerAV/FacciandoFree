@@ -1,3 +1,5 @@
+import { Avatar } from "./player.js";
+
 export class Aula extends Phaser.Scene {
   constructor() {
     super({ key: "aula" });
@@ -5,34 +7,76 @@ export class Aula extends Phaser.Scene {
 
   preload() {
     this.load.image("background2", "assets/images/img_aula/piso.png");
-    this.load.image("paredAula", "assets/images/img_aula/pared.png");
+    this.load.image("paredAula", "assets/images/img_aula/paredNorte.png");
+    this.load.image("paredIzq", "assets/images/img_aula/paredIzq.png");
+    this.load.image("paredDer", "assets/images/img_aula/paredDer.png");
+    this.load.image("paredInf", "assets/images/img_aula/paredInf.png");
     this.load.image("mesaAula", "assets/images/img_aula/mesas.png");
     this.load.image("escritorioAula", "assets/images/img_aula/escritorio.png");
     this.load.image("pizarraAula", "assets/images/img_aula/pizarra.png");
+    this.load.spritesheet("dude", "assets/images/dude.png", {
+      frameWidth: 32,
+      frameHeight: 48,
+    });
   }
 
   create() {
     // Para iniciar con un desenfoque
     this.cameras.main.fadeIn(500);
 
-    const scale = 1.8;
+    const fondoaula = this.add.image(800, 500, "background2").setScale(1.8);
 
-    const fondoaula = this.add.image(800, 500, "background2").setScale(scale);
+    let plataformas = this.physics.add.staticGroup();
+    let paredPlataforma = this.physics.add.staticGroup();
 
-    const platforms = this.physics.add.staticGroup();
+    crearPlataforma(800, 110, "paredAula", paredPlataforma);
+    crearPlataforma(800, 130, "pizarraAula", plataformas);
+    this.avatar = new Avatar(this, 800, 1000);
 
-    crearPlataforma(800, 500, 'paredAula', platforms, scale);
-    crearPlataforma(800, 900, 'mesaAula', platforms, scale);
-    crearPlataforma(800, 770, 'mesaAula', platforms, scale);
-    crearPlataforma(800, 640, 'mesaAula', platforms, scale);
-    crearPlataforma(800, 510, 'mesaAula', platforms, scale);
-    crearPlataforma(800, 390, 'mesaAula', platforms, scale);
-    crearPlataforma(1000, 260, 'escritorioAula', platforms, scale);
-    crearPlataforma(800, 130, 'pizarraAula', platforms, scale);
+    crearPlataforma(800, 880, "mesaAula", plataformas);
+    crearPlataforma(455, 613, "paredIzq", plataformas);
+    crearPlataforma(1145, 613, "paredDer", plataformas);
+    crearPlataforma(800, 986, "paredInf", plataformas);
+    crearPlataforma(800, 735, "mesaAula", plataformas);
+    crearPlataforma(800, 590, "mesaAula", plataformas);
+    crearPlataforma(800, 445, "mesaAula", plataformas);
+    crearPlataforma(1000, 300, "escritorioAula", plataformas);
+
+    plataformas.children.iterate((plataforma) => {
+      plataforma.refreshBody();
+      plataforma.body.setSize(
+        plataforma.body.width * 1,
+        plataforma.body.height * 0.7,
+        true
+      );
+      plataforma.body.setOffset(0, 30);
+    });
+    paredPlataforma.children.iterate((plataforma) => {
+      plataforma.refreshBody();
+      plataforma.body.setSize(
+        plataforma.body.width * 1,
+        plataforma.body.height * 0.6,
+        true
+      );
+      plataforma.body.setOffset(0, 25);
+    });
+
+    //instancia del avatar
+
+    this.physics.add.collider(this.avatar.sprite, plataformas);
+    this.physics.add.collider(this.avatar.sprite, paredPlataforma);
+  }
+
+  update() {
+    // Llamamos a la función "update()" del avatar
+    this.avatar.update();
   }
 }
-
-function crearPlataforma(x, y, imagen, group, scale) {
+function crearPlataforma(x, y, imagen, group) {
+  const scale = 1.8;
   const plataforma = group.create(x, y, imagen).setScale(scale);
+
+  /*   plataforma.body.setSize(plataforma.width * scale, plataforma.height * scale);
+  plataforma.body.setOffset(x, y); */
   return plataforma;
 }

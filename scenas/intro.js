@@ -4,6 +4,11 @@ export class Intro extends Phaser.Scene {
   }
 
   preload() {
+
+    this.load.spritesheet("dude", "../assets/images/player/gamer.png", {
+      frameWidth: 26,
+      frameHeight: 32,
+    });
     this.load.image("background", "assets/images/img_intro/facci.png");
     this.load.image("play", "assets/images/img_intro/Play.png");
     this.load.image("score", "assets/images/img_intro/score.png");
@@ -19,33 +24,44 @@ export class Intro extends Phaser.Scene {
 
   create() {
     // fondo dinamico
-    const background = this.add.sprite(1500, 500, 'background').setScale(1.6);
+    const background = this.add.sprite(1500, 500, "background").setScale(1.6);
 
     const tween = this.tweens.add({
       targets: background,
       x: 100,
-      ease: 'Power',
+      ease: "Power",
       duration: 100000,
       yoyo: true,
-      repeat: -1
+      repeat: -1,
     });
-   
-  
+
     //letras facciando
-     const facciando = this.add.image(800, 100, "facciando").setScale(1.5);
+    const facciando = this.add.image(800, 100, "facciando").setScale(1.5);
 
-    // add music 
-    const play = this.add.image(800, 340, "play").setScale(0.75).setName("play");
+    // add music
+    const play = this.add
+      .image(800, 340, "play")
+      .setScale(0.75)
+      .setName("play");
 
-    const score = this.add.image(800, 510, "score" ).setScale(0.75).setName("score");
+    const score = this.add
+      .image(800, 510, "score")
+      .setScale(0.75)
+      .setName("score");
 
-    const avatar = this.add.image(800, 680, "avatar").setScale(0.75).setName("avatar");
-    
-    const btnSosund = this.add.image(0, 0, "sound").setScale(0.65).setName("sound");
+    const avatar = this.add
+      .image(800, 680, "avatar")
+      .setScale(0.75)
+      .setName("avatar");
 
+    const btnSosund = this.add
+      .image(0, 0, "sound")
+      .setScale(0.65)
+      .setName("sound");
 
-    const fullscreenButton = this.add.image(1000, 850, "fullscreen").setInteractive();
-
+    const fullscreenButton = this.add
+      .image(1000, 850, "fullscreen")
+      .setInteractive();
 
     //Full Screen
     fullscreenButton.on(
@@ -60,7 +76,7 @@ export class Intro extends Phaser.Scene {
     );
 
     //construir boton con enfoque y funciones (nameBoton, Escena)
-    blurButton(play,  this);
+    blurButton(play, this);
     blurButton(score, this);
     blurButton(avatar, this);
     // blurButton(btnSosund);
@@ -95,43 +111,40 @@ export class Intro extends Phaser.Scene {
     stylesheet.rel = "stylesheet";
     stylesheet.href = "styles/index.css";
     document.head.appendChild(stylesheet);
-
-   
-    
   }
 }
-
 
 function blurButton(boton, escena) {
   // Hacer que la imagen sea interactiva
   boton.setInteractive();
 
   // Agregar eventos a la imagen
-  boton.on("pointerover",  () =>{boton.setTint(0xaaaaa);});
+  boton.on("pointerover", () => {
+    boton.setTint(0xaaaaa);
+  });
 
-  boton.on("pointerout",  ()=> {boton.setTint(0xcccccc);});
+  boton.on("pointerout", () => {
+    boton.setTint(0xcccccc);
+  });
 
   boton.on("pointerdown", function () {
     // Acción cuando se hace clic en la imagen
     // alert("Haz precionado el botón" + namebtn);
     if (boton.name === "play") {
       escena.cameras.main.fadeOut(500); // Desvanecer la pantalla durante 500 milisegundos
-      escena.time.delayedCall(500, () => { // Esperar 500 milisegundos antes de cambiar de escena
-        escena.scene.start("aula");
-      }, [], escena);
-      
-
-    }
-    else if(boton.name=== "score"){
+      escena.time.delayedCall(
+        500,
+        () => {
+          // Esperar 500 milisegundos antes de cambiar de escena
+          escena.scene.start("aula");
+        },
+        [],
+        escena
+      );
+    } else if (boton.name === "score") {
       console.log("score");
+    } else if (boton.name === "avatar") {
+    } else if (boton.name === "music") {
     }
-    else if (boton.name=== "avatar"){
-
-    }
-    else if (boton.name==="music"){
-      
-    }
-
-
   });
 }
