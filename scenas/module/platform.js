@@ -1,8 +1,7 @@
 export class Platform {
-    // constructor(x, y, imagen, group) {
-    //     super(x, y, imagen, group);
+  // constructor(x, y, imagen, group) {
+  //     super(x, y, imagen, group);
 
-    
 
 
     crearPlataforma(x, y, imagen, group, scale) {
@@ -11,8 +10,7 @@ export class Platform {
       
         /*   plataforma.body.setSize(plataforma.width * scale, plataforma.height * scale);
         plataforma.body.setOffset(x, y); */
-        return plataforma;
-      }
-      
-
+    return plataforma;
+  }
 }
+

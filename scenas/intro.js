@@ -4,7 +4,6 @@ export class Intro extends Phaser.Scene {
   }
 
   preload() {
-
     this.load.spritesheet("dude", "../assets/images/player/gamer.png", {
       frameWidth: 26,
       frameHeight: 32,
@@ -60,7 +59,8 @@ export class Intro extends Phaser.Scene {
       .setName("sound");
 
     const fullscreenButton = this.add
-      .image(1000, 850, "fullscreen")
+      .image(900, 850, "fullscreen")
+      .setScale(0.65)
       .setInteractive();
 
     //Full Screen
@@ -84,7 +84,7 @@ export class Intro extends Phaser.Scene {
     // Music
 
     const music = this.sound.add("musica", { loop: true });
-    music.play();
+    //music.play();
 
     // Agrega el botón de sonido a la escena
     btnSosund.setInteractive();
@@ -103,7 +103,7 @@ export class Intro extends Phaser.Scene {
 
     // Coloca el botón de sonido en la esquina superior derecha de la pantalla
     //btnSound.setOrigin(11, -9);
-    btnSosund.setPosition(650, 850);
+    btnSosund.setPosition(700, 850);
 
     // create();
     // Agregar el archivo CSS a la página
@@ -136,7 +136,8 @@ function blurButton(boton, escena) {
         500,
         () => {
           // Esperar 500 milisegundos antes de cambiar de escena
-          escena.scene.start("computer_room");
+          // escena.scene.start("computer_room");
+          escena.scene.start("lab1");
         },
         [],
         escena

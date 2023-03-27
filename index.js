@@ -1,6 +1,7 @@
 import { Intro } from "./scenas/intro.js";
 import { Aula } from "./scenas/aula.js";
 import { ComputerRoom } from "./scenas/computer_room.js";
+import { Laboratorio1 } from "./scenas/laboratorio1.js";
 /* import {Player} from './scenas/player.js';
  */
 
@@ -11,7 +12,7 @@ const config = {
   height: 1000,
   backgroundColor: "#000",
   // transparent: true, // Comentado porque no se usa
-  scene: [Intro, Aula, ComputerRoom],
+  scene: [Intro, Aula, ComputerRoom, Laboratorio1],
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
