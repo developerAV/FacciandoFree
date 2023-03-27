@@ -1,7 +1,7 @@
-import { Intro } from "./scenas/intro.js";
-import { Aula } from "./scenas/aula.js";
-import { ComputerRoom } from "./scenas/computer_room.js";
-import { Laboratorio1 } from "./scenas/laboratorio1.js";
+import { Intro } from "./scenes/intro.js";
+import { Aula } from "./scenes/classroom.js";
+import { ComputerRoom } from "./scenes/computer_room.js";
+import { Laboratorio1 } from "./scenes/electronic_room.js";
 /* import {Player} from './scenas/player.js';
  */
 

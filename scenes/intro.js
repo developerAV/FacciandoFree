@@ -8,14 +8,14 @@ export class Intro extends Phaser.Scene {
       frameWidth: 26,
       frameHeight: 32,
     });
-    this.load.image("background", "assets/images/img_intro/facci.png");
-    this.load.image("play", "assets/images/img_intro/Play.png");
-    this.load.image("score", "assets/images/img_intro/score.png");
-    this.load.image("avatar", "assets/images/img_intro/avatar.png");
-    this.load.image("fullscreen", "assets/images/img_intro/fullscreen.png");
-    this.load.image("mute", "assets/images/img_intro/Mute.png");
-    this.load.image("sound", "assets/images/img_intro/Sound.png");
-    this.load.image("facciando", "assets/images/img_intro/facciando.png");
+    this.load.image("background", "assets/images/intro/facci.png");
+    this.load.image("play", "assets/images/intro/Play.png");
+    this.load.image("score", "assets/images/intro/score.png");
+    this.load.image("avatar", "assets/images/intro/avatar.png");
+    this.load.image("fullscreen", "assets/images/intro/fullscreen.png");
+    this.load.image("mute", "assets/images/intro/Mute.png");
+    this.load.image("sound", "assets/images/intro/Sound.png");
+    this.load.image("facciando", "assets/images/intro/facciando.png");
     this.load.audio("musica", "assets/music/GrassyWorld.mp3");
     // Cargar el archivo CSS
     this.load.css("styles", "styles/index.css");
@@ -136,8 +136,8 @@ function blurButton(boton, escena) {
         500,
         () => {
           // Esperar 500 milisegundos antes de cambiar de escena
-          // escena.scene.start("computer_room");
-          escena.scene.start("lab1");
+          escena.scene.start("computer_room");
+          // escena.scene.start("lab1");
         },
         [],
         escena

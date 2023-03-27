@@ -7,31 +7,31 @@ export class Laboratorio1 extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("pisoLab1", "assets/images/laboratorio1/pisoLab1.png");
-    this.load.image("escritorio", "assets/images/laboratorio1/escritorio.png");
+    this.load.image("pisoLab1", "assets/images/electronic_room/pisoLab1.png");
+    this.load.image("escritorio", "assets/images/electronic_room/escritorio.png");
     this.load.image(
       "mesasLab",
-      "assets/images/laboratorio1/mesasLaboratio1.png"
+      "assets/images/electronic_room/mesasLaboratio1.png"
     );
     this.load.image(
       "paredILaborario",
-      "assets/images/laboratorio1/paredIzq.png"
+      "assets/images/electronic_room/paredIzq.png"
     );
     this.load.image(
       "paredDLaborario",
-      "assets/images/laboratorio1/paredDer.png"
+      "assets/images/electronic_room/paredDer.png"
     );
     this.load.image(
       "paredSLaborario",
-      "assets/images/laboratorio1/paredSuperior.png"
+      "assets/images/electronic_room/paredSuperior.png"
     );
     this.load.image(
       "paredPILaborario",
-      "assets/images/laboratorio1/puertaDer.png"
+      "assets/images/electronic_room/puertaDer.png"
     );
     this.load.image(
       "paredPDLaborario",
-      "assets/images/laboratorio1/puertaIzq.png"
+      "assets/images/electronic_room/puertaIzq.png"
     );
   }
 
@@ -51,7 +51,7 @@ export class Laboratorio1 extends Phaser.Scene {
 
     //mesas de la derecha
     plataforma.crearPlataforma(590, 410, "mesasLab", plataformas, 1.5)
-    plataforma.crearPlataforma(890, 410, "mesasLab", plataformas,1.5)
+    plataforma.crearPlataforma(890, 410, "mesasLab", plataformas, 1.5)
 
     this.avatar = new Avatar(this, 800, 500);
 
@@ -94,8 +94,8 @@ export class Laboratorio1 extends Phaser.Scene {
 
     //instancia del avatar
 
-    this.physics.add.collider(this.avatar.sprite, plataformas);
-    this.physics.add.collider(this.avatar.sprite, paredPlataforma);
+    this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
+    this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
   }
 
   update() {

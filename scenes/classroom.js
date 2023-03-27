@@ -7,14 +7,14 @@ export class Aula extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("background2", "assets/images/img_aula/piso.png");
-    this.load.image("paredAula", "assets/images/img_aula/paredNorte.png");
-    this.load.image("paredIzq", "assets/images/img_aula/paredIzq.png");
-    this.load.image("paredDer", "assets/images/img_aula/paredDer.png");
-    this.load.image("paredInf", "assets/images/img_aula/paredInf.png");
-    this.load.image("mesaAula", "assets/images/img_aula/mesas.png");
-    this.load.image("escritorioAula", "assets/images/img_aula/escritorio.png");
-    this.load.image("pizarraAula", "assets/images/img_aula/pizarra.png");
+    this.load.image("background2", "assets/images/classroom/piso.png");
+    this.load.image("paredAula", "assets/images/classroom/paredNorte.png");
+    this.load.image("paredIzq", "assets/images/classroom/paredIzq.png");
+    this.load.image("paredDer", "assets/images/classroom/paredDer.png");
+    this.load.image("paredInf", "assets/images/classroom/paredInf.png");
+    this.load.image("mesaAula", "assets/images/classroom/mesas.png");
+    this.load.image("escritorioAula", "assets/images/classroom/escritorio.png");
+    this.load.image("pizarraAula", "assets/images/classroom/pizarra.png");
     this.load.spritesheet("dude", "assets/images/dude.png", {
       frameWidth: 32,
       frameHeight: 48,
