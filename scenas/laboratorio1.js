@@ -47,31 +47,31 @@ export class Laboratorio1 extends Phaser.Scene {
     let plataformas = this.physics.add.staticGroup();
     let paredPlataforma = this.physics.add.staticGroup();
     //Pared superior
-    plataforma.crearPlataforma(800, 130, "paredSLaborario", paredPlataforma);
+    plataforma.crearPlataforma(800, 130, "paredSLaborario", paredPlataforma, 2);
 
     //mesas de la derecha
-    plataforma.crearPlataforma(590, 410, "mesasLab", plataformas).setScale(1.5);
-    plataforma.crearPlataforma(890, 410, "mesasLab", plataformas).setScale(1.5);
+    plataforma.crearPlataforma(590, 410, "mesasLab", plataformas, 1.5)
+    plataforma.crearPlataforma(890, 410, "mesasLab", plataformas,1.5)
 
     this.avatar = new Avatar(this, 800, 500);
 
     //escritorio
-    plataforma.crearPlataforma(1140, 850, "escritorio", plataformas);
+    plataforma.crearPlataforma(1140, 850, "escritorio", plataformas, 2);
 
     //mesas de la izquierda
-    plataforma.crearPlataforma(590, 700, "mesasLab", plataformas).setScale(1.5);
-    plataforma.crearPlataforma(890, 700, "mesasLab", plataformas).setScale(1.5);
+    plataforma.crearPlataforma(590, 700, "mesasLab", plataformas, 1.5)
+    plataforma.crearPlataforma(890, 700, "mesasLab", plataformas, 1.5)
 
     //paredes
     //izquierda
-    plataforma.crearPlataforma(344, 665, "paredILaborario", plataformas);
+    plataforma.crearPlataforma(344, 665, "paredILaborario", plataformas, 2);
 
     //derecha
-    plataforma.crearPlataforma(1240, 670, "paredDLaborario", plataformas);
+    plataforma.crearPlataforma(1240, 670, "paredDLaborario", plataformas, 2);
 
     //paredes de abajo
-    plataforma.crearPlataforma(888, 947, "paredPILaborario", plataformas);
-    plataforma.crearPlataforma(376, 944, "paredPDLaborario", plataformas);
+    plataforma.crearPlataforma(888, 947, "paredPILaborario", plataformas, 2);
+    plataforma.crearPlataforma(376, 944, "paredPDLaborario", plataformas, 2);
 
     plataformas.children.iterate((plataforma) => {
       plataforma.refreshBody();
