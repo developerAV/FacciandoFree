@@ -75,8 +75,5 @@ export class Aula extends Phaser.Scene {
 function crearPlataforma(x, y, imagen, group) {
   const scale = 1.8;
   const plataforma = group.create(x, y, imagen).setScale(scale);
-
-  /*   plataforma.body.setSize(plataforma.width * scale, plataforma.height * scale);
-  plataforma.body.setOffset(x, y); */
   return plataforma;
 }
