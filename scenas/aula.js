@@ -1,4 +1,5 @@
 import { Avatar } from "./player.js";
+import { Platform } from "./module/platform.js";
 
 export class Aula extends Phaser.Scene {
   constructor() {
@@ -28,19 +29,22 @@ export class Aula extends Phaser.Scene {
 
     let plataformas = this.physics.add.staticGroup();
     let paredPlataforma = this.physics.add.staticGroup();
+    let scale = 1.8;
+    this.plataforma = new Platform();
 
-    crearPlataforma(800, 110, "paredAula", paredPlataforma);
-    crearPlataforma(800, 130, "pizarraAula", plataformas);
+    this.plataforma.crearPlataforma(800, 110, "paredAula", paredPlataforma,scale);
+    this.plataforma.crearPlataforma(800, 130, "pizarraAula", plataformas,scale);
     this.avatar = new Avatar(this, 800, 1000);
 
-    crearPlataforma(800, 880, "mesaAula", plataformas);
-    crearPlataforma(455, 613, "paredIzq", plataformas);
-    crearPlataforma(1145, 613, "paredDer", plataformas);
-    crearPlataforma(800, 986, "paredInf", plataformas);
-    crearPlataforma(800, 735, "mesaAula", plataformas);
-    crearPlataforma(800, 590, "mesaAula", plataformas);
-    crearPlataforma(800, 445, "mesaAula", plataformas);
-    crearPlataforma(1000, 300, "escritorioAula", plataformas);
+
+    this.plataforma.crearPlataforma(800, 880, "mesaAula", plataformas,scale);
+    this.plataforma.crearPlataforma(455, 613, "paredIzq", plataformas,scale);
+    this.plataforma.crearPlataforma(1145, 613, "paredDer", plataformas,scale);
+    this.plataforma.crearPlataforma(800, 986, "paredInf", plataformas,scale);
+    this.plataforma.crearPlataforma(800, 735, "mesaAula", plataformas,scale);
+    this.plataforma.crearPlataforma(800, 590, "mesaAula", plataformas,scale);
+    this.plataforma.crearPlataforma(800, 445, "mesaAula", plataformas,scale);
+    this.plataforma.crearPlataforma(1000, 300, "escritorioAula", plataformas,scale);
 
     plataformas.children.iterate((plataforma) => {
       plataforma.refreshBody();
@@ -63,20 +67,12 @@ export class Aula extends Phaser.Scene {
 
     //instancia del avatar
 
-    this.physics.add.collider(this.avatar.sprite, plataformas);
-    this.physics.add.collider(this.avatar.sprite, paredPlataforma);
+    this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
+    this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
   }
 
   update() {
     // Llamamos a la función "update()" del avatar
     this.avatar.update();
   }
-}
-function crearPlataforma(x, y, imagen, group) {
-  const scale = 1.8;
-  const plataforma = group.create(x, y, imagen).setScale(scale);
-
-  /*   plataforma.body.setSize(plataforma.width * scale, plataforma.height * scale);
-  plataforma.body.setOffset(x, y); */
-  return plataforma;
 }

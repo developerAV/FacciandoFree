@@ -5,8 +5,8 @@ export class Platform {
     
 
 
-    crearPlataforma(x, y, imagen, group) {
-        const scale = 1.8;
+    crearPlataforma(x, y, imagen, group, scale) {
+    
         const plataforma = group.create(x, y, imagen).setScale(scale);
       
         /*   plataforma.body.setSize(plataforma.width * scale, plataforma.height * scale);
