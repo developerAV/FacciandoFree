@@ -136,8 +136,8 @@ function blurButton(boton, escena) {
         500,
         () => {
           // Esperar 500 milisegundos antes de cambiar de escena
-          escena.scene.start("computer_room");
-          // escena.scene.start("lab1");
+          //escena.scene.start("computer_room");
+           escena.scene.start("mainHallway1");
         },
         [],
         escena

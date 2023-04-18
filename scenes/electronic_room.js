@@ -46,6 +46,7 @@ export class Laboratorio1 extends Phaser.Scene {
 
     let plataformas = this.physics.add.staticGroup();
     let paredPlataforma = this.physics.add.staticGroup();
+    
     //Pared superior
     plataforma.crearPlataforma(800, 130, "paredSLaborario", paredPlataforma, 2);
 
