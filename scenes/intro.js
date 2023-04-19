@@ -4,8 +4,8 @@ export class Intro extends Phaser.Scene {
   }
 
   preload() {
-    this.load.spritesheet("dude", "../assets/images/player/gamer2.png", {
-      frameWidth: 22.6,
+    this.load.spritesheet("dude", "../assets/images/player/gamer0.png", {
+      frameWidth: 26,
       frameHeight: 32,
     });
     this.load.image("background", "assets/images/intro/facci.png");
