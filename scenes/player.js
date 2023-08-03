@@ -39,31 +39,26 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     });
   }
 
-
-
-
   update() {
     if (this.cursors.left.isDown) {
-      this.avatarPlayer.setVelocityX(-200);
       this.avatarPlayer.setVelocityY(0);
+      this.avatarPlayer.setVelocityX(-200);
       this.avatarPlayer.anims.play("left", true);
     } else if (this.cursors.right.isDown) {
-      this.avatarPlayer.setVelocityX(200);
       this.avatarPlayer.setVelocityY(0);
+      this.avatarPlayer.setVelocityX(200);
       this.avatarPlayer.anims.play("right", true);
     } else if (this.cursors.up.isDown) {
-      this.avatarPlayer.setVelocityY(-200);
       this.avatarPlayer.setVelocityX(0);
-
+      this.avatarPlayer.setVelocityY(-200);
       this.avatarPlayer.anims.play("up", true);
     } else if (this.cursors.down.isDown) {
-      this.avatarPlayer.setVelocityY(200);
       this.avatarPlayer.setVelocityX(0);
+      this.avatarPlayer.setVelocityY(200);
       this.avatarPlayer.anims.play("down", true);
     } else {
       this.avatarPlayer.setVelocityY(0);
       this.avatarPlayer.setVelocityX(0);
-
       this.avatarPlayer.anims.play("turn");
     }
   }
