@@ -27,7 +27,7 @@ export class ComputerRoom extends Phaser.Scene {
     this.cameras.main.fadeIn(500);
 
     const fondoaula = this.add.image(800, 500, "background2").setScale(1.8);
-let scale = 1.8;
+    let scale = 1.8;
     let scaleComputer = 1.5;
 
     let plataformas = this.physics.add.staticGroup();
@@ -108,10 +108,10 @@ plataformas.children.iterate((plataforma) => {
   plataforma.refreshBody();
       plataforma.body.setSize(
         plataforma.body.width * 1,
-        plataforma.body.height * 0.3,
+        plataforma.body.height * 0.5,
         true
       );
-      plataforma.setOffset(0, 25); // la parte inferior
+      plataforma.setOffset(0, 50); // la parte inferior
     });
 
     plataformasillas.children.iterate((plataforma) => {
@@ -121,7 +121,7 @@ plataformas.children.iterate((plataforma) => {
         plataforma.body.height * 0.1,
         true
       );
-      plataforma.setOffset(0, 30); // la parte inferior
+      plataforma.setOffset(0, 35); // la parte inferior
     });
 
     

@@ -2,7 +2,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y) {
     super(scene, x, y, "dude");
 
-    this.avatarPlayer = scene.physics.add.sprite(x, y, "dude").setScale(2);
+    this.avatarPlayer = scene.physics.add.sprite(x, y, "dude").setScale(1.5);
 
     this.avatarPlayer.setCollideWorldBounds(true);
     this.cursors = scene.input.keyboard.createCursorKeys();

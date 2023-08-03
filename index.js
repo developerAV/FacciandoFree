@@ -2,6 +2,7 @@ import { Intro } from "./scenes/intro.js";
 import { Aula } from "./scenes/classroom.js";
 import { ComputerRoom } from "./scenes/computer_room.js";
 import { Laboratorio1 } from "./scenes/electronic_room.js";
+import { Hallway2 } from "./scenes/hallway2.js";
 /* import {Player} from './scenas/player.js';
  */
 
@@ -12,7 +13,7 @@ const config = {
   height: 1000,
   backgroundColor: "#000",
   // transparent: true, // Comentado porque no se usa
-  scene: [Intro, Aula, ComputerRoom, Laboratorio1],
+  scene: [Intro, Aula, ComputerRoom, Laboratorio1, Hallway2],
   scale: {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
