@@ -4,7 +4,7 @@ export class Intro extends Phaser.Scene {
   }
 
   preload() {
-    this.load.spritesheet("dude", "../assets/images/player/gamer.png", {
+    this.load.spritesheet("dude", "../assets/images/player/gamer0.png", {
       frameWidth: 26,
       frameHeight: 32,
     });
@@ -137,7 +137,8 @@ function blurButton(boton, escena) {
         () => {
           // Esperar 500 milisegundos antes de cambiar de escena
           //escena.scene.start("computer_room");
-           escena.scene.start("mainHallway1");
+          escena.scene.start("hallway2");
+          // escena.scene.start("lab1");
         },
         [],
         escena
