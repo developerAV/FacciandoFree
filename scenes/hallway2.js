@@ -8,40 +8,83 @@ export class Hallway2 extends Phaser.Scene {
 
   preload() {
     this.load.image("background3", "assets/images/hallway2/pasillo_piso.png");
-    this.load.image("paredAuditorio", "assets/images/hallway2/pared_auditorio.png");
-    this.load.image("paredbatMujer", "assets/images/hallway2/pared_batMujer.png");
+    this.load.image(
+      "paredAuditorio",
+      "assets/images/hallway2/pared_auditorio.png"
+    );
+    this.load.image(
+      "paredbatMujer",
+      "assets/images/hallway2/pared_batMujer.png"
+    );
     this.load.image("paredEste", "assets/images/hallway2/pared_este.png");
-    this.load.image("paredSuperior", "assets/images/hallway2/pared_frontal.png");
-    this.load.image("paredInferior", "assets/images/hallway2/pared_inferior.png");
-    this.load.image("paredInferiorEste", "assets/images/hallway2/pared_comunidad.png");
-  
+    this.load.image(
+      "paredSuperior",
+      "assets/images/hallway2/pared_frontal.png"
+    );
+    this.load.image(
+      "paredInferior",
+      "assets/images/hallway2/pared_inferior.png"
+    );
+    this.load.image(
+      "paredInferiorEste",
+      "assets/images/hallway2/pared_comunidad.png"
+    );
   }
 
   create() {
     // Para iniciar con un desenfoque
     this.cameras.main.fadeIn(500);
-    
+
     // Configurar fondo transparente
     this.cameras.main.transparent = true;
-    
+
     const fondoaula = this.add.image(800, 500, "background3");
     let scale = 1;
     let scaleComputer = 1.5;
-    
-    this.avatar = new Avatar(this, 600, 800);
+
+    this.avatar = new Avatar(this, 600, 800, 1.5);
 
     let plataformas = this.physics.add.staticGroup();
     let plataformasillas = this.physics.add.staticGroup();
     let paredPlataforma = this.physics.add.staticGroup();
     this.plataforma = new Platform();
 
-
-    this.plataforma.crearPlataforma(304, 501, "paredAuditorio", plataformas, scale);
-    this.plataforma.crearPlataforma(499, 715, "paredbatMujer", plataformas, scale);
-    this.plataforma.crearPlataforma(1335, 348 , "paredEste", plataformas, scale);
-    this.plataforma.crearPlataforma(835, 305 , "paredSuperior", plataformas, scale);
-    this.plataforma.crearPlataforma(1072, 715 , "paredInferior", plataformas, scale);
-    this.plataforma.crearPlataforma(1276, 564 , "paredInferiorEste", plataformas, scale);
+    this.plataforma.crearPlataforma(
+      304,
+      501,
+      "paredAuditorio",
+      plataformas,
+      scale
+    );
+    this.plataforma.crearPlataforma(
+      499,
+      715,
+      "paredbatMujer",
+      plataformas,
+      scale
+    );
+    this.plataforma.crearPlataforma(1335, 348, "paredEste", plataformas, scale);
+    this.plataforma.crearPlataforma(
+      835,
+      305,
+      "paredSuperior",
+      plataformas,
+      scale
+    );
+    this.plataforma.crearPlataforma(
+      1072,
+      715,
+      "paredInferior",
+      plataformas,
+      scale
+    );
+    this.plataforma.crearPlataforma(
+      1276,
+      564,
+      "paredInferiorEste",
+      plataformas,
+      scale
+    );
 
     plataformas.children.iterate((plataforma) => {
       plataforma.refreshBody();
@@ -62,8 +105,6 @@ export class Hallway2 extends Phaser.Scene {
 
     // Configurar zoom de la cámara en función de la posición del personaje
     this.cameras.main.zoom = 1 + (this.avatar.avatarPlayer.y - 300) / 600; // Ajustar el valor 300 y 600 según tus necesidades
-  
-
   }
 
   update() {

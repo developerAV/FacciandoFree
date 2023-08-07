@@ -37,7 +37,7 @@ export class ComputerRoom extends Phaser.Scene {
 
     this.plataforma.crearPlataforma(800, 110, "paredAula", paredPlataforma,scale);
     this.plataforma.crearPlataforma(800, 130, "pizarraAula", plataformas, scale);
-    this.avatar = new Avatar(this, 800, 1000);
+    this.avatar = new Avatar(this, 800, 1000, 2);
 
 
 

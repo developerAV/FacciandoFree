@@ -76,7 +76,7 @@ export class mainHallway1 extends Phaser.Scene {
 
     this.add.image(860, 135, "sillaBasura").setScale(1.61);
 
-    this.avatar = new Avatar(this, 800, 500);
+    this.avatar = new Avatar(this, 800, 500, 2);
 
   }
 
