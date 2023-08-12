@@ -1,5 +1,5 @@
 import { Avatar } from "./player.js";
-import { Platform } from "./module/platform.js";
+import { crearPlataforma } from "./module/platform.js";
 
 export class mainHallway1 extends Phaser.Scene {
   constructor() {
@@ -56,7 +56,7 @@ export class mainHallway1 extends Phaser.Scene {
     this.cameras.main.fadeIn(500);
 
     // instaciar la clase "Plataform" para usar la funcion de crearPlataforma
-    const plataforma = new Platform();
+    //const plataforma = new Platform();
   }
 
   create() {

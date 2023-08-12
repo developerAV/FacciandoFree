@@ -1,5 +1,5 @@
 import { Avatar } from "./player.js";
-import { Platform } from "./module/platform.js";
+import { crearPlataforma } from "./module/platform.js";
 
 export class Laboratorio1 extends Phaser.Scene {
   constructor() {
@@ -40,7 +40,7 @@ export class Laboratorio1 extends Phaser.Scene {
     this.cameras.main.fadeIn(500);
 
     // instaciar la clase "Plataform" para usar la funcion de crearPlataforma
-    const plataforma = new Platform();
+    //const plataforma = new Platform();
 
     this.add.image(800, 500, "pisoLab1").setScale(2);
 
@@ -48,31 +48,31 @@ export class Laboratorio1 extends Phaser.Scene {
     let paredPlataforma = this.physics.add.staticGroup();
     
     //Pared superior
-    plataforma.crearPlataforma(800, 130, "paredSLaborario", paredPlataforma, 2);
+   crearPlataforma(800, 130, "paredSLaborario", paredPlataforma, 2);
 
     //mesas de la derecha
-    plataforma.crearPlataforma(590, 410, "mesasLab", plataformas, 1.5)
-    plataforma.crearPlataforma(890, 410, "mesasLab", plataformas, 1.5)
+   crearPlataforma(590, 410, "mesasLab", plataformas, 1.5)
+   crearPlataforma(890, 410, "mesasLab", plataformas, 1.5)
 
     this.avatar = new Avatar(this, 800, 500, 2);
 
     //escritorio
-    plataforma.crearPlataforma(1140, 850, "escritorio", plataformas, 2);
+   crearPlataforma(1140, 850, "escritorio", plataformas, 2);
 
     //mesas de la izquierda
-    plataforma.crearPlataforma(590, 700, "mesasLab", plataformas, 1.5)
-    plataforma.crearPlataforma(890, 700, "mesasLab", plataformas, 1.5)
+   crearPlataforma(590, 700, "mesasLab", plataformas, 1.5)
+   crearPlataforma(890, 700, "mesasLab", plataformas, 1.5)
 
     //paredes
     //izquierda
-    plataforma.crearPlataforma(344, 665, "paredILaborario", plataformas, 2);
+   crearPlataforma(344, 665, "paredILaborario", plataformas, 2);
 
     //derecha
-    plataforma.crearPlataforma(1240, 670, "paredDLaborario", plataformas, 2);
+   crearPlataforma(1240, 670, "paredDLaborario", plataformas, 2);
 
     //paredes de abajo
-    plataforma.crearPlataforma(888, 947, "paredPILaborario", plataformas, 2);
-    plataforma.crearPlataforma(376, 944, "paredPDLaborario", plataformas, 2);
+   crearPlataforma(888, 947, "paredPILaborario", plataformas, 2);
+   crearPlataforma(376, 944, "paredPDLaborario", plataformas, 2);
 
     plataformas.children.iterate((plataforma) => {
       plataforma.refreshBody();
