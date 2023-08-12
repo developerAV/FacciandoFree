@@ -1,5 +1,5 @@
 import { Avatar } from "./player.js";
-import { Platform } from "./module/platform.js";
+import { crearPlataforma } from "./module/platform.js";
 
 const xy = 7
 export class FloorHallway2 extends Phaser.Scene {
@@ -56,7 +56,7 @@ export class FloorHallway2 extends Phaser.Scene {
     this.cameras.main.fadeIn(500);
 
     // instaciar la clase "Plataform" para usar la funcion de crearPlataforma
-    const plataforma = new Platform();
+   // const plataforma = new Platform();
     
     
     let plataformas = this.physics.add.staticGroup();
@@ -66,47 +66,47 @@ export class FloorHallway2 extends Phaser.Scene {
     //Pared superior
     //paredes
     //plataforma.crearPlataforma(590, 500, "PasilloPiso2", plataformas)
-    plataforma.crearPlataforma(598, 137, "paredSuperior", paredPlataforma);
-    plataforma.crearPlataforma(1161.5, 273, "esquinaSuperiorDerecha", plataformas);
-    plataforma.crearPlataforma(1241, 409, "pared", plataformas);
-    plataforma.crearPlataforma(1306, 521, "salaEstudianteArriba", plataformas)
-    plataforma.crearPlataforma(1466, 758, "paredLarga", plataformas)
-    plataforma.crearPlataforma(1446, 665, "muro", plataformas)
-    plataforma.crearPlataforma(1446, 760, "muro", plataformas)
-    plataforma.crearPlataforma(1218, 900, "paredInferior", plataformas)
-    plataforma.crearPlataforma(26, 369, "separadorCurso", plataformas)
-    plataforma.crearPlataforma(554, 713, "cursos", plataformas)
-    plataforma.crearPlataforma(866, 531, "paredCursoIzquierda", plataformas)
-    plataforma.crearPlataforma(382, 476, "paredCursoDerecha", plataformas)
-    plataforma.crearPlataforma(445, 370, "hueco", plataformas,0.35)
-    plataforma.crearPlataforma(666, 481, "cachoFaltante", plataformas)
-    plataforma.crearPlataforma(138, 385, "faltante", plataformas)
+   crearPlataforma(598, 137, "paredSuperior", paredPlataforma);
+   crearPlataforma(1161.5, 273, "esquinaSuperiorDerecha", plataformas);
+   crearPlataforma(1241, 409, "pared", plataformas);
+   crearPlataforma(1306, 521, "salaEstudianteArriba", plataformas)
+   crearPlataforma(1466, 758, "paredLarga", plataformas)
+   crearPlataforma(1446, 665, "muro", plataformas)
+   crearPlataforma(1446, 760, "muro", plataformas)
+   crearPlataforma(1218, 900, "paredInferior", plataformas)
+   crearPlataforma(26, 369, "separadorCurso", plataformas)
+   crearPlataforma(554, 713, "cursos", plataformas)
+   crearPlataforma(866, 531, "paredCursoIzquierda", plataformas)
+   crearPlataforma(382, 476, "paredCursoDerecha", plataformas)
+   crearPlataforma(445, 370, "hueco", plataformas,0.35)
+   crearPlataforma(666, 481, "cachoFaltante", plataformas)
+   crearPlataforma(138, 385, "faltante", plataformas)
     this.avatar = new Avatar(this, 800, 2);
 
-    plataforma.crearPlataforma(1181, 356,  "escaleraArriba", plataformas)
-    plataforma.crearPlataforma(1205, 428,  "escaleraAbajoAbajo", plataformas,0.25)
-    plataforma.crearPlataforma(1181, 440,  "escaleraAbajo", plataformas)
+   crearPlataforma(1181, 356,  "escaleraArriba", plataformas)
+   crearPlataforma(1205, 428,  "escaleraAbajoAbajo", plataformas,0.25)
+   crearPlataforma(1181, 440,  "escaleraAbajo", plataformas)
 
-    plataforma.crearPlataforma(700, 256,  "puerta", plataformas,1.35)
-    plataforma.crearPlataforma(637, 256,  "puerta2", plataformas,1.35)
+   crearPlataforma(700, 256,  "puerta", plataformas,1.35)
+   crearPlataforma(637, 256,  "puerta2", plataformas,1.35)
     
-    plataforma.crearPlataforma(990, 740,  "sillaDeLado2", plataformas)
-    plataforma.crearPlataforma(990, 770,  "sillaDeLado2", plataformas)
-    plataforma.crearPlataforma(990, 830,  "sillaDeLado2", plataformas)
-    plataforma.crearPlataforma(990, 860,  "sillaDeLado2", plataformas)
+   crearPlataforma(990, 740,  "sillaDeLado2", plataformas)
+   crearPlataforma(990, 770,  "sillaDeLado2", plataformas)
+   crearPlataforma(990, 830,  "sillaDeLado2", plataformas)
+   crearPlataforma(990, 860,  "sillaDeLado2", plataformas)
     
-    plataforma.crearPlataforma(1181, 565,  "sillaFrontal", plataformas)
-    plataforma.crearPlataforma(1220, 565,  "sillaFrontal", plataformas)
-    plataforma.crearPlataforma(1311, 565,  "sillaFrontal", plataformas)
-    plataforma.crearPlataforma(1350, 565,  "sillaFrontal", plataformas)
-    plataforma.crearPlataforma(1390, 577,  "sillaDeLado", plataformas)
-    plataforma.crearPlataforma(1333, 580,  "mesaHorizontal", plataformas,0.5)
-    plataforma.crearPlataforma(1207, 580,  "mesaHorizontal", plataformas,0.5)
-    plataforma.crearPlataforma(1010, 750,  "mesaVertical", plataformas,0.5)
-    plataforma.crearPlataforma(1197, 865,  "mesasAbajo", plataformas)
-    plataforma.crearPlataforma(1438, 834,  "mesaAbajoDerecha", plataformas)
-    plataforma.crearPlataforma(1438, 731,  "mesaMedio", plataformas)
-    plataforma.crearPlataforma(1000, 281,  "banca", plataformas,1.35)
+   crearPlataforma(1181, 565,  "sillaFrontal", plataformas)
+   crearPlataforma(1220, 565,  "sillaFrontal", plataformas)
+   crearPlataforma(1311, 565,  "sillaFrontal", plataformas)
+   crearPlataforma(1350, 565,  "sillaFrontal", plataformas)
+   crearPlataforma(1390, 577,  "sillaDeLado", plataformas)
+   crearPlataforma(1333, 580,  "mesaHorizontal", plataformas,0.5)
+   crearPlataforma(1207, 580,  "mesaHorizontal", plataformas,0.5)
+   crearPlataforma(1010, 750,  "mesaVertical", plataformas,0.5)
+   crearPlataforma(1197, 865,  "mesasAbajo", plataformas)
+   crearPlataforma(1438, 834,  "mesaAbajoDerecha", plataformas)
+   crearPlataforma(1438, 731,  "mesaMedio", plataformas)
+   crearPlataforma(1000, 281,  "banca", plataformas,1.35)
     
     
 

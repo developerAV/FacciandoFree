@@ -1,5 +1,5 @@
 import { Avatar } from "./player.js";
-import { Platform } from "./module/platform.js";
+import { crearPlataforma } from "./module/platform.js";
 
 export class Aula extends Phaser.Scene {
   constructor() {
@@ -30,21 +30,21 @@ export class Aula extends Phaser.Scene {
     let plataformas = this.physics.add.staticGroup();
     let paredPlataforma = this.physics.add.staticGroup();
     let scale = 1.8;
-    this.plataforma = new Platform();
+    //this.plataforma = new Platform();
 
-    this.plataforma.crearPlataforma(800, 110, "paredAula", paredPlataforma,scale);
-    this.plataforma.crearPlataforma(800, 130, "pizarraAula", plataformas,scale);
+    crearPlataforma(800, 110, "paredAula", paredPlataforma,scale);
+    crearPlataforma(800, 130, "pizarraAula", plataformas,scale);
     this.avatar = new Avatar(this, 800, 2);
 
 
-    this.plataforma.crearPlataforma(800, 880, "mesaAula", plataformas,scale);
-    this.plataforma.crearPlataforma(455, 613, "paredIzq", plataformas,scale);
-    this.plataforma.crearPlataforma(1145, 613, "paredDer", plataformas,scale);
-    this.plataforma.crearPlataforma(800, 986, "paredInf", plataformas,scale);
-    this.plataforma.crearPlataforma(800, 735, "mesaAula", plataformas,scale);
-    this.plataforma.crearPlataforma(800, 590, "mesaAula", plataformas,scale);
-    this.plataforma.crearPlataforma(800, 445, "mesaAula", plataformas,scale);
-    this.plataforma.crearPlataforma(1000, 300, "escritorioAula", plataformas,scale);
+    crearPlataforma(800, 880, "mesaAula", plataformas,scale);
+    crearPlataforma(455, 613, "paredIzq", plataformas,scale);
+    crearPlataforma(1145, 613, "paredDer", plataformas,scale);
+    crearPlataforma(800, 986, "paredInf", plataformas,scale);
+    crearPlataforma(800, 735, "mesaAula", plataformas,scale);
+    crearPlataforma(800, 590, "mesaAula", plataformas,scale);
+    crearPlataforma(800, 445, "mesaAula", plataformas,scale);
+    crearPlataforma(1000, 300, "escritorioAula", plataformas,scale);
 
     plataformas.children.iterate((plataforma) => {
       plataforma.refreshBody();
