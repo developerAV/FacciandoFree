@@ -8,6 +8,7 @@ import { FloorHallway2 } from "./scenes/FloorHallway2.js";
 import { AdministrativeRoom } from "./scenes/administrative_room.js";
 import { Hallway300 } from "./scenes/hallway300.js";
 import { Cubicle } from "./scenes/cubicle.js";
+import { Auditorium2 } from "./scenes/auditoruim2.js";
 /* import {Player} from './scenas/player.js';
  */
 
@@ -27,8 +28,9 @@ const config = {
     mainHallway1,
     FloorHallway2,
     AdministrativeRoom,
-    Hallway300, 
-    Cubicle
+    Hallway300,
+    Cubicle,
+    Auditorium2,
   ],
   scale: {
     mode: Phaser.Scale.FIT,

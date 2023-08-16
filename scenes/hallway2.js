@@ -47,44 +47,14 @@ export class Hallway2 extends Phaser.Scene {
     let plataformas = this.physics.add.staticGroup();
     let plataformasillas = this.physics.add.staticGroup();
     let paredPlataforma = this.physics.add.staticGroup();
-   // this.plataforma = new Platform();
+    // this.plataforma = new Platform();
 
-   crearPlataforma(
-      304,
-      501,
-      "paredAuditorio",
-      plataformas,
-      scale
-    );
-   crearPlataforma(
-      499,
-      715,
-      "paredbatMujer",
-      plataformas,
-      scale
-    );
-   crearPlataforma(1335, 348, "paredEste", plataformas, scale);
-   crearPlataforma(
-      835,
-      305,
-      "paredSuperior",
-      plataformas,
-      scale
-    );
-   crearPlataforma(
-      1072,
-      715,
-      "paredInferior",
-      plataformas,
-      scale
-    );
-   crearPlataforma(
-      1276,
-      564,
-      "paredInferiorEste",
-      plataformas,
-      scale
-    );
+    crearPlataforma(304, 501, "paredAuditorio", plataformas, scale);
+    crearPlataforma(499, 715, "paredbatMujer", plataformas, scale);
+    crearPlataforma(1335, 348, "paredEste", plataformas, scale);
+    crearPlataforma(835, 305, "paredSuperior", plataformas, scale);
+    crearPlataforma(1072, 715, "paredInferior", plataformas, scale);
+    crearPlataforma(1276, 564, "paredInferiorEste", plataformas, scale);
 
     plataformas.children.iterate((plataforma) => {
       plataforma.refreshBody();
