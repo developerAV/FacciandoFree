@@ -1,15 +1,9 @@
 import { Avatar } from "./player.js";
 import { crearPlataforma } from "./module/platform.js";
-import { mensaje } from "../data/dialogues.js";
-import { crearVideo } from "./module/videoInfo.js";
 
-let lan = "en";
-
-
-export class Cubicle extends Phaser.Scene {
+export class Cubicle2 extends Phaser.Scene {
   constructor() {
-    super({ key: "cubicle" });
-
+    super({ key: "cubicle2" });
   }
 
   preload() {
@@ -37,12 +31,11 @@ export class Cubicle extends Phaser.Scene {
     this.load.image("impresora", "assets/images/cubicle/impresora.png");  
     this.load.image("servidor", "assets/images/cubicle/servidor.png");  
     this.load.image("anaquel", "assets/images/cubicle/anaquel.png");  
-    this.load.video('avatarVideo', 'assets/videos/21.mp4', 'loadeddata', false, true);
 
   
   }
 
- create() {
+  create() {
     // Para iniciar con un desenfoque
     this.cameras.main.fadeIn(500);
     
@@ -108,9 +101,6 @@ crearPlataforma(1200, 226, "sillaB6", plataformas, scale);
 
 
 
-crearVideo(mensaje.txtCubicle[lan], 'avatarVideo', this);
-
- 
 // // this.physics.add.collider(avatar, ladder, touchLadder, null, this);
 //     // plataformas.children.iterate((plataforma) => {
   //     //   plataforma.refreshBody();
@@ -126,24 +116,22 @@ crearVideo(mensaje.txtCubicle[lan], 'avatarVideo', this);
 //     // this.physics.add.collider(this.avatar.avatarPlayer, plataformasillas);
 //     // this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
 
+//     // // Configurar seguimiento de cámara al personaje
+    this.cameras.main.startFollow(this.avatar.avatarPlayer);
 
-    // video.x = this.avatar.avatarPlayer.x - 50; // Ajusta el valor según tus necesidades
-    // video.y = this.avatar.avatarPlayer.y + 50; // Ajusta el valor según tus necesidades
- 
-    
+//     // // Configurar zoom de la cámara en función de la posición del personaje
+    this.cameras.main.zoom = 1 + (this.avatar.avatarPlayer.y - 300) / 600; // Ajustar el valor 300 y 600 según tus necesidades
+  
+
   }
 
   update() {
     // Ajustar el zoom de la cámara en función de la posición del personaje
     // this.cameras.main.zoom = 1 + (this.avatar.avatarPlayer.y - 300) / 600; // Ajustar el valor 300 y 600 según tus necesidades
 
-
     // Llamamos a la función "update()" del avatar
     this.avatar.update();
-
-   
-  }
   
-  }
+  }  
 
-
+}
