@@ -35,7 +35,7 @@ export class Intro extends Phaser.Scene {
     });
 
     //letras facciando
-    const facciando = this.add.image(800, 100, "facciando").setScale(1.5);
+    this.add.image(800, 100, "facciando").setScale(1.5);
 
     // add music
     const play = this.add
@@ -137,7 +137,7 @@ function blurButton(boton, escena) {
         () => {
           // Esperar 500 milisegundos antes de cambiar de escena
           //escena.scene.start("computer_room");
-          escena.scene.start("auditorium2");
+          escena.scene.start("cubicle");
           // escena.scene.start("lab1");
         },
         [],

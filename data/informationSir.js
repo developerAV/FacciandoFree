@@ -13,18 +13,18 @@ export const information = {
       description: "Specialized in database and data structure",
     },
   },
-    jorge_morales: {
+  jorge_morales: {
     es: {
-        name: "Jorge Morales",
-        age: "30 años",
-        status: "Ingeniero en Sistema, Mg",
-        description: "Especializado en base de datos y estructura de datos",
+      name: "Jorge Morales",
+      age: "30 años",
+      status: "Ingeniero en Sistema, Mg",
+      description: "Especializado en base de datos y estructura de datos",
     },
     en: {
-        name: "Jorge Morales",
-        age: "30 years old",
-        status: "System Engineer, Mg",
-        description: "Specialized in database and data structure",
+      name: "Jorge Morales",
+      age: "30 years old",
+      status: "System Engineer, Mg",
+      description: "Specialized in database and data structure",
     },
-    },
+  },
 };
