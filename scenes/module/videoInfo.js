@@ -1,14 +1,15 @@
-let video;
-let texto;
+export const crearVideo = (mensaje, videoFile, scene, keyZoom) => {
+  let indice = 0;
+  let video;
+  let texto;
 
-let indice = 0;
+  scene.avatar.avatarUpdateActivo = false;
 
-export const crearVideo = (mensaje, videoFile, scene) => {
-  
   video = scene.add.video(775, 850, videoFile);
   video.setAlpha(1);
   video.setBlendMode(Phaser.BlendModes.NORMAL);
   video.play(true);
+
   // Ajustar el tamaño del video
   var scaleRatioX = 0.86; // Ajusta este valor para hacer el video más ancho
   var scaleRatioY = 0.5; // Puedes ajustar este valor según tus necesidades
@@ -23,7 +24,7 @@ export const crearVideo = (mensaje, videoFile, scene) => {
     },
   });
   texto.setOrigin(0, 1);
-  scene.time.addEvent({
+  let efectoEsc = scene.time.addEvent({
     delay: 50, // Ajusta el valor para controlar la velocidad de escritura
     callback: escribirTexto,
     loop: true,
@@ -36,8 +37,6 @@ export const crearVideo = (mensaje, videoFile, scene) => {
       texto.setText(mensaje.substring(0, indice));
       indice++;
     } else {
-       
-
       video.stop();
       scene.time.addEvent({
         delay: 2000, // Ajusta el valor para controlar la velocidad de escritura
@@ -55,36 +54,37 @@ export const crearVideo = (mensaje, videoFile, scene) => {
       duration: 500, // Duración de la animación en milisegundos
       onComplete: () => {
         // Al completar la animación, detener el video y destruir el objeto de video
-        // video.stop();
-        
+
         video.destroy();
         texto.destroy();
+        efectoEsc.remove(); // Detener el efecto de escritura
+        scene.avatar.avatarUpdateActivo = true;
 
-       
-      // video.destroy();
-    scene.cameras.main.startFollow(scene.avatar.avatarPlayer);
-        // console.log(scene.cameras.main.zoom);
-    //    const zoomInterval = setTimeout(() => {
-    //      if (scene.cameras.main.zoom <= 2) {
-        
-    //        scene.cameras.main.zoom += 0.05;
-    //        console.log(scene.cameras.main.zoom);
-    //      } else {
-    //        clearInterval(zoomInterval); // Detener el intervalo cuando el zoom alcanza 2
-    //      }
-    //    }, 150);
-    function aumentarZoom() {
-        if (scene.cameras.main.zoom<= 2) {
-            scene.cameras.main.zoom += 0.01;
-          console.log(scene.cameras.main.zoom)
-          setTimeout(aumentarZoom, 800); 
+        console.log(indice);
+        indice = 0;
+        // video.destroy();
+        if (keyZoom) {
+          scene.cameras.main.startFollow(scene.avatar.avatarPlayer); // Configurar seguimiento de cámara al personaje
+          // console.log(scene.cameras.main.zoom);
+          //    const zoomInterval = setTimeout(() => {
+          //      if (scene.cameras.main.zoom <= 2) {
+
+          //        scene.cameras.main.zoom += 0.05;
+          //        console.log(scene.cameras.main.zoom);
+          //      } else {
+          //        clearInterval(zoomInterval); // Detener el intervalo cuando el zoom alcanza 2
+          //      }
+          //    }, 150);
+          function aumentarZoom() {
+            if (scene.cameras.main.zoom <= 2) {
+              scene.cameras.main.zoom += 0.01;
+              // console.log(scene.cameras.main.zoom)
+              setTimeout(aumentarZoom, 800);
+            }
+          }
+          aumentarZoom();
         }
-      }
-      
-      aumentarZoom()
       },
     });
-    
   }
-
 };
