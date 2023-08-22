@@ -38,7 +38,7 @@ export const crearCard = (
     }
   );
   const fotoCarnet = scene.add.sprite(200, 30, namePhoto); // Cambia las coordenadas y el nombre de la textura según tu juego
-  fotoCarnet.setScale(0.1); // Ajusta la escala según tus necesidades
+  fotoCarnet.setScale(0.3); // Ajusta la escala según tus necesidades
 
   // Ajusta la alineación del texto según tus necesidades
   informacionTexto.setOrigin(0, 0.5);
