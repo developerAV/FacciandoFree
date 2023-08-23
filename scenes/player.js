@@ -41,29 +41,48 @@ export class Avatar extends Phaser.GameObjects.Sprite {
   }
 
   update() {
-if(this.avatarUpdateActivo){
-
-    if (this.cursors.left.isDown) {
-      this.avatarPlayer.setVelocityY(0);
-      this.avatarPlayer.setVelocityX(-200);
-      this.avatarPlayer.anims.play("left", true);
-    } else if (this.cursors.right.isDown) {
-      this.avatarPlayer.setVelocityY(0);
-      this.avatarPlayer.setVelocityX(200);
-      this.avatarPlayer.anims.play("right", true);
-    } else if (this.cursors.up.isDown) {
-      this.avatarPlayer.setVelocityX(0);
-      this.avatarPlayer.setVelocityY(-200);
-      this.avatarPlayer.anims.play("up", true);
-    } else if (this.cursors.down.isDown) {
-      this.avatarPlayer.setVelocityX(0);
-      this.avatarPlayer.setVelocityY(200);
-      this.avatarPlayer.anims.play("down", true);
-    } else {
-      this.avatarPlayer.setVelocityY(0);
-      this.avatarPlayer.setVelocityX(0);
-      this.avatarPlayer.anims.play("turn");
+    if (this.avatarUpdateActivo ) {
+      if (this.cursors.left.isDown) {
+        this.moveLeft();
+      } else if (this.cursors.right.isDown) {
+        this.moveRight();
+      } else if (this.cursors.up.isDown) {
+        this.moveUp();
+      } else if (this.cursors.down.isDown) {
+        this.moveDown();
+      } else {
+        this.stopMovement();
+      }
     }
   }
-}
+
+  moveLeft(scene=this) {
+    this.avatarPlayer.setVelocityY(0);
+    this.avatarPlayer.setVelocityX(-200);
+    this.avatarPlayer.anims.play("left", true);
+  }
+
+  moveRight(scene=this) {
+    this.avatarPlayer.setVelocityY(0);
+    this.avatarPlayer.setVelocityX(200);
+    this.avatarPlayer.anims.play("right", true);
+  }
+
+  moveUp(scene=this) {
+    this.avatarPlayer.setVelocityX(0);
+    this.avatarPlayer.setVelocityY(-200);
+    this.avatarPlayer.anims.play("up", true);
+  }
+
+  moveDown(scene=this) {
+    this.avatarPlayer.setVelocityX(0);
+    this.avatarPlayer.setVelocityY(200);
+    this.avatarPlayer.anims.play("down", true);
+  }
+
+  stopMovement(scene=this) {
+    this.avatarPlayer.setVelocityY(0);
+    this.avatarPlayer.setVelocityX(0);
+    this.avatarPlayer.anims.play("turn");
+  }
 }
