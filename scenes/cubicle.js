@@ -152,124 +152,13 @@ export class Cubicle extends Phaser.Scene {
     );
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
- buttonCentroX = this.avatar.avatarPlayer.x + 10;
- buttonCentroY = this.avatar.avatarPlayer.y + 10;
+
     // Crea un círculo que servirá como botón
 
-
-let isDragging = false;
-let pointerOffsetX = 0;
-let pointerOffsetY = 0;
-const maxRange = 14; // Rango máximo de arrastre
-
-// Crear el grupo de contenedores para la interfaz de usuario (UI)
-this.buttonContainer = this.add.container(0, 0);
-
-// Crear los botones y agregarlos al grupo de contenedores
-this.buttonPrimero = this.add.circle(buttonCentroX, buttonCentroY, 50, 0xffffff, 0.5);
-this.buttonCentro = this.add.circle(buttonCentroX, buttonCentroY, 30, 0x808080, 0.5);
-this.buttonContainer.add(this.buttonPrimero);
-this.buttonContainer.add(this.buttonCentro);
-
- 
-
-const cursors = this.input.keyboard.createCursorKeys();
-
-this.input.keyboard.on('keydown', (event) => {
-    if (event.key === "ArrowRight") {
-      this.buttonCentro.x = buttonCentroX + maxRange; // Mueve el botón hacia la derecha
-      this.buttonCentro.y = buttonCentroY; // Mueve el botón hacia la derecha
-    } else if (event.key === "ArrowLeft") {
-      this.buttonCentro.x = buttonCentroX - maxRange; // Mueve el botón hacia la izquierda
-      this.buttonCentro.y = buttonCentroY; // Mueve el botón hacia la izquierda
-    } else if (event.key === "ArrowUp") {
-      this.buttonCentro.y = buttonCentroY - maxRange; //4 Mueve el botón hacia arriba
-      this.buttonCentro.x = buttonCentroX; // Mueve el botón hacia arriba
-    } else if (event.key === "ArrowDown") {
-      this.buttonCentro.y = buttonCentroY + maxRange; // Mueve el botón hacia abajo
-      this.buttonCentro.x = buttonCentroX; // Mueve el botón hacia abajo
-    }
-});
-this.input.keyboard.on('keyup', (event) => {
-  if (
-      event.key === "ArrowRight" ||
-      event.key === "ArrowLeft" ||
-      event.key === "ArrowUp" ||
-      event.key === "ArrowDown"
-  ) {
-      // Detener el movimiento estableciendo la velocidad en 0 o realizando otras acciones según tus necesidades.
-      // Por ejemplo, para detener el movimiento, puedes establecer la velocidad en 0:
-      this.buttonCentro.y = buttonCentroY; // Mueve el botón hacia abajo
-      this.buttonCentro.x = buttonCentroX; // Mueve el botón hacia abajo
-  }
-});
-
-
-this.buttonCentro.setInteractive();
-
-// Configurar eventos de inicio de arrastre (ratón y tacto)
-this.buttonCentro.on('pointerdown', (pointer) => {
-    isDragging = true;
-
-    // Calcular el desplazamiento entre el botón y el puntero
-    pointerOffsetX = this.buttonCentro.x - pointer.x;
-    pointerOffsetY = this.buttonCentro.y - pointer.y;
-    
-});
-
-// Configurar eventos de movimiento durante el arrastre (ratón y tacto)
-this.input.on('pointermove', (pointer) => {
-    if (isDragging) {
-        // Calcular la nueva posición del botón
-        newX = pointer.x + pointerOffsetX;
-       newY = pointer.y + pointerOffsetY;
-
-        // Limitar el rango máximo de arrastre
-        newX = Phaser.Math.Clamp(newX, buttonCentroX - maxRange, buttonCentroX + maxRange);
-        newY = Phaser.Math.Clamp(newY, buttonCentroY - maxRange, buttonCentroY + maxRange);
-
-         if (newX > this.buttonCentro.x) {
-      // Hacer algo cuando el botón se mueva hacia la derecha
-      console.log('Botón movido hacia la derecha');
-      // Agrega aquí la lógica que deseas realizar cuando el botón se mueva hacia la derecha
-      this.avatar.moveRight(this.avatar);
-    }else if (newX < this.buttonCentro.x) {
-      // Hacer algo cuando el botón se mueva hacia la izquierda
-      console.log('Botón movido hacia la izquierda');
-      // Agrega aquí la lógica que deseas realizar cuando el botón se mueva hacia la izquierda
-      this.avatar.moveLeft(this.avatar);
-    }else if (newY < this.buttonCentro.y) {
-      // Hacer algo cuando el botón se mueva hacia arriba
-      console.log('Botón movido hacia arriba');
-      // Agrega aquí la lógica que deseas realizar cuando el botón se mueva hacia arriba
-      this.avatar.moveUp(this.avatar);
-    }else if (newY > this.buttonCentro.y) {
-      // Hacer algo cuando el botón se mueva hacia abajo
-      console.log('Botón movido hacia abajo');
-      // Agrega aquí la lógica que deseas realizar cuando el botón se mueva hacia abajo
-      this.avatar.moveDown(this.avatar);
-    }else{
-     // this.avatar.stopMovement(this.avatar);
-    }
-
-        // Mover el botón al nuevo lugar
-        this.buttonCentro.x = newX;
-        this.buttonCentro.y = newY;
-    }
-});
-
-// Configurar evento de finalización de arrastre (ratón y tacto)
-this.input.on('pointerup', () => {
-    isDragging = false;
-    // Restablecer la posición del botón al centro
-    this.buttonCentro.x = buttonCentroX;
-    this.buttonCentro.y = buttonCentroY;
-});
+    this.avatar.botonMobile(this);
   }
 
   update() {
-    this.avatar.update();
- 
-  
+    this.avatar.update(this);
   }
 }
