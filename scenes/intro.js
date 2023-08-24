@@ -13,7 +13,7 @@ export class Intro extends Phaser.Scene {
     this.load.image("score", "assets/images/intro/score.png");
     this.load.image("avatar", "assets/images/intro/avatar.png");
     this.load.image("fullscreen", "assets/images/intro/fullscreen.png");
-    this.load.image("mute", "assets/images/intro/Mute.png");
+    this.load.image("mute", "assets/images/intro/mute.png");
     this.load.image("sound", "assets/images/intro/sound.png");
     this.load.image("facciando", "assets/images/intro/facciando.png");
     this.load.audio("musica", "assets/music/GrassyWorld.mp3");
