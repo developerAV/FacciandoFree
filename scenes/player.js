@@ -1,6 +1,7 @@
 export class Avatar extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, scale) {
     super(scene, x, y, "dude", scale);
+// Verificar si se está ejecutando en un dispositivo móvil (celular o tableta)
 
     this.avatarPlayer = scene.physics.add.sprite(x, y, "dude").setScale(scale);
     this.avatarUpdateActivo = true;
@@ -39,9 +40,10 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       repeat: -1,
     });
   }
+  
   botonMobile(scene) {
     this.isDragging = false;
-    this.maxRange = 17;
+    this.maxRange = 35;
 
     this.buttonCentroX = 0;
     this.buttonCentroY = 0;
@@ -53,16 +55,18 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       this.buttonCentroX,
       this.buttonCentroY,
       70,
-      0xffffff,
+      0x505050,
       0.5
     );
     scene.buttonCentro = scene.add.circle(
       this.buttonCentroX,
       this.buttonCentroY,
-      40,
-      0x505050,
-      0.5
+      25,
+      0xf2f2f2,
+      0.6
     );
+    scene.buttonPrimero.setStrokeStyle(1, 0xffffff);
+    scene.buttonCentro.setStrokeStyle(4, 0xffffff);
     scene.buttonContainer.add(scene.buttonPrimero);
     scene.buttonContainer.add(scene.buttonCentro);
     const contenedorFondo = scene.add.graphics();
@@ -138,21 +142,28 @@ export class Avatar extends Phaser.GameObjects.Sprite {
   }
 
   update(scene) {
+
+  
+
+    if (!this.avatarUpdateActivo) {
+      return;
+    }
+   
+    /**/
+
+if (window.isMobile) {
     this.offsetX = scene.cameras.main.scrollX;
     this.offsetY = scene.cameras.main.scrollY;
 
     scene.buttonContainer.x = 400 + this.offsetX + 120;
     scene.buttonContainer.y = 1000 + this.offsetY - 370;
+  console.log("Estás en un dispositivo móvil.");
 
-    if (!this.avatarUpdateActivo) {
-      return;
-    }
-    if (!this.isDragging) {
+   if (!this.isDragging) {
       this.stopMovement();
       return;
     }
-    /**/
-    if (this.newX > this.buttonCentroX + 12) {
+   if (this.newX > this.buttonCentroX + 12) {
       this.moveRight();
       return;
     }
@@ -168,8 +179,9 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       this.moveUp();
       return;
     }
-
-    /* if (this.cursors.left.isDown) {
+} else {
+  console.log("Estás en una PC.");
+ if (this.cursors.left.isDown) {
       this.moveLeft();
       return;
     }
@@ -184,7 +196,12 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     if (this.cursors.down.isDown) {
       this.moveDown();
       return;
-    } */
+    } 
+}
+
+   
+
+    
     this.stopMovement();
   }
 
