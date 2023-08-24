@@ -44,9 +44,11 @@ const config = {
     },
   },
 };
-
+window.isMobile = /iPhone|iPad|iPod|Android/i.test(window.navigator.userAgent);
 // Creación del juego con la configuración especificada
 const game = new Phaser.Game(config);
+// var pantallaAncho = game.config.width;
+// console.log('Ancho de pantalla: ' + window.innerWidth);
 
-// Iniciar la primera escena
+
 game.scene.start();
