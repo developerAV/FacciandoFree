@@ -159,10 +159,14 @@ export class Avatar extends Phaser.GameObjects.Sprite {
 if (window.isMobile) {
     this.offsetX = scene.cameras.main.scrollX;
     this.offsetY = scene.cameras.main.scrollY;
-
+if(scene.cameras.main.zoom === 2){
     scene.buttonContainer.x = 400 + this.offsetX + 120;
     scene.buttonContainer.y = 1000 + this.offsetY - 370;
-  console.log("Estás en un dispositivo móvil.");
+  }else{
+    scene.buttonContainer.x = 200 ;
+    scene.buttonContainer.y = 850 ;
+  }
+
 
    if (!this.isDragging) {
       this.stopMovement();
@@ -185,7 +189,7 @@ if (window.isMobile) {
       return;
     }
 } else {
-  console.log("Estás en una PC.");
+
  if (this.cursors.left.isDown) {
       this.moveLeft();
       return;

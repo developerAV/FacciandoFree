@@ -1,6 +1,6 @@
 import { Avatar } from "./player.js";
 import { crearPlataforma } from "./module/platform.js";
-
+let activeVideo = false;
 const xy = 7
 export class FloorHallway2 extends Phaser.Scene {
   constructor() {
@@ -81,7 +81,7 @@ export class FloorHallway2 extends Phaser.Scene {
    crearPlataforma(445, 370, "hueco", plataformas,0.35)
    crearPlataforma(666, 481, "cachoFaltante", plataformas)
    crearPlataforma(138, 385, "faltante", plataformas)
-    this.avatar = new Avatar(this, 800, 2);
+    this.avatar = new Avatar(this, 800, 490, 1.3);
 
    crearPlataforma(1181, 356,  "escaleraArriba", plataformas)
    crearPlataforma(1205, 428,  "escaleraAbajoAbajo", plataformas,0.25)
@@ -109,7 +109,12 @@ export class FloorHallway2 extends Phaser.Scene {
    crearPlataforma(1000, 281,  "banca", plataformas,1.35)
     
     
+   if (activeVideo) {
+    crearVideo(mensaje.txtCubicle[window.lan], "avatarVideo", this, true);
+  }
 
+  this.cameras.main.startFollow(this.avatar.avatarPlayer); // Configurar seguimiento de cámara al personaje
+  this.cameras.main.zoom = 2;
 
   
     plataformas.children.iterate((plataforma) => {
@@ -139,6 +144,6 @@ export class FloorHallway2 extends Phaser.Scene {
 
   update() {
     // Llamamos a la función "update()" del avatar
-    this.avatar.update();
+    this.avatar.update(this);
   }
 }
