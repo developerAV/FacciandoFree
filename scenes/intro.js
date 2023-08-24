@@ -67,10 +67,7 @@ export class Intro extends Phaser.Scene {
     fullscreenButton.on(
       "pointerup",
       () => {
-        if (this.scale.isFullscreen) {
-          this.scale.stopFullscreen();
-        }
-        this.scale.startFullscreen();
+        this.scale.toggleFullscreen(); // Cambiar entre pantalla completa y normal
       },
       this
     );
@@ -84,7 +81,8 @@ export class Intro extends Phaser.Scene {
     // Music
 
     const music = this.sound.add("musica", { loop: true });
-    //music.play();
+
+    music.play();
 
     // Agrega el botón de sonido a la escena
     btnSosund.setInteractive();

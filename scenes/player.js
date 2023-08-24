@@ -1,7 +1,6 @@
 export class Avatar extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, scale) {
     super(scene, x, y, "dude", scale);
-// Verificar si se está ejecutando en un dispositivo móvil (celular o tableta)
 
     this.avatarPlayer = scene.physics.add.sprite(x, y, "dude").setScale(scale);
     this.avatarUpdateActivo = true;
@@ -40,12 +39,11 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       repeat: -1,
     });
 
-
     if (window.isMobile) {
       this.botonMobile(scene);
-      }
+    }
   }
-  
+
   botonMobile(scene) {
     this.isDragging = false;
     this.maxRange = 35;
@@ -82,35 +80,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     const cursors = scene.input.keyboard.createCursorKeys();
 
     scene.buttonContainer.setAlpha(1);
-    /*    scene.input.keyboard.on("keydown", (event) => {
-      if (event.key === "ArrowRight") {
-        scene.buttonCentro.x = this.buttonCentroX + this.maxRange; // Mueve el botón hacia la derecha
-        scene.buttonCentro.y = buttonCentroY; // Mueve el botón hacia la derecha
-      } else if (event.key === "ArrowLeft") {
-        scene.buttonCentro.x = this.buttonCentroX - this.maxRange; // Mueve el botón hacia la izquierda
-        scene.buttonCentro.y = buttonCentroY; // Mueve el botón hacia la izquierda
-      } else if (event.key === "ArrowUp") {
-        scene.buttonCentro.y = buttonCentroY - this.maxRange; //4 Mueve el botón hacia arriba
-        scene.buttonCentro.x = this.buttonCentroX; // Mueve el botón hacia arriba
-      } else if (event.key === "ArrowDown") {
-        scene.buttonCentro.y = buttonCentroY + this.maxRange; // Mueve el botón hacia abajo
-        scene.buttonCentro.x = this.buttonCentroX; // Mueve el botón hacia abajo
-      }
-    }); */
-    /* scene.input.keyboard.on("keyup", (event) => {
-      if (
-        event.key === "ArrowRight" ||
-        event.key === "ArrowLeft" ||
-        event.key === "ArrowUp" ||
-        event.key === "ArrowDown"
-      ) {
-        // Detener el movimiento estableciendo la velocidad en 0 o realizando otras acciones según tus necesidades.
-        // Por ejemplo, para detener el movimiento, puedes establecer la velocidad en 0:
-        scene.buttonCentro.y = this.buttonCentroY; // Mueve el botón hacia abajo
-        scene.buttonCentro.x = this.buttonCentroX; // Mueve el botón hacia abajo
-      }
-    });
-  */
+ 
     scene.buttonCentro.setInteractive();
 
     // Configurar eventos de inicio -de arrastre (ratón y tacto)
@@ -147,100 +117,66 @@ export class Avatar extends Phaser.GameObjects.Sprite {
   }
 
   update(scene) {
-
-  
-
     if (!this.avatarUpdateActivo) {
       return;
     }
-   
-    /**/
 
-if (window.isMobile) {
-    this.offsetX = scene.cameras.main.scrollX;
-    this.offsetY = scene.cameras.main.scrollY;
-if(scene.cameras.main.zoom === 2){
-    scene.buttonContainer.x = 400 + this.offsetX + 120;
-    scene.buttonContainer.y = 1000 + this.offsetY - 370;
-  }else{
-    scene.buttonContainer.x = 200 ;
-    scene.buttonContainer.y = 850 ;
-  }
+    if (window.isMobile) {
+      this.offsetX = scene.cameras.main.scrollX;
+      this.offsetY = scene.cameras.main.scrollY;
+      if (scene.cameras.main.zoom === 2) {
+        scene.buttonContainer.x = 400 + this.offsetX + 120;
+        scene.buttonContainer.y = 1000 + this.offsetY - 370;
+      } else {
+        scene.buttonContainer.x = 200;
+        scene.buttonContainer.y = 850;
+      }
 
+      if (!this.isDragging) {
+        this.moveTo(0, 0, "turn");
+        return;
+      }
+      if (this.newX > this.buttonCentroX + 12) {
+        this.moveTo(0, 200, "right");
+        return;
+      }
+      if (this.newX < this.buttonCentroX - 12) {
+        this.moveTo(0, -200, "left");
+        return;
+      }
+      if (this.newY > this.buttonCentroY) {
+        this.moveTo(200, 0, "down");
+        return;
+      }
+      if (this.newY < this.buttonCentroY) {
+        this.moveTo(-200, 0, "up");
+        return;
+      }
+      return;
+    }
 
-   if (!this.isDragging) {
-      this.stopMovement();
+    if (this.cursors.left.isDown) {
+      this.moveTo(0, -200, "left");
       return;
     }
-   if (this.newX > this.buttonCentroX + 12) {
-      this.moveRight();
-      return;
-    }
-    if (this.newX < this.buttonCentroX - 12) {
-      this.moveLeft();
-      return;
-    }
-    if (this.newY > this.buttonCentroY) {
-      this.moveDown();
-      return;
-    }
-    if (this.newY < this.buttonCentroY) {
-      this.moveUp();
-      return;
-    }
-} else {
-
- if (this.cursors.left.isDown) {
-      this.moveLeft();
-      return;
-    }
-    if (this.cursors.right.isDown || this.newX > this.buttonCentroX + 12) {
-      this.moveRight();
+    if (this.cursors.right.isDown) {
+      this.moveTo(0, 200, "right");
       return;
     }
     if (this.cursors.up.isDown) {
-      this.moveUp();
+      this.moveTo(-200, 0, "up");
       return;
     }
     if (this.cursors.down.isDown) {
-      this.moveDown();
+      this.moveTo(200, 0, "down");
       return;
-    } 
-}
+    }
 
-   
-
-    
-    this.stopMovement();
+    this.moveTo(0, 0, "turn");
   }
-
-  moveLeft(scene = this) {
-    this.avatarPlayer.setVelocityY(0);
-    this.avatarPlayer.setVelocityX(-200);
-    this.avatarPlayer.anims.play("left", true);
-  }
-
-  moveRight(scene = this) {
-    this.avatarPlayer.setVelocityY(0);
-    this.avatarPlayer.setVelocityX(200);
-    this.avatarPlayer.anims.play("right", true);
-  }
-
-  moveUp(scene = this) {
-    this.avatarPlayer.setVelocityX(0);
-    this.avatarPlayer.setVelocityY(-200);
-    this.avatarPlayer.anims.play("up", true);
-  }
-
-  moveDown(scene = this) {
-    this.avatarPlayer.setVelocityX(0);
-    this.avatarPlayer.setVelocityY(200);
-    this.avatarPlayer.anims.play("down", true);
-  }
-
-  stopMovement(scene = this) {
-    this.avatarPlayer.setVelocityY(0);
-    this.avatarPlayer.setVelocityX(0);
-    this.avatarPlayer.anims.play("turn");
+  moveTo(x, y, direction) {
+    this.avatarPlayer.setVelocityY(x);
+    this.avatarPlayer.setVelocityX(y);
+    this.avatarPlayer.anims.play(direction, true);
   }
 }
