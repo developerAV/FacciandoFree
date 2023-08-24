@@ -33,7 +33,7 @@ const config = {
     Auditorium2,
   ],
   scale: {
-    mode: Phaser.Scale.FIT,
+    mode: Phaser.Scale.SCALE,
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
   physics: {
@@ -45,6 +45,9 @@ const config = {
   },
 };
 window.isMobile = /iPhone|iPad|iPod|Android/i.test(window.navigator.userAgent);
+window.lan = 'en';
+/* que es la palabra window? */
+
 // Creación del juego con la configuración especificada
 const game = new Phaser.Game(config);
 // var pantallaAncho = game.config.width;

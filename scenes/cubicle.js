@@ -4,7 +4,7 @@ import { mensaje } from "../data/dialogues.js";
 import { information } from "../data/informationSir.js";
 import { crearVideo } from "./module/videoInfo.js";
 import { crearCard } from "./module/card.js";
-let lan = "en";
+// let window.lan = "en";
 let activeVideo = false;
 let newX;
 let newY;
@@ -101,7 +101,7 @@ export class Cubicle extends Phaser.Scene {
     crearPlataforma(1200, 226, "sillaB6", plataformas);
 
     if (activeVideo) {
-      crearVideo(mensaje.txtCubicle[lan], "avatarVideo", this, true);
+      crearVideo(mensaje.txtCubicle[window.lan], "avatarVideo", this, true);
     }
     this.cameras.main.startFollow(this.avatar.avatarPlayer); // Configurar seguimiento de cámara al personaje
     this.cameras.main.zoom = 2;
@@ -124,7 +124,7 @@ export class Cubicle extends Phaser.Scene {
         this.cameras.main.setScroll(0, 0);
 
         // Puedes ejecutar cualquier código que quieras cuando se presione la tecla "i"
-        crearVideo(mensaje.txtCubicle[lan], "avatarVideo", this, true);
+        crearVideo(mensaje.txtCubicle[window.lan], "avatarVideo", this, true);
       }.bind(this)
     );
 
@@ -137,7 +137,7 @@ export class Cubicle extends Phaser.Scene {
 
     crearCard(
       this,
-      information.rober_moreira[lan],
+      information.rober_moreira[window.lan],
       "fotoCarnet",
       silla,
       this.contenedor1
@@ -145,7 +145,7 @@ export class Cubicle extends Phaser.Scene {
 
     crearCard(
       this,
-      information.jorge_morales[lan],
+      information.jorge_morales[window.lan],
       "fotoCarnet",
       silla2,
       this.contenedor2

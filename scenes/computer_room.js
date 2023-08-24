@@ -139,6 +139,6 @@ plataformas.children.iterate((plataforma) => {
   
   update() {
     // Llamamos a la función "update()" del avatar
-    this.avatar.update();
+    this.avatar.update(this);
   }
 }
