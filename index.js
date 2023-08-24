@@ -9,10 +9,6 @@ import { AdministrativeRoom } from "./scenes/administrative_room.js";
 import { Hallway300 } from "./scenes/hallway300.js";
 import { Cubicle } from "./scenes/cubicle.js";
 import { Auditorium2 } from "./scenes/auditoruim2.js";
-/* import {Player} from './scenas/player.js';
- */
-
-// Configuración del juego
 const config = {
   type: Phaser.AUTO,
   width: 1600,
@@ -33,7 +29,7 @@ const config = {
     Auditorium2,
   ],
   scale: {
-    mode: Phaser.Scale.SCALE,
+    mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
   physics: {
@@ -45,13 +41,7 @@ const config = {
   },
 };
 window.isMobile = /iPhone|iPad|iPod|Android/i.test(window.navigator.userAgent);
-window.lan = 'en';
-/* que es la palabra window? */
-
-// Creación del juego con la configuración especificada
+window.lan = "en";
 const game = new Phaser.Game(config);
-// var pantallaAncho = game.config.width;
-// console.log('Ancho de pantalla: ' + window.innerWidth);
-
 
 game.scene.start();
