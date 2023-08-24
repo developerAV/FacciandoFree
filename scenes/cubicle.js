@@ -154,9 +154,7 @@ export class Cubicle extends Phaser.Scene {
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
 
     // Crea un círculo que servirá como botón
-    if (window.isMobile) {
-    this.avatar.botonMobile(this);
-    }
+  
   }
 
   update() {
