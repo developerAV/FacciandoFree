@@ -39,6 +39,11 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       frameRate: 10,
       repeat: -1,
     });
+
+
+    if (window.isMobile) {
+      this.botonMobile(scene);
+      }
   }
   
   botonMobile(scene) {
@@ -73,7 +78,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     contenedorFondo.fillStyle(0xfff); // Marrón oscuro, puedes ajustar el color según tus preferencias
     contenedorFondo.fillRoundedRect(600, 800, 200, 100, 10);
     scene.buttonContainer.add(contenedorFondo);
-
+    scene.buttonContainer.setDepth(1);
     const cursors = scene.input.keyboard.createCursorKeys();
 
     scene.buttonContainer.setAlpha(1);
