@@ -1,5 +1,9 @@
 import { Avatar } from "./player.js";
-import { crearPlataforma } from "./module/platform.js";
+import {
+  crearPlataforma,
+  dimesionesPlataforma,
+  dimesionesPlataformaIndividual,
+} from "./module/platform.js";
 import { mensaje } from "../data/dialogues.js";
 import { information } from "../data/informationSir.js";
 import { crearVideo } from "./module/videoInfo.js";
@@ -70,13 +74,17 @@ export class Cubicle extends Phaser.Scene {
     this.add.image(846, 533, "pisoCubiculo");
 
     let plataformas = this.physics.add.staticGroup();
+    let paredPlataformaSuperior = this.physics.add.staticGroup();
 
     crearPlataforma(10, 417, "paredIzqC", plataformas);
     crearPlataforma(634, 796, "paredPuertaIzq", plataformas);
 
-    this.avatar = new Avatar(this, 680, 870, 1.5);
-
-    crearPlataforma(800, 137, "paredNorte", plataformas);
+    let paredNorte = crearPlataforma(
+      800,
+      137,
+      "paredNorte",
+      paredPlataformaSuperior
+    );
     crearPlataforma(302, 680, "escritoriosA", plataformas);
     crearPlataforma(561, 250, "escritoriosB", plataformas);
     crearPlataforma(1190, 250, "escritorioB6", plataformas);
@@ -99,6 +107,7 @@ export class Cubicle extends Phaser.Scene {
     crearPlataforma(930, 146, "anaquel", plataformas);
     crearPlataforma(1230, 146, "anaquel", plataformas);
     crearPlataforma(1200, 226, "sillaB6", plataformas);
+    this.avatar = new Avatar(this, 800, 137, 1.5);
 
     if (activeVideo) {
       crearVideo(mensaje.txtCubicle[window.lan], "avatarVideo", this, true);
@@ -135,6 +144,8 @@ export class Cubicle extends Phaser.Scene {
     let silla2 = crearPlataforma(530, 330, "sillaB6", plataforma2);
     this.contenedor2 = this.add.container(530, 160);
 
+    // dimesionesPlataforma(paredPlataformaSuperior, 0.6, 45);
+    dimesionesPlataformaIndividual(paredNorte, 0.6, 45);
     crearCard(
       this,
       information.rober_moreira[window.lan],
@@ -151,10 +162,10 @@ export class Cubicle extends Phaser.Scene {
       this.contenedor2
     );
 
-    this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
-
-    // Crea un círculo que servirá como botón
-  
+    this.physics.add.collider(
+      this.avatar.avatarPlayer,
+      paredPlataformaSuperior
+    );
   }
 
   update() {

@@ -1,7 +1,22 @@
 export const crearPlataforma = (x, y, imagen, group, scale = 1) => {
   const plataforma = group.create(x, y, imagen).setScale(scale);
-  // plataforma.setTint(0xff0000); // Color rojo
-  /*   plataforma.body.setSize(plataforma.width * scale, plataforma.height * scale);
-        plataforma.body.setOffset(x, y); */
+
   return plataforma;
+};
+
+export const dimesionesPlataforma = (plataformList, height, y) => {
+  plataformList.children.iterate((item) => {
+    item.refreshBody();
+    item.body.setSize(item.body.width * 1, item.body.height * height, true);
+    item.body.setOffset(0, y);
+  });
+};
+export const dimesionesPlataformaIndividual = (plataform, height, y) => {
+  plataform.refreshBody();
+  plataform.body.setSize(
+    plataform.body.width * 1,
+    plataform.body.height * height,
+    true
+  );
+  plataform.body.setOffset(0, y);
 };

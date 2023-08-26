@@ -82,7 +82,7 @@ export class Intro extends Phaser.Scene {
 
     const music = this.sound.add("musica", { loop: true });
 
-    music.play();
+    //music.play();
 
     // Agrega el botón de sonido a la escena
     btnSosund.setInteractive();
@@ -135,10 +135,9 @@ function blurButton(boton, escena) {
         () => {
           // Esperar 500 milisegundos antes de cambiar de escena
           //escena.scene.start("computer_room");
-          music.mute = true;
+          //music.mute = true;
           escena.scene.start("cubicle");
           
-          // escena.scene.start("lab1");
         },
         [],
         escena
