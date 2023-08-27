@@ -4,17 +4,23 @@ export const crearCard = (
   namePhoto,
   namePlataforma,
   contenedor
-) => {
-  let colisionTabla = false;
+  ) => {
+    let colisionTabla = false;
 
-  // Crea un contenedor para la foto y la información
-
-  // Configura el color de fondo del contenedor
+    // Crea un contenedor para la foto y la información
+    
+    // Configura el color de fondo del contenedor
   const contenedorFondo = scene.add.graphics();
-  contenedorFondo.fillStyle(0x5c3317); // Marrón oscuro, puedes ajustar el color según tus preferencias
+  contenedorFondo.fillStyle(0xffffff,0.7); // blanco, puedes ajustar el color según tus preferencias
   // contenedorFondo.fillRect(0, 0, 200, 100); // Ajusta el tamaño del contenedor según tus necesidades
   contenedorFondo.fillRoundedRect(0, 0, 200, 100, 10);
+ 
   contenedor.add(contenedorFondo);
+   // Agregar un borde al contenedor
+
+  
+
+
   // Crea un sprite para la foto tipo carnet dentro del contenedor
 
   //information.rober_moreira[lan].status
@@ -25,8 +31,8 @@ export const crearCard = (
     30,
     ` \n\n ${teacher.status} \n ${teacher.name}\n ${teacher.age}\n ${teacher.description} `,
     {
-      font: "16px Cambria, Arial",
-      fill: "#ffffff",
+      font: "16px Comic Sans MS, Cambria, Arial",
+      fill: "#000000",
       wordWrap: {
         width: 190, // Ajusta este valor para definir el límite de ancho
       },
@@ -39,13 +45,13 @@ export const crearCard = (
   );
   const fotoCarnet = scene.add.sprite(200, 30, namePhoto); // Cambia las coordenadas y el nombre de la textura según tu juego
   fotoCarnet.setScale(0.3); // Ajusta la escala según tus necesidades
-
+  
   // Ajusta la alineación del texto según tus necesidades
   informacionTexto.setOrigin(0, 0.5);
-
+  
   // Agrega la foto y el texto al contenedor
-  contenedor.add(fotoCarnet);
   contenedor.add(informacionTexto);
+  contenedor.add(fotoCarnet);
   // Establece la profundidad del contenedor para ponerlo encima de todo
   contenedor.setDepth(1); // Ajusta el valor según sea necesario, un valor mayor lo colocará más arriba
   // scene.objetoDelJuego  = scene.add.image(330, 330, "sillaB6");

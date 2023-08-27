@@ -73,7 +73,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     scene.buttonContainer.add(scene.buttonPrimero);
     scene.buttonContainer.add(scene.buttonCentro);
     const contenedorFondo = scene.add.graphics();
-    contenedorFondo.fillStyle(0xfff); // Marrón oscuro, puedes ajustar el color según tus preferencias
+    contenedorFondo.fillStyle(0xfff);
     contenedorFondo.fillRoundedRect(600, 800, 200, 100, 10);
     scene.buttonContainer.add(contenedorFondo);
     scene.buttonContainer.setDepth(1);
