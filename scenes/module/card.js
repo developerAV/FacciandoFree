@@ -1,3 +1,4 @@
+import { mensaje } from "../../data/dialogues.js";
 export const crearCard = (
   scene,
   teacher,
@@ -29,12 +30,12 @@ export const crearCard = (
   const informacionTexto = scene.add.text(
     0,
     30,
-    ` \n\n ${teacher.status} \n ${teacher.name}\n ${teacher.age}\n ${teacher.description} `,
+    ` \n\n ${teacher.status[window.lan]} \n ${teacher.name}\n ${teacher.age} ${mensaje.year[window.lan]} \n ${teacher.description[window.lan]} `,
     {
       font: "16px Comic Sans MS, Cambria, Arial",
       fill: "#000000",
       wordWrap: {
-        width: 190, // Ajusta este valor para definir el límite de ancho
+        width: 160, // Ajusta este valor para definir el límite de ancho
       },
       // backgroundColor: "#000000",
       padding: {

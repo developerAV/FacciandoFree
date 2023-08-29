@@ -5,18 +5,25 @@ import {
   dimesionesPlataformaIndividual,
 } from "./module/platform.js";
 import { mensaje } from "../data/dialogues.js";
-import { information } from "../data/informationSir.js";
+import { information  } from "../data/informationSir.js";
 import { crearVideo } from "./module/videoInfo.js";
 import { crearCard } from "./module/card.js";
+import { getEmployees } from "../services/employee.js";
 // let window.lan = "en";
 let activeVideo = false;
-let newX;
-let newY;
-let buttonCentroX;
-let buttonCentroY;
+
+
 export class Cubicle extends Phaser.Scene {
   constructor() {
     super({ key: "cubicle" });
+    
+     this.preloadCubicle();
+  }
+  preloadCubicle() {
+    getEmployees().then((data) => {
+      this.dataEmployees = data;
+   
+    });
   }
   preload() {
     this.load.image("pisoCubiculo", "assets/images/cubicle/piso.png");
@@ -67,6 +74,7 @@ export class Cubicle extends Phaser.Scene {
   }
 
   create() {
+    
     this.cameras.main.fadeIn(500);
     this.cameras.main.transparent = true;
     // Crear una capa UI que estará por encima de la escena
@@ -177,7 +185,7 @@ export class Cubicle extends Phaser.Scene {
     dimesionesPlataformaIndividual(escritoriosB6, 0.6, 60);
     crearCard(
       this,
-      information.rober_moreira[window.lan],
+      this.dataEmployees[0],
       "fotoCarnet",
       silla,
       this.contenedor1
@@ -185,7 +193,7 @@ export class Cubicle extends Phaser.Scene {
 
     crearCard(
       this,
-      information.jorge_morales[window.lan],
+      this.dataEmployees[1],
       "fotoCarnet",
       silla2,
       this.contenedor2
