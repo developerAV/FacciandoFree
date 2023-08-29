@@ -1,4 +1,7 @@
+
+
 export const information = {
+
   rober_moreira: {
     es: {
       name: "Rober Moreira",
