@@ -1,3 +1,5 @@
+import { loginGoogle } from "../Firebase/googleLogin.js";
+import { logout } from "../Firebase/logout.js";
 export class Intro extends Phaser.Scene {
   constructor() {
     super({ key: "intro" });
@@ -15,6 +17,7 @@ export class Intro extends Phaser.Scene {
     this.load.image("fullscreen", "assets/images/intro/fullscreen.png");
     this.load.image("mute", "assets/images/intro/mute.png");
     this.load.image("sound", "assets/images/intro/sound.png");
+    this.load.image("logout", "assets/images/intro/logout.png");
     this.load.image("facciando", "assets/images/intro/facciando.png");
     this.load.audio("musica", "assets/music/GrassyWorld.mp3");
     // Cargar el archivo CSS
@@ -109,14 +112,78 @@ export class Intro extends Phaser.Scene {
     stylesheet.rel = "stylesheet";
     stylesheet.href = "styles/index.css";
     document.head.appendChild(stylesheet);
+
+
+
+
+
+// Asegúrate de que 'this' se refiera a la instancia de Phaser adecuada
+
+const logoutButton = this.add.container(1350, 50);
+logoutButton.setName("logout");
+
+// Configura el color de fondo del logoutButton
+const logoutButtonFondo = this.add.graphics();
+logoutButtonFondo.fillStyle(0x000000, 0.7); // blanco, puedes ajustar el color según tus preferencias
+logoutButtonFondo.fillRoundedRect(0, 0, 130, 60, 10);
+
+// Agregar el fondo al logoutButton
+logoutButton.add(logoutButtonFondo);
+
+// Crea un texto para la información dentro del logoutButton
+const informacionTexto = this.add.text(
+  0,
+  30,
+  ` Logout `,
+  {
+    font: "30px Comic Sans MS, Cambria, Arial",
+    fill: "#ffffff",
+    wordWrap: {
+      width: 160, // Ajusta este valor para definir el límite de ancho
+    },
+    padding: {
+      x: 10,
+      y: 10,
+    },
+  }
+);
+
+// Crea un sprite para la foto dentro del logoutButton
+const iconButton = this.add.sprite(130, 38, 'logout'); // Ajusta el nombre de la textura según tu juego
+iconButton.setScale(0.2);
+
+// Ajusta la alineación del texto según tus necesidades
+informacionTexto.setOrigin(0, 0.5);
+
+// Agrega la foto y el texto al logoutButton
+logoutButton.add(informacionTexto);
+logoutButton.add(iconButton);
+
+// Establece la profundidad del logoutButton para ponerlo encima de todo
+logoutButton.setDepth(1);
+logoutButton.setSize(330, 160);
+logoutButton.setInteractive();
+
+
+logoutButton.on("pointerdown", () => {
+  logout(this); 
+  console.log("login");
+  
+});
+
+
   }
 }
+
+
+
 
 function blurButton(boton, escena) {
   // Hacer que la imagen sea interactiva
   boton.setInteractive();
-
-  // Agregar eventos a la imagen
+if(boton.name != "logout"){
+    // Establece el área de interacción del botón usando setSize()
+// Agregar eventos a la imagen
   boton.on("pointerover", () => {
     boton.setTint(0xaaaaa);
   });
@@ -124,6 +191,13 @@ function blurButton(boton, escena) {
   boton.on("pointerout", () => {
     boton.setTint(0xcccccc);
   });
+
+   
+  }
+  
+
+
+
 
   boton.on("pointerdown", function () {
     // Acción cuando se hace clic en la imagen
@@ -143,9 +217,16 @@ function blurButton(boton, escena) {
         escena
       );
     } else if (boton.name === "score") {
+      loginGoogle();
       console.log("score");
-    } else if (boton.name === "avatar") {
-    } else if (boton.name === "music") {
+    } else if(boton.name === "logout"){
+      // Establece el área de interacción del botón usando setSize()
+   
+      console.log("sound");
     }
+   
+    else if (boton.name === "avatar") {
+    } else if (boton.name === "music") {
+    } 
   });
 }
