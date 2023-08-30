@@ -8,7 +8,7 @@ export const loginGoogle = async(escena) => {
   const provider = new GoogleAuthProvider();
   try {
     const credentials = await signInWithPopup(auth, provider)
-    console.log(credentials);
+    // console.log(credentials);
     console.log("google sign in");
     escena.scene.start("intro");
     // Close the login modal
