@@ -22,7 +22,7 @@ onAuthStateChanged(auth, async (user) => {
   if (user) {
     // loginCheck(user);
     try {
-      console.log("user logged in: ", user);
+      // console.log("user logged in: ", user);
       game.scene.start("intro");
       // const querySnapshot = await getDocs(collection(db, "posts"));
       // setupPosts(querySnapshot.docs);
