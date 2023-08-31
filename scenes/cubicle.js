@@ -5,24 +5,22 @@ import {
   dimesionesPlataformaIndividual,
 } from "./module/platform.js";
 import { mensaje } from "../data/dialogues.js";
-import { information  } from "../data/informationSir.js";
+import { information } from "../data/informationSir.js";
 import { crearVideo } from "./module/videoInfo.js";
 import { crearCard } from "./module/card.js";
 import { getEmployees } from "../services/employee.js";
 // let window.lan = "en";
 let activeVideo = false;
 
-
 export class Cubicle extends Phaser.Scene {
   constructor() {
     super({ key: "cubicle" });
-    
-     this.preloadCubicle();
+
+    this.preloadCubicle();
   }
   preloadCubicle() {
     getEmployees().then((data) => {
       this.dataEmployees = data;
-   
     });
   }
   preload() {
@@ -74,7 +72,6 @@ export class Cubicle extends Phaser.Scene {
   }
 
   create() {
-    
     this.cameras.main.fadeIn(500);
     this.cameras.main.transparent = true;
     // Crear una capa UI que estará por encima de la escena
@@ -93,57 +90,69 @@ export class Cubicle extends Phaser.Scene {
       "paredNorte",
       paredPlataformaSuperior
     );
-    
+
     let escritoriosB = crearPlataforma(
       561,
       250,
       "escritoriosB",
       paredPlataformaSuperior
-      );
-      let escritoriosB6 = crearPlataforma(
-        1190,
-        250,
-        "escritorioB6",
-        paredPlataformaSuperior
-        );
-      let impresora =  crearPlataforma(1050, 240, "impresora", paredPlataformaSuperior);
-    let servidorx =  crearPlataforma(63, 192, "servidor", paredPlataformaSuperior);
+    );
+    let escritoriosB6 = crearPlataforma(
+      1190,
+      250,
+      "escritorioB6",
+      paredPlataformaSuperior
+    );
+    let impresora = crearPlataforma(
+      1050,
+      240,
+      "impresora",
+      paredPlataformaSuperior
+    );
+    let servidorx = crearPlataforma(
+      63,
+      192,
+      "servidor",
+      paredPlataformaSuperior
+    );
 
-        crearPlataforma(1502, 492, "escritoriosC", plataformas);
-        
-        crearPlataforma(690, 947, "paredPuertaSur", plataformas);
-        crearPlataforma(761, 796, "paredPuertaDer", plataformas);
-        crearPlataforma(871, 829, "paredEscalera", plataformas);
-        
-        crearPlataforma(1589, 423, "paredDer", plataformas);
-        crearPlataforma(877, 860, "escalera", plataformas);
-        crearPlataforma(156, 146, "anaquel", plataformas);
-        crearPlataforma(480, 146, "anaquel", plataformas);
-        crearPlataforma(680, 146, "anaquel", plataformas);
-        crearPlataforma(830, 146, "anaquel", plataformas);
-        crearPlataforma(930, 146, "anaquel", plataformas);
-        crearPlataforma(1230, 146, "anaquel", plataformas);
-        crearPlataforma(1200, 226, "sillaB6", plataformas);
-        
-        let sillasB = this.physics.add.staticGroup();
-        
-        let silla = crearPlataforma(330, 330, "sillaB6", sillasB);
-        this.contenedor1 = this.add.container(330, 160);
-        let silla2 = crearPlataforma(530, 330, "sillaB6", sillasB);
-        this.contenedor2 = this.add.container(530, 160);
-        
-        
-        
-        this.avatar = new Avatar(this, 800, 500, 1.5);
-        
-        const paredparedPuertaNor = this.add.image(698, 641, "paredPuertaNor");
-        let escritorioA = crearPlataforma(302, 680, "escritoriosA", plataformas);
+    crearPlataforma(1502, 492, "escritoriosC", plataformas);
 
+    crearPlataforma(690, 947, "paredPuertaSur", plataformas);
+    crearPlataforma(761, 796, "paredPuertaDer", plataformas);
+    crearPlataforma(871, 829, "paredEscalera", plataformas);
+
+    crearPlataforma(1589, 423, "paredDer", plataformas);
+    crearPlataforma(877, 860, "escalera", plataformas);
+    crearPlataforma(156, 146, "anaquel", plataformas);
+    crearPlataforma(480, 146, "anaquel", plataformas);
+    crearPlataforma(680, 146, "anaquel", plataformas);
+    crearPlataforma(830, 146, "anaquel", plataformas);
+    crearPlataforma(930, 146, "anaquel", plataformas);
+    crearPlataforma(1230, 146, "anaquel", plataformas);
+    crearPlataforma(1200, 226, "sillaB6", plataformas);
+
+    let sillasB = this.physics.add.staticGroup();
+
+    let silla = crearPlataforma(330, 330, "sillaB6", sillasB);
+    this.contenedor1 = this.add.container(330, 160);
+    let silla2 = crearPlataforma(530, 330, "sillaB6", sillasB);
+    this.contenedor2 = this.add.container(530, 160);
+
+    this.avatar = new Avatar(this, 800, 500, 1.5);
+
+    const paredparedPuertaNor = this.add.image(698, 641, "paredPuertaNor");
+    let escritorioA = crearPlataforma(302, 680, "escritoriosA", plataformas);
 
     let escritorioD = crearPlataforma(1005, 611, "escritoriosD", plataformas);
 
-   let paredSurDerecha = crearPlataforma(1298, 735, "paredSurDer", plataformas);
-   let paredSurIzq = crearPlataforma(322, 720, "paredSurEste", plataformas);
+    let paredSurDerecha = crearPlataforma(
+      1298,
+      735,
+      "paredSurDer",
+      plataformas
+    );
+    let paredSurIzq = crearPlataforma(322, 720, "paredSurEste", plataformas);
 
     if (activeVideo) {
       crearVideo(mensaje.txtCubicle[window.lan], "avatarVideo", this, true);
@@ -172,11 +181,11 @@ export class Cubicle extends Phaser.Scene {
         crearVideo(mensaje.txtCubicle[window.lan], "avatarVideo", this, true);
       }.bind(this)
     );
-    
+
     dimesionesPlataformaIndividual(escritorioA, 0, 20);
-    dimesionesPlataformaIndividual(escritorioD, 0, 25);	
-    dimesionesPlataformaIndividual(paredSurDerecha, 1, 145);	
-    dimesionesPlataformaIndividual(paredSurIzq, 1, 145);	
+    dimesionesPlataformaIndividual(escritorioD, 0, 25);
+    dimesionesPlataformaIndividual(paredSurDerecha, 1, 145);
+    dimesionesPlataformaIndividual(paredSurIzq, 1, 145);
     dimesionesPlataforma(sillasB, 0.2, 0);
     dimesionesPlataforma(paredPlataformaSuperior, 0.6, 45);
     // dimesionesPlataformaIndividual(servidorx, 0.6, 45);
@@ -203,10 +212,7 @@ export class Cubicle extends Phaser.Scene {
       this.avatar.avatarPlayer,
       paredPlataformaSuperior
     );
-    this.physics.add.collider(
-      this.avatar.avatarPlayer,
-      plataformas
-    );
+    this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
   }
 
   update() {
