@@ -1,3 +1,4 @@
+import { Avatar } from "./player.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"
 import { getDocs, collection } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
 import { auth, db } from "../Firebase/firebase.js";
@@ -8,7 +9,13 @@ export class Loading extends Phaser.Scene {
   }
 
   preload() {
+    this.load.spritesheet("dude", "../assets/images/player/gamer0.png", {
+      frameWidth: 26,
+      frameHeight: 32,
+    });
+    this.load.audio("musica", "assets/music/GrassyWorld.mp3");
     this.load.video("loading", "assets/videos/loading.mp4", "loadeddata", false, true );
+    this.load.css("styles", "styles/index.css");
   }
 
   create() {
@@ -19,7 +26,7 @@ export class Loading extends Phaser.Scene {
   video.setBlendMode(Phaser.BlendModes.NORMAL);
   video.play(true);
     // Puedes personalizar el mensaje y la barra de progreso según tus necesidades.
-
+    this.avatar = new Avatar(this, 250, 1000, 3);
     // list for auth state changes
     onAuthStateChanged(auth, async (user) => {
       if (user) {
@@ -57,5 +64,8 @@ export class Loading extends Phaser.Scene {
     });
 
 
+  }
+ update() {
+    this.avatar.moveTo(0, 200, "right")
   }
 }
