@@ -1,15 +1,12 @@
-import { loginGoogle } from "../Firebase/googleLogin.js";
 import { logout } from "../Firebase/logout.js";
+import { blurButton } from "./module/blurButton.js";
 export class Intro extends Phaser.Scene {
   constructor() {
     super({ key: "intro" });
   }
 
   preload() {
-    this.load.spritesheet("dude", "../assets/images/player/gamer0.png", {
-      frameWidth: 26,
-      frameHeight: 32,
-    });
+    
     this.load.image("background", "assets/images/intro/facci.png");
     this.load.image("play", "assets/images/intro/Play.png");
     this.load.image("score", "assets/images/intro/score.png");
@@ -19,9 +16,9 @@ export class Intro extends Phaser.Scene {
     this.load.image("sound", "assets/images/intro/sound.png");
     this.load.image("logout", "assets/images/intro/logout.png");
     this.load.image("facciando", "assets/images/intro/facciando.png");
-    this.load.audio("musica", "assets/music/GrassyWorld.mp3");
-    // Cargar el archivo CSS
-    this.load.css("styles", "styles/index.css");
+ 
+  
+   
   }
 
   create() {
@@ -108,10 +105,10 @@ export class Intro extends Phaser.Scene {
 
     // create();
     // Agregar el archivo CSS a la página
-    const stylesheet = document.createElement("link");
-    stylesheet.rel = "stylesheet";
-    stylesheet.href = "styles/index.css";
-    document.head.appendChild(stylesheet);
+    // const stylesheet = document.createElement("link");
+    // stylesheet.rel = "stylesheet";
+    // stylesheet.href = "styles/index.css";
+    // document.head.appendChild(stylesheet);
 
 
 
@@ -176,57 +173,3 @@ logoutButton.on("pointerdown", () => {
 }
 
 
-
-
-function blurButton(boton, escena) {
-  // Hacer que la imagen sea interactiva
-  boton.setInteractive();
-if(boton.name != "logout"){
-    // Establece el área de interacción del botón usando setSize()
-// Agregar eventos a la imagen
-  boton.on("pointerover", () => {
-    boton.setTint(0xaaaaa);
-  });
-
-  boton.on("pointerout", () => {
-    boton.setTint(0xcccccc);
-  });
-
-   
-  }
-  
-
-
-
-
-  boton.on("pointerdown", function () {
-    // Acción cuando se hace clic en la imagen
-    // alert("Haz precionado el botón" + namebtn);
-    if (boton.name === "play") {
-      escena.cameras.main.fadeOut(500); // Desvanecer la pantalla durante 500 milisegundos
-      escena.time.delayedCall(
-        500,
-        () => {
-          // Esperar 500 milisegundos antes de cambiar de escena
-          //escena.scene.start("computer_room");
-          //music.mute = true;
-          escena.scene.start("cubicle");
-          
-        },
-        [],
-        escena
-      );
-    } else if (boton.name === "score") {
-      loginGoogle();
-      console.log("score");
-    } else if(boton.name === "logout"){
-      // Establece el área de interacción del botón usando setSize()
-   
-      console.log("sound");
-    }
-   
-    else if (boton.name === "avatar") {
-    } else if (boton.name === "music") {
-    } 
-  });
-}
