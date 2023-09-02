@@ -10,7 +10,7 @@ export class Login extends Phaser.Scene {
     this.load.image("background", "assets/images/intro/facci.png");
     this.load.image("googleES", "assets/images/login/google2.png");
     this.load.image("googleEN", "assets/images/login/google3.png");
-    this.load.image("facciando2", "assets/images/intro/facciando2.png");
+    this.load.image("facciando2", "assets/images/intro/Facciando2.png");
     this.load.image("language", "assets/images/language/language.png");
     this.load.image("btnEnglish", "assets/images/language/btn-english.png");
     this.load.image("btnSpanish", "assets/images/language/btn-spanish.png");
