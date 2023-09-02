@@ -6,7 +6,8 @@ export class Intro extends Phaser.Scene {
   }
 
   preload() {
-    
+    this.textures.remove("profile");
+    this.load.image("profile", window.imageUrl);
     this.load.image("background", "assets/images/intro/facci.png");
     this.load.image("play", "assets/images/intro/Play.png");
     this.load.image("score", "assets/images/intro/score.png");
@@ -36,6 +37,7 @@ export class Intro extends Phaser.Scene {
 
     //letras facciando
     this.add.image(800, 100, "facciando").setScale(1.5);
+    this.add.image(800, 100, "profile").setScale(1.5);
 
     // add music
     const play = this.add
