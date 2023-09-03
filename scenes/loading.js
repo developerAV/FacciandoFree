@@ -34,7 +34,8 @@ export class Loading extends Phaser.Scene {
 
   create() {
     // Añade aquí un mensaje de carga o una barra de progreso.
-
+    
+    window.avatarUpdateActivo = false;
     let video = this.add.video(800, 500, "loading");
     video.setAlpha(1);
     video.setBlendMode(Phaser.BlendModes.NORMAL);
@@ -92,7 +93,6 @@ export class Loading extends Phaser.Scene {
     //
   }
   update() {
-    window.isMobile = false;
     this.avatar.moveTo(0, 200, "right");
   }
 }

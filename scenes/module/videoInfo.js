@@ -3,7 +3,7 @@ export const crearVideo = (mensaje, videoFile, scene, keyZoom) => {
   let video;
   let texto;
 
-  scene.avatar.avatarUpdateActivo = false;
+  window.avatarUpdateActivo = false;
 
   video = scene.add.video(775, 850, videoFile);
   video.setAlpha(1);
@@ -54,7 +54,7 @@ export const crearVideo = (mensaje, videoFile, scene, keyZoom) => {
       duration: 500, // Duración de la animación en milisegundos
       onComplete: () => {
         // Al completar la animación, detener el video y destruir el objeto de video
-
+        window.avatarUpdateActivo = true;
         video.destroy();
         texto.destroy();
         efectoEsc.remove(); // Detener el efecto de escritura

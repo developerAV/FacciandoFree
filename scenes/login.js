@@ -65,7 +65,7 @@ export class Login extends Phaser.Scene {
 
     const btnEnglish = this.add.image(1372, 100, "btnEnglish").setScale(0.05);
     const btnSpanish = this.add.image(1400, 155, "btnSpanish").setScale(0.05);
-    const btnLanguage = this.add.image(1500, 100, "language").setScale(0.08);
+    const btnLanguage = this.add.image(1500, 100, "language").setScale(0.4);
     btnLanguage.setInteractive();
     btnEnglish.visible = false;
     btnSpanish.visible = false;
