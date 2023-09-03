@@ -26,6 +26,7 @@ export class Hallway300 extends Phaser.Scene {
   }
 
   create() {
+    window.avatarUpdateActivo = true;
     // Para iniciar con un desenfoque
     this.cameras.main.fadeIn(500);
     
@@ -48,7 +49,7 @@ export class Hallway300 extends Phaser.Scene {
    let plataformas = this.physics.add.staticGroup();
    let plataformasillas = this.physics.add.staticGroup();
    let paredPlataforma = this.physics.add.staticGroup();
-   this.plataforma = new Platform();
+   
 
    this.stairs = this.physics.add.staticGroup();
    this.stairs.create(795, 632,  "escalera2");

@@ -3,7 +3,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     super(scene, x, y, "dude", scale);
 
     this.avatarPlayer = scene.physics.add.sprite(x, y, "dude").setScale(scale);
-    this.avatarUpdateActivo = true;
+    // window.avatarUpdateActivo = true;
 
     this.avatarPlayer.setCollideWorldBounds(true);
     this.cursors = scene.input.keyboard.createCursorKeys();
@@ -39,7 +39,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       repeat: -1,
     });
 
-    if (window.isMobile) {
+    if (window.isMobile && window.avatarUpdateActivo) {
       this.botonMobile(scene);
     }
   }
@@ -117,7 +117,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
   }
 
   update(scene) {
-    if (!this.avatarUpdateActivo) {
+    if (!window.avatarUpdateActivo) {
       return;
     }
 

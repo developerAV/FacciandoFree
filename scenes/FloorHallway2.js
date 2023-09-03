@@ -52,6 +52,7 @@ export class FloorHallway2 extends Phaser.Scene {
   }
 
   create() {
+    window.avatarUpdateActivo = true;
     // Para iniciar con un desenfoque
     this.cameras.main.fadeIn(500);
 
