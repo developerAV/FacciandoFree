@@ -17,8 +17,8 @@ export class Loading extends Phaser.Scene {
   }
 
   preload() {
-    this.load.spritesheet("dude", "../assets/images/player/gamer0.png", {
-      frameWidth: 26,
+    this.load.spritesheet("dude", "../assets/images/player/game.png", {
+      frameWidth: 25.92,
       frameHeight: 32,
     });
     this.load.audio("musica", "assets/music/GrassyWorld.mp3");
@@ -66,6 +66,7 @@ export class Loading extends Phaser.Scene {
             5000,
             () => {
               window.imageUrl = user.photoURL;
+              window.name = user.displayName;
               this.scene.start("intro");
               video.destroy();
             },

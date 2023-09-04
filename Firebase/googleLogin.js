@@ -16,6 +16,8 @@ export const loginGoogle = async (escena) => {
   try {
     const credentials = await signInWithPopup(auth, provider);
     window.imageUrl = credentials.user.photoURL;
+    window.name = credentials.user.displayName;
+    
     escena.scene.start("intro");
     
   } catch (error) {
