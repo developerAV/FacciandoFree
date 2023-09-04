@@ -141,8 +141,18 @@ export class Intro extends Phaser.Scene {
     logoutButton.setInteractive();
 
     logoutButton.on("pointerdown", () => {
-      logout(this);
-      console.log("login");
+
+      const confirmacion = confirm("¿Estás seguro de que deseas cerrar la sesión?"); // Utiliza el método confirm del navegador para mostrar un cuadro de diálogo de confirmación
+    
+      if (confirmacion) {
+          // Si el usuario confirma, realiza la acción de cierre de sesión
+       logout(this);
+      } else {
+          // Si el usuario cancela, no hagas nada o puedes mostrar un mensaje de cancelación
+          console.log("Se canceló el cierre de sesión.");
+      }
+  
+    
     });
   }
 }
@@ -188,3 +198,5 @@ const textButton = (scene, width, height, nameButton, nameButtonLanguage,  color
 
   return informacionTexto;
 };
+
+
