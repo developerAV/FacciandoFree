@@ -46,7 +46,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
 
   botonMobile(scene) {
     this.isDragging = false;
-    this.maxRange = 35;
+    this.maxRange = 70;
 
     this.buttonCentroX = 0;
     this.buttonCentroY = 0;
@@ -57,7 +57,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     scene.buttonPrimero = scene.add.circle(
       this.buttonCentroX,
       this.buttonCentroY,
-      70,
+      90,
       0x505050,
       0.5
     );
@@ -80,7 +80,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     const cursors = scene.input.keyboard.createCursorKeys();
 
     scene.buttonContainer.setAlpha(1);
- 
+
     scene.buttonCentro.setInteractive();
 
     // Configurar eventos de inicio -de arrastre (ratón y tacto)

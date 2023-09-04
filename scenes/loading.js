@@ -30,11 +30,14 @@ export class Loading extends Phaser.Scene {
       true
     );
     this.load.css("styles", "styles/index.css");
+    this.load.image("language", "assets/images/language/language.png");
+    this.load.image("btnEnglish", "assets/images/language/btn-english.png");
+    this.load.image("btnSpanish", "assets/images/language/btn-spanish.png");
   }
 
   create() {
     // Añade aquí un mensaje de carga o una barra de progreso.
-    
+
     window.avatarUpdateActivo = false;
     let video = this.add.video(800, 500, "loading");
     video.setAlpha(1);
