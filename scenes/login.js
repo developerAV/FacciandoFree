@@ -62,5 +62,9 @@ export class Login extends Phaser.Scene {
 
     buttonEnglish(btnLanguage, this);
     this.languages(window.lan);
+
+    this.updateScene = (lan) => {
+      this.languages(lan);
+    };
   }
 }

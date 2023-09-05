@@ -22,7 +22,7 @@ export const textButton = (
   // Agregar el fondo al button
   button.add(buttonFondo);
   if (photo) {
-    const iconButton = scene.add.sprite(140, 36, traslateIntro[name].en); // Ajusta el nombre de la textura según tu juego
+    const iconButton = scene.add.sprite(165, 30, traslateIntro[name].en); // Ajusta el nombre de la textura según tu juego
     iconButton.setScale(0.2);
     button.add(iconButton);
   }
@@ -31,7 +31,7 @@ export const textButton = (
   }
 
   // Crea un texto para la información dentro del button
-  const informacionTexto = scene.add.text(20, 30, name, {
+  const informacionTexto = scene.add.text(40, 30, name, {
     font: `${fontSize} ${FONT}`,
     fill: "#ffffff",
     wordWrap: {

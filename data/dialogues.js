@@ -30,4 +30,12 @@ export const traslateIntro = {
     es: "Avatar",
     en: "Avatar",
   },
+  mode: {
+    es: "Modo",
+    en: "Mode",
+  },
+  exploration: {
+    es: "Exploración",
+    en: "Exploration",
+  },
 };
