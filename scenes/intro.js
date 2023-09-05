@@ -3,6 +3,7 @@ import { blurButton } from "./module/blurButton.js";
 import { COLORS, FONT_SIZE } from "../utils/constants.js";
 import { textButton } from "./module/textButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
+import { swapButtonPositions } from "./module/swapButtonPositions.js";
 export class Intro extends Phaser.Scene {
   constructor() {
     super({ key: "intro" });
@@ -15,6 +16,7 @@ export class Intro extends Phaser.Scene {
     this.load.image("backgroundIntro", "assets/images/intro/intro.png");
     this.load.image("backgroundIntro2", "assets/images/intro/intro2.png");
     this.load.image("play", "assets/images/intro/start.png");
+    this.load.image("mode", "assets/images/intro/mode.png");
     this.load.image("score", "assets/images/intro/score.png");
     this.load.image("avatar", "assets/images/intro/avatar.png");
     this.load.image("fullscreen", "assets/images/intro/fullscreen.png");
@@ -66,6 +68,16 @@ export class Intro extends Phaser.Scene {
       .setScale(0.75)
       .setName("play")
       .setScale(1);
+    const mode = this.add
+      .image(1412, 550, "mode")
+      .setScale(0.75)
+      .setName("mode")
+      .setScale(1);
+    const mode2 = this.add
+      .image(1460, 690, "mode")
+      .setScale(0.75)
+      .setName("modeMission")
+      .setScale(0.7);
 
     const btnSosund = this.add
       .image(0, 0, "sound")
@@ -128,6 +140,22 @@ export class Intro extends Phaser.Scene {
     // const logoutButton = this.add.container(1350, 50);
     // logoutButton.setName("logout");
 
+    const modeText1 = textButton(
+      this,
+      1420,
+       555,
+      "mode",
+      COLORS.black,
+      FONT_SIZE.smaller,
+    );
+    const modeExploration = textButton(
+      this,
+      1300,
+       530,
+      "Exploration",
+      COLORS.black,
+      FONT_SIZE.small,
+    );
     const logoutButton = textButton(
       this,
       1282,
@@ -140,7 +168,7 @@ export class Intro extends Phaser.Scene {
     );
     const playText = textButton(
       this,
-      1320,
+      1280,
       860,
       "start",
       COLORS.grayDark,
@@ -210,5 +238,52 @@ export class Intro extends Phaser.Scene {
     btnLanguage.setInteractive();
 
     buttonEnglish(btnLanguage, this);
+    this.updateScene = (lan) => {
+      console.log(lan);
+      if (lan === "es") {
+        playText.setText("iniciar");
+        logoutButton.setText("Salir");
+        name.setText(window.name);
+        standard.setText("inicio");
+        ranked.setText("clasificación");
+        avatar.setText("avatar");
+        modeText1.setText("modo");
+        return;
+      }
+      playText.setText("start");
+      logoutButton.setText("Logout");
+      name.setText(window.name);
+      standard.setText("home");
+      ranked.setText("ranking");
+      avatar.setText("avatar");
+      modeText1.setText("mode");
+    };
+
+
+
+    this.isSwapped = false;
+    mode.setInteractive();
+    mode.on("pointerdown", () => {
+      console.log("mode1");
+      if (mode.x === 1460 && mode.y === 690) {
+        // Si btnEnglish está en la posición (1400, 155), entonces intercambia posiciones
+        swapButtonPositions(this, mode, mode2);
+        mode.setScale(1);
+        mode2.setScale(0.7);
+      
+      }
+    });
+    mode2.setInteractive();
+    mode2.on("pointerdown", () => {
+      console.log("mode2");
+      if (!this.isSwapped) {
+        // Si los botones no han sido intercambiados, entonces intercambia posiciones
+        swapButtonPositions(this, mode, mode2);
+        mode.setScale(0.7);
+        mode2.setScale(1);
+      }
+    });
+
+
   }
 }

@@ -1,5 +1,6 @@
-export const FONT = "Comic Sans MS, Cambria, Arial";
+export const FONT = "Cambria, Comic Sans MS, Arial";
 export const FONT_SIZE = {
+  smaller: "16px",
   small: "30px",
   medium: "64px",
   large: "128px",

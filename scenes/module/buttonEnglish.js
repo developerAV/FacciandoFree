@@ -1,3 +1,4 @@
+import { swapButtonPositionsLan } from "./swapButtonPositions.js";
 export const buttonEnglish = (btnLanguage, scene) => {
   let btnEnglish;
   let btnSpanish;
@@ -10,8 +11,8 @@ export const buttonEnglish = (btnLanguage, scene) => {
   }
   btnEnglish.visible = false;
   btnSpanish.visible = false;
-  let isSwapped = false;
-
+  
+  scene.isSwappedLan = false;
   btnLanguage.on("pointerdown", () => {
     if (btnEnglish.visible || btnSpanish.visible) {
       btnEnglish.visible = false;
@@ -22,45 +23,30 @@ export const buttonEnglish = (btnLanguage, scene) => {
     btnSpanish.visible = true;
   });
   // Función para intercambiar las posiciones de los botones
-  function swapButtonPositions(btn1, btn2) {
-    scene.tweens.add({
-      targets: btn1,
-      x: btn2.x,
-      y: btn2.y,
-      duration: 100, // Duración de la transición en milisegundos
-      ease: "Power2", // Tipo de interpolación (puedes ajustarlo según tus preferencias)
-    });
-
-    scene.tweens.add({
-      targets: btn2,
-      x: btn1.x,
-      y: btn1.y,
-      duration: 100,
-      ease: "Power2",
-    });
-
-    isSwapped = !isSwapped; // Invierte el estado de isSwapped
-  }
-
+  
   // Evento de clic para btnEnglish o btnSpanish
   btnEnglish.setInteractive();
   btnEnglish.on("pointerdown", () => {
     if (btnEnglish.x === 1437 && btnEnglish.y === 125) {
       // Si btnEnglish está en la posición (1400, 155), entonces intercambia posiciones
-      swapButtonPositions.call(scene, btnEnglish, btnSpanish);
+      swapButtonPositionsLan(scene, btnEnglish, btnSpanish);
     }
     window.lan = "en";
 
-    scene.scene.restart();
+    // scene.scene.restart();
+    scene.updateScene(window.lan);
   });
 
   btnSpanish.setInteractive();
   btnSpanish.on("pointerdown", () => {
-    if (!isSwapped) {
+    if (!scene.isSwappedLan) {
       // Si los botones no han sido intercambiados, entonces intercambia posiciones
-      swapButtonPositions.call(scene, btnEnglish, btnSpanish);
+      swapButtonPositionsLan(scene, btnEnglish, btnSpanish);
     }
     window.lan = "es";
-    scene.scene.restart();
+    // scene.scene.restart();
+    scene.updateScene(window.lan);
+
+
   });
 };
