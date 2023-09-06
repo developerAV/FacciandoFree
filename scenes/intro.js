@@ -1,9 +1,11 @@
 import { logout } from "../Firebase/logout.js";
 import { blurButton } from "./module/blurButton.js";
 import { COLORS, FONT_SIZE } from "../utils/constants.js";
-import { textButton } from "./module/textButton.js";
+import { textButton, news } from "./module/textButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
 import { swapButtonPositions } from "./module/swapButtonPositions.js";
+import { traslate } from "../data/dialogues.js";
+
 export class Intro extends Phaser.Scene {
   constructor() {
     super({ key: "intro" });
@@ -18,12 +20,15 @@ export class Intro extends Phaser.Scene {
     this.load.image("play", "assets/images/intro/start.png");
     this.load.image("mode", "assets/images/intro/mode.png");
     this.load.image("score", "assets/images/intro/score.png");
-    this.load.image("avatar", "assets/images/intro/avatar.png");
+    //this.load.image("avatar", "assets/images/intro/avatar.png");
     this.load.image("fullscreen", "assets/images/intro/fullscreen.png");
     this.load.image("mute", "assets/images/intro/mute.png");
     this.load.image("sound", "assets/images/intro/sound.png");
-    this.load.image("Logout", "assets/images/intro/logout.png");
+    this.load.image("logout", "assets/images/intro/logout.png");
     this.load.image("facciando", "assets/images/intro/facci.png");
+
+    this.load.image("avatar", "assets/images/player/avatar.png");
+    this.load.image("avatar2", "assets/images/player/avatar2.png");
   }
 
   create() {
@@ -36,7 +41,7 @@ export class Intro extends Phaser.Scene {
     );
     // fondo dinamico
     const background = this.add.sprite(1500, 500, "facciando").setScale(1.6);
-    background.alpha = 0.1;
+    background.alpha = 0.4;
 
     const tween = this.tweens.add({
       targets: background,
@@ -140,27 +145,53 @@ export class Intro extends Phaser.Scene {
     // const logoutButton = this.add.container(1350, 50);
     // logoutButton.setName("logout");
 
+    let { topicBox, messageBox, box } = news(
+      this,
+      50,
+      200,
+      traslate("news"),
+      traslate("newContent"),
+      "avatar",
+      "avatar2"
+    );
+
     const modeText1 = textButton(
       this,
-      1420,
-       555,
+      1435,
+      569,
       "mode",
       COLORS.black,
-      FONT_SIZE.smaller,
+      FONT_SIZE.small
+    );
+    const modeText2 = textButton(
+      this,
+      1470,
+      695,
+      "mode",
+      COLORS.black,
+      FONT_SIZE.smaller
     );
     const modeExploration = textButton(
       this,
-      1300,
-       530,
-      "Exploration",
+      1215,
+      520,
+      "exploration",
       COLORS.black,
-      FONT_SIZE.small,
+      FONT_SIZE.mediumSmall
+    );
+    const modeMission = textButton(
+      this,
+      1310,
+      660,
+      "mission",
+      COLORS.black,
+      FONT_SIZE.small
     );
     const logoutButton = textButton(
       this,
       1282,
       30,
-      "Logout",
+      "logout",
       COLORS.black,
       FONT_SIZE.small,
       0.9,
@@ -221,16 +252,9 @@ export class Intro extends Phaser.Scene {
 
     logoutButton.setInteractive();
     logoutButton.on("pointerdown", () => {
-      const confirmacion = confirm(
-        "¿Estás seguro de que deseas cerrar la sesión?"
-      ); // Utiliza el método confirm del navegador para mostrar un cuadro de diálogo de confirmación
-
+      const confirmacion = confirm(traslate("confirmLogout"));
       if (confirmacion) {
-        // Si el usuario confirma, realiza la acción de cierre de sesión
         logout(this);
-      } else {
-        // Si el usuario cancela, no hagas nada o puedes mostrar un mensaje de cancelación
-        console.log("Se canceló el cierre de sesión.");
       }
     });
 
@@ -238,52 +262,67 @@ export class Intro extends Phaser.Scene {
     btnLanguage.setInteractive();
 
     buttonEnglish(btnLanguage, this);
-    this.updateScene = (lan) => {
-      console.log(lan);
-      if (lan === "es") {
-        playText.setText("iniciar");
-        logoutButton.setText("Salir");
-        name.setText(window.name);
-        standard.setText("inicio");
-        ranked.setText("clasificación");
-        avatar.setText("avatar");
-        modeText1.setText("modo");
-        return;
-      }
-      playText.setText("start");
-      logoutButton.setText("Logout");
+    this.updateScene = () => {
+      playText.setText(traslate("start"));
+      logoutButton.setText(traslate("logout"));
       name.setText(window.name);
-      standard.setText("home");
-      ranked.setText("ranking");
-      avatar.setText("avatar");
-      modeText1.setText("mode");
+      standard.setText(traslate("home"));
+      ranked.setText(traslate("ranking"));
+      avatar.setText(traslate("avatar"));
+      modeText1.setText(traslate("mode"));
+      modeText2.setText(traslate("mode"));
+      modeExploration.setText(traslate("exploration"));
+      modeMission.setText(traslate("mission"));
+      topicBox.setText(traslate("news"));
+      messageBox.setText(traslate("newContent"));
+      return;
     };
-
-
+    this.updateScene();
 
     this.isSwapped = false;
+    let isTransitionInProgress = false;
     mode.setInteractive();
     mode.on("pointerdown", () => {
-      console.log("mode1");
+      this.mode = "exploration";
+      box.setVisible(true);
+
+      if (isTransitionInProgress) {
+        return;
+      }
       if (mode.x === 1460 && mode.y === 690) {
-        // Si btnEnglish está en la posición (1400, 155), entonces intercambia posiciones
+        isTransitionInProgress = true; // Marca que la transición está en curso
+
         swapButtonPositions(this, mode, mode2);
         mode.setScale(1);
         mode2.setScale(0.7);
-      
+        modeExploration.setText(traslate("exploration"));
+        modeMission.setText(traslate("mission"));
       }
+      setTimeout(() => {
+        isTransitionInProgress = false;
+      }, 300);
     });
     mode2.setInteractive();
+
     mode2.on("pointerdown", () => {
-      console.log("mode2");
+      this.mode = "mission";
+      box.setVisible(false);
+      if (isTransitionInProgress) {
+        return;
+      }
       if (!this.isSwapped) {
+        isTransitionInProgress = true; // Marca que la transición está en curso
+
+        modeExploration.setText(traslate("mission"));
+        modeMission.setText(traslate("exploration"));
         // Si los botones no han sido intercambiados, entonces intercambia posiciones
         swapButtonPositions(this, mode, mode2);
         mode.setScale(0.7);
         mode2.setScale(1);
       }
+      setTimeout(() => {
+        isTransitionInProgress = false;
+      }, 300);
     });
-
-
   }
 }

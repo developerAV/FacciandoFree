@@ -1,4 +1,4 @@
-import { mensaje } from "../../data/dialogues.js";
+import { traslate } from "../../data/dialogues.js";
 export const crearCard = (
   scene,
   teacher,
@@ -30,7 +30,7 @@ export const crearCard = (
   const informacionTexto = scene.add.text(
     0,
     30,
-    ` \n\n ${teacher.status[window.lan]} \n ${teacher.name}\n ${teacher.age} ${mensaje.year[window.lan]} \n ${teacher.description[window.lan]} `,
+    ` \n\n ${teacher.status[window.lan]} \n ${teacher.name}\n ${teacher.age} ${traslate("year")} \n ${teacher.description[window.lan]} `,
     {
       font: "16px Comic Sans MS, Cambria, Arial",
       fill: "#000000",

@@ -11,7 +11,7 @@ export const buttonEnglish = (btnLanguage, scene) => {
   }
   btnEnglish.visible = false;
   btnSpanish.visible = false;
-  
+
   scene.isSwappedLan = false;
   btnLanguage.on("pointerdown", () => {
     if (btnEnglish.visible || btnSpanish.visible) {
@@ -23,7 +23,7 @@ export const buttonEnglish = (btnLanguage, scene) => {
     btnSpanish.visible = true;
   });
   // Función para intercambiar las posiciones de los botones
-  
+
   // Evento de clic para btnEnglish o btnSpanish
   btnEnglish.setInteractive();
   btnEnglish.on("pointerdown", () => {
@@ -34,7 +34,7 @@ export const buttonEnglish = (btnLanguage, scene) => {
     window.lan = "en";
 
     // scene.scene.restart();
-    scene.updateScene(window.lan);
+    scene.updateScene();
   });
 
   btnSpanish.setInteractive();
@@ -45,8 +45,6 @@ export const buttonEnglish = (btnLanguage, scene) => {
     }
     window.lan = "es";
     // scene.scene.restart();
-    scene.updateScene(window.lan);
-
-
+    scene.updateScene();
   });
 };

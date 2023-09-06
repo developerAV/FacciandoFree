@@ -66,7 +66,7 @@ export class Loading extends Phaser.Scene {
 
         try {
           this.time.delayedCall(
-            5000,
+            10,
             () => {
               window.imageUrl = user.photoURL;
               window.name = user.displayName;
@@ -81,7 +81,7 @@ export class Loading extends Phaser.Scene {
         }
       } else {
         this.time.delayedCall(
-          5000,
+          10,
           () => {
             this.scene.start("login");
             video.destroy();

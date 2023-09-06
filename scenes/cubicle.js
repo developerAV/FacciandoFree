@@ -4,8 +4,7 @@ import {
   dimesionesPlataforma,
   dimesionesPlataformaIndividual,
 } from "./module/platform.js";
-import { mensaje } from "../data/dialogues.js";
-import { information } from "../data/informationSir.js";
+import { traslate } from "../data/dialogues.js";
 import { crearVideo } from "./module/videoInfo.js";
 import { crearCard } from "./module/card.js";
 import { getEmployees } from "../services/employee.js";
@@ -31,8 +30,8 @@ export class Cubicle extends Phaser.Scene {
     this.load.image(
       "paredPuertaIzq",
       "assets/images/cubicle/paredPuertaIzq.png"
-      );
-      this.load.image(
+    );
+    this.load.image(
       "paredPuertaSur",
       "assets/images/cubicle/paredPuertaNorSur.png"
     );
@@ -55,7 +54,7 @@ export class Cubicle extends Phaser.Scene {
     this.load.image("escritoriosC", "assets/images/cubicle/escritoriosC.png");
     this.load.image("escritoriosD", "assets/images/cubicle/escritoriosD.png");
     this.load.image("sillaB6", "assets/images/accessories/chair/0005.png");
-    
+
     this.load.image("escalera", "assets/images/cubicle/escalera.png");
     this.load.image("impresora", "assets/images/cubicle/impresora.png");
     this.load.image("servidor", "assets/images/cubicle/servidor.png");
@@ -68,12 +67,12 @@ export class Cubicle extends Phaser.Scene {
       "loadeddata",
       false,
       true
-      );
-    }
-    
-    create() {
-      window.avatarUpdateActivo = true;
-      this.cameras.main.fadeIn(500);
+    );
+  }
+
+  create() {
+    window.avatarUpdateActivo = true;
+    this.cameras.main.fadeIn(500);
     this.cameras.main.transparent = true;
     // Crear una capa UI que estará por encima de la escena
     let uiLayer = this.add.layer();
@@ -156,7 +155,7 @@ export class Cubicle extends Phaser.Scene {
     let paredSurIzq = crearPlataforma(322, 720, "paredSurEste", plataformas);
 
     if (activeVideo) {
-      crearVideo(mensaje.txtCubicle[window.lan], "avatarVideo", this, true);
+      crearVideo(traslate("infoCubicle"), "avatarVideo", this, true);
     }
     this.cameras.main.startFollow(this.avatar.avatarPlayer); // Configurar seguimiento de cámara al personaje
     this.cameras.main.zoom = 2;
@@ -179,7 +178,7 @@ export class Cubicle extends Phaser.Scene {
         this.cameras.main.setScroll(0, 0);
 
         // Puedes ejecutar cualquier código que quieras cuando se presione la tecla "i"
-        crearVideo(mensaje.txtCubicle[window.lan], "avatarVideo", this, true);
+        crearVideo(traslate("infoCubicle"), "avatarVideo", this, true);
       }.bind(this)
     );
 
@@ -214,7 +213,6 @@ export class Cubicle extends Phaser.Scene {
       paredPlataformaSuperior
     );
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
-    
   }
 
   update() {
