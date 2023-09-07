@@ -1,16 +1,15 @@
-import { logout } from "../Firebase/logout.js";
 import { blurButton } from "./module/blurButton.js";
 import { COLORS, FONT_SIZE } from "../utils/constants.js";
 import { textButton, news } from "./module/textButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
-import { swapButtonPositions } from "./module/swapButtonPositions.js";
 import { traslate } from "../data/dialogues.js";
+import { buttonLogout } from "./components/intro/buttonLogout.js";
+import { buttonsMode } from "./components/intro/buttonsMode.js";
 
 export class Intro extends Phaser.Scene {
   constructor() {
     super({ key: "intro" });
   }
-
   preload() {
     this.textures.remove("profile");
     this.load.image("profile", window.imageUrl);
@@ -32,12 +31,14 @@ export class Intro extends Phaser.Scene {
   }
 
   create() {
+    this.mode = "exploration";
+    this.mode2 = "mission";
     const background2 = this.add.rectangle(
       this.cameras.main.width / 2, // Posición X centrada en la pantalla
-      this.cameras.main.height / 2, // Posición Y centrada en la pantalla
-      this.cameras.main.width, // Ancho igual al ancho de la pantalla
-      this.cameras.main.height, // Altura igual a la altura| de la pantalla
-      0x00051a // Color en formato hexadecimal (en este caso, negro)
+      this.cameras.main.height / 2,
+      this.cameras.main.width,
+      this.cameras.main.height,
+      0x00051a
     );
     // fondo dinamico
     const background = this.add.sprite(1500, 500, "facciando").setScale(1.6);
@@ -53,10 +54,7 @@ export class Intro extends Phaser.Scene {
     });
     const bg = this.add.image(800, 65, "backgroundIntro2");
 
-    //letras facciando
-    // this.add.image(800, 100, "facciando").setScale(1.5);
     const profile = this.add.image(67, 64, "profile");
-    // Crea una máscara circular del mismo tamaño que la imagen
     // Crea una máscara circular
     const radioCirculo =
       Math.min(profile.displayWidth, profile.displayHeight) / 2;
@@ -73,22 +71,11 @@ export class Intro extends Phaser.Scene {
       .setScale(0.75)
       .setName("play")
       .setScale(1);
-    const mode = this.add
-      .image(1412, 550, "mode")
-      .setScale(0.75)
-      .setName("mode")
-      .setScale(1);
-    const mode2 = this.add
-      .image(1460, 690, "mode")
-      .setScale(0.75)
-      .setName("modeMission")
-      .setScale(0.7);
 
     const btnSosund = this.add
       .image(0, 0, "sound")
       .setScale(0.4)
       .setName("sound");
-
     const fullscreenButton = this.add
       .image(130, 960, "fullscreen")
       .setScale(0.4)
@@ -106,97 +93,24 @@ export class Intro extends Phaser.Scene {
     //construir boton con enfoque y funciones (nameBoton, Escena)
     blurButton(play, this);
 
-    // blurButton(btnSosund);
-    // desenfoque(backgroundIntro);
     // Music
-
     const music = this.sound.add("musica", { loop: true });
-
     //music.play();
 
     // Agrega el botón de sonido a la escena
     btnSosund.setInteractive();
     btnSosund.on("pointerdown", () => {
-      // Si la música está en mute, la activa y cambia el botón a sound on
       if (music.mute) {
         music.mute = false;
         btnSosund.setTexture("sound");
         return;
       }
 
-      // Si la música no está en mute, la pone en mute y cambia el botón a sound off
       music.mute = true;
       btnSosund.setTexture("mute");
     });
-
-    // Coloca el botón de sonido en la esquina superior derecha de la pantalla
-    //btnSound.setOrigin(11, -9);
     btnSosund.setPosition(50, 960);
 
-    // create();
-    // Agregar el archivo CSS a la página
-    // const stylesheet = document.createElement("link");
-    // stylesheet.rel = "stylesheet";
-    // stylesheet.href = "styles/index.css";
-    // document.head.appendChild(stylesheet);
-
-    // Asegúrate de que 'this' se refiera a la instancia de Phaser adecuada
-
-    // const logoutButton = this.add.container(1350, 50);
-    // logoutButton.setName("logout");
-
-    let { topicBox, messageBox, box } = news(
-      this,
-      50,
-      200,
-      traslate("news"),
-      traslate("newContent"),
-      "avatar",
-      "avatar2"
-    );
-
-    const modeText1 = textButton(
-      this,
-      1435,
-      569,
-      "mode",
-      COLORS.black,
-      FONT_SIZE.small
-    );
-    const modeText2 = textButton(
-      this,
-      1470,
-      695,
-      "mode",
-      COLORS.black,
-      FONT_SIZE.smaller
-    );
-    const modeExploration = textButton(
-      this,
-      1215,
-      520,
-      "exploration",
-      COLORS.black,
-      FONT_SIZE.mediumSmall
-    );
-    const modeMission = textButton(
-      this,
-      1310,
-      660,
-      "mission",
-      COLORS.black,
-      FONT_SIZE.small
-    );
-    const logoutButton = textButton(
-      this,
-      1282,
-      30,
-      "logout",
-      COLORS.black,
-      FONT_SIZE.small,
-      0.9,
-      true
-    );
     const playText = textButton(
       this,
       1280,
@@ -240,28 +154,24 @@ export class Intro extends Phaser.Scene {
     );
 
     avatar.setDepth(1);
-
     avatar.setInteractive();
-
     avatar.on("pointerdown", () => {
       console.log("click");
     });
 
-    // Establece la profundidad del logoutButton para ponerlo encima de todo
-    logoutButton.setDepth(1);
-
-    logoutButton.setInteractive();
-    logoutButton.on("pointerdown", () => {
-      const confirmacion = confirm(traslate("confirmLogout"));
-      if (confirmacion) {
-        logout(this);
-      }
-    });
-
+    const logoutButton = buttonLogout(this);
     const btnLanguage = this.add.image(1537, 70, "language").setScale(0.4);
-    btnLanguage.setInteractive();
-
     buttonEnglish(btnLanguage, this);
+    
+    const {
+      topicBox,
+      messageBox,
+      modeText1,
+      modeText2,
+      modePrimary,
+      modeSecondary,
+    } = buttonsMode(this);
+
     this.updateScene = () => {
       playText.setText(traslate("start"));
       logoutButton.setText(traslate("logout"));
@@ -271,58 +181,12 @@ export class Intro extends Phaser.Scene {
       avatar.setText(traslate("avatar"));
       modeText1.setText(traslate("mode"));
       modeText2.setText(traslate("mode"));
-      modeExploration.setText(traslate("exploration"));
-      modeMission.setText(traslate("mission"));
+      modePrimary.setText(traslate(this?.mode));
+      modeSecondary.setText(traslate(this?.mode2));
       topicBox.setText(traslate("news"));
       messageBox.setText(traslate("newContent"));
       return;
     };
     this.updateScene();
-
-    this.isSwapped = false;
-    let isTransitionInProgress = false;
-    mode.setInteractive();
-    mode.on("pointerdown", () => {
-      this.mode = "exploration";
-      box.setVisible(true);
-
-      if (isTransitionInProgress) {
-        return;
-      }
-      if (mode.x === 1460 && mode.y === 690) {
-        isTransitionInProgress = true; // Marca que la transición está en curso
-
-        swapButtonPositions(this, mode, mode2);
-        mode.setScale(1);
-        mode2.setScale(0.7);
-        modeExploration.setText(traslate("exploration"));
-        modeMission.setText(traslate("mission"));
-      }
-      setTimeout(() => {
-        isTransitionInProgress = false;
-      }, 300);
-    });
-    mode2.setInteractive();
-
-    mode2.on("pointerdown", () => {
-      this.mode = "mission";
-      box.setVisible(false);
-      if (isTransitionInProgress) {
-        return;
-      }
-      if (!this.isSwapped) {
-        isTransitionInProgress = true; // Marca que la transición está en curso
-
-        modeExploration.setText(traslate("mission"));
-        modeMission.setText(traslate("exploration"));
-        // Si los botones no han sido intercambiados, entonces intercambia posiciones
-        swapButtonPositions(this, mode, mode2);
-        mode.setScale(0.7);
-        mode2.setScale(1);
-      }
-      setTimeout(() => {
-        isTransitionInProgress = false;
-      }, 300);
-    });
   }
 }
