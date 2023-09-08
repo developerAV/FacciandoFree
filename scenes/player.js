@@ -133,23 +133,51 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       }
 
       if (!this.isDragging) {
+        // Amortiguación para detenerse gradualmente
+        this.avatarPlayer.setVelocityX(this.avatarPlayer.body.velocity.x * 0.9);
+        this.avatarPlayer.setVelocityY(this.avatarPlayer.body.velocity.y * 0.9);
+        
         this.moveTo(0, 0, "turn");
         return;
       }
+      
       if (this.newX > this.buttonCentroX + 12) {
-        this.moveTo(0, 200, "right");
+        // Interpolar linealmente hacia la velocidad máxima en el eje X
+        const acceleration = 200; // Velocidad máxima
+        const delta = this.newX - this.buttonCentroX;
+        const factor = delta / this.maxRange;
+        const velocityX = acceleration * factor;
+        this.moveTo(0, velocityX, "right");
         return;
       }
+      
       if (this.newX < this.buttonCentroX - 12) {
-        this.moveTo(0, -200, "left");
+        // Interpolar linealmente hacia la velocidad máxima en el eje X en la dirección opuesta
+        const acceleration = -200; // Velocidad máxima
+        const delta = this.buttonCentroX - this.newX; // Cambio de dirección
+        const factor = delta / this.maxRange;
+        const velocityX = acceleration * factor;
+        this.moveTo(0, velocityX, "left");
         return;
       }
-      if (this.newY > this.buttonCentroY) {
-        this.moveTo(200, 0, "down");
+      
+      if (this.newY > this.buttonCentroY + 12) {
+        // Interpolar linealmente hacia la velocidad máxima en el eje Y
+        const acceleration = 200; // Velocidad máxima
+        const delta = this.newY - this.buttonCentroY;
+        const factor = delta / this.maxRange;
+        const velocityY = acceleration * factor;
+        this.moveTo(velocityY, 0, "down");
         return;
       }
-      if (this.newY < this.buttonCentroY) {
-        this.moveTo(-200, 0, "up");
+      
+      if (this.newY < this.buttonCentroY - 12) {
+        // Interpolar linealmente hacia la velocidad máxima en el eje Y en la dirección opuesta
+        const acceleration = -200; // Velocidad máxima
+        const delta = this.buttonCentroY - this.newY; // Cambio de dirección
+        const factor = delta / this.maxRange;
+        const velocityY = acceleration * factor;
+        this.moveTo(velocityY, 0, "up");
         return;
       }
       return;
