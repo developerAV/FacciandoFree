@@ -11,7 +11,7 @@ import {
 import { auth, db } from "../Firebase/firebase.js";
 import "../Firebase/googleLogin.js";
 
-import { preloads } from "./components/intro/preload.js";
+import { preloads } from "./components/loanding/preload.js";
 
 export class Loading extends Phaser.Scene {
   constructor() {

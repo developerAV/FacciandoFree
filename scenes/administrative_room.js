@@ -38,7 +38,7 @@ export class AdministrativeRoom extends Phaser.Scene {
     crearPlataforma(592, 788, "mesa4", plataformas);
     crearPlataforma(785, 689, "poste", plataformas);
 
-    this.avatar = new Avatar(this, 800, 200);
+    this.avatar = new Avatar(this, 800, 200, 1.3);
     crearPlataforma(849, 350, "paredMedioTop", plataformas);
     crearPlataforma(800, 827, "paredRi", plataformas, 0.996);
     //crearPlataforma(730, 541, "bordeSuperiorPuerta", plataformas);
@@ -65,9 +65,12 @@ export class AdministrativeRoom extends Phaser.Scene {
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
+
+    this.cameras.main.startFollow(this.avatar.avatarPlayer); // Configurar seguimiento de cámara al personaje
+    this.cameras.main.zoom = 2;
   }
 
   update() {
-    this.avatar.update();
+    this.avatar.update(this);
   }
 }
