@@ -13,23 +13,7 @@ export class Intro extends Phaser.Scene {
   preload() {
     this.textures.remove("profile");
     this.load.image("profile", window.imageUrl);
-    // this.load.image("profile", "assets/images/intro/profile.jpg");
-    this.load.image("backgroundIntro", "assets/images/intro/intro.png");
-    this.load.image("backgroundIntro2", "assets/images/intro/intro2.png");
-    this.load.image("play", "assets/images/intro/start.png");
-    this.load.image("mode", "assets/images/intro/mode.png");
-    this.load.image("score", "assets/images/intro/score.png");
-    //this.load.image("avatar", "assets/images/intro/avatar.png");
-    this.load.image("fullscreen", "assets/images/intro/fullscreen.png");
-    this.load.image("mute", "assets/images/intro/mute.png");
-    this.load.image("sound", "assets/images/intro/sound.png");
-    this.load.image("logout", "assets/images/intro/logout.png");
-    this.load.image("facciando", "assets/images/intro/facci.png");
-
-    this.load.image("avatar", "assets/images/player/avatar.png");
-    this.load.image("avatar2", "assets/images/player/avatar2.png");
   }
-
   create() {
     this.mode = "exploration";
     this.mode2 = "mission";
@@ -162,7 +146,7 @@ export class Intro extends Phaser.Scene {
     const logoutButton = buttonLogout(this);
     const btnLanguage = this.add.image(1537, 70, "language").setScale(0.4);
     buttonEnglish(btnLanguage, this);
-    
+
     const {
       topicBox,
       messageBox,

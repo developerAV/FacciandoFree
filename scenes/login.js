@@ -44,7 +44,6 @@ export class Login extends Phaser.Scene {
     googleButtonES.setName("googleES");
 
     this.languages = (lan) => {
-      console.log(lan);
       if (lan === "es") {
         googleButtonEN.visible = false;
         googleButtonES.visible = true;
@@ -63,8 +62,8 @@ export class Login extends Phaser.Scene {
     buttonEnglish(btnLanguage, this);
     this.languages(window.lan);
 
-    this.updateScene = (lan) => {
-      this.languages(lan);
+    this.updateScene = () => {
+      this.languages(window.lan);
     };
   }
 }

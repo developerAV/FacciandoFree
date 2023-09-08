@@ -23,7 +23,7 @@ export const blurButton = (boton, escena) => {
       escena.time.delayedCall(
         500,
         () => {
-          escena.scene.start("cubicle");
+          escena.scene.start("administrativeRoom");
         },
         [],
         escena

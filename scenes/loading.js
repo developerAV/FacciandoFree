@@ -11,12 +11,15 @@ import {
 import { auth, db } from "../Firebase/firebase.js";
 import "../Firebase/googleLogin.js";
 
+import { preloads } from "./components/intro/preload.js";
+
 export class Loading extends Phaser.Scene {
   constructor() {
     super({ key: "loading" });
   }
 
   preload() {
+    preloads(this);
     this.load.spritesheet("dude", "../assets/images/player/game.png", {
       frameWidth: 25.92,
       frameHeight: 32,
