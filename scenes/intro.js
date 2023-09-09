@@ -1,10 +1,11 @@
 import { blurButton } from "./module/blurButton.js";
 import { COLORS, FONT_SIZE } from "../utils/constants.js";
-import { textButton, news } from "./module/textButton.js";
+import { textButton } from "./module/textButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
 import { traslate } from "../data/dialogues.js";
 import { buttonLogout } from "./components/intro/buttonLogout.js";
 import { buttonsMode } from "./components/intro/buttonsMode.js";
+import { news } from "./components/intro/news.js";
 
 export class Intro extends Phaser.Scene {
   constructor() {
@@ -97,7 +98,7 @@ export class Intro extends Phaser.Scene {
 
     const playText = textButton(
       this,
-      1280,
+      1270,
       860,
       "start",
       COLORS.grayDark,
@@ -147,14 +148,11 @@ export class Intro extends Phaser.Scene {
     const btnLanguage = this.add.image(1537, 70, "language").setScale(0.4);
     buttonEnglish(btnLanguage, this);
 
-    const {
-      topicBox,
-      messageBox,
-      modeText1,
-      modeText2,
-      modePrimary,
-      modeSecondary,
-    } = buttonsMode(this);
+    const { box } = news(this);
+    const { modeText1, modeText2, modePrimary, modeSecondary } = buttonsMode(
+      this,
+      box
+    );
 
     this.updateScene = () => {
       playText.setText(traslate("start"));
@@ -167,8 +165,6 @@ export class Intro extends Phaser.Scene {
       modeText2.setText(traslate("mode"));
       modePrimary.setText(traslate(this?.mode));
       modeSecondary.setText(traslate(this?.mode2));
-      topicBox.setText(traslate("news"));
-      messageBox.setText(traslate("newContent"));
       return;
     };
     this.updateScene();

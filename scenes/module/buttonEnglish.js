@@ -30,6 +30,7 @@ export const buttonEnglish = (btnLanguage, scene) => {
   let trasitionInProgress = false;
   async function changeButtonsPosition(lan) {
     if (trasitionInProgress) return;
+    
     trasitionInProgress = true;
 
     if (window.lan != lan) {

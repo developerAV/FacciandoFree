@@ -2,18 +2,11 @@ import { traslate } from "../../../data/dialogues.js";
 import { COLORS, FONT_SIZE } from "../../../utils/constants.js";
 import { textButton } from "../../module/textButton.js";
 import { swapButtonPositionsLan } from "../../module/swapButtonPositions.js";
-import { news } from "../../module/textButton.js";
+import { news } from "../intro/news.js";
 
-export const buttonsMode = (scene) => {
-  let { topicBox, messageBox, box } = news(
-    scene,
-    50,
-    200,
-    traslate("news"),
-    traslate("newContent"),
-    "avatar",
-    "avatar2"
-  );
+export const buttonsMode = (scene,box) => {
+
+
   const mode = scene.add
     .image(1412, 550, "mode")
     .setScale(0.75)
@@ -88,8 +81,6 @@ export const buttonsMode = (scene) => {
   }
 
   return {
-    topicBox,
-    messageBox,
     modeText1,
     modeText2,
     modePrimary,
