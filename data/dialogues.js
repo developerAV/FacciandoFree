@@ -5,7 +5,7 @@ const traslateIntro = {
   },
   //cubiculo
   infoCubicle: {
-    es: " En este ejemplo, setTimeout se usa para retrasar la ejecución de una función (o fragmento de código) durante un tiempo específico en milisegundos. ",
+    es: "En este ejemplo, setTimeout se usa para retrasar la ejecución de una función (o fragmento de código) durante un tiempo específico en milisegundos. ",
     en: "In this example, setTimeout is used to delay the execution of a function (or code snippet) for a specific amount of time in milliseconds.",
   },
   // intro
@@ -73,6 +73,32 @@ const traslateIntro = {
   newContent5: {
     es: "Durante el recorrido, podrás encontrar información sobre la facultad, sus carreras, sus docentes y perfil de egreso.",
     en: "During the tour, you can find information about the faculty, its careers, its teachers and graduate profile.",
+  },
+
+  // detailsGamer
+  level: {
+    es: "Nivel",
+    en: "Level",
+  },
+  description: {
+    es: "Descripción",
+    en: "Description",
+  },
+  score: {
+    es: "Puntaje",
+    en: "Score",
+  },
+  time: {
+    es: "Tiempo",
+    en: "Time",
+  },
+  completed: {
+    es: "Completado",
+    en: "Completed",
+  },
+  missionScore: {
+    es: "Puntaje de la misión",
+    en: "Mission score",
   },
 };
 

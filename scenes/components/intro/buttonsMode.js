@@ -4,9 +4,8 @@ import { textButton } from "../../module/textButton.js";
 import { swapButtonPositionsLan } from "../../module/swapButtonPositions.js";
 import { news } from "../intro/news.js";
 
-export const buttonsMode = (scene,box) => {
-
-
+export const buttonsMode = (scene, box, boxGamer) => {
+  boxGamer.setVisible(false);
   const mode = scene.add
     .image(1412, 550, "mode")
     .setScale(0.75)
@@ -63,12 +62,14 @@ export const buttonsMode = (scene,box) => {
     isTransitionInProgress = true;
 
     let boxVisible = scene.mode === "mission";
+
     let gameModeSecondary = boxVisible ? "mission" : "exploration";
 
     if (scene.mode !== gameMode) {
       scene.mode = gameMode;
       scene.mode2 = gameModeSecondary;
       box.setVisible(boxVisible);
+      boxGamer.setVisible(!boxVisible);
       swapButtonPositionsLan(scene, mode, mode2);
       mode.setScale(gameMode === "exploration" ? 1 : 0.7);
       mode2.setScale(gameMode === "exploration" ? 0.7 : 1);

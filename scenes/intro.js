@@ -6,6 +6,7 @@ import { traslate } from "../data/dialogues.js";
 import { buttonLogout } from "./components/intro/buttonLogout.js";
 import { buttonsMode } from "./components/intro/buttonsMode.js";
 import { news } from "./components/intro/news.js";
+import { detailsGamer } from "./components/intro/detailsGamer.js";
 
 export class Intro extends Phaser.Scene {
   constructor() {
@@ -149,9 +150,13 @@ export class Intro extends Phaser.Scene {
     buttonEnglish(btnLanguage, this);
 
     const { box } = news(this);
+    
+    const { boxGamer } = detailsGamer(this);
+
     const { modeText1, modeText2, modePrimary, modeSecondary } = buttonsMode(
       this,
-      box
+      box,
+      boxGamer
     );
 
     this.updateScene = () => {
