@@ -143,7 +143,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       
       if (this.newX > this.buttonCentroX + 12) {
         // Interpolar linealmente hacia la velocidad máxima en el eje X
-        const acceleration = 120; // Velocidad máxima
+        const acceleration = 160; // Velocidad máxima
         const delta = this.newX - this.buttonCentroX;
         const factor = delta / this.maxRange;
         const velocityX = acceleration * factor;
@@ -153,7 +153,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       
       if (this.newX < this.buttonCentroX - 12) {
         // Interpolar linealmente hacia la velocidad máxima en el eje X en la dirección opuesta
-        const acceleration = -120; // Velocidad máxima
+        const acceleration = -160; // Velocidad máxima
         const delta = this.buttonCentroX - this.newX; // Cambio de dirección
         const factor = delta / this.maxRange;
         const velocityX = acceleration * factor;
@@ -163,7 +163,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       
       if (this.newY > this.buttonCentroY + 12) {
         // Interpolar linealmente hacia la velocidad máxima en el eje Y
-        const acceleration = 120; // Velocidad máxima
+        const acceleration = 160; // Velocidad máxima
         const delta = this.newY - this.buttonCentroY;
         const factor = delta / this.maxRange;
         const velocityY = acceleration * factor;
@@ -173,7 +173,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       
       if (this.newY < this.buttonCentroY - 12) {
         // Interpolar linealmente hacia la velocidad máxima en el eje Y en la dirección opuesta
-        const acceleration = -120; // Velocidad máxima
+        const acceleration = -160; // Velocidad máxima
         const delta = this.buttonCentroY - this.newY; // Cambio de dirección
         const factor = delta / this.maxRange;
         const velocityY = acceleration * factor;

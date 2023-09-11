@@ -19,15 +19,10 @@ export const blurButton = (boton, escena) => {
     // Acción cuando se hace clic en la imagen
     // alert("Haz precionado el botón" + namebtn);
     if (boton.name === "play") {
-      escena.cameras.main.fadeOut(500); // Desvanecer la pantalla durante 500 milisegundos
-      escena.time.delayedCall(
-        500,
-        () => {
+      // escena.cameras.main.fadeOut(500); // Desvanecer la pantalla durante 500 milisegundos
+   
           escena.scene.start("cubicle");
-        },
-        [],
-        escena
-      );
+  
     }
     if (boton.name === "score") {
       console.log("score");

@@ -77,8 +77,8 @@ const traslateIntro = {
 
   // detailsGamer
   level: {
-    es: "Nivel",
-    en: "Level",
+    es: "NIVEL",
+    en: "LEVEL",
   },
   description: {
     es: "Descripción",
