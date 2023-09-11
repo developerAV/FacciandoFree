@@ -26,6 +26,7 @@ export const COLORS_HEX = {
   red: "#ff0000",
   green: "#00ff00",
   blue: "#03bed0",
+  blueDark: "#0000ff",
   yellow: "#ffff00",
   orange: "#ffA500",
   grayDark: "#262c2e",

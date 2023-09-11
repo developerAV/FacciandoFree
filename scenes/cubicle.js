@@ -72,7 +72,7 @@ export class Cubicle extends Phaser.Scene {
 
   create() {
     window.avatarUpdateActivo = true;
-    this.cameras.main.fadeIn(500);
+    // this.cameras.main.fadeIn(500);
     this.cameras.main.transparent = true;
     // Crear una capa UI que estará por encima de la escena
     let uiLayer = this.add.layer();

@@ -13,6 +13,9 @@ const preloadIntro = (scene) => {
   scene.load.image("facciando", "assets/images/intro/facci.png");
   scene.load.image("avatar", "assets/images/player/avatar.png");
   scene.load.image("avatar2", "assets/images/player/avatar2.png");
+  scene.load.image("level1", "assets/images/levels/level1.png");
+
+  scene.load.image("arrowRight", "assets/images/intro/arrow_right.png");
 };
 
 const preloadAdmistrativeRoom = (scene) => {
