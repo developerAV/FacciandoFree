@@ -14,14 +14,18 @@ export const loginGoogle = async (escena) => {
   });
 
   try {
+  
+
     const credentials = await signInWithPopup(auth, provider);
     window.imageUrl = credentials.user.photoURL;
     window.name = credentials.user.displayName;
-    
+
+    window.userId = credentials.uid;
+    window.listLevel = await getAllLevels();
+    window.user = await getUserFirebase(window.userId);
+
     escena.scene.start("intro");
-    
   } catch (error) {
     console.log(error);
   }
-
-}
+};

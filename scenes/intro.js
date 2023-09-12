@@ -16,7 +16,7 @@ export class Intro extends Phaser.Scene {
     this.textures.remove("profile");
     this.load.image("profile", window.imageUrl);
   }
-  create() {
+  async create() {
     this.mode = "exploration";
     this.mode2 = "mission";
     const background2 = this.add.rectangle(
@@ -150,8 +150,8 @@ export class Intro extends Phaser.Scene {
     buttonEnglish(btnLanguage, this);
 
     const { box } = news(this);
-    
-    const { boxGamer } = detailsGamer(this);
+
+    const { boxGamer } = await detailsGamer(this);
 
     const { modeText1, modeText2, modePrimary, modeSecondary } = buttonsMode(
       this,

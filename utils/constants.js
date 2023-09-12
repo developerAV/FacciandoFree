@@ -31,3 +31,5 @@ export const COLORS_HEX = {
   orange: "#ffA500",
   grayDark: "#262c2e",
 };
+
+export const URI_API = "https://server-api-kuoy-dev.fl0.io/facciando";

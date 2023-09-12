@@ -2,7 +2,6 @@ import { traslate } from "../../../data/dialogues.js";
 import { COLORS, FONT_SIZE } from "../../../utils/constants.js";
 import { textButton } from "../../module/textButton.js";
 import { swapButtonPositionsLan } from "../../module/swapButtonPositions.js";
-import { news } from "../intro/news.js";
 
 export const buttonsMode = (scene, box, boxGamer) => {
   boxGamer.setVisible(false);
