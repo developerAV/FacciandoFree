@@ -58,9 +58,10 @@ export class Loading extends Phaser.Scene {
 
         window.listLevel = await getAllLevels();
         window.listMissions = await getMissionByLevel(
-          window.listLevel[window.user.actualLevel]._id
+          window.listLevel[window.user.actualLevel - 1]._id
         );
 
+        window.missionSelect = window.user.actualMission;
         console.log(window.listMissions);
         this.scene.start("intro");
         video.destroy();

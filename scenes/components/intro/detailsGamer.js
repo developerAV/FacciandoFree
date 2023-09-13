@@ -10,14 +10,11 @@ import { getMissionByLevel } from "../../../services/mission.js";
 export const detailsGamer = async (scene, width = 50, height = 200) => {
   const user = window.user;
   let actualLevel = user.actualLevel - 1;
+  let actualLevelUser = user.actualLevel - 1;
   const listLevel = window.listLevel;
   let listMissions = window.listMissions;
-  console.log(listMissions);
   let actuaMission = user.actualMission;
 
-  let times = 20;
-  let score = 100;
-  let lan = window.lan;
   const box = scene.add.container(width, height);
   box.setName("box");
 
@@ -33,53 +30,80 @@ export const detailsGamer = async (scene, width = 50, height = 200) => {
   boxBgLevel.lineStyle(4, COLORS.blue, 1);
   box.add(boxBgLevel);
   const arrowRight = scene.add.image(470, 30, "arrowRight").setScale(0.14);
+  if (actualLevel === listLevel.length - 1) {
+    arrowRight.setAlpha(0);
+    arrowRight.setInteractive({ useHandCursor: true });
+  }
 
   const arrowLeft = scene.add.image(30, 30, "arrowRight").setScale(0.14);
   arrowLeft.flipX = true;
-
+  if (actualLevel === 0) {
+    arrowLeft.setAlpha(0);
+    arrowLeft.setInteractive({ useHandCursor: true });
+  }
   arrowLeft
     .setInteractive({ useHandCursor: true })
     .on("pointerdown", async () => {
       arrowLeft.disableInteractive();
-      arrowLeft.setAlpha(0.5); // Restaurar la opacidad original
-      if (actualLevel > 0) {
-        actualLevel--;
-        levelLabel.setText(listLevel[actualLevel].name[lan]);
-        listMissions = await getMissionByLevel(listLevel[actualLevel]._id);
-        arrowLeft.setAlpha(1); // Restaurar la opacidad original
+      arrowLeft.setAlpha(0.7);
+      if (actualLevel === 8) {
+        arrowRight.setAlpha(1);
+        arrowRight.setInteractive({ useHandCursor: true });
+      }
+      actualLevel--;
+      window.user.actualLevel = actualLevel + 1;
+
+      levelLabel.setText(listLevel[actualLevel].name[window.lan]);
+      console.log(window.lan);
+      listMissions = await getMissionByLevel(listLevel[actualLevel]._id);
+      actuaMission = 0;
+      window.listMissions = listMissions;
+
+      arrowLeft.setAlpha(1);
+      arrowLeft.setInteractive({ useHandCursor: true });
+      scoreLabel.setText(
+        `${traslate("missionScore")}: ${listMissions[0].score}`
+      );
+      timeLabel.setText(traslate("time"));
+      missionLabel.setText(listMissions[0].name[window.lan]);
+      description.setText(listMissions[0].description[window.lan]);
+      if (actualLevel === 0) {
+        arrowLeft.setAlpha(0);
         arrowLeft.setInteractive({ useHandCursor: true });
-        scoreLabel.setText(
-          `${traslate("missionScore")}: ${listMissions[0].score}`
-        );
-        timeLabel.setText(`${traslate("time")}: ${listMissions[0].time}`);
-        missionLabel.setText(listMissions[0].name[lan]);
-        description.setText(listMissions[0].description[lan]);
       }
     });
   arrowRight
     .setInteractive({ useHandCursor: true })
     .on("pointerdown", async () => {
       arrowRight.disableInteractive();
-      arrowRight.setAlpha(0.5); // Restaurar la opacidad original
-      if (actualLevel < listLevel.length - 1) {
-        actualLevel++;
-        levelLabel.setText(listLevel[actualLevel].name[lan]);
-        listMissions = await getMissionByLevel(listLevel[actualLevel]._id);
-        arrowRight.setAlpha(1); // Restaurar la opacidad original
+      arrowRight.setAlpha(0.7);
+      if (actualLevel === 0) {
+        arrowLeft.setAlpha(1);
+        arrowLeft.setInteractive({ useHandCursor: true });
+      }
+      actualLevel++;
+      window.user.actualLevel = actualLevel + 1;
+      levelLabel.setText(listLevel[actualLevel].name[window.lan]);
+      listMissions = await getMissionByLevel(listLevel[actualLevel]._id);
+      window.listMissions = listMissions;
+      arrowRight.setAlpha(1);
+      arrowRight.setInteractive({ useHandCursor: true });
+      scoreLabel.setText(
+        `${traslate("missionScore")}: ${listMissions[0].score}`
+      );
+      timeLabel.setText(traslate("time"));
+      missionLabel.setText(listMissions[0].name[window.lan]);
+      description.setText(listMissions[0].description[window.lan]);
+      if (actualLevel === listLevel.length - 1) {
+        arrowRight.setAlpha(0);
         arrowRight.setInteractive({ useHandCursor: true });
-        scoreLabel.setText(
-          `${traslate("missionScore")}: ${listMissions[0].score}`
-        );
-        timeLabel.setText(`${traslate("time")}: ${listMissions[0].time}`);
-        missionLabel.setText(listMissions[0].name[lan]);
-        description.setText(listMissions[0].description[lan]);
       }
     });
 
   const levelLabel = scene.add.text(
     200,
     0,
-    listLevel[user.actualLevel - 1].name[lan],
+    listLevel[user.actualLevel - 1].name[window.lan],
     {
       font: `32px ${FONT}`,
       fill: COLORS_HEX.white,
@@ -102,7 +126,7 @@ export const detailsGamer = async (scene, width = 50, height = 200) => {
   const missionLabel = scene.add.text(
     165,
     80,
-    listMissions[actuaMission - 1].name[lan],
+    listMissions[actuaMission - 1].name[window.lan],
     {
       font: `${FONT_SIZE.small} ${FONT}`,
       // backgroundColor: COLORS_HEX.white,
@@ -132,7 +156,7 @@ export const detailsGamer = async (scene, width = 50, height = 200) => {
   const description = scene.add.text(
     20,
     130,
-    listMissions[actuaMission - 1].description[lan],
+    listMissions[actuaMission - 1].description[window.lan],
     {
       font: `20px ${FONT}`,
       fill: COLORS_HEX.white,
@@ -179,9 +203,9 @@ export const detailsGamer = async (scene, width = 50, height = 200) => {
       },
     }
   );
-  const completed = scene.add.text(160, 410, traslate("completed"), {
+  const completed = scene.add.text(160, 410, traslate("fghghghfghdfghdfgh"), {
     font: `28px ${FONT}`,
-    fill: COLORS_HEX.green,
+    fill: COLORS_HEX.red,
     wordWrap: {
       width: 200,
     },
@@ -211,12 +235,28 @@ export const detailsGamer = async (scene, width = 50, height = 200) => {
     .on("pointerdown", () => changueMission(2));
 
   function changueMission(mission) {
+    window.missionSelect = mission + 1;
+    completed.setColor(COLORS_HEX.green);
+    completed.setText(traslate("completed"));
+    if (
+      actuaMission <= listMissions[mission].order &&
+      actualLevelUser <= actualLevel
+    ) {
+      completed.setColor(COLORS_HEX.red);
+      completed.setText(traslate("imcompleto"));
+    }
+    if (actualLevelUser <= actualLevel) {
+      completed.setColor(COLORS_HEX.red);
+      completed.setText(traslate("imcompleto"));
+      //candado
+    }
+
     scoreLabel.setText(
       `${traslate("missionScore")}: ${listMissions[mission].score}`
     );
-    timeLabel.setText(`${traslate("time")}: ${listMissions[mission].time}`);
-    missionLabel.setText(listMissions[mission].name[lan]);
-    description.setText(listMissions[mission].description[lan]);
+    timeLabel.setText(traslate("time"));
+    missionLabel.setText(listMissions[mission].name[window.lan]);
+    description.setText(listMissions[mission].description[window.lan]);
   }
 
   buttonContainer.add(mission1);
@@ -236,5 +276,15 @@ export const detailsGamer = async (scene, width = 50, height = 200) => {
   box.add(arrowRight);
   box.add(arrowLeft);
 
-  return { boxGamer: box };
+  return {
+    boxGamer: box,
+    levelLabel,
+
+    missionLabel,
+    descriptionLabel,
+    description,
+    completed,
+    scoreLabel,
+    timeLabel,
+  };
 };

@@ -100,9 +100,49 @@ const traslateIntro = {
     es: "Puntaje de la misión",
     en: "Mission score",
   },
+  imcompleto: {
+    es: "Incompleto",
+    en: "Incomplete",
+  },
 };
 
 export const traslate = (key) => {
+  if (key === "completedT") {
+    if (
+      window.user.actualMission <=
+      window.listMissions[window.missionSelect - 1]?.order
+    ) {
+      return traslateIntro.imcompleto[window.lan];
+    }
+    return traslateIntro.completed[window.lan];
+  }
+
+  if (key === "missionName") {
+    return window.listMissions[window.user.actualMission - 1]?.name[window.lan];
+  }
+  if (key === "descriptionMission") {
+    return window.listMissions[window.user.actualMission - 1]?.description[
+      window.lan
+    ];
+  }
+  if (key === "actualLevel") {
+    return window.listLevel[window.user.actualLevel - 1]?.name[window.lan];
+  }
+  if (key === "scoreMission") {
+    return (
+      traslateIntro.missionScore[window.lan] +
+      ": " +
+      window.listMissions[window.user.actualMission - 1]?.score
+    );
+  }
+  if (key === "time") {
+    return (
+      traslateIntro.time[window.lan] +
+      ": " +
+      window.listMissions[window.user.actualMission - 1]?.time
+    );
+  }
+
   if (traslateIntro[key] === undefined) {
     return key + ": no agregado";
   }

@@ -151,7 +151,16 @@ export class Intro extends Phaser.Scene {
 
     const { box } = news(this);
 
-    const { boxGamer } = await detailsGamer(this);
+    const {
+      boxGamer,
+      levelLabel,
+      missionLabel,
+      descriptionLabel,
+      description,
+      completed,
+      scoreLabel,
+      timeLabel,
+    } = await detailsGamer(this);
 
     const { modeText1, modeText2, modePrimary, modeSecondary } = buttonsMode(
       this,
@@ -170,6 +179,15 @@ export class Intro extends Phaser.Scene {
       modeText2.setText(traslate("mode"));
       modePrimary.setText(traslate(this?.mode));
       modeSecondary.setText(traslate(this?.mode2));
+
+      levelLabel.setText(traslate("actualLevel"));
+      missionLabel.setText(traslate("missionName"));
+      descriptionLabel.setText(traslate("description"));
+      description.setText(traslate("descriptionMission"));
+      completed.setText(traslate("completedT"));
+      scoreLabel.setText(traslate("scoreMission"));
+      timeLabel.setText(traslate("time"));
+
       return;
     };
     this.updateScene();
