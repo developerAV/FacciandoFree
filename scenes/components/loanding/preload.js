@@ -16,6 +16,7 @@ const preloadIntro = (scene) => {
   scene.load.image("level1", "assets/images/levels/level1.png");
 
   scene.load.image("arrowRight", "assets/images/intro/arrow_right.png");
+  scene.load.image("lock", "assets/images/intro/lock.png");
 };
 
 const preloadAdmistrativeRoom = (scene) => {
