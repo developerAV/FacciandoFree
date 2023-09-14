@@ -184,7 +184,7 @@ export class Intro extends Phaser.Scene {
       missionLabel.setText(traslate("missionName"));
       descriptionLabel.setText(traslate("description"));
       description.setText(traslate("descriptionMission"));
-      completed.setText(traslate("completedT"));
+      completed.setText(traslate(window.completedMission ?? "incomplete"));
       scoreLabel.setText(traslate("scoreMission"));
       timeLabel.setText(traslate("time"));
 

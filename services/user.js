@@ -63,5 +63,6 @@ export const postUser = async (user) => {
       }),
     }
   );
-  return newUser;
+  const data = await newUser.json();
+  return data;
 };

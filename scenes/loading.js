@@ -47,13 +47,16 @@ export class Loading extends Phaser.Scene {
       if (user) {
         window.userId = user.uid;
         window.user = await getUserFirebase(window.userId);
+
         if (!window.user) {
-          await postUser(user);
-          window.user = await getUserFirebase(window.userId);
+          window.user =  await postUser(user);
+          //await getUserFirebase(window.userId);
         }
 
         window.imageUrl = user.photoURL;
         window.name = user.displayName;
+
+        console.log(window.user);
         window.mission = window.user.actualMission;
 
         window.listLevel = await getAllLevels();
@@ -61,8 +64,7 @@ export class Loading extends Phaser.Scene {
           window.listLevel[window.user.actualLevel - 1]._id
         );
 
-        window.missionSelect = window.user.actualMission;
-        console.log(window.listMissions);
+        window.missionSelect = window.user.actualMission ?? 1;
         this.scene.start("intro");
         video.destroy();
       } else {

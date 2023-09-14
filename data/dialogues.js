@@ -100,23 +100,13 @@ const traslateIntro = {
     es: "Puntaje de la misión",
     en: "Mission score",
   },
-  imcompleto: {
+  incomplete: {
     es: "Incompleto",
     en: "Incomplete",
   },
 };
 
 export const traslate = (key) => {
-  if (key === "completedT") {
-    if (
-      window.user.actualMission <=
-      window.listMissions[window.missionSelect - 1]?.order
-    ) {
-      return traslateIntro.imcompleto[window.lan];
-    }
-    return traslateIntro.completed[window.lan];
-  }
-
   if (key === "missionName") {
     return window.listMissions[window.user.actualMission - 1]?.name[window.lan];
   }
@@ -139,7 +129,7 @@ export const traslate = (key) => {
     return (
       traslateIntro.time[window.lan] +
       ": " +
-      window.listMissions[window.user.actualMission - 1]?.time
+      window.listMissions[window.missionSelect - 1]?.time
     );
   }
 
