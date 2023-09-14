@@ -32,36 +32,28 @@ export const detailsGamer = async (scene, width = 50, height = 200) => {
   graphicsLock.fillRoundedRect(0, 90, 500, 500, 30);
   graphicsLock.lineStyle(4, COLORS.blue, 1);
   */
-  const boxLock = this.add.graphics();
-    
+
+  const lock = scene.add.image(250, 300, "lock").setScale(0.8);
+box.add(lock);
+lock.setAlpha(0.5);
+lock.visible = false;
+  const boxLock = scene.add.container(0, 0);
+  const graphicsLock = scene.add.graphics();
+
   // Dibuja un cuadro en el objeto gráfico
-  boxLock.fillStyle(0x00ff00); // Color verde
-  boxLock.fillRect(100, 100, 200, 200); // Tamaño y posición del cuadro
-  
-  // Aplicar un filtro de desenfoque al objeto gráfico
-  const blurFilter = this.add.filter('Blur', 200); // 200 es el valor de desenfoque, ajusta según tus necesidades
-  boxLock.filters = [blurFilter];
+  graphicsLock.fillStyle(COLORS.white, 0);
+  graphicsLock.fillRoundedRect(0, 95, 500, 505, 30);
+  graphicsLock.lineStyle(4, COLORS.blue, 1);
   
 
-  const containerLock = scene.add.container();
-  // const graphicsLock = scene.add.graphics();
+boxLock.add(graphicsLock);
 
-  // // Dibuja un cuadro en el objeto gráfico
-  // graphicsLock.fillStyle(0x00ff00); // Color verde
-  // graphicsLock.fillRect(100, 100, 200, 200); // Tamaño y posición del cuadro
 
-  const mock = scene.add.image(400, 300, 'dude');
 
-  // graphicsLock.setName("graphicsLock");
 
-  containerLock.add(mock)
 
-  const fx = containerLock.postFX.addBlur(1, 0, 0, 0, 0xffffff, 6);
-  scene.tweens.add({
-    targets: fx,
-    strength: 2,
-    duration: 2000,
-  });
+
+
   const arrowRight = scene.add.image(470, 30, "arrowRight").setScale(0.14);
   if (actualLevel === listLevel.length - 1) {
     arrowRight.setAlpha(0);
@@ -285,6 +277,8 @@ export const detailsGamer = async (scene, width = 50, height = 200) => {
     window.missionSelect = mission + 1;
     completed.setColor(COLORS_HEX.green);
     window.completedMission = "completed";
+    boxLock.visible = true;
+      lock.visible = false;
     if (
       actuaMission <= listMissions[mission].order &&
       actualLevelUser <= actualLevel
@@ -296,6 +290,8 @@ export const detailsGamer = async (scene, width = 50, height = 200) => {
       completed.setColor(COLORS_HEX.red);
       window.completedMission = "incomplete";
       //candado
+      boxLock.visible = false;
+      lock.visible = true;
     }
 
     completed.setText(traslate(window.completedMission));
@@ -312,20 +308,20 @@ export const detailsGamer = async (scene, width = 50, height = 200) => {
   buttonContainer.add(mission3);
 
   box.add(levelLabel);
-  box.add(missionLabel);
-  box.add(descriptionLabel);
-  box.add(description);
-  box.add(completed);
-  box.add(scoreLabel);
-  box.add(timeLabel);
+  boxLock.add(missionLabel);
+  boxLock.add(descriptionLabel);
+  boxLock.add(description);
+  boxLock.add(completed);
+  boxLock.add(scoreLabel);
+  boxLock.add(timeLabel);
   // box.add(level1);
 
-  box.add(buttonContainer);
+  boxLock.add(buttonContainer);
   box.add(arrowRight);
   box.add(arrowLeft);
   boxBg.fillRoundedRect(0, 0, 500, 600, 30);
 
-  box.add(containerLock);
+  box.add(boxLock);
 
   return {
     boxGamer: box,
