@@ -66,7 +66,7 @@ export const news = (
   });
   setInterval(() => {
     keyMessage = returnList();
-    console.log("keyMessage", keyMessage);
+    // console.log("keyMessage", keyMessage);
   }, 15000);
   scene.time.addEvent({
     delay: 50, // Ajusta el valor para controlar la velocidad de escritura
