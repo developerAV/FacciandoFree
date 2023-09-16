@@ -8,7 +8,8 @@ export const textButton = (
   colorBg,
   fontSize,
   opacity = 0,
-  photo = false
+  photo = false,
+  bgHeigth = 190,
 ) => {
   const button = scene.add.container(width, height);
   button.setName(name);
@@ -16,7 +17,7 @@ export const textButton = (
   // Configura el color de fondo del button
   const buttonFondo = scene.add.graphics();
   buttonFondo.fillStyle(colorBg, opacity); // blanco, puedes ajustar el color según tus preferencias
-  buttonFondo.fillRoundedRect(0, 0, 180, 60, 30);
+  buttonFondo.fillRoundedRect(0, 0, bgHeigth, 60, 30);
 
   // Agregar el fondo al button
   button.add(buttonFondo);

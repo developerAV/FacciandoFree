@@ -12,6 +12,8 @@ import { AdministrativeRoom } from "./scenes/administrative_room.js";
 import { Hallway300 } from "./scenes/hallway300.js";
 import { Cubicle } from "./scenes/cubicle.js";
 import { Auditorium2 } from "./scenes/auditoruim2.js";
+import { Ranking } from "./scenes/ranking.js";
+import { AvatarS } from "./scenes/avatar.js";
 
 
 
@@ -37,6 +39,8 @@ const config = {
     Hallway300,
     Cubicle,
     Auditorium2,
+    Ranking,
+    AvatarS,
   ],
   scale: {
     mode: Phaser.Scale.FIT,
