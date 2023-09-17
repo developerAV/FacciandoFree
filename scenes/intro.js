@@ -7,6 +7,7 @@ import { buttonLogout } from "./components/intro/buttonLogout.js";
 import { buttonsMode } from "./components/intro/buttonsMode.js";
 import { news } from "./components/intro/news.js";
 import { detailsGamer } from "./components/intro/detailsGamer.js";
+import { getTop10UserByScore } from "../services/user.js";
 
 export class Intro extends Phaser.Scene {
   constructor() {
@@ -145,7 +146,8 @@ export class Intro extends Phaser.Scene {
     );
 
     ranked.setInteractive();
-    ranked.on("pointerdown", () => {
+    ranked.on("pointerdown", async () => {
+      window.top10UserList = await getTop10UserByScore();
       this.scene.start("ranking");
     });
 
