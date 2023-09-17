@@ -15,6 +15,11 @@ export class Intro extends Phaser.Scene {
   preload() {
     this.textures.remove("profile");
     this.load.image("profile", window.imageUrl);
+    this.load.scenePlugin({
+      key: "rexuiplugin",
+      url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
+      sceneKey: "rexUI",
+    });
   }
   async create() {
     this.mode = "exploration";
@@ -147,8 +152,7 @@ export class Intro extends Phaser.Scene {
     avatar.setDepth(1);
     avatar.setInteractive();
     avatar.on("pointerdown", () => {
-     
-        this.scene.start("avatarS");
+      this.scene.start("avatarS");
     });
 
     const logoutButton = buttonLogout(this);

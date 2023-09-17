@@ -104,6 +104,21 @@ const traslateIntro = {
     es: "Incompleto",
     en: "Incomplete",
   },
+  //logout cerrar sesion
+  logoutDialog: {
+    es: "Cerrar sesión",
+    en: "Logout",
+  },
+  contentLogout: {
+    es: "¿Estás seguro de que quieres cerrar sesión?",
+    en: "Are you sure you want to log out?",
+  },
+  no: {
+    es: "No",
+    en: "No",
+  },
+
+
 };
 
 export const traslate = (key) => {

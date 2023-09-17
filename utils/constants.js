@@ -13,11 +13,14 @@ export const COLORS = {
   grey: 0x262c2e,
   red: 0xff0000,
   green: 0x00ff00,
-  blue: 0x0000ff,
+  blue: 0x03bed0,
   yellow: 0xffff00,
   orange: 0xffa500,
   grayDark: 0x262c2e,
-  blueDark: 0x00051A,
+  blueDark: 0x00051a,
+  COLOR_PRIMARY: 0x4e342e,
+  COLOR_LIGHT: 0x7b5e57,
+  COLOR_DARK: 0x260e04,
 };
 //colores en hexadecimal
 export const COLORS_HEX = {

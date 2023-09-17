@@ -1,14 +1,26 @@
-
 import { COLORS, FONT_SIZE } from "../utils/constants.js";
 import { textButton } from "./module/textButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
 import { traslate } from "../data/dialogues.js";
 import { buttonLogout } from "./components/intro/buttonLogout.js";
 
-
 const COLOR_PRIMARY = 0x4e342e;
 const COLOR_LIGHT = COLORS.blueDark;
 const COLOR_DARK = 0x03bed0;
+
+const userList = [
+  { name: "Alex s", score: 1000 },
+  { name: "Alex s", score: 1000 },
+  { name: "Alex sdsfa", score: 134234234000 },
+  { name: "Alex sadfasdfasd", score: 34234234 },
+  { name: "Alex s231", score: 5435 },
+  { name: "Alex s", score: 1000 },
+  { name: "Alex s", score: 123 },
+  { name: "Alex s", score: 1000 },
+  { name: "Alex s", score: 41234 },
+  { name: "Alex s", score: 1 },
+  { name: "Alex s", score: 2 },
+];
 
 export class Ranking extends Phaser.Scene {
   constructor() {
@@ -18,35 +30,38 @@ export class Ranking extends Phaser.Scene {
     this.textures.remove("profile");
     this.load.image("profile", window.imageUrl);
     this.load.scenePlugin({
-      key: 'rexuiplugin',
-      url: 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js',
-      sceneKey: 'rexUI'
-  });
+      key: "rexuiplugin",
+      url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
+      sceneKey: "rexUI",
+    });
 
-  this.load.bitmapFont('gothic', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/assets/fonts/gothic.png', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/assets/fonts/gothic.xml');
+    this.load.bitmapFont(
+      "gothic",
+      "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/assets/fonts/gothic.png",
+      "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/assets/fonts/gothic.xml"
+    );
   }
   create() {
-    
     const background2 = this.add.rectangle(
-        this.cameras.main.width / 2, // Posición X centrada en la pantalla
-        this.cameras.main.height / 2,
-        this.cameras.main.width,
-        this.cameras.main.height,
-        0x00051a
-      );
-      // fondo dinamico
-      const background = this.add.sprite(1500, 500, "facciando").setScale(1.6);
-      background.alpha = 0.4;
-  
-      const tween = this.tweens.add({
-        targets: background,
-        x: 100,
-        ease: "Power",
-        duration: 100000,
-        yoyo: true,
-        repeat: -1,
-      });
-      const bg = this.add.image(800, 65, "backgroundIntro2");
+      this.cameras.main.width / 2, // Posición X centrada en la pantalla
+      this.cameras.main.height / 2,
+      this.cameras.main.width,
+      this.cameras.main.height,
+      0x00051a
+    );
+    // fondo dinamico
+    const background = this.add.sprite(1500, 500, "facciando").setScale(1.6);
+    background.alpha = 0.4;
+
+    const tween = this.tweens.add({
+      targets: background,
+      x: 100,
+      ease: "Power",
+      duration: 100000,
+      yoyo: true,
+      repeat: -1,
+    });
+    const bg = this.add.image(800, 65, "backgroundIntro2");
 
     const profile = this.add.image(67, 64, "profile");
     // Crea una máscara circular
@@ -58,8 +73,6 @@ export class Ranking extends Phaser.Scene {
 
     // Aplica la máscara a la imagen
     profile.setMask(mascara.createGeometryMask());
-
-  
 
     const btnSosund = this.add
       .image(0, 0, "sound")
@@ -79,10 +92,7 @@ export class Ranking extends Phaser.Scene {
       this
     );
 
-
-
     //construir boton con enfoque y funciones (nameBoton, Escena)
-  
 
     // Music
     const music = this.sound.add("musica", { loop: true });
@@ -102,7 +112,6 @@ export class Ranking extends Phaser.Scene {
     });
     btnSosund.setPosition(50, 960);
 
-   
     const name = textButton(
       this,
       120,
@@ -117,8 +126,7 @@ export class Ranking extends Phaser.Scene {
       30,
       "home",
       COLORS.grayDark,
-      FONT_SIZE.small,
-     
+      FONT_SIZE.small
     );
     const ranked = textButton(
       this,
@@ -129,8 +137,7 @@ export class Ranking extends Phaser.Scene {
       FONT_SIZE.small,
       0.9,
       false,
-      230,
-
+      230
     );
     const avatar = textButton(
       this,
@@ -140,67 +147,68 @@ export class Ranking extends Phaser.Scene {
       COLORS.grayDark,
       FONT_SIZE.small
     );
-    
+
     home.setInteractive();
     home.on("pointerdown", () => {
-        this.scene.start("intro");
-        });
+      this.scene.start("intro");
+    });
     avatar.setDepth(1);
     avatar.setInteractive();
     avatar.on("pointerdown", () => {
-     
-        this.scene.start("avatarS");
+      this.scene.start("avatarS");
     });
-
 
     const logoutButton = buttonLogout(this);
     const btnLanguage = this.add.image(1537, 70, "language").setScale(0.4);
     buttonEnglish(btnLanguage, this);
 
+    let scrollablePanel = this.rexUI.add
+      .scrollablePanel({
+        x: 800,
+        y: 500,
+        width: 1300,
+        height: 600,
 
-    let scrollablePanel = this.rexUI.add.scrollablePanel({
-      x: 800, y: 500,
-      width: 1300,
-      height: 600,
+        scrollMode: "y",
 
-      scrollMode: 'y',
-
-      background: this.rexUI.add.roundRectangle({
+        background: this.rexUI.add.roundRectangle({
           strokeColor: COLOR_DARK,
-          radius: 10
-      }),
+          radius: 10,
+        }),
 
-      panel: {
+        panel: {
           child: createPanel(this),
+          mask: { padding: 1 },
+        },
 
-          mask: { padding: 1, },
-      },
+        slider: {
+          track: this.rexUI.add.roundRectangle({
+            width: 20,
+            radius: 10,
+            color: COLOR_DARK,
+            alpha: 0.5,
+          }),
+          thumb: this.rexUI.add.roundRectangle({
+            radius: 13,
+            color: COLOR_LIGHT,
+          }),
+        },
 
-      slider: {
-          track: this.rexUI.add.roundRectangle({ width: 20, radius: 10, color: COLOR_DARK, alpha: 0.5 }),
-          thumb: this.rexUI.add.roundRectangle({ radius: 13, color: COLOR_LIGHT })
-      },
-    
-      mouseWheelScroller: {
+        mouseWheelScroller: {
           focus: false,
-          speed: 0.1
-      },
-    
-   
+          speed: 0.1,
+        },
 
-      space: { left: 20, right: 20, top: 20, bottom: 20, panel: 3,}
-  })
-      .layout()
- 
+        space: { left: 20, right: 20, top: 20, bottom: 20, panel: 3 },
+      })
+      .layout();
 
     this.updateScene = () => {
-
       logoutButton.setText(traslate("logout"));
       name.setText(window.name);
       home.setText(traslate("home"));
       ranked.setText(traslate("ranking"));
       avatar.setText(traslate("avatar"));
-
 
       return;
     };
@@ -210,53 +218,46 @@ export class Ranking extends Phaser.Scene {
 let CreateContent = function (linesCount) {
   let numbers = [];
   for (let i = 0; i < linesCount; i++) {
-      numbers.push(i.toString());
+    numbers.push(i.toString());
   }
-  return numbers.join('\n');
-}
+  return numbers.join("\n");
+};
 
 let createPanel = function (scene) {
-  let text = scene.add.bitmapText(0, 0, 'gothic').setText(CreateContent(10));
-  let container = scene.add.container()
-      .add(text)
-      .setSize(200, text.height);
-      let container2 = scene.add.container();
-      const boxBg = scene.add.graphics();
-    
-      boxBg.fillGradientStyle(0x03bed0, 0x03bed0, 0x03bed0, 0x03bed0, 1);
-      boxBg.fillRoundedRect(0, 0, 1200, 90, 30);
-    
-      const profile2 = scene.add.image(50, 50, "profile");
-      profile2.setScale(0.8);
+  let xInit = 1;
+  let yInit = 0;
+  let container = scene.add.container(0, 90).setSize(200, 1000);
+  const boxGeneral = scene.add.graphics();
+  boxGeneral.fillStyle(COLORS.blueDark, 0.5);
+  boxGeneral.fillRoundedRect(0, 0, 1200, 90, 30);
+  container.add(boxGeneral);
 
-      // const radioCirculo2 = Math.min(
-      //   profile2.displayWidth,
-      //   profile2.displayHeight
-      // ) / 2;
-      // const mascara2 = scene.make.graphics();
-      // mascara2.fillStyle(0xffffff); // Color blanco
-      // mascara2.fillCircle(profile2.x, profile2.y, radioCirculo2);
+  userList.map((user, index) => {
+    let container2 = scene.add.container(xInit, yInit);
 
-      // // Aplica la máscara a la imagen
-      // profile2.setMask(mascara2.createGeometryMask());
-        
+    const boxBg = scene.add.graphics();
+    boxBg.fillGradientStyle(0x03bed0, 0x03bed0, 0x03bed0, 0x03bed0, 1);
+    boxBg.fillRoundedRect(0, 0, 1200, 90, 30);
 
-    
+    const profile2 = scene.add.image(50, 50, "profile");
+    profile2.setScale(0.8);
 
- 
-
-      const name = scene.add.text(100, 10, "Alex Medranda", {
-        font: `32px gothic`,
-        fill: "#ffffff",
-        wordWrap: {
-          width: 200,
-        },
-        padding: {
-          x: 10,
-          y: 10,
-        },
-      });
-      const uni = scene.add.text(100, 50, "UNIVERSIDAD LAICA ELOY ALFARO DE MANABÍ", {
+    const name = scene.add.text(100, 10, user.name, {
+      font: `32px gothic`,
+      fill: "#ffffff",
+      wordWrap: {
+        width: 500,
+      },
+      padding: {
+        x: 10,
+        y: 10,
+      },
+    });
+    const uni = scene.add.text(
+      100,
+      50,
+      "UNIVERSIDAD LAICA ELOY ALFARO DE MANABÍ",
+      {
         font: `18px gothic`,
         fill: "#00051A",
         wordWrap: {
@@ -266,24 +267,27 @@ let createPanel = function (scene) {
           x: 10,
           y: 10,
         },
-      });
-      
-      const score = scene.add.text(800, 10, "1000", {
-        font: `32px gothic`,
-        fill: "#ffffff",
-        wordWrap: {
-          width: 200,
-        },
-        padding: {
-          x: 10,
-          y: 10,
-        },
-      });
-      container2.add(boxBg);
-      container2.add(profile2);
-      container2.add(name);
-      container2.add(uni);
-      container2.add(score);
-      container.add(container2);
+      }
+    );
+    const score = scene.add.text(800, 10, user.score, {
+      font: `32px gothic`,
+      fill: "#ffffff",
+      wordWrap: {
+        width: 200,
+      },
+      padding: {
+        x: 10,
+        y: 10,
+      },
+    });
+    container2.add(boxBg);
+    container2.add(profile2);
+    container2.add(name);
+    container2.add(uni);
+    container2.add(score);
+    yInit = yInit + 100;
+    container.add(container2);
+  });
+
   return container;
-}
+};

@@ -26,7 +26,10 @@ const preloadAdmistrativeRoom = (scene) => {
   scene.load.image("areaAdmin", `${path}administrative_room.png`);
   //paredes
   scene.load.image("muro", `${path}paredes/muro.png`);
-  scene.load.image("paredDerechaBotton",`${path}paredes/paredDerechaBotton.png`);
+  scene.load.image(
+    "paredDerechaBotton",
+    `${path}paredes/paredDerechaBotton.png`
+  );
   scene.load.image("paredDerechaTop", `${path}paredes/paredDerechaTop.png`);
   scene.load.image("paredes", `${path}paredes/paredes.png`);
   scene.load.image("paredLeft", `${path}paredes/paredLeft.png`);
@@ -36,7 +39,10 @@ const preloadAdmistrativeRoom = (scene) => {
   scene.load.image("paredMedioTop", `${path}paredes/paredMedioTop.png`);
   scene.load.image("paredRi", `${path}paredes/paredRi.png`);
   scene.load.image("paredSuperior", `${path}paredes/paredSuperior.png`);
-  scene.load.image("bordeSuperiorPuerta",`${path}paredes/bordeSuperiorPuerta.png`);
+  scene.load.image(
+    "bordeSuperiorPuerta",
+    `${path}paredes/bordeSuperiorPuerta.png`
+  );
   //
   scene.load.image("agua", `${path}agua.png`);
   scene.load.image("agua1", `${path}agua1.png`);
