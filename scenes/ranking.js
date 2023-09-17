@@ -167,20 +167,14 @@ export class Ranking extends Phaser.Scene {
         background: this.rexUI.add.roundRectangle({
           strokeColor: COLOR_DARK,
           radius: 10,
-      
         }),
-
-        
 
         panel: {
           child: createPanel(this),
           mask: { padding: 3 },
-
         },
 
-
         slider: {
-
           track: this.rexUI.add.roundRectangle({
             width: 20,
             radius: 10,
@@ -191,24 +185,27 @@ export class Ranking extends Phaser.Scene {
             radius: 13,
             color: COLOR_LIGHT,
           }),
-
         },
         header: this.rexUI.add.label({
           space: { left: 5, right: 5, top: 5, bottom: 5 },
-          background: this.rexUI.add.roundRectangle({ color: COLOR_PRIMARY }),
-          
-          text: this.add.text(0, 0, 'Header', { fontSize: 20 }
-          
-          )
-      }),
+          background: this.rexUI.add.roundRectangle({ color: COLOR_LIGHT }),
 
+          text: this.add.text(0, 0, "Header", { fontSize: 20 }),
+        }),
 
         mouseWheelScroller: {
           focus: false,
           speed: 0.1,
         },
 
-        space: { left: 20, right: 20, top: 20, bottom: 20, panel: 3, header: 10 },
+        space: {
+          left: 20,
+          right: 20,
+          top: 20,
+          bottom: 20,
+          panel: 3,
+          header: 10,
+        },
       })
       .layout();
 
@@ -225,34 +222,29 @@ export class Ranking extends Phaser.Scene {
   }
 }
 
-
 let createPanel = function (scene) {
   const userList = window.top10UserList;
   let xInit = 1;
   let yInit = 150;
   let container = scene.add.container();
-  const labelTopic = scene.add.text(400, 0,
-    ` The best Ranking  `, 
-    {
-   font: `64px gothic`,
-   fill: "#fff",
-   wordWrap: {
-     width: 500,
-   },
-   padding: {
-     x: 10,
-     y: 10,
-   },
- });
-container.add(labelTopic);
+  const labelTopic = scene.add.text(400, 0, ` The best Ranking  `, {
+    font: `64px gothic`,
+    fill: "#fff",
+    wordWrap: {
+      width: 500,
+    },
+    padding: {
+      x: 10,
+      y: 10,
+    },
+  });
+  container.add(labelTopic);
 
   const boxGeneral = scene.add.graphics();
   boxGeneral.fillStyle(COLORS.blueDark, 0.5);
   boxGeneral.fillRoundedRect(0, 100, 1200, 1200, 30);
   container.add(boxGeneral);
-  const labelName = scene.add.text(100, 100,
-     ` name/university  `, 
-     {
+  const labelName = scene.add.text(100, 100, ` name/university  `, {
     font: `32px gothic`,
     fill: "#fff",
     wordWrap: {
@@ -263,9 +255,7 @@ container.add(labelTopic);
       y: 10,
     },
   });
-  const labelScore = scene.add.text(800, 100,
-     ` Score  `, 
-     {
+  const labelScore = scene.add.text(800, 100, ` Score  `, {
     font: `32px gothic`,
     fill: "#fff",
     wordWrap: {
@@ -276,9 +266,7 @@ container.add(labelTopic);
       y: 10,
     },
   });
-  const labelPosition = scene.add.text(1050, 100,
-     ` Position  `, 
-     {
+  const labelPosition = scene.add.text(1050, 100, ` Position  `, {
     font: `32px gothic`,
     fill: "#fff",
     wordWrap: {
@@ -360,6 +348,6 @@ container.add(labelTopic);
     container2.add(profile2);
     container.add(container2);
   });
-container.setSize(200, yInit);
+  container.setSize(200, yInit);
   return container;
 };
