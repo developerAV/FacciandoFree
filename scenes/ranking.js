@@ -3,30 +3,23 @@ import { textButton } from "./module/textButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
 import { traslate } from "../data/dialogues.js";
 import { buttonLogout } from "./components/intro/buttonLogout.js";
+import { getTop10UserByScore } from "../services/user.js";
 
-const COLOR_PRIMARY = 0x4e342e;
 const COLOR_LIGHT = COLORS.blueDark;
 const COLOR_DARK = 0x03bed0;
-
-const userList = [
-  { name: "Alex s", score: 1000 },
-  { name: "Alex s", score: 1000 },
-  { name: "Alex sdsfa", score: 134234234000 },
-  { name: "Alex sadfasdfasd", score: 34234234 },
-  { name: "Alex s231", score: 5435 },
-  { name: "Alex s", score: 1000 },
-  { name: "Alex s", score: 123 },
-  { name: "Alex s", score: 1000 },
-  { name: "Alex s", score: 41234 },
-  { name: "Alex s", score: 1 },
-  { name: "Alex s", score: 2 },
-];
 
 export class Ranking extends Phaser.Scene {
   constructor() {
     super({ key: "ranking" });
   }
   preload() {
+    window.top10UserList.map((user) => {
+      this.textures.remove(user.idUserFirebase);
+      this.load.image(user.idUserFirebase, user.imageUrl);
+    });
+
+    this.load.image("profile", window.imageUrl);
+
     this.textures.remove("profile");
     this.load.image("profile", window.imageUrl);
     this.load.scenePlugin({
@@ -41,7 +34,7 @@ export class Ranking extends Phaser.Scene {
       "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/assets/fonts/gothic.xml"
     );
   }
-  create() {
+  async create() {
     const background2 = this.add.rectangle(
       this.cameras.main.width / 2, // Posición X centrada en la pantalla
       this.cameras.main.height / 2,
@@ -224,6 +217,7 @@ let CreateContent = function (linesCount) {
 };
 
 let createPanel = function (scene) {
+  const userList = window.top10UserList;
   let xInit = 1;
   let yInit = 0;
   let container = scene.add.container(0, 90).setSize(200, 1000);
@@ -239,7 +233,7 @@ let createPanel = function (scene) {
     boxBg.fillGradientStyle(0x03bed0, 0x03bed0, 0x03bed0, 0x03bed0, 1);
     boxBg.fillRoundedRect(0, 0, 1200, 90, 30);
 
-    const profile2 = scene.add.image(50, 50, "profile");
+    const profile2 = scene.add.image(50, 45, user.idUserFirebase);
     profile2.setScale(0.8);
 
     const name = scene.add.text(100, 10, user.name, {
@@ -280,12 +274,24 @@ let createPanel = function (scene) {
         y: 10,
       },
     });
+    const position = scene.add.text(1100, 10, index + 1, {
+      font: `32px gothic`,
+      fill: "#ffffff",
+      wordWrap: {
+        width: 200,
+      },
+      padding: {
+        x: 10,
+        y: 10,
+      },
+    });
     container2.add(boxBg);
-    container2.add(profile2);
     container2.add(name);
     container2.add(uni);
     container2.add(score);
+    container2.add(position);
     yInit = yInit + 100;
+    container2.add(profile2);
     container.add(container2);
   });
 
