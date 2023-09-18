@@ -154,6 +154,26 @@ export class Ranking extends Phaser.Scene {
     const logoutButton = buttonLogout(this);
     const btnLanguage = this.add.image(1537, 70, "language").setScale(0.4);
     buttonEnglish(btnLanguage, this);
+  
+
+
+//The best ranking
+//name/university Score  Position
+
+
+
+const boxScroll = this.add.graphics();
+boxScroll.fillStyle(COLORS.blueDark, 0.9);
+boxScroll.fillRoundedRect(150, 200, 1300, 118, 10);
+// boxScroll.fillStyle(0); // Color base (no importa el color, se reemplazará por el degradado)
+
+
+//   // Agregar el degradado horizontal
+//   boxScroll.fillGradientStyle(-20, COLORS.blueDark, -20, COLORS.blueDark, 1,0.5,0.5);
+
+//   // Dibujar el rectángulo con degradado
+//   boxScroll.fillRect(150, 200, 1300, 118); 
+
 
     let scrollablePanel = this.rexUI.add
       .scrollablePanel({
@@ -168,15 +188,17 @@ export class Ranking extends Phaser.Scene {
           strokeColor: COLOR_DARK,
           radius: 10,
         }),
-
+  
         panel: {
           child: createPanel(this),
           mask: { padding: 3 },
+       
         },
 
         slider: {
           track: this.rexUI.add.roundRectangle({
             width: 20,
+          
             radius: 10,
             color: COLOR_DARK,
             alpha: 0.5,
@@ -185,30 +207,47 @@ export class Ranking extends Phaser.Scene {
             radius: 13,
             color: COLOR_LIGHT,
           }),
-        },
+          space: {  
+            top: 20,
+            right: 20,
+            left: 20,
+          },
+          
+        },  
         header: this.rexUI.add.label({
-          space: { left: 5, right: 5, top: 5, bottom: 5 },
-          background: this.rexUI.add.roundRectangle({ color: COLOR_LIGHT }),
-
-          text: this.add.text(0, 0, "Header", { fontSize: 20 }),
+          width: 50,
+          height: 100,
+          orientation: 0,
+         
+          alpha: 0.5,
+          text: this.add.text(650, 0, "The best Ranking " , {
+            font: `64px arial`,
+            fill: "#fff",
+            //justificado
+            align: "center",
+            wordWrap: { width: 800 },
+            padding: { x: 350, y: 0 },
+            },
+            ),
+         
         }),
 
         mouseWheelScroller: {
           focus: false,
           speed: 0.1,
         },
-
-        space: {
-          left: 20,
-          right: 20,
+    space: {
+          left: 40,
+            right: 0,
           top: 20,
           bottom: 20,
           panel: 3,
-          header: 10,
+          
         },
+     
       })
       .layout();
-
+ 
     this.updateScene = () => {
       logoutButton.setText(traslate("logout"));
       name.setText(window.name);
@@ -225,27 +264,27 @@ export class Ranking extends Phaser.Scene {
 let createPanel = function (scene) {
   const userList = window.top10UserList;
   let xInit = 1;
-  let yInit = 150;
+  let yInit = 100;
   let container = scene.add.container();
-  const labelTopic = scene.add.text(400, 0, ` The best Ranking  `, {
-    font: `64px gothic`,
-    fill: "#fff",
-    wordWrap: {
-      width: 500,
-    },
-    padding: {
-      x: 10,
-      y: 10,
-    },
-  });
-  container.add(labelTopic);
+  // const labelTopic = scene.add.text(400, 0, ` The best Ranking  `, {
+  //   font: `64px arial`,
+  //   fill: "#fff",
+  //   wordWrap: {
+  //     width: 500,
+  //   },
+  //   padding: {
+  //     x: 10,
+  //     y: 10,
+  //   },
+  // });
+  // container.add(labelTopic);
 
   const boxGeneral = scene.add.graphics();
   boxGeneral.fillStyle(COLORS.blueDark, 0.5);
-  boxGeneral.fillRoundedRect(0, 100, 1200, 1200, 30);
+  boxGeneral.fillRoundedRect(0, 50, 1200, 1200, 30);
   container.add(boxGeneral);
-  const labelName = scene.add.text(100, 100, ` name/university  `, {
-    font: `32px gothic`,
+  const labelName = scene.add.text(100, 50, ` name/university  `, {
+    font: `32px arial`,
     fill: "#fff",
     wordWrap: {
       width: 500,
@@ -255,8 +294,8 @@ let createPanel = function (scene) {
       y: 10,
     },
   });
-  const labelScore = scene.add.text(800, 100, ` Score  `, {
-    font: `32px gothic`,
+  const labelScore = scene.add.text(800, 50, ` Score  `, {
+    font: `32px arial`,
     fill: "#fff",
     wordWrap: {
       width: 500,
@@ -266,8 +305,8 @@ let createPanel = function (scene) {
       y: 10,
     },
   });
-  const labelPosition = scene.add.text(1050, 100, ` Position  `, {
-    font: `32px gothic`,
+  const labelPosition = scene.add.text(1050, 50, ` Position  `, {
+    font: `32px arial`,
     fill: "#fff",
     wordWrap: {
       width: 500,
@@ -284,15 +323,16 @@ let createPanel = function (scene) {
     let container2 = scene.add.container(xInit, yInit);
 
     const boxBg = scene.add.graphics();
-    boxBg.fillGradientStyle(0x03bed0, 0x03bed0, 0x03bed0, 0x03bed0, 1);
-    boxBg.fillRoundedRect(0, 0, 1200, 90, 30);
+    // boxBg.fillGradientStyle(-559, 0x03bed0, -1, 0x03bed0, 1,1,0.8);
+    boxBg.fillGradientStyle(COLORS.blue, COLORS.blue, 0x054294, 0x054294, 0.9,1,0.8);
+    boxBg.fillRect(0, 0, 1200, 90);
 
     const profile2 = scene.add.image(50, 45, user.idUserFirebase);
     profile2.setScale(0.8);
 
     const name = scene.add.text(100, 10, user.name, {
-      font: `32px gothic`,
-      fill: "#ffffff",
+      font: `32px arial`,
+      fill: "#fff",
       wordWrap: {
         width: 500,
       },
@@ -306,8 +346,8 @@ let createPanel = function (scene) {
       50,
       "UNIVERSIDAD LAICA ELOY ALFARO DE MANABÍ",
       {
-        font: `18px gothic`,
-        fill: "#00051A",
+        font: `14px arial`,
+        fill: "#fff",
         wordWrap: {
           width: 600,
         },
@@ -318,7 +358,7 @@ let createPanel = function (scene) {
       }
     );
     const score = scene.add.text(800, 10, user.score, {
-      font: `32px gothic`,
+      font: `32px arial`,
       fill: "#ffffff",
       wordWrap: {
         width: 200,
@@ -329,7 +369,7 @@ let createPanel = function (scene) {
       },
     });
     const position = scene.add.text(1100, 10, index + 1, {
-      font: `32px gothic`,
+      font: `32px arial`,
       fill: "#ffffff",
       wordWrap: {
         width: 200,

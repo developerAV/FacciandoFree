@@ -23,7 +23,7 @@ export const loginGoogle = async (escena) => {
 
     window.userId = credentials.uid;
     window.listLevel = await getAllLevels();
-    console.log(window.listLevel);
+    // console.log(window.listLevel);
     //window.user = await getUserFirebase(window.userId);
 
     escena.scene.start("intro");
