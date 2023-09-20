@@ -1,11 +1,22 @@
 import { blurButton } from "./module/blurButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
+import { traslate } from "../data/dialogues.js";
 export class Login extends Phaser.Scene {
   constructor() {
     super({ key: "login" });
   }
 
   preload() {
+    this.load.plugin(
+      "rexinputtextplugin",
+      "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexinputtextplugin.min.js",
+      true
+    );
+    this.load.scenePlugin({
+      key: "rexuiplugin",
+      url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
+      sceneKey: "rexUI",
+    });
     this.load.image("background", "assets/images/intro/facci.png");
     this.load.image("googleES", "assets/images/login/google2.png");
     this.load.image("googleEN", "assets/images/login/google3.png");
@@ -65,5 +76,36 @@ export class Login extends Phaser.Scene {
     this.updateScene = () => {
       this.languages(window.lan);
     };
+
+    this.add.text(10, 10, "Enter your name:", {
+      font: "32px Courier",
+      fill: "#ffffff",
+    });
+
+    const textEntry1 = this.add.text(10, 50, "Nombre", {
+      font: "32px Courier",
+      fill: "#ffff00",
+    });
+    this.textEntry2 = this.add.text(10, 100, "Uidad", {
+      font: "32px Courier",
+      fill: "#ffff00",
+    });
+    changeText(textEntry1, this);
+    changeText(this.textEntry2, this);
   }
+  update() {}
 }
+
+const changeText = (textEntry, scene) => {
+  scene.input.keyboard.on("keydown", (event) => {
+    if (event.keyCode === 8 && textEntry.text.length > 0) {
+      textEntry.text = textEntry.text.substr(0, textEntry.text.length - 1);
+    } else if (
+      event.keyCode === 32 ||
+      (event.keyCode >= 48 && event.keyCode < 90)
+    ) {
+      textEntry.text += event.key;
+    }
+    scene.dialogs(textEntry.text);
+  });
+};
