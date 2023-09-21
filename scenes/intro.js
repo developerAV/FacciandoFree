@@ -172,6 +172,8 @@ export class Intro extends Phaser.Scene {
       completed,
       scoreLabel,
       timeLabel,
+      timeText,
+      scoreText,
     } = await detailsGamer(this);
 
     const { modeText1, modeText2, modePrimary, modeSecondary } = buttonsMode(
@@ -197,9 +199,10 @@ export class Intro extends Phaser.Scene {
       descriptionLabel.setText(traslate("description"));
       description.setText(traslate("descriptionMission"));
       completed.setText(traslate(window.completedMission ?? "incomplete"));
-      scoreLabel.setText(traslate("scoreMission"));
-      timeLabel.setText(traslate("time"));
-
+      scoreLabel.setText(traslate("missionScore") + ": ");
+      timeLabel.setText(traslate("time") + ": ");
+      timeText.setPosition(window.lan == "en" ? 100 : 170, 380);
+      scoreText.setPosition(window.lan == "en" ? 200 : 260, 322);
       return;
     };
     this.updateScene();
