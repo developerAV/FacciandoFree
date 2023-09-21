@@ -8,8 +8,8 @@ export class Login extends Phaser.Scene {
 
   preload() {
     this.load.plugin(
-      "rexinputtextplugin",
-      "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexinputtextplugin.min.js",
+      "rexhiddeninputtextplugin",
+      "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexhiddeninputtextplugin.min.js",
       true
     );
     this.load.scenePlugin({
@@ -76,22 +76,25 @@ export class Login extends Phaser.Scene {
     this.updateScene = () => {
       this.languages(window.lan);
     };
-
-    this.add.text(10, 10, "Enter your name:", {
-      font: "32px Courier",
-      fill: "#ffffff",
+    var textObject = this.add.text(300, 200, "", {
+      fixedWidth: 300,
+      fixedHeight: 200,
+      backgroundColor: "#222222",
     });
 
-    const textEntry1 = this.add.text(10, 50, "Nombre", {
-      font: "32px Courier",
-      fill: "#ffff00",
+    this.plugins.get("rexhiddeninputtextplugin").add(textObject, {
+      enterClose: false,
+
+      onOpen(textObject) {
+        textObject.setBackgroundColor("#555555");
+      },
+
+      onClose(textObject) {
+        textObject.setBackgroundColor("#222222");
+      },
     });
-    this.textEntry2 = this.add.text(10, 100, "Uidad", {
-      font: "32px Courier",
-      fill: "#ffff00",
-    });
-    changeText(textEntry1, this);
-    changeText(this.textEntry2, this);
+
+    this.add.text(0, 580, "Click text to edit it");
   }
   update() {}
 }
