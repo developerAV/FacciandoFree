@@ -41,7 +41,7 @@ export class Loading extends Phaser.Scene {
     video.setBlendMode(Phaser.BlendModes.NORMAL);
     video.play(true);
     // Puedes personalizar el mensaje y la barra de progreso según tus necesidades.
-    this.avatar = new Avatar(this, 250, 1000, 3);
+    // this.avatar = new Avatar(this, 250, 1000, 3);
     // list for auth state changes
     onAuthStateChanged(auth, async (user) => {
       if (user) {
@@ -65,13 +65,18 @@ export class Loading extends Phaser.Scene {
         );
 
         window.missionSelect = window.user.actualMission ?? 1;
+        
         this.scene.start("intro");
         video.destroy();
       } else {
         this.time.delayedCall(
           1000,
           () => {
+            
+
+
             this.scene.start("login");
+            
             video.destroy();
           },
           [],
@@ -85,6 +90,6 @@ export class Loading extends Phaser.Scene {
     //
   }
   update() {
-    this.avatar.moveTo(0, 200, "right");
+    // this.avatar.moveTo(0, 200, "right");
   }
 }

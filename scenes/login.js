@@ -5,25 +5,20 @@ export class Login extends Phaser.Scene {
   constructor() {
     super({ key: "login" });
   }
-
   preload() {
-    this.load.plugin(
-      "rexinputtextplugin",
-      "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexinputtextplugin.min.js",
-      true
-    );
-    this.load.scenePlugin({
-      key: "rexuiplugin",
-      url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
-      sceneKey: "rexUI",
-    });
+    
+    this.load.plugin('rexcanvasinputplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexcanvasinputplugin.min.js', true);
+  
     this.load.image("background", "assets/images/intro/facci.png");
     this.load.image("googleES", "assets/images/login/google2.png");
     this.load.image("googleEN", "assets/images/login/google3.png");
     this.load.image("facciando2", "assets/images/intro/Facciando2.png");
+    this.load.image("confirm", "assets/images/login/confirm.png");
+    this.load.image("save", "assets/images/login/save.png");
   }
 
   create() {
+    
     const background2 = this.add.rectangle(
       this.cameras.main.width / 2, // Posición X centrada en la pantalla
       this.cameras.main.height / 2, // Posición Y centrada en la pantalla
@@ -77,35 +72,111 @@ export class Login extends Phaser.Scene {
       this.languages(window.lan);
     };
 
-    this.add.text(10, 10, "Enter your name:", {
-      font: "32px Courier",
-      fill: "#ffffff",
-    });
 
-    const textEntry1 = this.add.text(10, 50, "Nombre", {
-      font: "32px Courier",
-      fill: "#ffff00",
-    });
-    this.textEntry2 = this.add.text(10, 100, "Uidad", {
-      font: "32px Courier",
-      fill: "#ffff00",
-    });
-    changeText(textEntry1, this);
-    changeText(this.textEntry2, this);
+    // var txt0 = CreateCanvasInput(this, 'Apple012345678901234567890123456789').setPosition(400, 100)
+    // var txt1 = CreateCanvasInput(this, 'A').setPosition(400, 200).appendText('pple')
+    // var txt2 = CreateCanvasInput(this, 'Apple').setPosition(400, 300).setReadOnly()
+    // var txt3 = CreateCanvasInput(this, 'Apple', 100).setPosition(100, 400).setOrigin(0)
+
+
+  
+  // const textEntry1 = this.add.text(-350, -150, "Nombre", {
+  //   font: "50px Arial",
+  //   fill: "#ffff00",
+  // });
+  
+ 
+  const boxEntry = this.add.container(800, 500);
+  const confirm = this.add.image(0, 0, "confirm").setScale(1);  
+ this.txt0 = CreateCanvasInput(this, 'Name',730).setPosition(0, -110);
+ this.txt1 = CreateCanvasInput(this, 'Name',730).setPosition(0, 38);
+ const buttonSave = this.add.image(0, 200, "save").setScale(1);
+ this.textSave = this.add.text(-50, 160, "Save", {
+  font: "50px Arial",
+  fill: "#fff",
+});
+
+
+
+
+  boxEntry.add(confirm);
+  boxEntry.add(this.txt0);
+  boxEntry.add(this.txt1);
+  boxEntry.add(buttonSave);
+  boxEntry.add(this.textSave);
+  boxEntry.visible = false;
+  buttonSave.setInteractive();
+  buttonSave.on("pointerdown", () => {
+    console.log(this.txt0.text);
+    console.log(this.txt1.text);
+  });
+  
+  
+        // poner cursor en el input textEntry1
+  
+
+   
+
+    // this.textEntry2 = this.add.text(10, 100, "Uidad", {
+    //   font: "32px Courier",
+    //   fill: "#ffff00",
+    // });
+    // changeText(textEntry1, this);
+    // changeText(this.textEntry2, this);
+   
   }
-  update() {}
+  update() { 
+
+ //space
+
+  }
 }
 
-const changeText = (textEntry, scene) => {
-  scene.input.keyboard.on("keydown", (event) => {
-    if (event.keyCode === 8 && textEntry.text.length > 0) {
-      textEntry.text = textEntry.text.substr(0, textEntry.text.length - 1);
-    } else if (
-      event.keyCode === 32 ||
-      (event.keyCode >= 48 && event.keyCode < 90)
-    ) {
-      textEntry.text += event.key;
-    }
-    scene.dialogs(textEntry.text);
-  });
-};
+
+let CreateCanvasInput = function (scene, text, width) {
+  if (width === undefined) {
+      width = 600;
+  }
+  const entry= scene.add.rexCanvasInput(
+      {
+          width: width,
+
+          background: {
+              // Solution A
+              'focus.stroke': 'white',
+          },
+          // Solution B
+          // focusStyle: {
+          //     stroke: 'red',
+          // },
+
+          style: {
+              fontSize: 100,
+              backgroundBottomY: 5,
+              backgroundHeight: 24,
+           
+
+
+              // Solution A
+              'cursor.color': 'black',
+              'cursor.backgroundColor': 'white',
+          },
+          // Solution B
+          // cursorStyle: {
+          //     color: 'black',
+          //     backgroundColor: 'white'
+          // },
+          
+// 
+          childrenInteractive: true,
+          // inputType: 'text', 
+          text: text,
+          cursorStyle: 'vertical', // 'vertical'|'horizontal'|'none'|undefined
+          selectAll: true
+
+      }
+  )
+  
+
+  return entry;
+}
