@@ -117,35 +117,23 @@ const traslateIntro = {
     es: "No",
     en: "No",
   },
-
-
 };
 
 export const traslate = (key) => {
+  if (typeof key === "boolean") {
+    return key
+      ? traslateIntro.completed[window.lan]
+      : traslateIntro.incomplete[window.lan];
+  }
+
   if (key === "missionName") {
-    return window.listMissions[window.user.actualMission - 1]?.name[window.lan];
+    return window.missionVisibleBox?.name[window.lan];
   }
   if (key === "descriptionMission") {
-    return window.listMissions[window.user.actualMission - 1]?.description[
-      window.lan
-    ];
+    return window.missionVisibleBox?.description[window.lan];
   }
   if (key === "actualLevel") {
     return window.listLevel[window.user.actualLevel - 1]?.name[window.lan];
-  }
-  if (key === "scoreMission") {
-    return (
-      traslateIntro.missionScore[window.lan] +
-      ": " +
-      window.listMissions[window.user.actualMission - 1]?.score
-    );
-  }
-  if (key === "time") {
-    return (
-      traslateIntro.time[window.lan] +
-      ": " +
-      window.listMissions[window.missionSelect - 1]?.time
-    );
   }
 
   if (traslateIntro[key] === undefined) {

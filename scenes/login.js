@@ -1,11 +1,22 @@
 import { blurButton } from "./module/blurButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
+import { traslate } from "../data/dialogues.js";
 export class Login extends Phaser.Scene {
   constructor() {
     super({ key: "login" });
   }
 
   preload() {
+    this.load.plugin(
+      "rexhiddeninputtextplugin",
+      "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexhiddeninputtextplugin.min.js",
+      true
+    );
+    this.load.scenePlugin({
+      key: "rexuiplugin",
+      url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
+      sceneKey: "rexUI",
+    });
     this.load.image("background", "assets/images/intro/facci.png");
     this.load.image("googleES", "assets/images/login/google2.png");
     this.load.image("googleEN", "assets/images/login/google3.png");
@@ -65,5 +76,39 @@ export class Login extends Phaser.Scene {
     this.updateScene = () => {
       this.languages(window.lan);
     };
+    var textObject = this.add.text(300, 200, "", {
+      fixedWidth: 300,
+      fixedHeight: 200,
+      backgroundColor: "#222222",
+    });
+
+    this.plugins.get("rexhiddeninputtextplugin").add(textObject, {
+      enterClose: false,
+
+      onOpen(textObject) {
+        textObject.setBackgroundColor("#555555");
+      },
+
+      onClose(textObject) {
+        textObject.setBackgroundColor("#222222");
+      },
+    });
+
+    this.add.text(0, 580, "Click text to edit it");
   }
+  update() {}
 }
+
+const changeText = (textEntry, scene) => {
+  scene.input.keyboard.on("keydown", (event) => {
+    if (event.keyCode === 8 && textEntry.text.length > 0) {
+      textEntry.text = textEntry.text.substr(0, textEntry.text.length - 1);
+    } else if (
+      event.keyCode === 32 ||
+      (event.keyCode >= 48 && event.keyCode < 90)
+    ) {
+      textEntry.text += event.key;
+    }
+    scene.dialogs(textEntry.text);
+  });
+};

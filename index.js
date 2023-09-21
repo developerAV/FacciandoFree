@@ -1,4 +1,3 @@
-
 import { Loading } from "./scenes/loading.js";
 import { Login } from "./scenes/login.js";
 import { Intro } from "./scenes/intro.js";
@@ -14,10 +13,6 @@ import { Cubicle } from "./scenes/cubicle.js";
 import { Auditorium2 } from "./scenes/auditoruim2.js";
 import { Ranking } from "./scenes/ranking.js";
 import { AvatarS } from "./scenes/avatar.js";
-
-
-
-
 
 const config = {
   type: Phaser.AUTO,
@@ -46,6 +41,9 @@ const config = {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
+  dom: {
+    createContainer: true,
+  },
   physics: {
     default: "arcade",
     arcade: {
@@ -58,4 +56,4 @@ window.isMobile = /iPhone|iPad|iPod|Android/i.test(window.navigator.userAgent);
 window.lan = "en";
 const game = new Phaser.Game(config);
 
-game.scene.start()
+game.scene.start();
