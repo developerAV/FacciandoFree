@@ -67,6 +67,21 @@ export const postUser = async (user) => {
   return data;
 };
 
+export const putUser = async (user) => {
+  const newUser = await fetch(
+    `https://server-api-kuoy-dev.fl0.io/facciando/user/${user._id}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: user.name,
+        school: user.school,
+        
+      }),
+    }
+  )};
 export const getTop10UserByScore = async () => {
   try {
     const response = await fetch(`${URI_API}/user/top10`);

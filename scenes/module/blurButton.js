@@ -38,7 +38,7 @@ export const blurButton = (boton, escena) => {
     if (boton.name === "music") {
       return;
     }
-    if (boton.name === "googleEN" || boton.name === "googleES") {
+    if (boton.name === "google") {
       window.hook = false;
       loginGoogle(escena);
       return;

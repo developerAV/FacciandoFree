@@ -115,7 +115,7 @@ export class Intro extends Phaser.Scene {
       this,
       120,
       30,
-      window.name,
+      window.user.name ,
       COLORS.grayDark,
       FONT_SIZE.small
     );
@@ -185,7 +185,7 @@ export class Intro extends Phaser.Scene {
     this.updateScene = () => {
       playText.setText(traslate("start"));
       logoutButton.setText(traslate("logout"));
-      name.setText(window.name);
+      name.setText(window.user.name );
       home.setText(traslate("home"));
       ranked.setText(traslate("ranking"));
       avatar.setText(traslate("avatar"));

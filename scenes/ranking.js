@@ -344,7 +344,7 @@ let createPanel = function (scene) {
     const uni = scene.add.text(
       100,
       50,
-      "UNIVERSIDAD LAICA ELOY ALFARO DE MANABÍ",
+      user.school ?? "No school",
       {
         font: `14px arial`,
         fill: "#fff",
