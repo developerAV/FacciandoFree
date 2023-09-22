@@ -32,7 +32,7 @@ export const textButton = (
     font: `${fontSize} ${FONT}`,
     fill: "#ffffff",
     wordWrap: {
-      width: 200, // Ajusta este valor para definir el límite de ancho
+      width: 300, // Ajusta este valor para definir el límite de ancho
     },
     padding: {
       x: 10,

@@ -117,6 +117,26 @@ const traslateIntro = {
     es: "No",
     en: "No",
   },
+  name: {
+    es: "Nombre",
+    en: "Name",
+  },
+  school: {
+    es: "Escuela",
+    en: "School",
+  },
+  save: {
+    es: "Guardar",
+    en: "Save",
+  },
+  editProfile: {
+    es: "Editar perfil",
+    en: "Edit profile",
+  },
+  voiceSpeak: {
+    es: "Spanish Latin American Male",
+    en: "US English Male",
+  },
 };
 
 export const traslate = (key) => {

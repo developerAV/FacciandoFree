@@ -43,6 +43,7 @@ export class Loading extends Phaser.Scene {
     // Puedes personalizar el mensaje y la barra de progreso según tus necesidades.
     // this.avatar = new Avatar(this, 250, 1000, 3);
     // list for auth state changes
+    
     onAuthStateChanged(auth, async (user) => {
       if (user) {
         window.userId = user.uid;
@@ -64,16 +65,28 @@ export class Loading extends Phaser.Scene {
         );
 
         window.missionSelect = window.user.actualMission ?? 1;
-        
-        this.scene.start("intro");
-        video.destroy();
+       if (!window.stateLogin){
+
+        if(!window.user.school){
+          console.log("no tiene escuela");
+          this.scene.start("question");
+          return;
+        }else{
+          this.scene.start("intro");
+          console.log("tiene escuela");
+        }
+
+
+
+        }
       } else {
         this.time.delayedCall(
           1000,
           () => {
             
+            console.log("start login");
 
-
+           
             this.scene.start("login");
             
             video.destroy();

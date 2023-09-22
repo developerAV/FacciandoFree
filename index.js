@@ -13,6 +13,7 @@ import { Cubicle } from "./scenes/cubicle.js";
 import { Auditorium2 } from "./scenes/auditoruim2.js";
 import { Ranking } from "./scenes/ranking.js";
 import { AvatarS } from "./scenes/avatar.js";
+import { Question } from "./scenes/question.js";
 
 const config = {
   type: Phaser.AUTO,
@@ -23,6 +24,7 @@ const config = {
   scene: [
     Loading,
     Login,
+    Question,
     Intro,
     Aula,
     ComputerRoom,
@@ -41,9 +43,7 @@ const config = {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH,
   },
-  dom: {
-    createContainer: true,
-  },
+
   physics: {
     default: "arcade",
     arcade: {
