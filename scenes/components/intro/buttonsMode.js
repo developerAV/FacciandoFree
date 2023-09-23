@@ -3,8 +3,9 @@ import { COLORS, FONT_SIZE } from "../../../utils/constants.js";
 import { textButton } from "../../module/textButton.js";
 import { swapButtonPositionsLan } from "../../module/swapButtonPositions.js";
 
-export const buttonsMode = (scene, box, boxGamer) => {
+export const buttonsMode = (scene, box, boxGamer, boxScore) => {
   boxGamer.setVisible(false);
+  boxScore.setVisible(false);
   const mode = scene.add
     .image(1412, 550, "mode")
     .setScale(0.75)
@@ -69,6 +70,7 @@ export const buttonsMode = (scene, box, boxGamer) => {
       scene.mode2 = gameModeSecondary;
       box.setVisible(boxVisible);
       boxGamer.setVisible(!boxVisible);
+      boxScore.setVisible(!boxVisible);
       swapButtonPositionsLan(scene, mode, mode2);
       mode.setScale(gameMode === "exploration" ? 1 : 0.7);
       mode2.setScale(gameMode === "exploration" ? 0.7 : 1);
