@@ -8,12 +8,18 @@ import { buttonsMode } from "./components/intro/buttonsMode.js";
 import { news } from "./components/intro/news.js";
 import { detailsGamer } from "./components/intro/detailsGamer.js";
 import { getTop10UserByScore } from "../services/user.js";
+import { scoreUser } from "./components/intro/scoreUser.js";
 
 export class Intro extends Phaser.Scene {
   constructor() {
     super({ key: "intro" });
   }
   preload() {
+    this.load.plugin(
+      "rexlineprogresscanvasplugin",
+      "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexlineprogresscanvasplugin.min.js",
+      true
+    );
     this.textures.remove("profile");
     this.load.image("profile", window.imageUrl);
     this.load.scenePlugin({
@@ -115,7 +121,7 @@ export class Intro extends Phaser.Scene {
       this,
       120,
       30,
-      window.user.name ,
+      window.user.name,
       COLORS.grayDark,
       FONT_SIZE.small
     );
@@ -194,17 +200,19 @@ export class Intro extends Phaser.Scene {
       timeText,
       scoreText,
     } = await detailsGamer(this);
+    const { boxScore, scoreUserLabel } = await scoreUser(this);
 
     const { modeText1, modeText2, modePrimary, modeSecondary } = buttonsMode(
       this,
       box,
-      boxGamer
+      boxGamer,
+      boxScore
     );
 
     this.updateScene = () => {
       playText.setText(traslate("start"));
       logoutButton.setText(traslate("logout"));
-      name.setText(window.user.name );
+      name.setText(window.user.name);
       home.setText(traslate("home"));
       ranked.setText(traslate("ranking"));
       avatar.setText(traslate("avatar"));
@@ -222,6 +230,7 @@ export class Intro extends Phaser.Scene {
       timeLabel.setText(traslate("time") + ": ");
       timeText.setPosition(window.lan == "en" ? 100 : 170, 380);
       scoreText.setPosition(window.lan == "en" ? 200 : 260, 322);
+      scoreUserLabel.setText(traslate("score"));
       return;
     };
     this.updateScene();
