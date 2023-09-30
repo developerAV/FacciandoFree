@@ -60,7 +60,6 @@ export const crearVideo = (mensaje, videoFile, scene, keyZoom) => {
         efectoEsc.remove(); // Detener el efecto de escritura
         scene.avatar.avatarUpdateActivo = true;
 
-        console.log(indice);
         indice = 0;
         // video.destroy();
         if (keyZoom) {

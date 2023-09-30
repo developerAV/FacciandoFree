@@ -8,7 +8,6 @@ export class Login extends Phaser.Scene {
     super({ key: "login" });
   }
   preload() {
-  
     this.load.image("background", "assets/images/intro/facci.png");
     this.load.image("googleES", "assets/images/login/google2.png");
     this.load.image("googleEN", "assets/images/login/google3.png");
@@ -42,44 +41,27 @@ export class Login extends Phaser.Scene {
     //letras facciando2
     this.add.image(800, 100, "facciando2").setScale(1);
 
-   
-
     const googleButton = this.add.image(800, 500, "googleEN");
 
     googleButton.setName("google");
 
-
-
     this.languages = (lan) => {
       if (lan === "es") {
-
-
-        googleButton.setTexture("googleES")
-        .setScale(0.13);
+        googleButton.setTexture("googleES").setScale(0.13);
 
         return;
       }
 
-      googleButton.setTexture("googleEN")
-      .setScale(0.1);
-
+      googleButton.setTexture("googleEN").setScale(0.1);
     };
 
     blurButton(googleButton, this);
-  //   googleButton.setInteractive();
-  //   googleButton.on("pointerdown", function () {
-  //     window.hook = false;
-  // loginGoogle(this);
+    //   googleButton.setInteractive();
+    //   googleButton.on("pointerdown", function () {
+    //     window.hook = false;
+    // loginGoogle(this);
 
-
-     
-
-
-  //   });
-
-
-
-
+    //   });
 
     const btnLanguage = this.add.image(1537, 70, "language").setScale(0.4);
     btnLanguage.setInteractive();
@@ -91,28 +73,17 @@ export class Login extends Phaser.Scene {
       this.languages(window.lan);
     };
 
-
     // var txt0 = CreateCanvasInput(this, 'Apple012345678901234567890123456789').setPosition(400, 100)
     // var txt1 = CreateCanvasInput(this, 'A').setPosition(400, 200).appendText('pple')
     // var txt2 = CreateCanvasInput(this, 'Apple').setPosition(400, 300).setReadOnly()
     // var txt3 = CreateCanvasInput(this, 'Apple', 100).setPosition(100, 400).setOrigin(0)
 
+    // const textEntry1 = this.add.text(-350, -150, "Nombre", {
+    //   font: "50px Arial",
+    //   fill: "#ffff00",
+    // });
 
-  
-  // const textEntry1 = this.add.text(-350, -150, "Nombre", {
-  //   font: "50px Arial",
-  //   fill: "#ffff00",
-  // });
-  
-
-
-
-
-  
-        // poner cursor en el input textEntry1
-  
-
-   
+    // poner cursor en el input textEntry1
 
     // this.textEntry2 = this.add.text(10, 100, "Uidad", {
     //   font: "32px Courier",
@@ -120,13 +91,8 @@ export class Login extends Phaser.Scene {
     // });
     // changeText(textEntry1, this);
     // changeText(this.textEntry2, this);
-   
   }
-  update() { 
-
- //space
-
+  update() {
+    //space
   }
 }
-
-

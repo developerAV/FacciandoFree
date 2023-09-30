@@ -85,10 +85,7 @@ export class Loading extends Phaser.Scene {
           () => {
             
             console.log("start login");
-
-           
-            this.scene.start("login");
-            
+            this.scene.start("login")
             video.destroy();
           },
           [],
