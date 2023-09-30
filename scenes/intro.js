@@ -162,6 +162,25 @@ export class Intro extends Phaser.Scene {
     avatar.on("pointerdown", () => {
       this.scene.start("avatarS");
     });
+    const ava = this.add.image(1000, 600, "ava").setScale(0.6);
+    const ava2 = this.add.image(1000, 600, "ava2").setScale(0.6);
+
+    let currentImage = ava;
+
+    setInterval(() => {
+      if (currentImage === ava) {
+        currentImage = ava2;
+      } else {
+        currentImage = ava;
+      }
+      
+      currentImage.setVisible(true);
+      if (currentImage === ava2) {
+        ava.setVisible(false);
+      } else {
+        ava2.setVisible(false);
+      }
+    }, 3000);
 
     const logoutButton = buttonLogout(this);
     const btnLanguage = this.add.image(1537, 70, "language").setScale(0.4);
