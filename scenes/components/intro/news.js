@@ -99,7 +99,6 @@ export const news = (
   });
 
   function escribirTexto() {
-    console.log("escribirTexto");
     if (lan !== window.lan || keyMessageOLD !== keyMessage) {
       keyMessageOLD = keyMessage;
       lan = window.lan;
