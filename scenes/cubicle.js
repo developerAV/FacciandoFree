@@ -8,6 +8,7 @@ import { traslate } from "../data/dialogues.js";
 import { crearVideo } from "./module/videoInfo.js";
 import { crearCard } from "./module/card.js";
 import { getEmployees } from "../services/employee.js";
+import {buttonCircle} from "../scenes/components/common/buttonCircle.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -118,12 +119,13 @@ export class Cubicle extends Phaser.Scene {
 
     crearPlataforma(1502, 492, "escritoriosC", plataformas);
 
+    let escritorioD = crearPlataforma(1005, 611, "escritoriosD", plataformas);
     crearPlataforma(690, 947, "paredPuertaSur", plataformas);
     crearPlataforma(761, 796, "paredPuertaDer", plataformas);
     crearPlataforma(871, 829, "paredEscalera", plataformas);
-
+    
     crearPlataforma(1589, 423, "paredDer", plataformas);
-    crearPlataforma(877, 860, "escalera", plataformas);
+   let escaleraX= crearPlataforma(877, 860, "escalera", plataformas);
     crearPlataforma(156, 146, "anaquel", plataformas);
     crearPlataforma(480, 146, "anaquel", plataformas);
     crearPlataforma(680, 146, "anaquel", plataformas);
@@ -144,14 +146,13 @@ export class Cubicle extends Phaser.Scene {
     const paredparedPuertaNor = this.add.image(698, 641, "paredPuertaNor");
     let escritorioA = crearPlataforma(302, 680, "escritoriosA", plataformas);
 
-    let escritorioD = crearPlataforma(1005, 611, "escritoriosD", plataformas);
-
+    
     let paredSurDerecha = crearPlataforma(
       1298,
       735,
       "paredSurDer",
       plataformas
-    );
+      );
     let paredSurIzq = crearPlataforma(322, 720, "paredSurEste", plataformas);
 
     if (activeVideo) {
@@ -212,10 +213,31 @@ export class Cubicle extends Phaser.Scene {
       this.avatar.avatarPlayer,
       paredPlataformaSuperior
     );
+    window.avatarX = this.avatar.avatarPlayer.x;
+    window.avatarY = this.avatar.avatarPlayer.y;
+
+
+    
+  let pressx = buttonCircle(this);
+   this.physics.add.collider(this.avatar.avatarPlayer, escaleraX, () => {
+    //posicionar pressx
+    pressx.visible = true;
+    pressx.x = this.avatar.avatarPlayer.x + 80;
+    pressx.y = this.avatar.avatarPlayer.y;
+    // this.scene.start("hallway2");
+     console.log("valor x:" , window.avatarX, "valor y: ",window.avatarY);
+     
+   });
+   
+   
+   
+
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
+
   }
 
   update() {
     this.avatar.update(this);
+
   }
 }
