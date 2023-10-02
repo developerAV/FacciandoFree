@@ -12,10 +12,7 @@ export const news = (
   let keyMessageOLD = keyMessage;
   messageText = traslate(messageText);
   let lan = window.lan;
-  console.log(lan);
   let indice = 0;
-
- 
 
   const box = scene.add.container(width, height);
   box.setName("box");
@@ -32,7 +29,7 @@ export const news = (
   iconButton2.setScale(0.2);
   box.add(iconButton);
   box.add(iconButton2);
-  
+
   const topic = scene.add.text(20, 60, traslate(topicText), {
     font: `32px ${FONT}`,
     fill: "#03bed0",
@@ -45,13 +42,13 @@ export const news = (
     },
   });
 
-  const iconButtonVoice = scene.add.sprite(topic.width +60, 80, "mute");
+  const iconButtonVoice = scene.add.sprite(topic.width + 60, 80, "mute");
   iconButtonVoice.setScale(0.3);
   iconButtonVoice.setInteractive();
- 
+
   iconButtonVoice.on("pointerdown", () => {
     if (responsiveVoice.isPlaying()) {
-     iconButtonVoice.setName("mute");
+      iconButtonVoice.setName("mute");
       responsiveVoice.pause();
 
       iconButtonVoice.setTexture("mute");
@@ -59,7 +56,6 @@ export const news = (
     }
     iconButtonVoice.setName("sound");
 
-    
     responsiveVoice.resume();
     iconButtonVoice.setTexture("sound");
   });
@@ -89,7 +85,6 @@ export const news = (
   });
   setInterval(() => {
     keyMessage = returnList();
-    // console.log("keyMessage", keyMessage);
   }, 15000);
   scene.time.addEvent({
     delay: 50, // Ajusta el valor para controlar la velocidad de escritura
@@ -106,13 +101,9 @@ export const news = (
       message.setText("");
       messageText = traslate(keyMessage);
       topic.setText(traslate(topicText));
-      if(iconButtonVoice.name === "sound"){
-
+      if (iconButtonVoice.name === "sound") {
         responsiveVoice.speak(messageText, traslate("voiceSpeak"));
       }
-
-     
-
     }
     if (indice <= messageText.length) {
       message.setText(messageText.substring(0, indice));

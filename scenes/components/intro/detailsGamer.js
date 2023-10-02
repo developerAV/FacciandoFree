@@ -9,7 +9,6 @@ import { getMissionByLevel } from "../../../services/mission.js";
 
 const cursor = { useHandCursor: true };
 export const detailsGamer = async (scene, width = 50, height = 200) => {
-  console.log(window.listMissions);
   const user = window.user;
   let actualLevel = user.actualLevel - 1;
   window.actualLevelUser = user.actualLevel - 1;

@@ -8,6 +8,7 @@ import { traslate } from "../data/dialogues.js";
 import { crearVideo } from "./module/videoInfo.js";
 import { crearCard } from "./module/card.js";
 import { getEmployees } from "../services/employee.js";
+import { navbar } from "./components/common/navbar.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -70,7 +71,8 @@ export class Cubicle extends Phaser.Scene {
     );
   }
 
-  create() {
+  async create() {
+    const { boxNavbar, nameScene } = navbar(this, "cubicle");
     window.avatarUpdateActivo = true;
     // this.cameras.main.fadeIn(500);
     this.cameras.main.transparent = true;
@@ -158,8 +160,8 @@ export class Cubicle extends Phaser.Scene {
       crearVideo(traslate("infoCubicle"), "avatarVideo", this, true);
     }
     this.cameras.main.startFollow(this.avatar.avatarPlayer); // Configurar seguimiento de cámara al personaje
-    this.cameras.main.zoom = 2;
-
+    /*     this.cameras.main.zoom = 2;
+     */
     let teclado = this.input.keyboard;
 
     // Configurar una acción para la tecla "i"

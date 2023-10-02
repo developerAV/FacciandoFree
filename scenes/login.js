@@ -16,7 +16,7 @@ export class Login extends Phaser.Scene {
     this.load.image("save", "assets/images/login/save.png");
   }
 
-  create() {
+  async create() {
     window.stateLogin = true;
     const background2 = this.add.rectangle(
       this.cameras.main.width / 2, // Posición X centrada en la pantalla
@@ -72,27 +72,5 @@ export class Login extends Phaser.Scene {
     this.updateScene = () => {
       this.languages(window.lan);
     };
-
-    // var txt0 = CreateCanvasInput(this, 'Apple012345678901234567890123456789').setPosition(400, 100)
-    // var txt1 = CreateCanvasInput(this, 'A').setPosition(400, 200).appendText('pple')
-    // var txt2 = CreateCanvasInput(this, 'Apple').setPosition(400, 300).setReadOnly()
-    // var txt3 = CreateCanvasInput(this, 'Apple', 100).setPosition(100, 400).setOrigin(0)
-
-    // const textEntry1 = this.add.text(-350, -150, "Nombre", {
-    //   font: "50px Arial",
-    //   fill: "#ffff00",
-    // });
-
-    // poner cursor en el input textEntry1
-
-    // this.textEntry2 = this.add.text(10, 100, "Uidad", {
-    //   font: "32px Courier",
-    //   fill: "#ffff00",
-    // });
-    // changeText(textEntry1, this);
-    // changeText(this.textEntry2, this);
-  }
-  update() {
-    //space
   }
 }

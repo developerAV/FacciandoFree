@@ -63,6 +63,9 @@ const auditorium2 = (scene) => {};
 const classRoom = (scene) => {};
 const computerRoom = (scene) => {};
 const cubicle2 = (scene) => {};
+const botonesNavbar = (scene) => {
+  scene.load.image("botonNav", "assets/images/navbar/boton.png");
+};
 
 export const preloads = (scene) => {
   preloadIntro(scene);
@@ -72,4 +75,5 @@ export const preloads = (scene) => {
   classRoom(scene);
   computerRoom(scene);
   cubicle2(scene);
+  botonesNavbar(scene);
 };

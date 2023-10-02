@@ -95,6 +95,7 @@ const classRoom = (scene) => {};
 const computerRoom = (scene) => {};
 const cubicle2 = (scene) => {};
 
+
 export const preloads = (scene) => {
   preloadIntro(scene);
   preloadAdmistrativeRoom(scene);
@@ -103,4 +104,5 @@ export const preloads = (scene) => {
   classRoom(scene);
   computerRoom(scene);
   cubicle2(scene);
+  botonesNavbar(scene);
 };
