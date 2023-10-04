@@ -9,7 +9,7 @@ export const textButton = (
   fontSize,
   opacity = 0,
   photo = false,
-  bgHeigth = 190,
+  bgHeigth = 190
 ) => {
   const button = scene.add.container(width, height);
   button.setName(name);
@@ -50,5 +50,3 @@ export const textButton = (
 
   return informacionTexto;
 };
-
-

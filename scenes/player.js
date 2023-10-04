@@ -46,14 +46,14 @@ export class Avatar extends Phaser.GameObjects.Sprite {
 
   botonMobile(scene) {
     this.isDragging = false;
-    this.maxRange = 70;
+    this.maxRange = 90;
 
-    this.buttonCentroX = 0;
-    this.buttonCentroY = 0;
-    // Rango máximo de arrastre
-    // Crear el grupo de contenedores para la interfaz de usuario (UI)
+    this.buttonCentroX = 530;
+    this.buttonCentroY = 620;
+
     scene.buttonContainer = scene.add.container(0, 0);
-    // Crear los botones y agregarlos al grupo de contenedores
+    scene.buttonContainer.setScrollFactor(0); //no se mueve con la camara
+
     scene.buttonPrimero = scene.add.circle(
       this.buttonCentroX,
       this.buttonCentroY,
@@ -61,6 +61,9 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       0x505050,
       0.5
     );
+    scene.buttonPrimero.setScrollFactor(0); //no se mueve con la camara
+    scene.buttonPrimero.setStrokeStyle(1, 0xffffff);
+
     scene.buttonCentro = scene.add.circle(
       this.buttonCentroX,
       this.buttonCentroY,
@@ -68,22 +71,24 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       0xf2f2f2,
       0.6
     );
-    scene.buttonPrimero.setStrokeStyle(1, 0xffffff);
+    scene.buttonCentro.setScrollFactor(0);
     scene.buttonCentro.setStrokeStyle(4, 0xffffff);
+
     scene.buttonContainer.add(scene.buttonPrimero);
     scene.buttonContainer.add(scene.buttonCentro);
+
     const contenedorFondo = scene.add.graphics();
     contenedorFondo.fillStyle(0xfff);
     contenedorFondo.fillRoundedRect(600, 800, 200, 100, 10);
+
     scene.buttonContainer.add(contenedorFondo);
     scene.buttonContainer.setDepth(1);
-    const cursors = scene.input.keyboard.createCursorKeys();
-
     scene.buttonContainer.setAlpha(1);
 
-    scene.buttonCentro.setInteractive();
+    const cursors = scene.input.keyboard.createCursorKeys();
 
     // Configurar eventos de inicio -de arrastre (ratón y tacto)
+    scene.buttonCentro.setInteractive();
     scene.buttonCentro.on("pointerdown", (pointer) => {
       this.isDragging = true;
       this.pointerOffsetX = scene.buttonCentro.x - pointer.x;
@@ -95,16 +100,30 @@ export class Avatar extends Phaser.GameObjects.Sprite {
         this.newX = pointer.x + this.pointerOffsetX;
         this.newY = pointer.y + this.pointerOffsetY;
 
+        // Las siguientes líneas definen el círculo más grande como el contenedor
+        var containerRadius = this.maxRange; // Define el radio del círculo más grande
+        var deltaX = this.newX - this.buttonCentroX;
+        var deltaY = this.newY - this.buttonCentroY;
+        var distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+        if (distance > containerRadius) {
+          var angle = Math.atan2(deltaY, deltaX);
+          this.newX = this.buttonCentroX + containerRadius * Math.cos(angle);
+          this.newY = this.buttonCentroY + containerRadius * Math.sin(angle);
+        }
+
+        // Ahora limita las coordenadas del joystick dentro del círculo más grande
         this.newX = Phaser.Math.Clamp(
           this.newX,
-          this.buttonCentroX - this.maxRange,
-          this.buttonCentroX + this.maxRange
+          this.buttonCentroX - this.maxRange + 2,
+          this.buttonCentroX + this.maxRange + 2
         );
         this.newY = Phaser.Math.Clamp(
           this.newY,
-          this.buttonCentroY - this.maxRange,
-          this.buttonCentroY + this.maxRange
+          this.buttonCentroY - this.maxRange + 2,
+          this.buttonCentroY + this.maxRange + 2
         );
+
         scene.buttonCentro.x = this.newX;
         scene.buttonCentro.y = this.newY;
       }
@@ -122,25 +141,15 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     }
 
     if (window.isMobile) {
-      this.offsetX = scene.cameras.main.scrollX;
-      this.offsetY = scene.cameras.main.scrollY;
-      if (scene.cameras.main.zoom === 2) {
-        scene.buttonContainer.x = 400 + this.offsetX + 120;
-        scene.buttonContainer.y = 1000 + this.offsetY - 370;
-      } else {
-        scene.buttonContainer.x = 200;
-        scene.buttonContainer.y = 850;
-      }
-
       if (!this.isDragging) {
         // Amortiguación para detenerse gradualmente
         this.avatarPlayer.setVelocityX(this.avatarPlayer.body.velocity.x * 0.9);
         this.avatarPlayer.setVelocityY(this.avatarPlayer.body.velocity.y * 0.9);
-        
+
         this.moveTo(0, 0, "turn");
         return;
       }
-      
+
       if (this.newX > this.buttonCentroX + 12) {
         // Interpolar linealmente hacia la velocidad máxima en el eje X
         const acceleration = 160; // Velocidad máxima
@@ -150,7 +159,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
         this.moveTo(0, velocityX, "right");
         return;
       }
-      
+
       if (this.newX < this.buttonCentroX - 12) {
         // Interpolar linealmente hacia la velocidad máxima en el eje X en la dirección opuesta
         const acceleration = -160; // Velocidad máxima
@@ -160,7 +169,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
         this.moveTo(0, velocityX, "left");
         return;
       }
-      
+
       if (this.newY > this.buttonCentroY + 12) {
         // Interpolar linealmente hacia la velocidad máxima en el eje Y
         const acceleration = 160; // Velocidad máxima
@@ -170,7 +179,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
         this.moveTo(velocityY, 0, "down");
         return;
       }
-      
+
       if (this.newY < this.buttonCentroY - 12) {
         // Interpolar linealmente hacia la velocidad máxima en el eje Y en la dirección opuesta
         const acceleration = -160; // Velocidad máxima

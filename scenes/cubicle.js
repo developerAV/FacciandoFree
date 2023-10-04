@@ -8,6 +8,7 @@ import { traslate } from "../data/dialogues.js";
 import { crearVideo } from "./module/videoInfo.js";
 import { crearCard } from "./module/card.js";
 import { getEmployees } from "../services/employee.js";
+import { navbar } from "./components/common/navbar.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -70,7 +71,7 @@ export class Cubicle extends Phaser.Scene {
     );
   }
 
-  create() {
+  async create() {
     window.avatarUpdateActivo = true;
     // this.cameras.main.fadeIn(500);
     this.cameras.main.transparent = true;
@@ -213,6 +214,7 @@ export class Cubicle extends Phaser.Scene {
       paredPlataformaSuperior
     );
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
+    navbar(this, "cubicle");
   }
 
   update() {

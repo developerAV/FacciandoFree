@@ -1,10 +1,8 @@
-
 import { COLORS, FONT_SIZE } from "../utils/constants.js";
 import { textButton } from "./module/textButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
 import { traslate } from "../data/dialogues.js";
 import { buttonLogout } from "./components/intro/buttonLogout.js";
-
 
 export class AvatarS extends Phaser.Scene {
   constructor() {
@@ -15,27 +13,26 @@ export class AvatarS extends Phaser.Scene {
     this.load.image("profile", window.imageUrl);
   }
   create() {
-    
     const background2 = this.add.rectangle(
-        this.cameras.main.width / 2, // Posición X centrada en la pantalla
-        this.cameras.main.height / 2,
-        this.cameras.main.width,
-        this.cameras.main.height,
-        0x00051a
-      );
-      // fondo dinamico
-      const background = this.add.sprite(1500, 500, "facciando").setScale(1.6);
-      background.alpha = 0.4;
-  
-      const tween = this.tweens.add({
-        targets: background,
-        x: 100,
-        ease: "Power",
-        duration: 100000,
-        yoyo: true,
-        repeat: -1,
-      });
-      const bg = this.add.image(800, 65, "backgroundIntro2");
+      this.cameras.main.width / 2, // Posición X centrada en la pantalla
+      this.cameras.main.height / 2,
+      this.cameras.main.width,
+      this.cameras.main.height,
+      0x00051a
+    );
+    // fondo dinamico
+    const background = this.add.sprite(1500, 500, "facciando").setScale(1.6);
+    background.alpha = 0.4;
+
+    const tween = this.tweens.add({
+      targets: background,
+      x: 100,
+      ease: "Power",
+      duration: 100000,
+      yoyo: true,
+      repeat: -1,
+    });
+    const bg = this.add.image(800, 65, "backgroundIntro2");
 
     const profile = this.add.image(67, 64, "profile");
     // Crea una máscara circular
@@ -47,8 +44,6 @@ export class AvatarS extends Phaser.Scene {
 
     // Aplica la máscara a la imagen
     profile.setMask(mascara.createGeometryMask());
-
-  
 
     const btnSosund = this.add
       .image(0, 0, "sound")
@@ -69,7 +64,6 @@ export class AvatarS extends Phaser.Scene {
     );
 
     //construir boton con enfoque y funciones (nameBoton, Escena)
-  
 
     // Music
     const music = this.sound.add("musica", { loop: true });
@@ -89,7 +83,6 @@ export class AvatarS extends Phaser.Scene {
     });
     btnSosund.setPosition(50, 960);
 
-   
     const name = textButton(
       this,
       120,
@@ -104,8 +97,7 @@ export class AvatarS extends Phaser.Scene {
       30,
       "home",
       COLORS.grayDark,
-      FONT_SIZE.small,
-     
+      FONT_SIZE.small
     );
     const ranked = textButton(
       this,
@@ -113,9 +105,7 @@ export class AvatarS extends Phaser.Scene {
       30,
       "ranking",
       COLORS.grayDark,
-      FONT_SIZE.small,
-    
-
+      FONT_SIZE.small
     );
     const avatar = textButton(
       this,
@@ -124,35 +114,29 @@ export class AvatarS extends Phaser.Scene {
       "avatar",
       COLORS.grayDark,
       FONT_SIZE.small,
-      0.9,
+      0.9
     );
-    
+
     home.setInteractive();
     home.on("pointerdown", () => {
-        this.scene.start("intro");
-        });
-  
+      this.scene.start("intro");
+    });
+
     ranked.setInteractive();
     ranked.on("pointerdown", () => {
-        this.scene.start("ranking");
-        });
+      this.scene.start("ranking");
+    });
 
     const logoutButton = buttonLogout(this);
     const btnLanguage = this.add.image(1537, 70, "language").setScale(0.4);
     buttonEnglish(btnLanguage, this);
 
-
-
- 
-
     this.updateScene = () => {
-
       logoutButton.setText(traslate("logout"));
       name.setText(window.name);
       home.setText(traslate("home"));
       ranked.setText(traslate("ranking"));
       avatar.setText(traslate("avatar"));
-
 
       return;
     };

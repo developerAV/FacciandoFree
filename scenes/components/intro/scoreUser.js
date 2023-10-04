@@ -2,8 +2,8 @@ import { traslate } from "../../../data/dialogues.js";
 import { COLORS, COLORS_HEX, FONT } from "../../../utils/constants.js";
 import { getUserById } from "../../../services/user.js";
 export const scoreUser = async (scene, x = 1070, y = 200) => {
-  let lan = window.lan;
   const user = await getUserById(window.user?._id);
+  
 
   const box = scene.add.container(x, y);
   box.setName("box");
@@ -40,11 +40,8 @@ export const scoreUser = async (scene, x = 1070, y = 200) => {
   box.add(message);
   var bar = scene.add.rexLineProgressCanvas(240, 125, 450, 30, {
     barColor: COLORS.blue,
-    // trackColor: COLOR_DARK,
     trackStrokeColor: COLORS.black,
-
     skewX: 0,
-    // rtl: true,
     value: user?.score / 1000,
   });
 
@@ -61,5 +58,5 @@ export const scoreUser = async (scene, x = 1070, y = 200) => {
   box.add(bar);
   box.add(graphics);
 
-  return { boxScore: box ,scoreUserLabel};
+  return { boxScore: box, scoreUserLabel };
 };

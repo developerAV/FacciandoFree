@@ -64,12 +64,10 @@ export const crearVideo = (mensaje, videoFile, scene, keyZoom) => {
         // video.destroy();
         if (keyZoom) {
           scene.cameras.main.startFollow(scene.avatar.avatarPlayer); // Configurar seguimiento de cámara al personaje
-          // console.log(scene.cameras.main.zoom);
           //    const zoomInterval = setTimeout(() => {
           //      if (scene.cameras.main.zoom <= 2) {
 
           //        scene.cameras.main.zoom += 0.05;
-          //        console.log(scene.cameras.main.zoom);
           //      } else {
           //        clearInterval(zoomInterval); // Detener el intervalo cuando el zoom alcanza 2
           //      }
@@ -77,7 +75,6 @@ export const crearVideo = (mensaje, videoFile, scene, keyZoom) => {
           function aumentarZoom() {
             if (scene.cameras.main.zoom <= 2) {
               scene.cameras.main.zoom += 0.01;
-              // console.log(scene.cameras.main.zoom)
               setTimeout(aumentarZoom, 800);
             }
           }
