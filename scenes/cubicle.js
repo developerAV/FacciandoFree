@@ -72,7 +72,6 @@ export class Cubicle extends Phaser.Scene {
   }
 
   async create() {
-    const { boxNavbar, nameScene } = navbar(this, "cubicle");
     window.avatarUpdateActivo = true;
     // this.cameras.main.fadeIn(500);
     this.cameras.main.transparent = true;
@@ -160,8 +159,8 @@ export class Cubicle extends Phaser.Scene {
       crearVideo(traslate("infoCubicle"), "avatarVideo", this, true);
     }
     this.cameras.main.startFollow(this.avatar.avatarPlayer); // Configurar seguimiento de cámara al personaje
-    /*     this.cameras.main.zoom = 2;
-     */
+    this.cameras.main.zoom = 2;
+
     let teclado = this.input.keyboard;
 
     // Configurar una acción para la tecla "i"
@@ -215,6 +214,7 @@ export class Cubicle extends Phaser.Scene {
       paredPlataformaSuperior
     );
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
+    navbar(this, "cubicle");
   }
 
   update() {
