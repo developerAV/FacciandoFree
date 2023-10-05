@@ -119,6 +119,15 @@ export class Cubicle extends Phaser.Scene {
 
     crearPlataforma(1502, 492, "escritoriosC", plataformas);
 
+    crearPlataforma(1200, 226, "sillaB6", plataformas);
+ 
+    let sillasB = this.physics.add.staticGroup();
+ 
+    let silla = crearPlataforma(330, 330, "sillaB6", sillasB);
+    this.contenedor1 = this.add.container(330, 160);
+    let silla2 = crearPlataforma(530, 330, "sillaB6", sillasB);
+    this.contenedor2 = this.add.container(530, 160);
+    this.avatar = new Avatar(this, 800, 500, 1.5);
     let escritorioD = crearPlataforma(1005, 611, "escritoriosD", plataformas);
     crearPlataforma(690, 947, "paredPuertaSur", plataformas);
     crearPlataforma(761, 796, "paredPuertaDer", plataformas);
@@ -132,16 +141,7 @@ export class Cubicle extends Phaser.Scene {
     crearPlataforma(830, 146, "anaquel", plataformas);
     crearPlataforma(930, 146, "anaquel", plataformas);
     crearPlataforma(1230, 146, "anaquel", plataformas);
-    crearPlataforma(1200, 226, "sillaB6", plataformas);
 
-    let sillasB = this.physics.add.staticGroup();
-
-    let silla = crearPlataforma(330, 330, "sillaB6", sillasB);
-    this.contenedor1 = this.add.container(330, 160);
-    let silla2 = crearPlataforma(530, 330, "sillaB6", sillasB);
-    this.contenedor2 = this.add.container(530, 160);
-
-    this.avatar = new Avatar(this, 800, 500, 1.5);
 
     const paredparedPuertaNor = this.add.image(698, 641, "paredPuertaNor");
     let escritorioA = crearPlataforma(302, 680, "escritoriosA", plataformas);
@@ -218,16 +218,8 @@ export class Cubicle extends Phaser.Scene {
 
 
     
-  let pressx = buttonCircle(this);
-   this.physics.add.collider(this.avatar.avatarPlayer, escaleraX, () => {
-    //posicionar pressx
-    pressx.visible = true;
-    pressx.x = this.avatar.avatarPlayer.x + 80;
-    pressx.y = this.avatar.avatarPlayer.y;
-    // this.scene.start("hallway2");
-     console.log("valor x:" , window.avatarX, "valor y: ",window.avatarY);
-     
-   });
+  const containerX = buttonCircle(this ,"hallway2", escaleraX, 500, 500);
+
    
    
    
