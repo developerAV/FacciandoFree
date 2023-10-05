@@ -43,7 +43,7 @@ export class Hallway2 extends Phaser.Scene {
     let scale = 1;
     let scaleComputer = 1.5;
 
-    this.avatar = new Avatar(this, 600, 800, 1.5);
+    this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.5);
 
     let plataformas = this.physics.add.staticGroup();
     let plataformasillas = this.physics.add.staticGroup();

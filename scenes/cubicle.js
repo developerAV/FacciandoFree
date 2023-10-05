@@ -8,6 +8,7 @@ import { traslate } from "../data/dialogues.js";
 import { crearVideo } from "./module/videoInfo.js";
 import { crearCard } from "./module/card.js";
 import { getEmployees } from "../services/employee.js";
+import {buttonCircle} from "../scenes/components/common/buttonCircle.js";
 import { navbar } from "./components/common/navbar.js";
 // let window.lan = "en";
 let activeVideo = false;
@@ -119,40 +120,40 @@ export class Cubicle extends Phaser.Scene {
 
     crearPlataforma(1502, 492, "escritoriosC", plataformas);
 
+    crearPlataforma(1200, 226, "sillaB6", plataformas);
+ 
+    let sillasB = this.physics.add.staticGroup();
+ 
+    let silla = crearPlataforma(330, 330, "sillaB6", sillasB);
+    this.contenedor1 = this.add.container(330, 160);
+    let silla2 = crearPlataforma(530, 330, "sillaB6", sillasB);
+    this.contenedor2 = this.add.container(530, 160);
+    this.avatar = new Avatar(this, 800, 500, 1.5);
+    let escritorioD = crearPlataforma(1005, 611, "escritoriosD", plataformas);
     crearPlataforma(690, 947, "paredPuertaSur", plataformas);
     crearPlataforma(761, 796, "paredPuertaDer", plataformas);
     crearPlataforma(871, 829, "paredEscalera", plataformas);
-
+    
     crearPlataforma(1589, 423, "paredDer", plataformas);
-    crearPlataforma(877, 860, "escalera", plataformas);
+   let escaleraX= crearPlataforma(877, 860, "escalera", plataformas);
     crearPlataforma(156, 146, "anaquel", plataformas);
     crearPlataforma(480, 146, "anaquel", plataformas);
     crearPlataforma(680, 146, "anaquel", plataformas);
     crearPlataforma(830, 146, "anaquel", plataformas);
     crearPlataforma(930, 146, "anaquel", plataformas);
     crearPlataforma(1230, 146, "anaquel", plataformas);
-    crearPlataforma(1200, 226, "sillaB6", plataformas);
 
-    let sillasB = this.physics.add.staticGroup();
-
-    let silla = crearPlataforma(330, 330, "sillaB6", sillasB);
-    this.contenedor1 = this.add.container(330, 160);
-    let silla2 = crearPlataforma(530, 330, "sillaB6", sillasB);
-    this.contenedor2 = this.add.container(530, 160);
-
-    this.avatar = new Avatar(this, 800, 500, 1.5);
 
     const paredparedPuertaNor = this.add.image(698, 641, "paredPuertaNor");
     let escritorioA = crearPlataforma(302, 680, "escritoriosA", plataformas);
 
-    let escritorioD = crearPlataforma(1005, 611, "escritoriosD", plataformas);
-
+    
     let paredSurDerecha = crearPlataforma(
       1298,
       735,
       "paredSurDer",
       plataformas
-    );
+      );
     let paredSurIzq = crearPlataforma(322, 720, "paredSurEste", plataformas);
 
     if (activeVideo) {
@@ -213,11 +214,24 @@ export class Cubicle extends Phaser.Scene {
       this.avatar.avatarPlayer,
       paredPlataformaSuperior
     );
+    window.avatarX = this.avatar.avatarPlayer.x;
+    window.avatarY = this.avatar.avatarPlayer.y;
+
+
+    
+  const containerX = buttonCircle(this ,"hallway2", escaleraX, 500, 500);
+
+   
+   
+   
+
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
+
     navbar(this, "cubicle");
   }
 
   update() {
     this.avatar.update(this);
+
   }
 }
