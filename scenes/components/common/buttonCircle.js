@@ -36,34 +36,35 @@ export const buttonCircle = (scene, sceneName, platform, avatarX, avatarY) => {
     console.log("valor x:", window.avatarX, "valor y: ", window.avatarY);
 
     //presionando la tecla x cambie de escena
-  
-      scene.input.keyboard.on("keydown-X", () => {
-        if(!scene.keyB) return;
-        scene.scene.start(sceneName);
-        console.log("valor x:", window.avatarX, "valor y: ", window.avatarY);
-      });
-    
+
+    scene.input.keyboard.on("keydown-X", () => {
+      if (!scene.keyB) return;
+      scene.scene.start(sceneName);
+      console.log("valor x:", window.avatarX, "valor y: ", window.avatarY);
+    });
 
     containerX.setSize(containerX.x, containerX.y);
 
     scene.buttonCentro2.setInteractive();
     scene.buttonCentro2.on("pointerdown", () => {
       scene.scene.start(sceneName);
-    
     });
   });
-  //buttonCentro se refiere circulo del centro del joystick(file: Player)
-  scene.buttonCentro.on("pointerdown", () => {
-    containerX.visible = false;
-  });
- 
-  scene.buttonCentro.on("pointermove", () => {
-    containerX.visible = false;
-  });
- 
   scene.input.keyboard.on("keydown", () => {
     containerX.visible = false;
     scene.keyB = false;
   });
+
+  if (window.isMobile) {
+    //buttonCentro se refiere circulo del centro del joystick(file: Player)
+    scene.buttonCentro.on("pointerdown", () => {
+      containerX.visible = false;
+    });
+
+    scene.buttonCentro.on("pointermove", () => {
+      containerX.visible = false;
+    });
+  }
+
   return containerX;
 };
