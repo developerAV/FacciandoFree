@@ -8,7 +8,7 @@ import { traslate } from "../data/dialogues.js";
 import { crearVideo } from "./module/videoInfo.js";
 import { crearCard } from "./module/card.js";
 import { getEmployees } from "../services/employee.js";
-import { buttonCircle } from "../scenes/components/common/buttonCircle.js";
+import { createButtonCircle } from "../scenes/components/common/buttonCircle.js";
 import { navbar } from "./components/common/navbar.js";
 // let window.lan = "en";
 let activeVideo = false;
@@ -215,8 +215,9 @@ export class Cubicle extends Phaser.Scene {
     window.avatarX = this.avatar.avatarPlayer.x;
     window.avatarY = this.avatar.avatarPlayer.y;
 
-    const containerX = buttonCircle(this, "hallway2", escaleraX, 500, 500);
-
+    const containerX = createButtonCircle(this, "hallway2", escaleraX, 500, 500);
+    const containerX2 = createButtonCircle(this, "aula", escritorioD, 800, 500);
+    
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredNorte);
 
