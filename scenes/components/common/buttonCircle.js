@@ -1,70 +1,86 @@
 import { COLORS } from "../../../utils/constants.js";
-export const buttonCircle = (scene, sceneName, platform, avatarX, avatarY) => {
-  const containerX = scene.add.container();
-  containerX.visible = false;
-  window.avatarX = avatarX;
-  window.avatarY = avatarY;
-  scene.buttonCentro2 = scene.add.circle(0, 0, 25, COLORS.white, 0.6);
-  //text press x
-  scene.textx = scene.add.text(-14, -10, "Press\n    X", {
+
+export const createButtonCircle = (
+  scene,
+  sceneName,
+  platform,
+  avatarX,
+  avatarY
+) => {
+  const buttonCircle = {};
+
+  buttonCircle.containerX = scene.add.container();
+  buttonCircle.containerX.visible = false;
+
+  // Crear el botón circular
+  buttonCircle.containerX.add(scene.add.circle(0, 0, 25, COLORS.white, 0.6));
+
+  // Crear el texto "Press X"
+  const textX = scene.add.text(-14, -10, "Press\n    X", {
     fontFamily: "Arial",
     fontSize: 10,
     color: "#f2f2f2",
   });
+  buttonCircle.containerX.add(textX);
+
+  // Configurar el intervalo para alternar colores
   setInterval(() => {
-    if (scene.buttonCentro2.strokeColor == COLORS.white) {
-      scene.buttonCentro2.setStrokeStyle(8, COLORS.blue);
-      scene.textx.setColor("#000");
-      return;
+    if (buttonCircle.containerX.list[0].strokeColor === COLORS.white) {
+      buttonCircle.containerX.list[0].setStrokeStyle(8, COLORS.blue);
+      textX.setColor("#000");
+    } else {
+      buttonCircle.containerX.list[0].setStrokeStyle(4, COLORS.white);
+      textX.setColor("#f2f2f2");
     }
-    scene.buttonCentro2.setStrokeStyle(4, COLORS.white);
-    scene.textx.setColor("#f2f2f2");
   }, 1000);
 
-  containerX.add(scene.buttonCentro2);
-  containerX.add(scene.textx);
-  containerX.setDepth(1);
-
+  // Configurar eventos y colisiones
   scene.physics.add.collider(scene.avatar.avatarPlayer, platform, () => {
-    //posicionar pressx
-    containerX.visible = true;
+    window.avatarX = avatarX;
+    window.avatarY = avatarY;
+    console.log("avatarX: ", window.avatarX, "avatarY: ", window.avatarY);
+    buttonCircle.containerX.visible = true;
     scene.keyB = true;
-    containerX.x = scene.avatar.avatarPlayer.x + 80;
-    containerX.y = scene.avatar.avatarPlayer.y;
-
-    // scene.scene.start(sceneName);
-    console.log("valor x:", window.avatarX, "valor y: ", window.avatarY);
-
-    //presionando la tecla x cambie de escena
+    buttonCircle.containerX.x = scene.avatar.avatarPlayer.x + 80;
+    buttonCircle.containerX.y = scene.avatar.avatarPlayer.y;
 
     scene.input.keyboard.on("keydown-X", () => {
       if (!scene.keyB) return;
       scene.scene.start(sceneName);
-      console.log("valor x:", window.avatarX, "valor y: ", window.avatarY);
+      console.log(
+        "valor x:",
+        buttonCircle.avatarX,
+        "valor y: ",
+        buttonCircle.avatarY
+      );
     });
 
-    containerX.setSize(containerX.x, containerX.y);
+    buttonCircle.containerX.setSize(
+      buttonCircle.containerX.x,
+      buttonCircle.containerX.y
+    );
 
-    scene.buttonCentro2.setInteractive();
-    scene.buttonCentro2.on("pointerdown", () => {
+    buttonCircle.containerX.list[0].setInteractive();
+    buttonCircle.containerX.list[0].on("pointerdown", () => {
       scene.scene.start(sceneName);
     });
   });
+
   scene.input.keyboard.on("keydown", () => {
-    containerX.visible = false;
+    buttonCircle.containerX.visible = false;
     scene.keyB = false;
   });
 
   if (window.isMobile) {
     //buttonCentro se refiere circulo del centro del joystick(file: Player)
     scene.buttonCentro.on("pointerdown", () => {
-      containerX.visible = false;
+      buttonCircle.containerX.visible = false;
     });
 
     scene.buttonCentro.on("pointermove", () => {
-      containerX.visible = false;
+      buttonCircle.containerX.visible = false;
     });
   }
 
-  return containerX;
+  return buttonCircle;
 };
