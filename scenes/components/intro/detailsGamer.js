@@ -8,7 +8,7 @@ import {
 import { getMissionByLevel } from "../../../services/mission.js";
 
 const cursor = { useHandCursor: true };
-export const detailsGamer = async (scene, width = 50, height = 200) => {
+export const detailsGamer = (scene, width = 50, height = 200) => {
   const user = window.user;
   let actualLevel = user.actualLevel - 1;
   window.actualLevelUser = user.actualLevel - 1;
@@ -70,7 +70,7 @@ export const detailsGamer = async (scene, width = 50, height = 200) => {
       arrowRight.setInteractive(cursor);
     }
     actualLevel--;
-    window.user.actualLevel = actualLevel + 1;
+    window.actualLevelUser = actualLevel + 1;
 
     levelLabel.setText(listLevel[actualLevel].name[window.lan]);
     window.listMissions = await getMissionByLevel(listLevel[actualLevel]._id);
@@ -96,7 +96,7 @@ export const detailsGamer = async (scene, width = 50, height = 200) => {
       arrowLeft.setInteractive(cursor);
     }
     actualLevel++;
-    window.user.actualLevel = actualLevel + 1;
+    window.actualLevelUser = actualLevel + 1;
     levelLabel.setText(listLevel[actualLevel].name[window.lan]);
     window.listMissions = await getMissionByLevel(listLevel[actualLevel]._id);
     changueMission(0);
