@@ -6,7 +6,8 @@ import {
 } from "./module/platform.js";
 
 import { traslate } from "../data/dialogues.js";
-import { crearVideo } from "./module/videoInfo.js";
+import {  crearVideo } from "./module/videoInfo.js";
+
 import { crearCard } from "./module/card.js";
 import { getEmployees } from "../services/employee.js";
 import { createButtonCircle } from "../scenes/components/common/buttonCircle.js";
@@ -90,7 +91,7 @@ export class Outside extends Phaser.Scene {
     const tree2 = crearPlataforma(1287, 665, "tree2", platform1, 0.75);
     dimesionesPlataformaIndividual(tree2, 0.2, 47);
      createButtonCircle(this, "hallway2", puertaFacci, 500, 500);
-     createButtonCircle(this, "hallway2", puertaFacci2, 500, 500);
+     createButtonCircle(this, "hallway2", puertaFacci2, 600, 800);
     //   createButtonCircle(this, "aula", escritorioD, 800, 500);
 
     this.physics.add.collider(this.avatar.avatarPlayer, platform1);
@@ -102,13 +103,21 @@ export class Outside extends Phaser.Scene {
 
     // Configurar una acción para la tecla "i"
     teclado.addKey(Phaser.Input.Keyboard.KeyCodes.I).on(
-      "down",
-      function (event) {
-      
-        // Puedes ejecutar cualquier código que quieras cuando se presione la tecla "i"
-        crearVideo(traslate("infoCubicle"), "avatarVideo1", this, true);
-      }.bind(this)
+        "down",
+        async function (event) {
+            try {
+              
+                // Puedes ejecutar cualquier código que quieras cuando se presione la tecla "i"
+                await crearVideo(traslate("infoCubicle"), "avatarVideo1", this, false);
+                await crearVideo(traslate("infoCubicle"), "avatarVideo2", this, true);
+                // await aumentarZoom();
+                // Aquí continúa con el código después de que ambos videos hayan terminado
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }.bind(this)
     );
+    
     this.cameras.main.startFollow(this.avatar.avatarPlayer);
 
     this.cameras.main.zoom = 2;

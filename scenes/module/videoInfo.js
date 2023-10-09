@@ -1,10 +1,11 @@
-import { traslate } from "../../data/dialogues.js";
-export const crearVideo = (mensaje, videoFile, scene, keyZoom) => {
-  let indice = 0;
-  let video;
-  let texto;
+import { traslate } from "../../data/dialogues";
+export const crearVideo = async (mensaje, videoFile, scene, keyZoom) => {
+  return new Promise((resolve, reject) => {
+    let indice = 0;
+    let video;
+    let texto;
 
-  window.avatarUpdateActivo = false;
+    window.avatarUpdateActivo = false;
   //resetear camara
   scene.cameras.main.stopFollow();
   scene.cameras.main.setZoom(1);
@@ -37,7 +38,7 @@ export const crearVideo = (mensaje, videoFile, scene, keyZoom) => {
     loop: true,
     callbackScope: scene,
   });
-  responsiveVoice.speak(mensaje, "Spanish Latin American Male");
+  responsiveVoice.speak(mensaje, traslate("voiceSpeak"));
 
   function escribirTexto() {
     if (indice <= mensaje.length) {
@@ -57,39 +58,35 @@ export const crearVideo = (mensaje, videoFile, scene, keyZoom) => {
   function destruir() {
     scene.tweens.add({
       targets: video,
-      alpha: 0, // Cambiar la opacidad del video a 0
-      duration: 500, // Duración de la animación en milisegundos
+      alpha: 0,
+      duration: 500,
       onComplete: () => {
-        // Al completar la animación, detener el video y destruir el objeto de video
-        window.avatarUpdateActivo = true;
         video.destroy();
         texto.destroy();
-        efectoEsc.remove(); // Detener el efecto de escritura
-        scene.avatar.avatarUpdateActivo = true;
-
+        efectoEsc.remove();
+        
         indice = 0;
-        // video.destroy();
-        if (keyZoom) {
-          scene.cameras.main.startFollow(scene.avatar.avatarPlayer); // Configurar seguimiento de cámara al personaje
-          //    const zoomInterval = setTimeout(() => {
-          //      if (scene.cameras.main.zoom <= 2) {
-
-          //        scene.cameras.main.zoom += 0.05;
-          //      } else {
-          //        clearInterval(zoomInterval); // Detener el intervalo cuando el zoom alcanza 2
-          //      }
-          //    }, 150);
-          function aumentarZoom() {
+       
+          if(keyZoom){
+            function aumentarZoom(){
+              scene.cameras.main.startFollow(scene.avatar.avatarPlayer);
+            window.avatarUpdateActivo = true;
+            scene.avatar.avatarUpdateActivo = true;
             if (scene.cameras.main.zoom <= 2) {
               scene.cameras.main.zoom += 0.01;
               setTimeout(aumentarZoom, 800);
             }
+            }
+            aumentarZoom();
           }
-          aumentarZoom();
-        }
+       
+          resolve(); // Resuelve la promesa si no se requiere zoom
+        
       },
     });
   }
+
+});
+ 
 };
-
-
+  
