@@ -14,6 +14,7 @@ import { Auditorium2 } from "./scenes/auditoruim2.js";
 import { Ranking } from "./scenes/ranking.js";
 import { AvatarS } from "./scenes/avatar.js";
 import { Question } from "./scenes/question.js";
+import { Outside } from "./scenes/outside.js";
 
 const config = {
   type: Phaser.AUTO,
@@ -23,6 +24,7 @@ const config = {
   // transparent: true, // Comentado porque no se usa
   scene: [
     Loading,
+    Outside,
     Login,
     Question,
     Intro,

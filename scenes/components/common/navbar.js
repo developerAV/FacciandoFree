@@ -82,4 +82,5 @@ export const navbar = async (scene, name = "cubicle") => {
   box.add(scoreUser);
 
   box.setScale(0.5);
+  return box;
 };

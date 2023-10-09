@@ -72,11 +72,10 @@ export class Hallway2 extends Phaser.Scene {
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasillas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
 
-    // Configurar seguimiento de cámara al personaje
+ 
     this.cameras.main.startFollow(this.avatar.avatarPlayer);
 
-    // Configurar zoom de la cámara en función de la posición del personaje
-    this.cameras.main.zoom = 2; // Ajustar el valor 300 y 600 según tus necesidades
+    this.cameras.main.zoom = 2; 
   
     navbar(this, "hallway ");
   }

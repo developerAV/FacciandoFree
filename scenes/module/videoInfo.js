@@ -1,9 +1,16 @@
+import { traslate } from "../../data/dialogues.js";
 export const crearVideo = (mensaje, videoFile, scene, keyZoom) => {
   let indice = 0;
   let video;
   let texto;
 
   window.avatarUpdateActivo = false;
+  //resetear camara
+  scene.cameras.main.stopFollow();
+  scene.cameras.main.setZoom(1);
+
+  scene.cameras.main.centerOn(0, 0);
+  scene.cameras.main.setScroll(0, 0);
 
   video = scene.add.video(775, 850, videoFile);
   video.setAlpha(1);
@@ -84,3 +91,5 @@ export const crearVideo = (mensaje, videoFile, scene, keyZoom) => {
     });
   }
 };
+
+

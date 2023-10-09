@@ -19,6 +19,21 @@ const preloadIntro = (scene) => {
   scene.load.image("lock", "assets/images/intro/lock.png");
   scene.load.image("ava", "assets/images/player/ava.png");
   scene.load.image("ava2", "assets/images/player/ava2.png");
+
+  scene.load.video(
+    "avatarVideo1",
+    "assets/videos/valentin.mp4",
+    "loadeddata",
+    false,
+    true
+  );
+  scene.load.video(
+    "avatarVideo2",
+    "assets/videos/21.mp4",
+    "loadeddata",
+    false,
+    true
+  );
 };
 
 const preloadAdmistrativeRoom = (scene) => {
