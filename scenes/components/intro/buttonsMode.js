@@ -61,13 +61,13 @@ export const buttonsMode = (scene, box, boxGamer, boxScore) => {
     if (isTransitionInProgress) return;
     isTransitionInProgress = true;
 
-    let boxVisible = scene.mode === "mission";
+    let boxVisible = window.mode === "mission";
 
     let gameModeSecondary = boxVisible ? "mission" : "exploration";
 
-    if (scene.mode !== gameMode) {
-      scene.mode = gameMode;
-      scene.mode2 = gameModeSecondary;
+    if (window.mode !== gameMode) {
+      window.mode = gameMode;
+      window.mode2 = gameModeSecondary;
       box.setVisible(boxVisible);
       boxGamer.setVisible(!boxVisible);
       boxScore.setVisible(!boxVisible);
