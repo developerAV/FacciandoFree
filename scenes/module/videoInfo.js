@@ -1,4 +1,4 @@
-import { traslate } from "../../data/dialogues";
+import { traslate } from "../../data/dialogues.js";
 export const crearVideo = async (mensaje, videoFile, scene, keyZoom) => {
   return new Promise((resolve, reject) => {
     let indice = 0;
