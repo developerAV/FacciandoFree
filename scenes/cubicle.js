@@ -63,13 +63,7 @@ export class Cubicle extends Phaser.Scene {
     this.load.image("anaquel", "assets/images/cubicle/anaquel.png");
 
     this.load.image("fotoCarnet", "assets/images/avatars/avatar1.png");
-    this.load.video(
-      "avatarVideo",
-      "assets/videos/valentin.mp4",
-      "loadeddata",
-      false,
-      true
-    );
+  
   }
 
   async create() {
@@ -125,9 +119,9 @@ export class Cubicle extends Phaser.Scene {
     let sillasB = this.physics.add.staticGroup();
 
     let silla = crearPlataforma(330, 330, "sillaB6", sillasB);
-    this.contenedor1 = this.add.container(330, 160);
+    
     let silla2 = crearPlataforma(530, 330, "sillaB6", sillasB);
-    this.contenedor2 = this.add.container(530, 160);
+  
     this.avatar = new Avatar(this, 800, 500, 1.5);
     let escritorioD = crearPlataforma(1005, 611, "escritoriosD", plataformas);
     crearPlataforma(690, 947, "paredPuertaSur", plataformas);
@@ -155,7 +149,7 @@ export class Cubicle extends Phaser.Scene {
     let paredSurIzq = crearPlataforma(322, 720, "paredSurEste", plataformas);
 
     if (activeVideo) {
-      crearVideo(traslate("infoCubicle"), "avatarVideo", this, true);
+      crearVideo(traslate("infoCubicle"), "avatarVideo1", this, true);
     }
     this.cameras.main.startFollow(this.avatar.avatarPlayer); // Configurar seguimiento de cámara al personaje
     this.cameras.main.zoom = 2;
@@ -163,25 +157,27 @@ export class Cubicle extends Phaser.Scene {
     let teclado = this.input.keyboard;
 
     // Configurar una acción para la tecla "i"
-    let miAccion = teclado.addKey(Phaser.Input.Keyboard.KeyCodes.I);
-
-    // Configurar qué hacer cuando se presiona la tecla "i"
+    teclado.addKey(Phaser.Input.Keyboard.KeyCodes.I)
     miAccion.on(
       "down",
       function (event) {
-        //resetear camara
-        this.cameras.main.stopFollow();
-        this.cameras.main.setZoom(1);
-
-        // this.cameras.main.zoom = 1;
-        this.cameras.main.centerOn(0, 0);
-        this.cameras.main.setScroll(0, 0);
+      
 
         // Puedes ejecutar cualquier código que quieras cuando se presione la tecla "i"
-        crearVideo(traslate("infoCubicle"), "avatarVideo", this, true);
+        crearVideo(traslate("infoCubicle"), "avatarVideo1", this, true);
       }.bind(this)
     );
 
+    // showVideo = () => {
+    //     //resetear camara
+    //     this.cameras.main.stopFollow();
+    //     this.cameras.main.setZoom(1);
+
+    //     // this.cameras.main.zoom = 1;
+    //     this.cameras.main.centerOn(0, 0);
+    //     this.cameras.main.setScroll(0, 0);
+    //   crearVideo(traslate("infoCubicle"), "avatarVideo", this, true);
+    // };
     dimesionesPlataformaIndividual(escritorioA, 0, 20);
     dimesionesPlataformaIndividual(escritorioD, 0, 25);
     dimesionesPlataformaIndividual(paredSurDerecha, 1, 145);
@@ -197,7 +193,8 @@ export class Cubicle extends Phaser.Scene {
       this.dataEmployees[0],
       "fotoCarnet",
       silla,
-      this.contenedor1
+      330,
+      160,
     );
 
     crearCard(
@@ -205,7 +202,8 @@ export class Cubicle extends Phaser.Scene {
       this.dataEmployees[1],
       "fotoCarnet",
       silla2,
-      this.contenedor2
+      530,
+      160
     );
 
     this.physics.add.collider(
@@ -215,8 +213,8 @@ export class Cubicle extends Phaser.Scene {
     window.avatarX = this.avatar.avatarPlayer.x;
     window.avatarY = this.avatar.avatarPlayer.y;
 
-    const containerX = createButtonCircle(this, "hallway2", escaleraX, 500, 500);
-    const containerX2 = createButtonCircle(this, "aula", escritorioD, 800, 500);
+  createButtonCircle(this, "hallway2", escaleraX, 500, 500);
+  createButtonCircle(this, "aula", escritorioD, 800, 500);
     
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredNorte);
