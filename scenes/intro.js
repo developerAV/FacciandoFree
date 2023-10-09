@@ -29,8 +29,8 @@ export class Intro extends Phaser.Scene {
     });
   }
   async create() {
-    this.mode = "exploration";
-    this.mode2 = "mission";
+    window.mode = "exploration";
+    window.mode2 = "mission";
     const background2 = this.add.rectangle(
       this.cameras.main.width / 2, // Posición X centrada en la pantalla
       this.cameras.main.height / 2,
@@ -173,7 +173,7 @@ export class Intro extends Phaser.Scene {
       } else {
         currentImage = ava;
       }
-      
+
       currentImage.setVisible(true);
       if (currentImage === ava2) {
         ava.setVisible(false);
@@ -199,7 +199,7 @@ export class Intro extends Phaser.Scene {
       timeLabel,
       timeText,
       scoreText,
-    } = await detailsGamer(this);
+    } = detailsGamer(this);
     const { boxScore, scoreUserLabel } = await scoreUser(this);
 
     const { modeText1, modeText2, modePrimary, modeSecondary } = buttonsMode(
@@ -218,8 +218,8 @@ export class Intro extends Phaser.Scene {
       avatar.setText(traslate("avatar"));
       modeText1.setText(traslate("mode"));
       modeText2.setText(traslate("mode"));
-      modePrimary.setText(traslate(this?.mode));
-      modeSecondary.setText(traslate(this?.mode2));
+      modePrimary.setText(traslate(window.mode));
+      modeSecondary.setText(traslate(window.mode2));
 
       levelLabel.setText(traslate("actualLevel"));
       missionLabel.setText(traslate("missionName"));

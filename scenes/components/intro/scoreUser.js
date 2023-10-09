@@ -3,7 +3,6 @@ import { COLORS, COLORS_HEX, FONT } from "../../../utils/constants.js";
 import { getUserById } from "../../../services/user.js";
 export const scoreUser = async (scene, x = 1070, y = 200) => {
   const user = await getUserById(window.user?._id);
-  
 
   const box = scene.add.container(x, y);
   box.setName("box");
