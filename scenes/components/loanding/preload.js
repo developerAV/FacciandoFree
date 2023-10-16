@@ -66,6 +66,66 @@ const cubicle2 = (scene) => {};
 const botonesNavbar = (scene) => {
   scene.load.image("botonNav", "assets/images/navbar/boton.png");
 };
+const floorHallway2 = (scene) => {
+  const path = "assets/images/2FloorHallway/";
+  //piso
+  scene.load.image("pisoFloorHallway2", `${path}piso.png`);
+  scene.load.image("PasilloPiso2", `${path}PasilloPiso2.png`);
+  //
+  scene.load.image("escaleraArriba", `${path}escaleraArriba.png`);
+  scene.load.image("escaleraAbajo", `${path}escaleraAbajo.png`);
+  scene.load.image("escaleraAbajoAbajo", `${path}escaleraAbajoAbajo.png`);
+  scene.load.image("puerta", `${path}puerta.png`);
+  scene.load.image("puerta2", `${path}puerta2.png`);
+  scene.load.image("mesaHorizontal", `${path}mesaHorizontal.png`);
+  scene.load.image("mesaVertical", `${path}mesaVertical.png`);
+  scene.load.image("mesasAbajo", `${path}mesasAbajo.png`);
+  scene.load.image("mesaAbajoDerecha", `${path}mesaAbajoDerecha.png`);
+  scene.load.image("mesaMedio", `${path}mesaMedio.png`);
+  scene.load.image("banca", `${path}banca.png`);
+  //s
+  scene.load.image("sillaDeLado", `${path}sillaDeLado.png`);
+  scene.load.image("sillaDeLado2", `${path}sillaDeLado2.png`);
+  scene.load.image("sillaFrontal", `${path}sillaFrontal.png`);
+  //paredes
+  scene.load.image("paredes", `${path}paredes/paredes.png`);
+  scene.load.image("hueco", `${path}paredes/hueco.png`);
+  scene.load.image(
+    "paredSuperiorFloorHallway2",
+    `${path}paredes/paredSuperior.png`
+  );
+  scene.load.image(
+    "esquinaSuperiorDerecha",
+    `${path}paredes/esquinaSuperiorDerecha.png`
+  );
+  scene.load.image("pared", `${path}paredes/pared.png`);
+  scene.load.image(
+    "salaEstudianteArriba",
+    `${path}paredes/salaEstudianteArriba.png`
+  );
+  scene.load.image("paredLarga", `${path}paredes/paredLarga.png`);
+  scene.load.image("muroFloor2", `${path}paredes/muro.png`);
+  scene.load.image("paredInferior", `${path}paredes/paredInferior.png`);
+  scene.load.image("separadorCurso", `${path}paredes/separadorCurso.png`);
+  scene.load.image("cursos", `${path}paredes/cursos.png`);
+  scene.load.image("paredCursoDerecha", `${path}paredes/paredCursoDerecha.png`);
+  scene.load.image(
+    "paredCursoIzquierda",
+    `${path}paredes/paredCursoIzquierda.png`
+  );
+  scene.load.image("cachoFaltante", `${path}paredes/cachoFaltante.png`);
+  scene.load.image("faltante", `${path}paredes/faltante.png`);
+};
+const hallway2 = (scene) => {
+  const path = "assets/images/hallway2/";
+  scene.load.image("background3", `${path}pasillo_piso.png`);
+  scene.load.image("paredAuditorioHallway2", `${path}pared_auditorio.png`);
+  scene.load.image("paredbatMujerHallway2", `${path}pared_batMujer.png`);
+  scene.load.image("paredEsteHallway2", `${path}pared_este.png`);
+  scene.load.image("paredSuperiorHallway2", `${path}pared_frontal.png`);
+  scene.load.image("paredInferiorHallway2", `${path}pared_inferior.png`);
+  scene.load.image("paredInferiorEsteHallway2", `${path}pared_comunidad.png`);
+};
 
 export const preloads = (scene) => {
   preloadIntro(scene);
@@ -76,4 +136,6 @@ export const preloads = (scene) => {
   computerRoom(scene);
   cubicle2(scene);
   botonesNavbar(scene);
+  floorHallway2(scene);
+  hallway2(scene);
 };
