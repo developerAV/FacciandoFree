@@ -142,6 +142,10 @@ const traslateIntro = {
     es: "Spanish Latin American Male",
     en: "US English Male",
   },
+  outside: {
+    es: "Exterior",
+    en: "Outside",
+  },
 };
 
 export const traslate = (key) => {
