@@ -4,11 +4,15 @@ export const crearCard = (
   teacher,
   namePhoto,
   namePlataforma,
-  contenedor
+  conteinerX,
+  conteinerY
   ) => {
     let colisionTabla = false;
 
-    // Crea un contenedor para la foto y la información
+    const card = {};  
+    
+ 
+    card.containerX = scene.add.container(conteinerX, conteinerY);
     
     // Configura el color de fondo del contenedor
   const contenedorFondo = scene.add.graphics();
@@ -16,7 +20,7 @@ export const crearCard = (
   // contenedorFondo.fillRect(0, 0, 200, 100); // Ajusta el tamaño del contenedor según tus necesidades
   contenedorFondo.fillRoundedRect(0, 0, 200, 100, 10);
  
-  contenedor.add(contenedorFondo);
+  card.containerX.add(contenedorFondo);
    // Agregar un borde al contenedor
 
   
@@ -51,18 +55,18 @@ export const crearCard = (
   informacionTexto.setOrigin(0, 0.5);
   
   // Agrega la foto y el texto al contenedor
-  contenedor.add(informacionTexto);
-  contenedor.add(fotoCarnet);
-  // Establece la profundidad del contenedor para ponerlo encima de todo
-  contenedor.setDepth(1); // Ajusta el valor según sea necesario, un valor mayor lo colocará más arriba
+  card.containerX.add(informacionTexto);
+  card.containerX.add(fotoCarnet);
+  // Establece la profundidad del card.containerX para ponerlo encima de todo
+  card.containerX.setDepth(1); // Ajusta el valor según sea necesario, un valor mayor lo colocará más arriba
   // scene.objetoDelJuego  = scene.add.image(330, 330, "sillaB6");
 
-  contenedor.setAlpha(0);
+  card.containerX.setAlpha(0);
 
   // Establece la colisión entre el jugador (o cualquier objeto) y el objeto del juego
   scene.physics.add.collider(scene.avatar.avatarPlayer, namePlataforma, () => {
     // Cuando el jugador colisiona con el objeto, muestra la tabla de datos
-    contenedor.setAlpha(1);
+    card.containerX.setAlpha(1);
     colisionTabla = true;
   });
 
@@ -74,8 +78,18 @@ export const crearCard = (
       event.key === "ArrowLeft" ||
       event.key === "ArrowRight"
     ) {
-      contenedor.setAlpha(0);
+      card.containerX.setAlpha(0);
     }
   });
-  return;
+  if (window.isMobile) {
+    //buttonCentro se refiere circulo del centro del joystick(file: Player)
+    scene.buttonCentro.on("pointerdown", () => {
+      card.containerX.setAlpha(0);
+    });
+
+    scene.buttonCentro.on("pointermove", () => {
+      card.containerX.setAlpha(0);
+    });
+  }
+  return card.containerX;
 };

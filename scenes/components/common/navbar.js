@@ -50,7 +50,7 @@ export const navbar = async (scene, name = "cubicle") => {
   const information = scene.add.image(1380, 47, "botonNav").setScale(0.5);
   information.setInteractive();
   information.on("pointerdown", function () {
-    alert("Información proceso de selección");
+    scene.showVideo()
   });
   information.setScrollFactor(0);
   box.add(information);
@@ -82,4 +82,5 @@ export const navbar = async (scene, name = "cubicle") => {
   box.add(scoreUser);
 
   box.setScale(0.5);
+  return box;
 };

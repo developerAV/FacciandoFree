@@ -7,6 +7,7 @@ export const createButtonCircle = (
   avatarX,
   avatarY
 ) => {
+
   const buttonCircle = {};
 
   buttonCircle.containerX = scene.add.container();
@@ -25,6 +26,8 @@ export const createButtonCircle = (
 
   // Configurar el intervalo para alternar colores
   setInterval(() => {
+    if (!scene.keyB) return;
+    if (!buttonCircle.containerX.list[0]) return;
     if (buttonCircle.containerX.list[0].strokeColor === COLORS.white) {
       buttonCircle.containerX.list[0].setStrokeStyle(8, COLORS.blue);
       textX.setColor("#000");
@@ -47,6 +50,7 @@ export const createButtonCircle = (
     scene.input.keyboard.on("keydown-X", () => {
       if (!scene.keyB) return;
       scene.scene.start(sceneName);
+      scene.scene.remove(this.key);
       console.log(
         "valor x:",
         buttonCircle.avatarX,

@@ -1,5 +1,6 @@
 import { Avatar } from "./player.js";
 import { crearPlataforma } from "./module/platform.js";
+import { navbar } from "./components/common/navbar.js";
 
 export class Hallway2 extends Phaser.Scene {
   constructor() {
@@ -18,7 +19,7 @@ export class Hallway2 extends Phaser.Scene {
     );
     this.load.image("paredEste", "assets/images/hallway2/pared_este.png");
     this.load.image(
-      "paredSuperior",
+      "paredSuperior2",
       "assets/images/hallway2/pared_frontal.png"
     );
     this.load.image(
@@ -53,7 +54,7 @@ export class Hallway2 extends Phaser.Scene {
     crearPlataforma(304, 501, "paredAuditorio", plataformas, scale);
     crearPlataforma(499, 715, "paredbatMujer", plataformas, scale);
     crearPlataforma(1335, 348, "paredEste", plataformas, scale);
-    crearPlataforma(835, 305, "paredSuperior", plataformas, scale);
+    crearPlataforma(835, 305, "paredSuperior2", plataformas, scale);
     crearPlataforma(1072, 715, "paredInferior", plataformas, scale);
     crearPlataforma(1276, 564, "paredInferiorEste", plataformas, scale);
 
@@ -71,11 +72,12 @@ export class Hallway2 extends Phaser.Scene {
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasillas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
 
-    // Configurar seguimiento de cámara al personaje
+ 
     this.cameras.main.startFollow(this.avatar.avatarPlayer);
 
-    // Configurar zoom de la cámara en función de la posición del personaje
-    this.cameras.main.zoom = 1 + (this.avatar.avatarPlayer.y - 300) / 600; // Ajustar el valor 300 y 600 según tus necesidades
+    this.cameras.main.zoom = 2; 
+  
+    navbar(this, "hallway ");
   }
 
   update() {
@@ -83,6 +85,6 @@ export class Hallway2 extends Phaser.Scene {
     // this.cameras.main.zoom = 1 + (this.avatar.avatarPlayer.y - 300) / 600; // Ajustar el valor 300 y 600 según tus necesidades
 
     // Llamamos a la función "update()" del avatar
-    this.avatar.update();
+    this.avatar.update(this);
   }
 }
