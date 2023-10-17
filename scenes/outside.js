@@ -42,7 +42,7 @@ export class Outside extends Phaser.Scene {
     this.load.image("puertaFacci", "assets/images/outside/puertaFacci.png");
     this.load.image("puertaFacci2", "assets/images/outside/puertaFacci2.png");
     this.load.image("asientoPlanta", "assets/images/outside/asientoPlanta.png");
-    this.load.image("asientoFacci", "assets/images/outside/asientoFacci.png");
+    /*     this.load.image("asientoFacci", "assets/images/outside/asientoFacci.png");*/
     this.load.image("calleBus", "assets/images/outside/calle-bus.png");
     this.load.image("limiteSur", "assets/images/outside/limite-sur-facci.png");
   }
@@ -128,7 +128,7 @@ export class Outside extends Phaser.Scene {
     this.avatar = new Avatar(this, 800, 500, 1.2);
     const tree2 = crearPlataforma(1287, 665, "tree2", platform1, 0.75);
     dimesionesPlataformaIndividual(tree2, 0.2, 47);
-    createButtonCircle(this, "administrativeRoom", puertaFacci, 500, 500);
+    createButtonCircle(this, "cubicle", puertaFacci, 500, 500);
     createButtonCircle(this, "hallway2", puertaFacci2, 600, 800);
     //   createButtonCircle(this, "aula", escritorioD, 800, 500);
 

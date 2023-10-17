@@ -141,7 +141,9 @@ const hallway2 = (scene) => {
   scene.load.image("paredInferiorHallway2", `${path}pared_inferior.png`);
   scene.load.image("paredInferiorEsteHallway2", `${path}pared_comunidad.png`);
 };
-
+const outside = (scene) => {
+  scene.load.image("asientoFacci", "assets/images/outside/asientoFacci.png");
+};
 export const preloads = (scene) => {
   preloadIntro(scene);
   preloadAdmistrativeRoom(scene);
@@ -153,4 +155,5 @@ export const preloads = (scene) => {
   botonesNavbar(scene);
   floorHallway2(scene);
   hallway2(scene);
+  outside(scene);
 };
