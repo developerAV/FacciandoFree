@@ -28,6 +28,9 @@ export class CommissionArea extends Phaser.Scene {
     this.load.image("pisoComision", "assets/images/commission_area/PisoComisiones.png");
     this.load.image("pf", "assets/images/commission_area/pf.png");
     this.load.image("psec", "assets/images/commission_area/paredSurEsteComision.png");
+    this.load.image("psoc", "assets/images/commission_area/paredSurOesteComision.png");
+    this.load.image("puertaSurComision", "assets/images/commission_area/puertaSurComision.png");
+    this.load.image("paredIzqPuertaComision", "assets/images/commission_area/paredIzPuertaComisiones.png");
    
   
   }
@@ -44,6 +47,9 @@ export class CommissionArea extends Phaser.Scene {
     let plataformas = this.physics.add.staticGroup();
 
     crearPlataforma(478, 72, "psec", plataformas);
+    crearPlataforma(1009, 40, "psoc", plataformas);
+    crearPlataforma(687, 72, "puertaSurComision", plataformas);
+    crearPlataforma(632, 162, "paredIzqPuertaComision", plataformas);
    
   
     this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.5);
