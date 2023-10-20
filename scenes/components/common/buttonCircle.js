@@ -50,7 +50,7 @@ export const createButtonCircle = (
     scene.input.keyboard.on("keydown-X", () => {
       if (!scene.keyB) return;
       scene.scene.start(sceneName);
-      scene.scene.remove(this.key);
+      // scene.scene.remove(scene.key);
       console.log(
         "valor x:",
         buttonCircle.avatarX,

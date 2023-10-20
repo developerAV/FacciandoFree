@@ -157,17 +157,25 @@ export class Cubicle extends Phaser.Scene {
     let teclado = this.input.keyboard;
 
     // Configurar una acción para la tecla "i"
-    teclado.addKey(Phaser.Input.Keyboard.KeyCodes.I)
-    miAccion.on(
+    teclado.addKey(Phaser.Input.Keyboard.KeyCodes.I).on(
       "down",
-      function (event) {
-      
-
-        // Puedes ejecutar cualquier código que quieras cuando se presione la tecla "i"
-        crearVideo(traslate("infoCubicle"), "avatarVideo1", this, true);
+      async function (event) {
+        try {
+          // Puedes ejecutar cualquier código que quieras cuando se presione la tecla "i"
+          await crearVideo(
+            traslate("infoCubicle"),
+            "avatarVideo1",
+            this,
+            false
+          );
+          await crearVideo(traslate("infoCubicle"), "avatarVideo2", this, true);
+          // await aumentarZoom();
+          // Aquí continúa con el código después de que ambos videos hayan terminado
+        } catch (error) {
+          console.error("Error:", error);
+        }
       }.bind(this)
     );
-
     // showVideo = () => {
     //     //resetear camara
     //     this.cameras.main.stopFollow();
