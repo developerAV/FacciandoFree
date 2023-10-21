@@ -39,6 +39,8 @@ export class CommissionArea extends Phaser.Scene {
     this.load.image("paredCentro2Norcomision", "assets/images/commission_area/paredCentro2Norcomision.png");
     this.load.image("paredCentro3Comision", "assets/images/commission_area/paredCentro3Comision.png");
     this.load.image("puertaParedNorCentro3Comision", "assets/images/commission_area/puertaParedNorCentro3Comision.png");
+    this.load.image("paredIzComision", "assets/images/commission_area/paredIzComision.png");
+    this.load.image("paredVerticalMedioComision", "assets/images/commission_area/paredVerticalMedioComision.png");
    
   
   }
@@ -56,6 +58,10 @@ export class CommissionArea extends Phaser.Scene {
     
     crearPlataforma(478, 72, "psec", plataformas);
     crearPlataforma(1009, 40, "psoc", plataformas);
+    crearPlataforma(311, 454, "paredIzComision", plataformas);
+    crearPlataforma(625, 790, "paredVerticalMedioComision", plataformas);
+    
+    
     crearPlataforma(687, 72, "puertaSurComision", plataformas);
     crearPlataforma(632, 165, "paredIzqPuertaComision", plataformas);
     crearPlataforma(930, 182, "paredMedioComision", plataformas);
@@ -64,8 +70,9 @@ export class CommissionArea extends Phaser.Scene {
     crearPlataforma(1165, 394, "paredCentro2Izquierdacomision", plataformas);
     
     crearPlataforma(1126, 670, "paredCentro2Izcomision", plataformas);
-    crearPlataforma(766, 670, "paredCentro3Comision", plataformas);
+    crearPlataforma(767, 670, "paredCentro3Comision", plataformas);
      
+   
 
     this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.5);
    
