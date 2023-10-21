@@ -31,6 +31,14 @@ export class CommissionArea extends Phaser.Scene {
     this.load.image("psoc", "assets/images/commission_area/paredSurOesteComision.png");
     this.load.image("puertaSurComision", "assets/images/commission_area/puertaSurComision.png");
     this.load.image("paredIzqPuertaComision", "assets/images/commission_area/paredIzPuertaComisiones.png");
+    this.load.image("paredMedioComision", "assets/images/commission_area/paredMedioComision.png");
+    this.load.image("paredVerticalComision", "assets/images/commission_area/paredVerticalComision.png");
+    this.load.image("paredCentro2comision", "assets/images/commission_area/paredCentro2comision.png");
+    this.load.image("paredCentro2Izcomision", "assets/images/commission_area/paredCentro2Izcomision.png");
+    this.load.image("paredCentro2Izquierdacomision", "assets/images/commission_area/paredCentro2Izquierdacomision.png");
+    this.load.image("paredCentro2Norcomision", "assets/images/commission_area/paredCentro2Norcomision.png");
+    this.load.image("paredCentro3Comision", "assets/images/commission_area/paredCentro3Comision.png");
+    this.load.image("puertaParedNorCentro3Comision", "assets/images/commission_area/puertaParedNorCentro3Comision.png");
    
   
   }
@@ -43,17 +51,27 @@ export class CommissionArea extends Phaser.Scene {
     let uiLayer = this.add.layer();
     this.add.image(800, 528, "pisoComision");
     this.add.image(800, 500, "pf");
-
+    
     let plataformas = this.physics.add.staticGroup();
-
+    
     crearPlataforma(478, 72, "psec", plataformas);
     crearPlataforma(1009, 40, "psoc", plataformas);
     crearPlataforma(687, 72, "puertaSurComision", plataformas);
-    crearPlataforma(632, 162, "paredIzqPuertaComision", plataformas);
-   
-  
+    crearPlataforma(632, 165, "paredIzqPuertaComision", plataformas);
+    crearPlataforma(930, 182, "paredMedioComision", plataformas);
+    crearPlataforma(728, 270, "paredVerticalComision", plataformas);
+    crearPlataforma(845, 394, "paredCentro2comision", plataformas);
+    crearPlataforma(1165, 394, "paredCentro2Izquierdacomision", plataformas);
+    
+    crearPlataforma(1126, 670, "paredCentro2Izcomision", plataformas);
+    crearPlataforma(766, 670, "paredCentro3Comision", plataformas);
+     
+
     this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.5);
    
+    this.add.image(994, 338, "paredCentro2Norcomision");
+    this.add.image(923, 630, "puertaParedNorCentro3Comision");
+
 
     if (activeVideo) {
       crearVideo(traslate("infoCubicle"), "avatarVideo1", this, true);
