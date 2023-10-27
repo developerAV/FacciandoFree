@@ -41,6 +41,16 @@ export class CommissionArea extends Phaser.Scene {
     this.load.image("puertaParedNorCentro3Comision", "assets/images/commission_area/puertaParedNorCentro3Comision.png");
     this.load.image("paredIzComision", "assets/images/commission_area/paredIzComision.png");
     this.load.image("paredVerticalMedioComision", "assets/images/commission_area/paredVerticalMedioComision.png");
+    this.load.image("paredCentroHorizontal", "assets/images/commission_area/paredCentroHorizontal.png");
+    this.load.image("paredCentroIzVertical", "assets/images/commission_area/paredCentroIzVertical.png");
+    this.load.image("paredSecretariaComision", "assets/images/commission_area/paredSecretariaComision.png");
+    this.load.image("paredHorizontalSurComision", "assets/images/commission_area/paredHorizontalSurComision.png");
+    this.load.image("paredSurCentroVerticalComision", "assets/images/commission_area/paredSurCentroVerticalComision.png");
+    this.load.image("paredSurHorizontalComision", "assets/images/commission_area/paredSurHorizontalComision.png");
+    this.load.image("escaleraComision", "assets/images/commission_area/escaleraComision.png");
+    this.load.image("paredIzquierdaComision", "assets/images/commission_area/paredIzquierdaComision.png");
+    this.load.image("paredCentroComisionTesis", "assets/images/commission_area/paredCentroComisionTesis.png");
+    this.load.image("paredPuertaMedioComision", "assets/images/commission_area/paredPuertaMedioComision.png");
    
   
   }
@@ -60,19 +70,32 @@ export class CommissionArea extends Phaser.Scene {
     crearPlataforma(1009, 40, "psoc", plataformas);
     crearPlataforma(311, 454, "paredIzComision", plataformas);
     crearPlataforma(625, 790, "paredVerticalMedioComision", plataformas);
+    crearPlataforma(1306, 208, "paredIzquierdaComision", plataformas);
+    crearPlataforma(1128, 196, "paredCentroComisionTesis", plataformas);
+    crearPlataforma(1254, 532, "escaleraComision", plataformas);
     
     
     crearPlataforma(687, 72, "puertaSurComision", plataformas);
     crearPlataforma(632, 165, "paredIzqPuertaComision", plataformas);
     crearPlataforma(930, 182, "paredMedioComision", plataformas);
+    crearPlataforma(616, 295, "paredPuertaMedioComision", plataformas);
+
+
     crearPlataforma(728, 270, "paredVerticalComision", plataformas);
     crearPlataforma(845, 394, "paredCentro2comision", plataformas);
     crearPlataforma(1165, 394, "paredCentro2Izquierdacomision", plataformas);
     
     crearPlataforma(1126, 670, "paredCentro2Izcomision", plataformas);
     crearPlataforma(767, 670, "paredCentro3Comision", plataformas);
-     
+    
+    crearPlataforma(472, 518, "paredCentroHorizontal", plataformas);
+    crearPlataforma(614, 452, "paredCentroIzVertical", plataformas);
+    crearPlataforma(680, 902, "paredSecretariaComision", plataformas);
+    crearPlataforma(874, 966, "paredHorizontalSurComision", plataformas);
+    crearPlataforma(1018, 852, "paredSurCentroVerticalComision", plataformas);
+    crearPlataforma(470, 870, "paredSurHorizontalComision", plataformas);
    
+
 
     this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.5);
    
