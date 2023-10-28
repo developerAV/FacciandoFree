@@ -26,7 +26,7 @@ export class CommissionArea extends Phaser.Scene {
   }
   preload() {
     this.load.image("pisoComision", "assets/images/commission_area/PisoComisiones.png");
-    this.load.image("pf", "assets/images/commission_area/pf.png");
+    // this.load.image("pf", "assets/images/commission_area/pf.png");
     this.load.image("psec", "assets/images/commission_area/paredSurEsteComision.png");
     this.load.image("psoc", "assets/images/commission_area/paredSurOesteComision.png");
     this.load.image("puertaSurComision", "assets/images/commission_area/puertaSurComision.png");
@@ -62,7 +62,7 @@ export class CommissionArea extends Phaser.Scene {
     // Crear una capa UI que estará por encima de la escena
     let uiLayer = this.add.layer();
     this.add.image(800, 528, "pisoComision");
-    this.add.image(800, 500, "pf");
+    // this.add.image(800, 500, "pf");
     
     let plataformas = this.physics.add.staticGroup();
     
@@ -82,7 +82,7 @@ export class CommissionArea extends Phaser.Scene {
 
 
     crearPlataforma(728, 270, "paredVerticalComision", plataformas);
-    crearPlataforma(845, 394, "paredCentro2comision", plataformas);
+    crearPlataforma(845, 395, "paredCentro2comision", plataformas);
     crearPlataforma(1165, 394, "paredCentro2Izquierdacomision", plataformas);
     
     crearPlataforma(1126, 670, "paredCentro2Izcomision", plataformas);
