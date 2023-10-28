@@ -156,7 +156,7 @@ const mainHallway1 = (scene) => {
   scene.load.image("escaleraArriba1", `${path}escaleraArriba.png`);
 };
 const outside = (scene) => {
-  scene.load.image("asientoFacci", "assets/images/outside/asientoFacci.png");
+  scene.load.image("asientoFacci", "assets/images/outside/asientofacci.png");
 };
 export const preloads = (scene) => {
   preloadIntro(scene);

@@ -15,6 +15,7 @@ import { Ranking } from "./scenes/ranking.js";
 import { AvatarS } from "./scenes/avatar.js";
 import { Question } from "./scenes/question.js";
 import { Outside } from "./scenes/outside.js";
+import { CommissionArea } from "./scenes/commission_area.js";
 
 const config = {
   type: Phaser.AUTO,
@@ -39,6 +40,7 @@ const config = {
     Cubicle,
     Auditorium2,
     Ranking,
+    CommissionArea,
     AvatarS,
   ],
   scale: {
