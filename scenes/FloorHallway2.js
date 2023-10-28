@@ -4,8 +4,9 @@ import {
   dimesionesPlataforma,
   dimesionesPlataformaIndividual,
 } from "./module/platform.js";
+import { navbar } from "./components/common/navbar.js";
 let activeVideo = false;
-const xy = 7;
+
 export class FloorHallway2 extends Phaser.Scene {
   constructor() {
     super({ key: "floorHallway2" });
@@ -27,12 +28,13 @@ export class FloorHallway2 extends Phaser.Scene {
     crearPlataforma(1241, 409, "pared", plataformas);
     crearPlataforma(1466, 758, "paredLarga", plataformas);
     crearPlataforma(1446, 665, "muroFloor2", plataformas);
-    crearPlataforma(1446, 760, "muroFloor2", plataformas);
     crearPlataforma(1218, 900, "paredInferior", plataformas);
     crearPlataforma(138, 385, "faltante", paredesSupeiores);
     crearPlataforma(445, 370, "hueco", plataformas, 0.35);
     crearPlataforma(1000, 281, "banca", paredesSupeiores, 1.35);
 
+    this.add.image(700, 256, "puerta").setScale(1.35);
+    this.add.image(637, 256, "puerta2").setScale(1.35);
     this.avatar = new Avatar(this, 800, 490, 1.3);
 
     crearPlataforma(554, 713, "cursos", plataformas);
@@ -44,11 +46,6 @@ export class FloorHallway2 extends Phaser.Scene {
     crearPlataforma(1181, 356, "escaleraArriba", plataformas);
     crearPlataforma(1205, 428, "escaleraAbajoAbajo", plataformas, 0.25);
     crearPlataforma(1181, 440, "escaleraAbajo", plataformas);
-
-    /* crearPlataforma(700, 256, "puerta", plataformas, 1.35);
-    crearPlataforma(637, 256, "puerta2", plataformas, 1.35); */
-    this.add.image(700, 256, "puerta").setScale(1.35);
-    this.add.image(637, 256, "puerta2").setScale(1.35);
 
     crearPlataforma(990, 740, "sillaDeLado2", plataformas);
     crearPlataforma(990, 770, "sillaDeLado2", plataformas);
@@ -72,6 +69,7 @@ export class FloorHallway2 extends Phaser.Scene {
     crearPlataforma(1197, 865, "mesasAbajo", plataformas);
     crearPlataforma(1438, 834, "mesaAbajoDerecha", plataformas);
     crearPlataforma(1438, 731, "mesaMedio", plataformas);
+    crearPlataforma(1446, 760, "muroFloor2", plataformas);
 
     if (activeVideo) {
       crearVideo(mensaje.txtCubicle[window.lan], "avatarVideo", this, true);
@@ -86,6 +84,7 @@ export class FloorHallway2 extends Phaser.Scene {
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredesSupeiores);
+    navbar(this, "floorHallway2", 0.5);
   }
 
   update() {

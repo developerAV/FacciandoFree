@@ -37,3 +37,7 @@ export const COLORS_HEX = {
 };
 
 export const URI_API = "https://server-api-kuoy-dev.fl0.io/facciando";
+
+export const DIMENSIONS = {
+  height: 0.82,
+};

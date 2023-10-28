@@ -63,7 +63,6 @@ export class Cubicle extends Phaser.Scene {
     this.load.image("anaquel", "assets/images/cubicle/anaquel.png");
 
     this.load.image("fotoCarnet", "assets/images/avatars/avatar1.png");
-  
   }
 
   async create() {
@@ -119,9 +118,9 @@ export class Cubicle extends Phaser.Scene {
     let sillasB = this.physics.add.staticGroup();
 
     let silla = crearPlataforma(330, 330, "sillaB6", sillasB);
-    
+
     let silla2 = crearPlataforma(530, 330, "sillaB6", sillasB);
-  
+
     this.avatar = new Avatar(this, 800, 500, 1.5);
     let escritorioD = crearPlataforma(1005, 611, "escritoriosD", plataformas);
     crearPlataforma(690, 947, "paredPuertaSur", plataformas);
@@ -196,23 +195,9 @@ export class Cubicle extends Phaser.Scene {
     dimesionesPlataformaIndividual(impresora, 0.6, 60);
     dimesionesPlataformaIndividual(escritoriosB, 0.6, 60);
     dimesionesPlataformaIndividual(escritoriosB6, 0.6, 60);
-    crearCard(
-      this,
-      this.dataEmployees[0],
-      "fotoCarnet",
-      silla,
-      330,
-      160,
-    );
+    crearCard(this, this.dataEmployees[0], "fotoCarnet", silla, 330, 160);
 
-    crearCard(
-      this,
-      this.dataEmployees[1],
-      "fotoCarnet",
-      silla2,
-      530,
-      160
-    );
+    crearCard(this, this.dataEmployees[1], "fotoCarnet", silla2, 530, 160);
 
     this.physics.add.collider(
       this.avatar.avatarPlayer,
@@ -221,9 +206,11 @@ export class Cubicle extends Phaser.Scene {
     window.avatarX = this.avatar.avatarPlayer.x;
     window.avatarY = this.avatar.avatarPlayer.y;
 
-  createButtonCircle(this, "hallway2", escaleraX, 500, 500);
-  createButtonCircle(this, "aula", escritorioD, 800, 500);
-    
+    createButtonCircle(this, "mainHallway1", escaleraX, 483, 275);
+
+
+    createButtonCircle(this, "aula", escritorioD, 800, 500);
+
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredNorte);
 

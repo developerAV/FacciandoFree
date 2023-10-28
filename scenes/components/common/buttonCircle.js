@@ -7,7 +7,6 @@ export const createButtonCircle = (
   avatarX,
   avatarY
 ) => {
-
   const buttonCircle = {};
 
   buttonCircle.containerX = scene.add.container();
