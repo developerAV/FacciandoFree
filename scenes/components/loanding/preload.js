@@ -141,6 +141,20 @@ const hallway2 = (scene) => {
   scene.load.image("paredInferiorHallway2", `${path}pared_inferior.png`);
   scene.load.image("paredInferiorEsteHallway2", `${path}pared_comunidad.png`);
 };
+const mainHallway1 = (scene) => {
+  const path = "assets/images/mainHallway1/";
+  scene.load.image("floor", `${path}floor.png`);
+  scene.load.image("paredBaja1", `${path}paredBajaDerecha.png`);
+  scene.load.image("paredBaja2", `${path}paredBajaIzquierda.png`);
+  scene.load.image("paredMedia1", `${path}paredMediaIzquierda.png`);
+  scene.load.image("paredMedia2", `${path}paredMediaDerecha.png`);
+  scene.load.image("paredMediaEscalera", `${path}paredMediaEscalera.png`);
+  scene.load.image("paredSuperior1", `${path}paredSuperiorIzquierda.png`);
+  scene.load.image("paredSuperior2", `${path}paredSuperiorDerecha.png`);
+  scene.load.image("sillaBasura", `${path}sillaBasura.png`);
+  scene.load.image("escaleraAbajo1", `${path}escaleraAbajo.png`);
+  scene.load.image("escaleraArriba1", `${path}escaleraArriba.png`);
+};
 const outside = (scene) => {
   scene.load.image("asientoFacci", "assets/images/outside/asientoFacci.png");
 };
@@ -156,4 +170,5 @@ export const preloads = (scene) => {
   floorHallway2(scene);
   hallway2(scene);
   outside(scene);
+  mainHallway1(scene);
 };

@@ -1,5 +1,6 @@
 import { Avatar } from "./player.js";
 import { crearPlataforma } from "./module/platform.js";
+import { navbar } from "./components/common/navbar.js";
 
 export class AdministrativeRoom extends Phaser.Scene {
   constructor() {
@@ -68,6 +69,8 @@ export class AdministrativeRoom extends Phaser.Scene {
 
     this.cameras.main.startFollow(this.avatar.avatarPlayer); // Configurar seguimiento de cámara al personaje
     this.cameras.main.zoom = 2;
+
+    navbar(this, "administrativeRoom");
   }
 
   update() {

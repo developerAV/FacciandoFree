@@ -146,6 +146,11 @@ const traslateIntro = {
     es: "Exterior",
     en: "Outside",
   },
+  // mainHallway1
+  mainHallway1: {
+    es: "Pasillo principal",
+    en: "Main hallway",
+  },
 };
 
 export const traslate = (key) => {

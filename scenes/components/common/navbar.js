@@ -4,10 +4,14 @@ import { getUserById } from "../../../services/user.js";
 
 import { COLORS_HEX } from "../../../utils/constants.js";
 
-export const navbar = async (scene, name = "cubicle") => {
-  //const user = await getUserById(window.user?._id);
+export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
+  //const
+  let box = scene.add.container(400, 250); //zoom == 2
 
-  const box = scene.add.container(400, 250);
+  if (scene.cameras.main.zoom == 1.5) {
+    box = scene.add.container(265, 165); //zoom == 1.5
+  }
+
   box.setScrollFactor(0);
   box.setName("box");
   const boxBg = scene.add.graphics();
@@ -31,8 +35,6 @@ export const navbar = async (scene, name = "cubicle") => {
   fullScreen.setScrollFactor(0);
   box.add(fullScreen);
 
-
-
   const activarSonido = scene.add.image(1470, 47, "sound").setScale(0.5);
   activarSonido.setInteractive();
   activarSonido.on("pointerdown", function () {
@@ -50,7 +52,7 @@ export const navbar = async (scene, name = "cubicle") => {
   const information = scene.add.image(1380, 47, "botonNav").setScale(0.5);
   information.setInteractive();
   information.on("pointerdown", function () {
-    scene.showVideo()
+    scene.showVideo();
   });
   information.setScrollFactor(0);
   box.add(information);
@@ -59,7 +61,7 @@ export const navbar = async (scene, name = "cubicle") => {
     font: `40px ${FONT}`,
     fill: COLORS_HEX.white,
     wordWrap: {
-      width: 200,
+      width: 500,
     },
   });
 
@@ -81,6 +83,6 @@ export const navbar = async (scene, name = "cubicle") => {
   box.add(scoreUserLabel);
   box.add(scoreUser);
 
-  box.setScale(0.5);
+  box.setScale(scale);
   return box;
 };
