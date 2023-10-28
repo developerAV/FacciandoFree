@@ -77,7 +77,7 @@ export class Loading extends Phaser.Scene {
         this.time.delayedCall(
           1000,
           () => {
-            this.scene.start("commission_area");
+            this.scene.start("login");
             video.destroy();
           },
           [],
