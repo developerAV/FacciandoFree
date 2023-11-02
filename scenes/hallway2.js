@@ -1,6 +1,7 @@
 import { Avatar } from "./player.js";
 import { crearPlataforma } from "./module/platform.js";
 import { navbar } from "./components/common/navbar.js";
+import { dimesionesPlataforma } from "./module/platform.js";
 
 export class Hallway2 extends Phaser.Scene {
   constructor() {
@@ -19,11 +20,11 @@ export class Hallway2 extends Phaser.Scene {
     );
     this.load.image("paredEste", "assets/images/hallway2/pared_este.png");
     this.load.image(
-      "paredSuperior2",
+      "paredSuperior2Hallway2",
       "assets/images/hallway2/pared_frontal.png"
     );
     this.load.image(
-      "paredInferior",
+      "paredInferiorHallway2",
       "assets/images/hallway2/pared_inferior.png"
     );
     this.load.image(
@@ -44,40 +45,40 @@ export class Hallway2 extends Phaser.Scene {
     let scale = 1;
     let scaleComputer = 1.5;
 
-    this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.5);
-
     let plataformas = this.physics.add.staticGroup();
     let plataformasillas = this.physics.add.staticGroup();
-    let paredPlataforma = this.physics.add.staticGroup();
+    let paredPlataformaSuperior = this.physics.add.staticGroup();
+
+    crearPlataforma(
+      835,
+      305,
+      "paredSuperior2Hallway2",
+      paredPlataformaSuperior,
+      scale
+    );
+    this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.3);
     // this.plataforma = new Platform();
 
     crearPlataforma(304, 501, "paredAuditorio", plataformas, scale);
     crearPlataforma(499, 715, "paredbatMujer", plataformas, scale);
     crearPlataforma(1335, 348, "paredEste", plataformas, scale);
-    crearPlataforma(835, 305, "paredSuperior2", plataformas, scale);
-    crearPlataforma(1072, 715, "paredInferior", plataformas, scale);
+    crearPlataforma(1072, 715, "paredInferiorHallway2", plataformas, scale);
     crearPlataforma(1276, 564, "paredInferiorEste", plataformas, scale);
 
-    plataformas.children.iterate((plataforma) => {
-      plataforma.refreshBody();
-      plataforma.body.setSize(
-        plataforma.body.width * 1,
-        plataforma.body.height * 0.6,
-        true
-      );
-      plataforma.body.setOffset(0, 25);
-    });
+    dimesionesPlataforma(paredPlataformaSuperior, 0.6, 75);
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasillas);
-    this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
+    this.physics.add.collider(
+      this.avatar.avatarPlayer,
+      paredPlataformaSuperior
+    );
 
- 
     this.cameras.main.startFollow(this.avatar.avatarPlayer);
 
-    this.cameras.main.zoom = 2; 
-  
-    navbar(this, "hallway ");
+    this.cameras.main.zoom = 2;
+
+    navbar(this, "hallway");
   }
 
   update() {

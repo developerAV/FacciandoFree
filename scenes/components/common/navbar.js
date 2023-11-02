@@ -22,6 +22,8 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
   const home = scene.add.image(40, 47, "botonNav").setScale(0.5);
   home.setInteractive();
   home.on("pointerdown", function () {
+    scene.scene.restart();
+      scene.scene.stop();
     scene.scene.start("intro");
   });
   home.setScrollFactor(0);
