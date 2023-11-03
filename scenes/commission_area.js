@@ -65,19 +65,20 @@ export class CommissionArea extends Phaser.Scene {
     // this.add.image(800, 500, "pf");
     
     let plataformas = this.physics.add.staticGroup();
+    let plataformasNorte = this.physics.add.staticGroup();
     
-    crearPlataforma(478, 72, "psec", plataformas);
-    crearPlataforma(1009, 40, "psoc", plataformas);
+    crearPlataforma(478, 72, "psec", plataformasNorte);
+    crearPlataforma(1009, 40, "psoc", plataformasNorte);
     crearPlataforma(311, 454, "paredIzComision", plataformas);
     crearPlataforma(625, 790, "paredVerticalMedioComision", plataformas);
     crearPlataforma(1306, 208, "paredIzquierdaComision", plataformas);
-    crearPlataforma(1128, 196, "paredCentroComisionTesis", plataformas);
+    crearPlataforma(1128, 194, "paredCentroComisionTesis", plataformas);
     crearPlataforma(1254, 532, "escaleraComision", plataformas);
     
     
     crearPlataforma(687, 72, "puertaSurComision", plataformas);
     crearPlataforma(632, 165, "paredIzqPuertaComision", plataformas);
-    crearPlataforma(930, 182, "paredMedioComision", plataformas);
+    crearPlataforma(930, 182, "paredMedioComision", plataformasNorte);
     crearPlataforma(616, 295, "paredPuertaMedioComision", plataformas);
 
 
@@ -144,14 +145,22 @@ export class CommissionArea extends Phaser.Scene {
     // );
 
   
+    dimesionesPlataforma(plataformasNorte, 0.2, 40);
+
 
     window.avatarX = this.avatar.avatarPlayer.x;
     window.avatarY = this.avatar.avatarPlayer.y;
+
+
+
+
+
 
 //   createButtonCircle(this, "hallway2", escaleraX, 500, 500);
 //   createButtonCircle(this, "aula", escritorioD, 800, 500);
     
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
+    this.physics.add.collider(this.avatar.avatarPlayer, plataformasNorte);
 
     // navbar(this, "cubicle");
   }
