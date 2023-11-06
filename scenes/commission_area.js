@@ -3,6 +3,7 @@ import {
   crearPlataforma,
   dimesionesPlataforma,
   dimesionesPlataformaIndividual,
+  overlapPlataforma,
 } from "./module/platform.js";
 import { traslate } from "../data/dialogues.js";
 import { crearVideo } from "./module/videoInfo.js";
@@ -65,24 +66,26 @@ export class CommissionArea extends Phaser.Scene {
     // this.add.image(800, 500, "pf");
     
     let plataformas = this.physics.add.staticGroup();
+    let plataformasMedio = this.physics.add.staticGroup();
+    let plataformasNorte = this.physics.add.staticGroup();
+    let plataformasOverlap = this.physics.add.staticGroup();
     
-    crearPlataforma(478, 72, "psec", plataformas);
-    crearPlataforma(1009, 40, "psoc", plataformas);
+    crearPlataforma(478, 72, "psec", plataformasNorte);
+    crearPlataforma(1009, 40, "psoc", plataformasNorte);
     crearPlataforma(311, 454, "paredIzComision", plataformas);
     crearPlataforma(625, 790, "paredVerticalMedioComision", plataformas);
     crearPlataforma(1306, 208, "paredIzquierdaComision", plataformas);
-    crearPlataforma(1128, 196, "paredCentroComisionTesis", plataformas);
+    crearPlataforma(1128, 194, "paredCentroComisionTesis", plataformas);
     crearPlataforma(1254, 532, "escaleraComision", plataformas);
     
     
     crearPlataforma(687, 72, "puertaSurComision", plataformas);
     crearPlataforma(632, 165, "paredIzqPuertaComision", plataformas);
-    crearPlataforma(930, 182, "paredMedioComision", plataformas);
+  
     crearPlataforma(616, 295, "paredPuertaMedioComision", plataformas);
 
 
     crearPlataforma(728, 270, "paredVerticalComision", plataformas);
-    crearPlataforma(845, 395, "paredCentro2comision", plataformas);
     crearPlataforma(1165, 394, "paredCentro2Izquierdacomision", plataformas);
     
     crearPlataforma(1126, 670, "paredCentro2Izcomision", plataformas);
@@ -94,11 +97,14 @@ export class CommissionArea extends Phaser.Scene {
     crearPlataforma(874, 966, "paredHorizontalSurComision", plataformas);
     crearPlataforma(1018, 852, "paredSurCentroVerticalComision", plataformas);
     crearPlataforma(470, 870, "paredSurHorizontalComision", plataformas);
-   
-
-
+    
+    
+    let paredCentro2comision = crearPlataforma(845, 395, "paredCentro2comision", plataformasMedio);
+    let paredCentro2Overlap =crearPlataforma(845, 395, "paredCentro2comision", plataformasOverlap);
+    
+   crearPlataforma(930, 182, "paredMedioComision", plataformasMedio);
+    let paredMedioOverlap = crearPlataforma(930, 182, "paredMedioComision", plataformasOverlap);
     this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.5);
-   
     this.add.image(994, 338, "paredCentro2Norcomision");
     this.add.image(923, 630, "puertaParedNorCentro3Comision");
 
@@ -144,13 +150,30 @@ export class CommissionArea extends Phaser.Scene {
     // );
 
   
-
+    dimesionesPlataforma(plataformasNorte, 0.2, 40);
+    
+    
     window.avatarX = this.avatar.avatarPlayer.x;
     window.avatarY = this.avatar.avatarPlayer.y;
+    
+    
+    
+    
+    
+    dimesionesPlataforma(plataformasMedio, 0.2, 40);
+    dimesionesPlataformaIndividual(paredCentro2comision, 0.1, 120);
+// dimesionesPlataformaIndividual(paredMedio, 0.2, 40);
 
 //   createButtonCircle(this, "hallway2", escaleraX, 500, 500);
 //   createButtonCircle(this, "aula", escritorioD, 800, 500);
     
+this.physics.add.overlap(this.avatar.avatarPlayer, plataformasOverlap,  () => {
+  overlapPlataforma(this, paredMedioOverlap);
+  overlapPlataforma(this, paredCentro2Overlap);
+}, null, this);
+   
+    this.physics.add.collider(this.avatar.avatarPlayer, plataformasMedio);
+    this.physics.add.collider(this.avatar.avatarPlayer, plataformasNorte);
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
 
     // navbar(this, "cubicle");

@@ -48,6 +48,9 @@ export const createButtonCircle = (
 
     scene.input.keyboard.on("keydown-X", () => {
       if (!scene.keyB) return;
+   
+      scene.scene.restart();
+      scene.scene.stop();
       scene.scene.start(sceneName);
       // scene.scene.remove(scene.key);
       console.log(
@@ -65,6 +68,9 @@ export const createButtonCircle = (
 
     buttonCircle.containerX.list[0].setInteractive();
     buttonCircle.containerX.list[0].on("pointerdown", () => {
+
+      scene.scene.restart();
+      scene.scene.stop();
       scene.scene.start(sceneName);
     });
   });

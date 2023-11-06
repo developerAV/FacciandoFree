@@ -20,3 +20,12 @@ export const dimesionesPlataformaIndividual = (plataform, height, y) => {
   );
   plataform.body.setOffset(0, y);
 };
+
+export const overlapPlataforma = (scene, plataform) => {
+  if (scene.avatar.avatarPlayer.y < plataform.y) {
+
+    plataform.setDepth(2); 
+  } else {
+    plataform.setDepth(-1);
+}
+};
