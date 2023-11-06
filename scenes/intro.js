@@ -20,7 +20,7 @@ export class Intro extends Phaser.Scene {
       "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexlineprogresscanvasplugin.min.js",
       true
     );
-    this.textures.remove("profile");
+    if (this.textures.exists("profile")) this.textures.remove("profile");
     this.load.image("profile", window.imageUrl);
     this.load.scenePlugin({
       key: "rexuiplugin",

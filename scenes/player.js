@@ -3,41 +3,51 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     super(scene, x, y, "dude", scale);
 
     this.avatarPlayer = scene.physics.add.sprite(x, y, "dude").setScale(scale);
-    // window.avatarUpdateActivo = true;
 
     this.avatarPlayer.setCollideWorldBounds(true);
     this.cursors = scene.input.keyboard.createCursorKeys();
     this.avatarPlayer.body.allowGravity = false;
 
-    scene.anims.create({
-      key: "turn",
-      frames: [{ key: "dude", frame: 1 }],
-      frameRate: 10,
-    });
-    scene.anims.create({
-      key: "up",
-      frames: scene.anims.generateFrameNumbers("dude", { start: 10, end: 13 }),
-      frameRate: 10,
-      repeat: -1,
-    });
-    scene.anims.create({
-      key: "right",
-      frames: scene.anims.generateFrameNumbers("dude", { start: 7, end: 9 }),
-      frameRate: 10,
-      repeat: -1,
-    });
-    scene.anims.create({
-      key: "left",
-      frames: scene.anims.generateFrameNumbers("dude", { start: 4, end: 6 }),
-      frameRate: 10,
-      repeat: -1,
-    });
-    scene.anims.create({
-      key: "down",
-      frames: scene.anims.generateFrameNumbers("dude", { start: 0, end: 3 }),
-      frameRate: 10,
-      repeat: -1,
-    });
+    if (!scene.anims.exists("turn"))
+      scene.anims.create({
+        key: "turn",
+        frames: [{ key: "dude", frame: 1 }],
+        frameRate: 10,
+      });
+
+    if (!scene.anims.exists("up"))
+      scene.anims.create({
+        key: "up",
+        frames: scene.anims.generateFrameNumbers("dude", {
+          start: 10,
+          end: 13,
+        }),
+        frameRate: 10,
+        repeat: -1,
+      });
+    if (!scene.anims.exists("right"))
+      scene.anims.create({
+        key: "right",
+        frames: scene.anims.generateFrameNumbers("dude", { start: 7, end: 9 }),
+        frameRate: 10,
+        repeat: -1,
+      });
+
+    if (!scene.anims.exists("left"))
+      scene.anims.create({
+        key: "left",
+        frames: scene.anims.generateFrameNumbers("dude", { start: 4, end: 6 }),
+        frameRate: 10,
+        repeat: -1,
+      });
+
+    if (!scene.anims.exists("down"))
+      scene.anims.create({
+        key: "down",
+        frames: scene.anims.generateFrameNumbers("dude", { start: 0, end: 3 }),
+        frameRate: 10,
+        repeat: -1,
+      });
 
     if (window.isMobile && window.avatarUpdateActivo) {
       this.botonMobile(scene);

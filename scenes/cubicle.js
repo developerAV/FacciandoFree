@@ -208,7 +208,6 @@ export class Cubicle extends Phaser.Scene {
 
     createButtonCircle(this, "mainHallway1", escaleraX, 483, 275);
 
-
     createButtonCircle(this, "aula", escritorioD, 800, 500);
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);

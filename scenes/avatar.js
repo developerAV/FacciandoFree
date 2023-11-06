@@ -9,7 +9,7 @@ export class AvatarS extends Phaser.Scene {
     super({ key: "avatarS" });
   }
   preload() {
-    this.textures.remove("profile");
+    if (this.textures.exists("profile")) this.textures.remove("profile");
     this.load.image("profile", window.imageUrl);
   }
   create() {

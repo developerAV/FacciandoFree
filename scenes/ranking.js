@@ -3,7 +3,6 @@ import { textButton } from "./module/textButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
 import { traslate } from "../data/dialogues.js";
 import { buttonLogout } from "./components/intro/buttonLogout.js";
-import { getTop10UserByScore } from "../services/user.js";
 
 const COLOR_LIGHT = COLORS.blueDark;
 const COLOR_DARK = 0x03bed0;
@@ -14,13 +13,14 @@ export class Ranking extends Phaser.Scene {
   }
   preload() {
     window.top10UserList.map((user) => {
-      this.textures.remove(user.idUserFirebase);
+      if (this.textures.exists(user.idUserFirebase))
+        this.textures.remove(user.idUserFirebase);
       this.load.image(user.idUserFirebase, user.imageUrl);
     });
 
     this.load.image("profile", window.imageUrl);
 
-    this.textures.remove("profile");
+    if (this.textures.exists("profile")) this.textures.remove("profile");
     this.load.image("profile", window.imageUrl);
     this.load.scenePlugin({
       key: "rexuiplugin",
@@ -154,26 +154,20 @@ export class Ranking extends Phaser.Scene {
     const logoutButton = buttonLogout(this);
     const btnLanguage = this.add.image(1537, 70, "language").setScale(0.4);
     buttonEnglish(btnLanguage, this);
-  
 
+    //The best ranking
+    //name/university Score  Position
 
-//The best ranking
-//name/university Score  Position
+    const boxScroll = this.add.graphics();
+    boxScroll.fillStyle(COLORS.blueDark, 0.9);
+    boxScroll.fillRoundedRect(150, 200, 1300, 118, 10);
+    // boxScroll.fillStyle(0); // Color base (no importa el color, se reemplazará por el degradado)
 
+    //   // Agregar el degradado horizontal
+    //   boxScroll.fillGradientStyle(-20, COLORS.blueDark, -20, COLORS.blueDark, 1,0.5,0.5);
 
-
-const boxScroll = this.add.graphics();
-boxScroll.fillStyle(COLORS.blueDark, 0.9);
-boxScroll.fillRoundedRect(150, 200, 1300, 118, 10);
-// boxScroll.fillStyle(0); // Color base (no importa el color, se reemplazará por el degradado)
-
-
-//   // Agregar el degradado horizontal
-//   boxScroll.fillGradientStyle(-20, COLORS.blueDark, -20, COLORS.blueDark, 1,0.5,0.5);
-
-//   // Dibujar el rectángulo con degradado
-//   boxScroll.fillRect(150, 200, 1300, 118); 
-
+    //   // Dibujar el rectángulo con degradado
+    //   boxScroll.fillRect(150, 200, 1300, 118);
 
     let scrollablePanel = this.rexUI.add
       .scrollablePanel({
@@ -188,17 +182,16 @@ boxScroll.fillRoundedRect(150, 200, 1300, 118, 10);
           strokeColor: COLOR_DARK,
           radius: 10,
         }),
-  
+
         panel: {
           child: createPanel(this),
           mask: { padding: 3 },
-       
         },
 
         slider: {
           track: this.rexUI.add.roundRectangle({
             width: 20,
-          
+
             radius: 10,
             color: COLOR_DARK,
             alpha: 0.5,
@@ -207,47 +200,42 @@ boxScroll.fillRoundedRect(150, 200, 1300, 118, 10);
             radius: 13,
             color: COLOR_LIGHT,
           }),
-          space: {  
+          space: {
             top: 20,
             right: 20,
             left: 20,
           },
-          
-        },  
+        },
         header: this.rexUI.add.label({
           width: 50,
           height: 100,
           orientation: 0,
-         
+
           alpha: 0.5,
-          text: this.add.text(650, 0, "The best Ranking " , {
+          text: this.add.text(650, 0, "The best Ranking ", {
             font: `64px arial`,
             fill: "#fff",
             //justificado
             align: "center",
             wordWrap: { width: 800 },
             padding: { x: 350, y: 0 },
-            },
-            ),
-         
+          }),
         }),
 
         mouseWheelScroller: {
           focus: false,
           speed: 0.1,
         },
-    space: {
+        space: {
           left: 40,
-            right: 0,
+          right: 0,
           top: 20,
           bottom: 20,
           panel: 3,
-          
         },
-     
       })
       .layout();
- 
+
     this.updateScene = () => {
       logoutButton.setText(traslate("logout"));
       name.setText(window.name);
@@ -266,18 +254,6 @@ let createPanel = function (scene) {
   let xInit = 1;
   let yInit = 100;
   let container = scene.add.container();
-  // const labelTopic = scene.add.text(400, 0, ` The best Ranking  `, {
-  //   font: `64px arial`,
-  //   fill: "#fff",
-  //   wordWrap: {
-  //     width: 500,
-  //   },
-  //   padding: {
-  //     x: 10,
-  //     y: 10,
-  //   },
-  // });
-  // container.add(labelTopic);
 
   const boxGeneral = scene.add.graphics();
   boxGeneral.fillStyle(COLORS.blueDark, 0.5);
@@ -323,8 +299,15 @@ let createPanel = function (scene) {
     let container2 = scene.add.container(xInit, yInit);
 
     const boxBg = scene.add.graphics();
-    // boxBg.fillGradientStyle(-559, 0x03bed0, -1, 0x03bed0, 1,1,0.8);
-    boxBg.fillGradientStyle(COLORS.blue, COLORS.blue, 0x054294, 0x054294, 0.9,1,0.8);
+    boxBg.fillGradientStyle(
+      COLORS.blue,
+      COLORS.blue,
+      0x054294,
+      0x054294,
+      0.9,
+      1,
+      0.8
+    );
     boxBg.fillRect(0, 0, 1200, 90);
 
     const profile2 = scene.add.image(50, 45, user.idUserFirebase);
@@ -341,22 +324,17 @@ let createPanel = function (scene) {
         y: 10,
       },
     });
-    const uni = scene.add.text(
-      100,
-      50,
-      user.school ?? "No school",
-      {
-        font: `14px arial`,
-        fill: "#fff",
-        wordWrap: {
-          width: 600,
-        },
-        padding: {
-          x: 10,
-          y: 10,
-        },
-      }
-    );
+    const uni = scene.add.text(100, 50, user.school ?? "No school", {
+      font: `14px arial`,
+      fill: "#fff",
+      wordWrap: {
+        width: 600,
+      },
+      padding: {
+        x: 10,
+        y: 10,
+      },
+    });
     const score = scene.add.text(800, 10, user.score, {
       font: `32px arial`,
       fill: "#ffffff",

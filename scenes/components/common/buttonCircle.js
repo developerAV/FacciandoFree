@@ -38,28 +38,13 @@ export const createButtonCircle = (
 
   // Configurar eventos y colisiones
   scene.physics.add.collider(scene.avatar.avatarPlayer, platform, () => {
+    window.sceneName = sceneName;
     window.avatarX = avatarX;
     window.avatarY = avatarY;
-    console.log("avatarX: ", window.avatarX, "avatarY: ", window.avatarY);
     buttonCircle.containerX.visible = true;
     scene.keyB = true;
     buttonCircle.containerX.x = scene.avatar.avatarPlayer.x + 80;
     buttonCircle.containerX.y = scene.avatar.avatarPlayer.y;
-
-    scene.input.keyboard.on("keydown-X", () => {
-      if (!scene.keyB) return;
-   
-      scene.scene.restart();
-      scene.scene.stop();
-      scene.scene.start(sceneName);
-      // scene.scene.remove(scene.key);
-      console.log(
-        "valor x:",
-        buttonCircle.avatarX,
-        "valor y: ",
-        buttonCircle.avatarY
-      );
-    });
 
     buttonCircle.containerX.setSize(
       buttonCircle.containerX.x,
@@ -68,11 +53,22 @@ export const createButtonCircle = (
 
     buttonCircle.containerX.list[0].setInteractive();
     buttonCircle.containerX.list[0].on("pointerdown", () => {
-
       scene.scene.restart();
       scene.scene.stop();
       scene.scene.start(sceneName);
     });
+  });
+  scene.input.keyboard.on("keydown-X", () => {
+    if (!scene.keyB) return;
+    scene.avatar.avatarPlayer.destroy();
+    scene.anims.remove("turn");
+    scene.anims.remove("left");
+    scene.anims.remove("right");
+    scene.anims.remove("up");
+    scene.anims.remove("down");
+
+    scene.scene.start(window.sceneName);
+    // scene.scene.remove(scene.key);
   });
 
   scene.input.keyboard.on("keydown", () => {

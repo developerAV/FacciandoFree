@@ -62,7 +62,6 @@ export class mainHallway1 extends Phaser.Scene {
     this.cameras.main.zoom = 1.5;
 
     createButtonCircle(this, "cubicle", escaleraAbajo, 500, 500);
-
     createButtonCircle(this, "floorHallway2", escaleraArriba, 500, 500);
 
     this.physics.add.collider(this.avatar.avatarPlayer, platform1);
