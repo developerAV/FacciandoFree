@@ -4,6 +4,7 @@ import {
   dimesionesPlataforma,
   dimesionesPlataformaIndividual,
   overlapPlataforma,
+  changeNameOverlap,
 } from "./module/platform.js";
 import { traslate } from "../data/dialogues.js";
 import { crearVideo } from "./module/videoInfo.js";
@@ -52,8 +53,8 @@ export class CommissionArea extends Phaser.Scene {
     this.load.image("paredIzquierdaComision", "assets/images/commission_area/paredIzquierdaComision.png");
     this.load.image("paredCentroComisionTesis", "assets/images/commission_area/paredCentroComisionTesis.png");
     this.load.image("paredPuertaMedioComision", "assets/images/commission_area/paredPuertaMedioComision.png");
-   
-  
+
+
   }
 
   async create() {
@@ -64,12 +65,14 @@ export class CommissionArea extends Phaser.Scene {
     let uiLayer = this.add.layer();
     this.add.image(800, 528, "pisoComision");
     // this.add.image(800, 500, "pf");
-    
+
     let plataformas = this.physics.add.staticGroup();
     let plataformasMedio = this.physics.add.staticGroup();
     let plataformasNorte = this.physics.add.staticGroup();
     let plataformasOverlap = this.physics.add.staticGroup();
-    
+    let puertaOverlap1 = this.physics.add.staticGroup();
+    let puertaOverlap2 = this.physics.add.staticGroup();
+
     crearPlataforma(478, 72, "psec", plataformasNorte);
     crearPlataforma(1009, 40, "psoc", plataformasNorte);
     crearPlataforma(311, 454, "paredIzComision", plataformas);
@@ -77,48 +80,52 @@ export class CommissionArea extends Phaser.Scene {
     crearPlataforma(1306, 208, "paredIzquierdaComision", plataformas);
     crearPlataforma(1128, 194, "paredCentroComisionTesis", plataformas);
     crearPlataforma(1254, 532, "escaleraComision", plataformas);
-    
-    
+
+
     crearPlataforma(687, 72, "puertaSurComision", plataformas);
     crearPlataforma(632, 165, "paredIzqPuertaComision", plataformas);
-  
+
     crearPlataforma(616, 295, "paredPuertaMedioComision", plataformas);
 
 
     crearPlataforma(728, 270, "paredVerticalComision", plataformas);
-    
-    
+
+
     crearPlataforma(472, 518, "paredCentroHorizontal", plataformas);
     crearPlataforma(614, 452, "paredCentroIzVertical", plataformas);
     crearPlataforma(680, 902, "paredSecretariaComision", plataformas);
     crearPlataforma(874, 966, "paredHorizontalSurComision", plataformas);
     crearPlataforma(1018, 852, "paredSurCentroVerticalComision", plataformas);
     crearPlataforma(470, 870, "paredSurHorizontalComision", plataformas);
-    
-    
 
 
-   let paredCentro3Comision = crearPlataforma(767, 670, "paredCentro3Comision", plataformasMedio);
-   let paredCentro3ComisionOverlap = crearPlataforma(767, 670, "paredCentro3Comision", plataformasOverlap);
-
-   let paredCentro2Izcomision = crearPlataforma(1126, 670, "paredCentro2Izcomision", plataformasMedio);
-   let paredCentro2IzcomisionOverlap = crearPlataforma(1126, 670, "paredCentro2Izcomision", plataformasOverlap);
 
 
-    
-   let paredCentro2Izquierdacomision = crearPlataforma(1165, 394, "paredCentro2Izquierdacomision", plataformasMedio);
-   let paredCentro2IzquierdacomisionOverlap = crearPlataforma(1165, 394, "paredCentro2Izquierdacomision", plataformasOverlap);
+    let paredCentro3Comision = crearPlataforma(767, 670, "paredCentro3Comision", plataformasMedio);
+    let paredCentro3ComisionOverlap = crearPlataforma(767, 670, "paredCentro3Comision", plataformasOverlap);
+
+    let paredCentro2Izcomision = crearPlataforma(1126, 670, "paredCentro2Izcomision", plataformasMedio);
+    let paredCentro2IzcomisionOverlap = crearPlataforma(1126, 670, "paredCentro2Izcomision", plataformasOverlap);
 
 
-   
+
+    let paredCentro2Izquierdacomision = crearPlataforma(1165, 394, "paredCentro2Izquierdacomision", plataformasMedio);
+    let paredCentro2IzquierdacomisionOverlap = crearPlataforma(1165, 394, "paredCentro2Izquierdacomision", plataformasOverlap);
+
+
+
     let paredCentro2comision = crearPlataforma(845, 395, "paredCentro2comision", plataformasMedio);
-    let paredCentro2Overlap =crearPlataforma(845, 395, "paredCentro2comision", plataformasOverlap);
-    
-   crearPlataforma(930, 182, "paredMedioComision", plataformasMedio);
+    let paredCentro2Overlap = crearPlataforma(845, 395, "paredCentro2comision", plataformasOverlap);
+
+    crearPlataforma(930, 182, "paredMedioComision", plataformasMedio);
     let paredMedioOverlap = crearPlataforma(930, 182, "paredMedioComision", plataformasOverlap);
     this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.5);
-    this.add.image(994, 338, "paredCentro2Norcomision");
-    this.add.image(923, 630, "puertaParedNorCentro3Comision");
+
+
+    let areaPractica = crearPlataforma(994, 338, "paredCentro2Norcomision", puertaOverlap1)
+
+    let secretaria = crearPlataforma(923, 630, "puertaParedNorCentro3Comision", puertaOverlap2)
+
 
 
     if (activeVideo) {
@@ -161,40 +168,52 @@ export class CommissionArea extends Phaser.Scene {
     //   160,
     // );
 
-  
+
     dimesionesPlataforma(plataformasNorte, 0.2, 40);
-    
-    
+
+
     window.avatarX = this.avatar.avatarPlayer.x;
     window.avatarY = this.avatar.avatarPlayer.y;
-    
-    
-    
-    
-    
+
+
+
+
+
     dimesionesPlataforma(plataformasMedio, 0.2, 40);
     dimesionesPlataformaIndividual(paredCentro2comision, 0.1, 120);
     dimesionesPlataformaIndividual(paredCentro2Izquierdacomision, 0.1, 120);
     dimesionesPlataformaIndividual(paredCentro3Comision, 0.1, 120);
     dimesionesPlataformaIndividual(paredCentro2Izcomision, 0.1, 120);
-// dimesionesPlataformaIndividual(paredMedio, 0.2, 40);
+    // dimesionesPlataformaIndividual(paredMedio, 0.2, 40);
 
-//   createButtonCircle(this, "hallway2", escaleraX, 500, 500);
-//   createButtonCircle(this, "aula", escritorioD, 800, 500);
-    
-this.physics.add.overlap(this.avatar.avatarPlayer, plataformasOverlap,  () => {
-  overlapPlataforma(this, paredMedioOverlap);
-  overlapPlataforma(this, paredCentro2Overlap);
-  overlapPlataforma(this, paredCentro2IzquierdacomisionOverlap);
-  overlapPlataforma(this, paredCentro3ComisionOverlap);
-  overlapPlataforma(this, paredCentro2IzcomisionOverlap);
-}, null, this);
-   
+    //   createButtonCircle(this, "hallway2", escaleraX, 500, 500);
+    //   createButtonCircle(this, "aula", escritorioD, 800, 500);
+
+    this.physics.add.overlap(this.avatar.avatarPlayer, plataformasOverlap, () => {
+      overlapPlataforma(this, paredMedioOverlap);
+      overlapPlataforma(this, paredCentro2Overlap);
+      overlapPlataforma(this, paredCentro2IzquierdacomisionOverlap);
+      overlapPlataforma(this, paredCentro3ComisionOverlap);
+      overlapPlataforma(this, paredCentro2IzcomisionOverlap);
+    }, null, this);
+
+    this.physics.add.overlap(this.avatar.avatarPlayer, puertaOverlap1, () => {
+
+      changeNameOverlap(this, areaPractica, "Area de Prácticas", "Pasillo Comisiones");
+
+    }, null, this);
+    this.physics.add.overlap(this.avatar.avatarPlayer, puertaOverlap2, () => {
+
+      changeNameOverlap(this, secretaria, "Pasillo Comisiones", "Secretaria");
+
+
+    }, null, this);
+
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasMedio);
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasNorte);
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
 
-    navbar(this, "area de comisiones");
+    navbar(this, "Pasillo Comisiones");
   }
 
   update() {

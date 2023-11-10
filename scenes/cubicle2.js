@@ -100,18 +100,6 @@ crearPlataforma(1200, 226, "sillaB6", plataformas, scale);
 
 
 
-
-// // this.physics.add.collider(avatar, ladder, touchLadder, null, this);
-//     // plataformas.children.iterate((plataforma) => {
-  //     //   plataforma.refreshBody();
-  //     //   plataforma.body.setSize(
-    //     //     plataforma.body.width * 1,
-    //     //     plataforma.body.height * 0.6,
-//     //     true
-//     //   );
-//     //   plataforma.body.setOffset(0, 25);
-//     // });
-
      this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
 //     // this.physics.add.collider(this.avatar.avatarPlayer, plataformasillas);
 //     // this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
