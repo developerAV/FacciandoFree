@@ -86,10 +86,7 @@ export class CommissionArea extends Phaser.Scene {
 
 
     crearPlataforma(728, 270, "paredVerticalComision", plataformas);
-    crearPlataforma(1165, 394, "paredCentro2Izquierdacomision", plataformas);
     
-    crearPlataforma(1126, 670, "paredCentro2Izcomision", plataformas);
-    crearPlataforma(767, 670, "paredCentro3Comision", plataformas);
     
     crearPlataforma(472, 518, "paredCentroHorizontal", plataformas);
     crearPlataforma(614, 452, "paredCentroIzVertical", plataformas);
@@ -99,6 +96,21 @@ export class CommissionArea extends Phaser.Scene {
     crearPlataforma(470, 870, "paredSurHorizontalComision", plataformas);
     
     
+
+
+   let paredCentro3Comision = crearPlataforma(767, 670, "paredCentro3Comision", plataformasMedio);
+   let paredCentro3ComisionOverlap = crearPlataforma(767, 670, "paredCentro3Comision", plataformasOverlap);
+
+   let paredCentro2Izcomision = crearPlataforma(1126, 670, "paredCentro2Izcomision", plataformasMedio);
+   let paredCentro2IzcomisionOverlap = crearPlataforma(1126, 670, "paredCentro2Izcomision", plataformasOverlap);
+
+
+    
+   let paredCentro2Izquierdacomision = crearPlataforma(1165, 394, "paredCentro2Izquierdacomision", plataformasMedio);
+   let paredCentro2IzquierdacomisionOverlap = crearPlataforma(1165, 394, "paredCentro2Izquierdacomision", plataformasOverlap);
+
+
+   
     let paredCentro2comision = crearPlataforma(845, 395, "paredCentro2comision", plataformasMedio);
     let paredCentro2Overlap =crearPlataforma(845, 395, "paredCentro2comision", plataformasOverlap);
     
@@ -112,8 +124,8 @@ export class CommissionArea extends Phaser.Scene {
     if (activeVideo) {
       crearVideo(traslate("infoCubicle"), "avatarVideo1", this, true);
     }
-    // this.cameras.main.startFollow(this.avatar.avatarPlayer); // Configurar seguimiento de cámara al personaje
-    // this.cameras.main.zoom = 2;
+    this.cameras.main.startFollow(this.avatar.avatarPlayer); // Configurar seguimiento de cámara al personaje
+    this.cameras.main.zoom = 2;
 
     let teclado = this.input.keyboard;
 
@@ -162,6 +174,9 @@ export class CommissionArea extends Phaser.Scene {
     
     dimesionesPlataforma(plataformasMedio, 0.2, 40);
     dimesionesPlataformaIndividual(paredCentro2comision, 0.1, 120);
+    dimesionesPlataformaIndividual(paredCentro2Izquierdacomision, 0.1, 120);
+    dimesionesPlataformaIndividual(paredCentro3Comision, 0.1, 120);
+    dimesionesPlataformaIndividual(paredCentro2Izcomision, 0.1, 120);
 // dimesionesPlataformaIndividual(paredMedio, 0.2, 40);
 
 //   createButtonCircle(this, "hallway2", escaleraX, 500, 500);
@@ -170,13 +185,16 @@ export class CommissionArea extends Phaser.Scene {
 this.physics.add.overlap(this.avatar.avatarPlayer, plataformasOverlap,  () => {
   overlapPlataforma(this, paredMedioOverlap);
   overlapPlataforma(this, paredCentro2Overlap);
+  overlapPlataforma(this, paredCentro2IzquierdacomisionOverlap);
+  overlapPlataforma(this, paredCentro3ComisionOverlap);
+  overlapPlataforma(this, paredCentro2IzcomisionOverlap);
 }, null, this);
    
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasMedio);
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasNorte);
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
 
-    // navbar(this, "cubicle");
+    navbar(this, "area de comisiones");
   }
 
   update() {
