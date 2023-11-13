@@ -53,7 +53,7 @@ export class CommissionArea extends Phaser.Scene {
     this.load.image("paredIzquierdaComision", "assets/images/commission_area/paredIzquierdaComision.png");
     this.load.image("paredCentroComisionTesis", "assets/images/commission_area/paredCentroComisionTesis.png");
     this.load.image("paredPuertaMedioComision", "assets/images/commission_area/paredPuertaMedioComision.png");
-    this.load.image("paredPuertaMedioComision", "assets/images/commission_area/accesorios.png");
+    this.load.image("accesorios", "assets/images/commission_area/accesorios.png");
 
 
   }
@@ -66,7 +66,7 @@ export class CommissionArea extends Phaser.Scene {
     let uiLayer = this.add.layer();
     this.add.image(800, 528, "pisoComision");
     // this.add.image(800, 500, "pf");
-
+    
     let plataformas = this.physics.add.staticGroup();
     let plataformasMedio = this.physics.add.staticGroup();
     let plataformasNorte = this.physics.add.staticGroup();
@@ -100,8 +100,8 @@ export class CommissionArea extends Phaser.Scene {
     crearPlataforma(470, 870, "paredSurHorizontalComision", plataformas);
 
 
-
-
+    
+    
     let paredCentro3Comision = crearPlataforma(767, 670, "paredCentro3Comision", plataformasMedio);
     let paredCentro3ComisionOverlap = crearPlataforma(767, 670, "paredCentro3Comision", plataformasOverlap);
 
@@ -127,8 +127,9 @@ export class CommissionArea extends Phaser.Scene {
 
     let secretaria = crearPlataforma(923, 630, "puertaParedNorCentro3Comision", puertaOverlap2)
 
-
-
+    this.add.image(836, 494, "accesorios");
+    
+    
     if (activeVideo) {
       crearVideo(traslate("infoCubicle"), "avatarVideo1", this, true);
     }
