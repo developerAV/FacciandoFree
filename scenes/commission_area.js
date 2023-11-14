@@ -54,6 +54,8 @@ export class CommissionArea extends Phaser.Scene {
     this.load.image("paredCentroComisionTesis", "assets/images/commission_area/paredCentroComisionTesis.png");
     this.load.image("paredPuertaMedioComision", "assets/images/commission_area/paredPuertaMedioComision.png");
     this.load.image("accesorios", "assets/images/commission_area/accesorios.png");
+    this.load.image("table01", "assets/images/accessories/table/table01.png");
+    this.load.image("table02", "assets/images/accessories/table/table02.png");
 
 
   }
@@ -80,7 +82,7 @@ export class CommissionArea extends Phaser.Scene {
     crearPlataforma(625, 790, "paredVerticalMedioComision", plataformas);
     crearPlataforma(1306, 208, "paredIzquierdaComision", plataformas);
     crearPlataforma(1128, 194, "paredCentroComisionTesis", plataformas);
-    crearPlataforma(1254, 532, "escaleraComision", plataformas);
+   let escaleraComision = crearPlataforma(1254, 532, "escaleraComision", plataformas);
 
 
     crearPlataforma(687, 72, "puertaSurComision", plataformas);
@@ -117,17 +119,23 @@ export class CommissionArea extends Phaser.Scene {
 
     let paredCentro2comision = crearPlataforma(845, 395, "paredCentro2comision", plataformasMedio);
     let paredCentro2Overlap = crearPlataforma(845, 395, "paredCentro2comision", plataformasOverlap);
-
+    
     crearPlataforma(930, 182, "paredMedioComision", plataformasMedio);
     let paredMedioOverlap = crearPlataforma(930, 182, "paredMedioComision", plataformasOverlap);
+    let mesa01 = crearPlataforma(834, 283, "table01", plataformasMedio);
+    let mesa01Overlap = crearPlataforma(834, 283, "table01", plataformasOverlap);
+    let mesa02 = crearPlataforma(450, 350, "table01", plataformasMedio);
+    let mesa02Overlap = crearPlataforma(450, 350, "table01", plataformasOverlap);
+    let mesaT01 = crearPlataforma(900, 850, "table02", plataformasMedio);
+    let mesaT01Overlap = crearPlataforma(900, 850, "table02", plataformasOverlap);
     this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.5);
-
-
+    
+    
     let areaPractica = crearPlataforma(994, 339, "paredCentro2Norcomision", puertaOverlap1)
-
+    
     let secretaria = crearPlataforma(923, 630, "puertaParedNorCentro3Comision", puertaOverlap2)
-
-    this.add.image(836, 494, "accesorios");
+    
+    // this.add.image(836, 494, "accesorios");
     
     
     if (activeVideo) {
@@ -174,10 +182,9 @@ export class CommissionArea extends Phaser.Scene {
     dimesionesPlataforma(plataformasNorte, 0.2, 40);
 
 
-    window.avatarX = this.avatar.avatarPlayer.x;
-    window.avatarY = this.avatar.avatarPlayer.y;
 
 
+createButtonCircle(this, "mainHallway1", escaleraComision,1050, 780);
 
 
 
@@ -186,10 +193,12 @@ export class CommissionArea extends Phaser.Scene {
     dimesionesPlataformaIndividual(paredCentro2Izquierdacomision, 0.1, 120);
     dimesionesPlataformaIndividual(paredCentro3Comision, 0.1, 120);
     dimesionesPlataformaIndividual(paredCentro2Izcomision, 0.1, 120);
+    dimesionesPlataformaIndividual(mesa01, 0.3, 60);
+    dimesionesPlataformaIndividual(mesa02, 0.3, 60);
+    dimesionesPlataformaIndividual(mesaT01, 0.6, 50);
     // dimesionesPlataformaIndividual(paredMedio, 0.2, 40);
 
-    //   createButtonCircle(this, "hallway2", escaleraX, 500, 500);
-    //   createButtonCircle(this, "aula", escritorioD, 800, 500);
+
 
     this.physics.add.overlap(this.avatar.avatarPlayer, plataformasOverlap, () => {
       overlapPlataforma(this, paredMedioOverlap);
@@ -197,6 +206,9 @@ export class CommissionArea extends Phaser.Scene {
       overlapPlataforma(this, paredCentro2IzquierdacomisionOverlap);
       overlapPlataforma(this, paredCentro3ComisionOverlap);
       overlapPlataforma(this, paredCentro2IzcomisionOverlap);
+      overlapPlataforma(this, mesa01Overlap);
+      overlapPlataforma(this, mesa02Overlap);
+      overlapPlataforma(this, mesaT01Overlap);
     }, null, this);
 
     this.physics.add.overlap(this.avatar.avatarPlayer, puertaOverlap1, () => {
