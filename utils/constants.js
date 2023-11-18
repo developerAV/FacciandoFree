@@ -36,8 +36,28 @@ export const COLORS_HEX = {
   grayDark: "#262c2e",
 };
 
-export const URI_API = "https://server-api-kuoy-dev.fl0.io/facciando";
+export const URI_API = "https://server-api-dev-kknd.4.us-1.fl0.io/facciando";
 
 export const DIMENSIONS = {
   height: 0.82,
+};
+
+export const SCENE = {
+  cubicle: "cubicle",
+  floor2: "floorHallway2",
+  auditorium2: "auditorium2",
+  admin_room: "administrativeRoom",
+  classroom: "aula",
+  computer_room: "computerRoom",
+  cubicle2: "cubicle2",
+  commission_area: "commission_area",
+  floor1: "mainHallway1",
+  outside: "outside",
+  intro: "intro",
+  loading: "loading",
+  ranking: "ranking",
+  login: "login",
+  floor3: "hallway300",
+  electronic_room: "electronic_room",
+  second_floor1: "hallway2",
 };
