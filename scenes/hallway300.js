@@ -1,5 +1,7 @@
 import { Avatar } from "./player.js";
 import { crearPlataforma } from "./module/platform.js";
+import { navbar } from "./components/common/navbar.js";
+import { dimesionesPlataforma, dimesionesPlataformaIndividual, overlapPlataforma } from "./module/platform.js";
 
 export class Hallway300 extends Phaser.Scene {
   constructor() {
@@ -47,8 +49,11 @@ export class Hallway300 extends Phaser.Scene {
    
    
    let plataformas = this.physics.add.staticGroup();
-   let plataformasillas = this.physics.add.staticGroup();
-   let paredPlataforma = this.physics.add.staticGroup();
+   let plataformaNorte = this.physics.add.staticGroup();
+   let plataformaMedio = this.physics.add.staticGroup();
+   let plataformaMedioOverlap = this.physics.add.staticGroup();
+
+   let plataformaSur = this.physics.add.staticGroup();
    
 
    this.stairs = this.physics.add.staticGroup();
@@ -58,48 +63,50 @@ export class Hallway300 extends Phaser.Scene {
     
 
 
-   crearPlataforma(420, 597, "cuadro", plataformas, scale);
-   crearPlataforma(566, 324, "paredNorte", plataformas, scale);
+  let cuadro = crearPlataforma(420, 597, "cuadro", plataformaMedio, scale);
+  let cuadroOverlap = crearPlataforma(420, 597, "cuadro", plataformaMedioOverlap, scale);
+
+   crearPlataforma(566, 324, "paredNorte", plataformaNorte, scale);
    crearPlataforma(140, 556, "paredIzq", plataformas, scale);
-   crearPlataforma(1117, 229, "pared209", plataformas, scale);
+  let pared209Plataforma =  crearPlataforma(1117, 229, "pared209", plataformaNorte, scale);
    crearPlataforma(1421, 452, "paredDer", plataformas, scale);
-   crearPlataforma(1195, 500, "paredHor1", plataformas, scale);
+
+   let paredHor1 = crearPlataforma(1195, 500, "paredHor1", plataformaMedio, scale);
+   let paredHor1Overlap = crearPlataforma(1195, 500, "paredHor1", plataformaMedioOverlap, scale);
+   
    crearPlataforma(1036, 545, "paredHor2", plataformas, scale);
    crearPlataforma(791, 543, "escalera1", plataformas, scale); 
    const escalera4 = this.add.image(1021, 605,  "escalera4");
-   crearPlataforma(789, 771, "paredSur", plataformas, scale);
-   this.avatar = new Avatar(this, 600, 800, 1.3);
+   this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.3);
+   crearPlataforma(789, 771, "paredSur", plataformaSur, scale);
 
-// this.physics.add.collider(avatar, ladder, touchLadder, null, this);
-    // plataformas.children.iterate((plataforma) => {
-    //   plataforma.refreshBody();
-    //   plataforma.body.setSize(
-    //     plataforma.body.width * 1,
-    //     plataforma.body.height * 0.6,
-    //     true
-    //   );
-    //   plataforma.body.setOffset(0, 25);
-    // });
+    // dimesionesPlataformaIndividual(pared209Plataforma, 0.6, 120);
+    dimesionesPlataforma(plataformaNorte, 0.6, 120)
+    dimesionesPlataforma(plataformaSur, 0.6, 10)
+    dimesionesPlataformaIndividual(cuadro, 0.6, 5); 
+    dimesionesPlataformaIndividual(paredHor1, 0.5, 5);
+
+    this.physics.add.overlap(this.avatar.avatarPlayer, plataformaMedioOverlap, () => {
+      overlapPlataforma(this, cuadroOverlap);
+      overlapPlataforma(this, paredHor1Overlap);
+      
+    }, null, this);
+
 
      this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
-    // this.physics.add.collider(this.avatar.avatarPlayer, plataformasillas);
-    // this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
+     this.physics.add.collider(this.avatar.avatarPlayer, plataformaNorte);
+     this.physics.add.collider(this.avatar.avatarPlayer, plataformaMedio);
+     this.physics.add.collider(this.avatar.avatarPlayer, plataformaSur);
 
-    // // Configurar seguimiento de cámara al personaje
     this.cameras.main.startFollow(this.avatar.avatarPlayer);
-
-    // // Configurar zoom de la cámara en función de la posición del personaje
-    this.cameras.main.zoom = 1 + (this.avatar.avatarPlayer.y - 300) / 600; // Ajustar el valor 300 y 600 según tus necesidades
-  
+    this.cameras.main.zoom = 2; 
+    navbar(this, "hallway 300");
 
   }
 
   update() {
-    // Ajustar el zoom de la cámara en función de la posición del personaje
-    // this.cameras.main.zoom = 1 + (this.avatar.avatarPlayer.y - 300) / 600; // Ajustar el valor 300 y 600 según tus necesidades
 
-    // Llamamos a la función "update()" del avatar
-    this.avatar.update();
+    this.avatar.update(this);
   
   }  
 
