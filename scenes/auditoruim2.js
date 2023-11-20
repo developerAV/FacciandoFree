@@ -1,5 +1,8 @@
 import { Avatar } from "./player.js";
 import { crearPlataforma } from "./module/platform.js";
+import { navbar } from "./components/common/navbar.js";
+import { dimesionesPlataforma } from "./module/platform.js";
+import { SCENE } from "../utils/constants.js";
 
 export class Auditorium2 extends Phaser.Scene {
   constructor() {
@@ -27,7 +30,7 @@ export class Auditorium2 extends Phaser.Scene {
       "assets/images/auditorium2/paredes/paredIzq2.png"
     );
     this.load.image(
-      "paredSuperior",
+      "paredSuperiorA2",
       "assets/images/auditorium2/paredes/paredSuperior.png"
     );
 
@@ -42,22 +45,21 @@ export class Auditorium2 extends Phaser.Scene {
   }
 
   create() {
-    // Para iniciar con un desenfoque
     this.cameras.main.fadeIn(500);
-
+    
     // Configurar fondo transparente
     this.cameras.main.transparent = true;
-
+    
     this.add.image(800, 500, "Auditorio2");
+    window.avatarUpdateActivo = true;
 
-    this.avatar = new Avatar(this, 600, 800, 1.5);
-
+    
     let plataformas = this.physics.add.staticGroup();
     let plataformasillas = this.physics.add.staticGroup();
     let paredPlataforma = this.physics.add.staticGroup();
     // this.plataforma = new Platform();
 
-    crearPlataforma(800, 310, "paredSuperior", plataformas);
+    crearPlataforma(800, 310, "paredSuperiorA2", plataformas);
     crearPlataforma(796, 739, "paredInferior", plataformas);
     crearPlataforma(428, 683, "paredIzq2", plataformas);
     crearPlataforma(1053, 500, "paredDer", plataformas, 0.997);
@@ -68,7 +70,7 @@ export class Auditorium2 extends Phaser.Scene {
     crearPlataforma(816, 508, "fila5", plataformasillas);
     crearPlataforma(570, 380, "mesa", plataformasillas);
     crearPlataforma(900, 400, "mesa", plataformasillas);
-
+    
     crearPlataforma(448, 491, "silla2", plataformasillas);
     crearPlataforma(464, 507, "silla2", plataformasillas);
     crearPlataforma(480, 523, "silla2", plataformasillas);
@@ -87,19 +89,12 @@ export class Auditorium2 extends Phaser.Scene {
     crearPlataforma(512, 443, "silla2", plataformasillas);
     crearPlataforma(544, 475, "silla2", plataformasillas);
     crearPlataforma(560, 491, "silla2", plataformasillas);
-
+    
     crearPlataforma(440, 401.5, "paredIzq1", plataformas);
-
-    plataformas.children.iterate((plataforma) => {
-      plataforma.refreshBody();
-      plataforma.body.setSize(
-        plataforma.body.width * 1,
-        plataforma.body.height * 0.6,
-        true
-      );
-      plataforma.body.setOffset(0, 25);
-    });
-
+    
+    
+    this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.5);
+    
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasillas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
@@ -107,15 +102,14 @@ export class Auditorium2 extends Phaser.Scene {
     // Configurar seguimiento de cámara al personaje   
      this.cameras.main.startFollow(this.avatar.avatarPlayer);
 
-    // Configurar zoom de la cámara en función de la posición del personaje
-    this.cameras.main.zoom = 1 + (this.avatar.avatarPlayer.y - 300) / 600; // Ajustar el valor 300 y 600 según tus necesidades
+
+    this.cameras.main.zoom = 2; 
+
+    navbar(this, SCENE.auditorium2);
   }
 
   update() {
-    // Ajustar el zoom de la cámara en función de la posición del personaje
-    // this.cameras.main.zoom = 1 + (this.avatar.avatarPlayer.y - 300) / 600; // Ajustar el valor 300 y 600 según tus necesidades
-
-    // Llamamos a la función "update()" del avatar
-    this.avatar.update();
+    
+    this.avatar.update(this);
   }
 }

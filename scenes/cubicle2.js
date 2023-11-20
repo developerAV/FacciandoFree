@@ -7,30 +7,18 @@ export class Cubicle2 extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("pisoCubiculo", "assets/images/cubicle/piso.png");
-    this.load.image("paredColor", "assets/images/cubicle/cubiculocolor.jpg");
-    this.load.image("paredIzqC", "assets/images/cubicle/paredIzq.png");  
-    this.load.image("paredSurEste", "assets/images/cubicle/paredSurEste.png");  
-    this.load.image("paredPuertaIzq", "assets/images/cubicle/paredPuertaIzq.png");  
-    this.load.image("paredPuertaSur", "assets/images/cubicle/paredPuertaNorSur.png");  
-    this.load.image("paredPuertaNor", "assets/images/cubicle/paredPuertaNor.png");  
-    this.load.image("paredPuertaDer", "assets/images/cubicle/paredPuertaDer.png");  
-    this.load.image("paredNorte", "assets/images/cubicle/paredNorte.png");  
-    this.load.image("paredEscalera", "assets/images/cubicle/paredEscalera.png");  
-    this.load.image("paredSurDer", "assets/images/cubicle/paredSurDer.png");  
-    this.load.image("paredDer", "assets/images/cubicle/paredDer.png");  
-   
-    this.load.image("escritoriosA", "assets/images/cubicle/escritoriosA.png");  
-    this.load.image("escritoriosB", "assets/images/cubicle/escritoriosB.png");  
-    this.load.image("escritorioB6", "assets/images/cubicle/escritorioB6.png");  
-    this.load.image("escritoriosC", "assets/images/cubicle/escritoriosC.png");  
-    this.load.image("escritoriosD", "assets/images/cubicle/escritoriosD.png");  
-    this.load.image("sillaB6", "assets/images/accessories/chair/0001.png");  
-
-    this.load.image("escalera", "assets/images/cubicle/escalera.png");  
-    this.load.image("impresora", "assets/images/cubicle/impresora.png");  
-    this.load.image("servidor", "assets/images/cubicle/servidor.png");  
-    this.load.image("anaquel", "assets/images/cubicle/anaquel.png");  
+    this.load.image("pisoCubiculo2", "assets/images/cubicle2/pisoC2.png");
+    this.load.image("paredCu2", "assets/images/cubicle2/paredesColor.png");
+    this.load.image("paredNorteCu2", "assets/images/cubicle2/paredNorteCu2.png");
+    this.load.image("paredeIzCu2", "assets/images/cubicle2/paredeIzCu2.png");
+    this.load.image("paredeIzTotalCu2", "assets/images/cubicle2/paredeIzTotalCu2.png");
+    this.load.image("cubicle2ParedCentro1", "assets/images/cubicle2/cubicle2ParedCentro1.png");
+    this.load.image("cubicle2ParedCentro2", "assets/images/cubicle2/cubicle2ParedCentro2.png");
+    this.load.image("cubicle2ParedCentro3", "assets/images/cubicle2/cubicle2ParedCentro3.png");
+    this.load.image("escalera1Cu2", "assets/images/cubicle2/escalera1Cu2.png");
+    this.load.image("escalera2Cu2", "assets/images/cubicle2/escalera2Cu2.png");
+    this.load.image("cubicle2ParedSurEste", "assets/images/cubicle2/cubicle2ParedSurEste.png");
+  
 
   
   }
@@ -42,7 +30,8 @@ export class Cubicle2 extends Phaser.Scene {
     // Configurar fondo transparente
     this.cameras.main.transparent = true;
     
-    const fondoaula = this.add.image(846, 533, "pisoCubiculo");
+    const fondoaula = this.add.image(800, 500, "pisoCubiculo2");
+   this.add.image(800, 500, "paredCu2");
     // const escalera2 = this.add.image(795, 632,  "escalera2");
     
    
@@ -55,82 +44,57 @@ export class Cubicle2 extends Phaser.Scene {
    
    
    let plataformas = this.physics.add.staticGroup();
-//    let plataformasillas = this.physics.add.staticGroup();
-//    let paredPlataforma = this.physics.add.staticGroup();
+   let plataformaOverlap = this.physics.add.staticGroup();
+
+   crearPlataforma(762, 87, "paredNorteCu2", plataformas, scale);
+   crearPlataforma(59, 417, "paredeIzCu2", plataformas, scale);
+   crearPlataforma(255, 504, "paredeIzTotalCu2", plataformas, scale);
+   crearPlataforma(1467, 419, "paredeIzCu2", plataformas, scale);
+   let pared1 = crearPlataforma(591, 524, "cubicle2ParedCentro1", plataformas, scale);
+   let pared2 = crearPlataforma(975, 524, "cubicle2ParedCentro2", plataformas, scale);
+   let pared3 = crearPlataforma(1100, 724, "cubicle2ParedCentro3", plataformas, scale);
+   let escalera1Cu2 = crearPlataforma(782, 874, "escalera1Cu2", plataformaOverlap, scale);
+   let escalera2Cu2 = crearPlataforma(891, 819, "escalera2Cu2", plataformaOverlap, scale);
+   let paredSurEste = crearPlataforma(1260, 900, "cubicle2ParedSurEste", plataformas, scale);
+   
+
+
+  let blur = crearPlataforma(758, 550, "redH", plataformaOverlap, 0.5);
+  let notBlur = crearPlataforma(758, 610, "redH", plataformaOverlap, 0.5);
+
+this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.5);
+
+
+this.physics.add.overlap(this.avatar.avatarPlayer, blur, () => {
+
+  //poner blur una platform
+  pared1.alpha = 0.5;
+  pared2.alpha = 0.5;
+  console.log("blur");
   
+}, null, this);
+this.physics.add.overlap(this.avatar.avatarPlayer, notBlur, () => {
 
-crearPlataforma(10, 417, "paredIzqC", plataformas, scale);
-crearPlataforma(634, 796, "paredPuertaIzq", plataformas, scale);
+  pared1.alpha = 1;
+  pared2.alpha = 1;
 
-//    crearPlataforma(420, 597, "cuadro", plataformas, scale);
-
-this.avatar = new Avatar(this, 680, 870, 1.5);
-// crearPlataforma(690, 641, "paredPuertaSur", plataformas, scale);
-crearPlataforma(800, 137, "paredNorte", plataformas, scale);
-crearPlataforma(302, 680, "escritoriosA", plataformas, scale);
-crearPlataforma(561, 250, "escritoriosB", plataformas, scale);
-crearPlataforma(1190, 250, "escritorioB6", plataformas, scale);
-crearPlataforma(1502, 492, "escritoriosC", plataformas, scale);
-crearPlataforma(1005, 611, "escritoriosD", plataformas, scale);
-const paredsur = this.add.image(322, 720, "paredSurEste");
-crearPlataforma(690, 947, "paredPuertaSur", plataformas, scale);
-crearPlataforma(761, 796, "paredPuertaDer", plataformas, scale);
-const paredparedPuertaNor = this.add.image(698, 641, "paredPuertaNor");
-
-crearPlataforma(871, 829, "paredEscalera", plataformas, scale);
-
-const paredSurDer = this.add.image(1298, 735, "paredSurDer",);
-crearPlataforma(1589, 423, "paredDer", plataformas, scale);
+  console.log("NotBlur");
+  
+}, null, this);
 
 
-
-crearPlataforma(877, 860, "escalera", plataformas, scale);
-
-// const fondoColor = this.add.image(800, 500, "paredColor");
-crearPlataforma(1050, 240, "impresora", plataformas, scale);
-crearPlataforma(63, 192, "servidor", plataformas, scale);
-crearPlataforma(156, 146, "anaquel", plataformas, scale);
-crearPlataforma(480, 146, "anaquel", plataformas, scale);
-crearPlataforma(680, 146, "anaquel", plataformas, scale);
-crearPlataforma(830, 146, "anaquel", plataformas, scale);
-crearPlataforma(930, 146, "anaquel", plataformas, scale);
-crearPlataforma(1230, 146, "anaquel", plataformas, scale);
-
-crearPlataforma(1200, 226, "sillaB6", plataformas, scale);
-
-
-
-
-// // this.physics.add.collider(avatar, ladder, touchLadder, null, this);
-//     // plataformas.children.iterate((plataforma) => {
-  //     //   plataforma.refreshBody();
-  //     //   plataforma.body.setSize(
-    //     //     plataforma.body.width * 1,
-    //     //     plataforma.body.height * 0.6,
-//     //     true
-//     //   );
-//     //   plataforma.body.setOffset(0, 25);
-//     // });
 
      this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
-//     // this.physics.add.collider(this.avatar.avatarPlayer, plataformasillas);
-//     // this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
 
-//     // // Configurar seguimiento de cámara al personaje
-    this.cameras.main.startFollow(this.avatar.avatarPlayer);
-
-//     // // Configurar zoom de la cámara en función de la posición del personaje
-    this.cameras.main.zoom = 1 + (this.avatar.avatarPlayer.y - 300) / 600; // Ajustar el valor 300 y 600 según tus necesidades
+    // this.cameras.main.startFollow(this.avatar.avatarPlayer);
+    // this.cameras.main.zoom = 2; 
   
 
   }
 
   update() {
-    // Ajustar el zoom de la cámara en función de la posición del personaje
-    // this.cameras.main.zoom = 1 + (this.avatar.avatarPlayer.y - 300) / 600; // Ajustar el valor 300 y 600 según tus necesidades
 
-    // Llamamos a la función "update()" del avatar
-    this.avatar.update();
+    this.avatar.update(this);
   
   }  
 

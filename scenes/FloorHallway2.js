@@ -35,7 +35,7 @@ export class FloorHallway2 extends Phaser.Scene {
 
     this.add.image(700, 256, "puerta").setScale(1.35);
     this.add.image(637, 256, "puerta2").setScale(1.35);
-    this.avatar = new Avatar(this, 800, 490, 1.3);
+    this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.3);
 
     crearPlataforma(554, 713, "cursos", plataformas);
     crearPlataforma(666, 481, "cachoFaltante", plataformas);

@@ -24,8 +24,19 @@ export const dimesionesPlataformaIndividual = (plataform, height, y) => {
 export const overlapPlataforma = (scene, plataform) => {
   if (scene.avatar.avatarPlayer.y < plataform.y) {
 
-    plataform.setDepth(2); 
+    plataform.setDepth(2);
   } else {
     plataform.setDepth(-1);
-}
+  }
 };
+
+export const changeNameOverlap = (scene, platform, nameIn, nameOut) => {
+
+  if (scene.avatar.avatarPlayer.y < platform.y) {
+    scene.nameScene.setText(nameIn);
+  } else {
+    scene.nameScene.setText(nameOut);
+  }
+
+
+}
