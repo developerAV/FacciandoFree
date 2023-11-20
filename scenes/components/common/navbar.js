@@ -23,7 +23,7 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
   home.setInteractive();
   home.on("pointerdown", function () {
     scene.scene.restart();
-      scene.scene.stop();
+    scene.scene.stop();
     scene.scene.start("intro");
   });
   home.setScrollFactor(0);
@@ -86,5 +86,6 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
   box.add(scoreUser);
 
   box.setScale(scale);
+  box.setDepth(10);
   return box;
 };

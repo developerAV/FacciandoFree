@@ -12,6 +12,7 @@ import { crearCard } from "./module/card.js";
 import { getEmployees } from "../services/employee.js";
 import { createButtonCircle } from "../scenes/components/common/buttonCircle.js";
 import { navbar } from "./components/common/navbar.js";
+import { SCENE } from "../utils/constants.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -48,6 +49,12 @@ export class Outside extends Phaser.Scene {
   }
 
   create() {
+    console.log("x:", window.avatarX);
+    console.log("y:", window.avatarY);
+      if (window.avatarX == undefined && window.avatarY == undefined) {
+      window.avatarX = 800;
+      window.avatarY = 500;
+    }
     window.avatarUpdateActivo = true;
     // this.cameras.main.fadeIn(500);
     this.cameras.main.transparent = true;
@@ -125,11 +132,11 @@ export class Outside extends Phaser.Scene {
     const tree = crearPlataforma(1287, 705, "tree", platform1, 0.75);
     dimesionesPlataformaIndividual(tree, 0.2, -5);
 
-    this.avatar = new Avatar(this, 800, 500, 1.2);
+    this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.2);
     const tree2 = crearPlataforma(1287, 665, "tree2", platform1, 0.75);
     dimesionesPlataformaIndividual(tree2, 0.2, 47);
-    createButtonCircle(this, "mainHallway1", puertaFacci, 500, 500);
-    createButtonCircle(this, "commission_area", puertaFacci2, 600, 800);
+    createButtonCircle(this, SCENE.floor1, puertaFacci, 930, 920);
+    createButtonCircle(this, SCENE.second_floor1, puertaFacci2, 600, 800);
     //   createButtonCircle(this, "aula", escritorioD, 800, 500);
 
     this.physics.add.collider(this.avatar.avatarPlayer, platform1);
@@ -163,9 +170,12 @@ export class Outside extends Phaser.Scene {
     this.cameras.main.zoom = 2;
 
     navbar(this, "outside");
+
   }
 
   update() {
+   /*  console.log("x:", this.avatar.avatarPlayer.x);
+    console.log("y:", this.avatar.avatarPlayer.y); */
     this.avatar.update(this);
   }
 }

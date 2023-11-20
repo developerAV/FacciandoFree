@@ -4,14 +4,18 @@ export const crearPlataforma = (x, y, imagen, group, scale = 1) => {
   return plataforma;
 };
 
-export const dimesionesPlataforma = (plataformList, height, y) => {
+export const dimesionesPlataforma = (plataformList, height = 1, y = 0) => {
   plataformList.children.iterate((item) => {
     item.refreshBody();
     item.body.setSize(item.body.width * 1, item.body.height * height, true);
     item.body.setOffset(0, y);
   });
 };
-export const dimesionesPlataformaIndividual = (plataform, height, y) => {
+export const dimesionesPlataformaIndividual = (
+  plataform,
+  height = 0,
+  y = 0
+) => {
   plataform.refreshBody();
   plataform.body.setSize(
     plataform.body.width * 1,
@@ -23,9 +27,8 @@ export const dimesionesPlataformaIndividual = (plataform, height, y) => {
 
 export const overlapPlataforma = (scene, plataform) => {
   if (scene.avatar.avatarPlayer.y < plataform.y) {
-
-    plataform.setDepth(2); 
-  } else {
-    plataform.setDepth(-1);
-}
+    plataform.setDepth(2);
+    return;
+  }
+  plataform.setDepth(-1);
 };

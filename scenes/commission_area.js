@@ -130,51 +130,30 @@ export class CommissionArea extends Phaser.Scene {
             false
           );
           await crearVideo(traslate("infoCubicle"), "avatarVideo2", this, true);
-          // await aumentarZoom();
-          // Aquí continúa con el código después de que ambos videos hayan terminado
+        
         } catch (error) {
           console.error("Error:", error);
         }
       }.bind(this)
     );
 
-    // dimesionesPlataformaIndividual(escritorioA, 0, 20);
-
-    // crearCard(
-    //   this,
-    //   this.dataEmployees[0],
-    //   "fotoCarnet",
-    //   silla,
-    //   330,
-    //   160,
-    // );
-
-  
-    dimesionesPlataforma(plataformasNorte, 0.2, 40);
-    
+    dimesionesPlataforma(plataformasNorte, 0.2, 40); 
     
     window.avatarX = this.avatar.avatarPlayer.x;
     window.avatarY = this.avatar.avatarPlayer.y;
     
-    
-    
-    
-    
     dimesionesPlataforma(plataformasMedio, 0.2, 40);
     dimesionesPlataformaIndividual(paredCentro2comision, 0.1, 120);
-// dimesionesPlataformaIndividual(paredMedio, 0.2, 40);
 
-//   createButtonCircle(this, "hallway2", escaleraX, 500, 500);
-//   createButtonCircle(this, "aula", escritorioD, 800, 500);
     
-this.physics.add.overlap(this.avatar.avatarPlayer, plataformasOverlap,  () => {
-  overlapPlataforma(this, paredMedioOverlap);
-  overlapPlataforma(this, paredCentro2Overlap);
-}, null, this);
+  this.physics.add.overlap(this.avatar.avatarPlayer, plataformasOverlap,  () => {
+    overlapPlataforma(this, paredMedioOverlap);
+    overlapPlataforma(this, paredCentro2Overlap);
+  }, null, this);
    
-    this.physics.add.collider(this.avatar.avatarPlayer, plataformasMedio);
-    this.physics.add.collider(this.avatar.avatarPlayer, plataformasNorte);
-    this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
+  this.physics.add.collider(this.avatar.avatarPlayer, plataformasMedio);
+  this.physics.add.collider(this.avatar.avatarPlayer, plataformasNorte);
+  this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
 
     // navbar(this, "cubicle");
   }

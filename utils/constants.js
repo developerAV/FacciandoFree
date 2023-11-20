@@ -1,3 +1,4 @@
+export const URI_API = "https://server-api-dev-kknd.4.us-1.fl0.io/facciando";
 export const FONT = "Roboto";
 export const FONT_SIZE = {
   smaller: "16px",
@@ -36,11 +37,6 @@ export const COLORS_HEX = {
   grayDark: "#262c2e",
 };
 
-export const URI_API = "https://server-api-dev-kknd.4.us-1.fl0.io/facciando";
-
-export const DIMENSIONS = {
-  height: 0.82,
-};
 
 export const SCENE = {
   cubicle: "cubicle",

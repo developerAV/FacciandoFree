@@ -10,6 +10,7 @@ import { crearCard } from "./module/card.js";
 import { getEmployees } from "../services/employee.js";
 import { createButtonCircle } from "../scenes/components/common/buttonCircle.js";
 import { navbar } from "./components/common/navbar.js";
+import { SCENE } from "../utils/constants.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -121,7 +122,7 @@ export class Cubicle extends Phaser.Scene {
 
     let silla2 = crearPlataforma(530, 330, "sillaB6", sillasB);
 
-    this.avatar = new Avatar(this, 800, 500, 1.5);
+    this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.5);
     let escritorioD = crearPlataforma(1005, 611, "escritoriosD", plataformas);
     crearPlataforma(690, 947, "paredPuertaSur", plataformas);
     crearPlataforma(761, 796, "paredPuertaDer", plataformas);
@@ -206,7 +207,7 @@ export class Cubicle extends Phaser.Scene {
     window.avatarX = this.avatar.avatarPlayer.x;
     window.avatarY = this.avatar.avatarPlayer.y;
 
-    createButtonCircle(this, "mainHallway1", escaleraX, 483, 275);
+    createButtonCircle(this, SCENE.floor1, escaleraX, 592, 251);
 
     createButtonCircle(this, "aula", escritorioD, 800, 500);
 

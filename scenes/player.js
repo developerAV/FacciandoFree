@@ -145,7 +145,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     });
   }
 
-  update(scene) {
+  update() {
     if (!window.avatarUpdateActivo) {
       return;
     }
@@ -222,8 +222,11 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     this.moveTo(0, 0, "turn");
   }
   moveTo(x, y, direction) {
+    console.log(parseInt(this.avatarPlayer.x), parseInt(this.avatarPlayer.y));
     this.avatarPlayer.setVelocityY(x);
     this.avatarPlayer.setVelocityX(y);
     this.avatarPlayer.anims.play(direction, true);
   }
 }
+
+
