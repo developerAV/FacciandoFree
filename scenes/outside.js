@@ -13,6 +13,7 @@ import { getEmployees } from "../services/employee.js";
 import { createButtonCircle } from "../scenes/components/common/buttonCircle.js";
 import { navbar } from "./components/common/navbar.js";
 import { SCENE } from "../utils/constants.js";
+import { createButtonMission } from "./components/common/buttonMission.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -51,7 +52,7 @@ export class Outside extends Phaser.Scene {
   create() {
     console.log("x:", window.avatarX);
     console.log("y:", window.avatarY);
-      if (window.avatarX == undefined && window.avatarY == undefined) {
+    if (window.avatarX == undefined && window.avatarY == undefined) {
       window.avatarX = 800;
       window.avatarY = 500;
     }
@@ -65,6 +66,7 @@ export class Outside extends Phaser.Scene {
     this.add.image(62, 500, "streetEast").setScale(0.75);
     //plataformas
     let platform1 = this.physics.add.staticGroup();
+    const example = this.physics.add.staticGroup();
 
     const building = crearPlataforma(782, 405, "building", platform1, 0.75);
     dimesionesPlataformaIndividual(building, 0.6, 90);
@@ -169,13 +171,29 @@ export class Outside extends Phaser.Scene {
 
     this.cameras.main.zoom = 2;
 
-    navbar(this, "outside");
+    if (window.mode === "mission") {
+      if (window.user.actualMission === 1) {
+        const startN1 = crearPlataforma(1005, 565, "redV", example, 0.5);
+        const botonM = createButtonMission(this);
+        this.physics.add.overlap(
+          this.avatar.avatarPlayer,
+          example,
+          () => {
+            startN1.destroy();
+            console.log("inicio de mission");
+            //crearVideo(traslate("startMission1"), "avatarVideo2", this, true);
+          },
+          null,
+          this
+        );
+        return;
+      }
+    }
 
+    navbar(this, "outside");
   }
 
   update() {
-   /*  console.log("x:", this.avatar.avatarPlayer.x);
-    console.log("y:", this.avatar.avatarPlayer.y); */
     this.avatar.update(this);
   }
 }

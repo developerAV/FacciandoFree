@@ -44,7 +44,7 @@ export const SCENE = {
   auditorium2: "auditorium2",
   admin_room: "administrativeRoom",
   classroom: "aula",
-  computer_room: "computerRoom",
+  computer_room: "computer_room",
   cubicle2: "cubicle2",
   commission_area: "commission_area",
   floor1: "mainHallway1",

@@ -52,7 +52,12 @@ export class FloorHallway2 extends Phaser.Scene {
     crearPlataforma(382, 476, "paredCursoDerecha", plataformas);
     crearPlataforma(26, 369, "separadorCurso", plataformas);
 
-    crearPlataforma(1181, 356, "escaleraArriba", plataformas);
+    const escaleraArriba = crearPlataforma(
+      1181,
+      356,
+      "escaleraArriba",
+      escaleras
+    );
     crearPlataforma(1205, 428, "escaleraAbajoAbajo", plataformas, 0.25);
     const escarleraAbajo = crearPlataforma(
       1181,
@@ -113,6 +118,7 @@ export class FloorHallway2 extends Phaser.Scene {
     );
 
     createButtonCircle(this, SCENE.floor1, escarleraAbajo, 603, 149);
+    createButtonCircle(this, SCENE.floor3, escaleraArriba, 871, 545);
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredesSupeiores);

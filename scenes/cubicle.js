@@ -213,6 +213,12 @@ export class Cubicle extends Phaser.Scene {
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredNorte);
+   /*  if (window.mode === "mission") {
+      if (window.user.actualMission === 1) {
+        console.log("estoy en el cubiculo del profesor moya");
+        return;
+      }
+    } */
 
     navbar(this, "cubicle");
   }

@@ -76,7 +76,7 @@ export class mainHallway1 extends Phaser.Scene {
     this.cameras.main.zoom = 1.5;
 
     createButtonCircle(this, SCENE.cubicle, escaleraAbajo, 723, 876);
-    createButtonCircle(this, SCENE.floor2, escaleraArriba, 1103, 436);
+    createButtonCircle(this, SCENE.cubicle2, escaleraArriba, 1103, 436);
 
     this.physics.add.overlap(
       this.avatar.avatarPlayer,
@@ -95,13 +95,20 @@ export class mainHallway1 extends Phaser.Scene {
 
     createButtonCircle(this, SCENE.commission_area, botonComission, 1183, 560);
     createButtonCircle(this, SCENE.admin_room, botonAdministrative, 1000, 486);
-    createButtonCircle(this, SCENE.outside, botonOutside, 1465, 553);
+    createButtonCircle(this, SCENE.computer_room, botonOutside, 1465, 553);
+    //createButtonCircle(this, SCENE.outside, botonOutside, 1465, 553);
 
     this.physics.add.collider(this.avatar.avatarPlayer, platform1);
     this.physics.add.collider(this.avatar.avatarPlayer, platform2);
     this.physics.add.collider(this.avatar.avatarPlayer, boton);
 
     navbar(this, "mainHallway1", 0.65);
+
+
+
+
+    
+    
   }
 
   update() {
