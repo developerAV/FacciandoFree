@@ -32,3 +32,11 @@ export const overlapPlataforma = (scene, plataform) => {
   }
   plataform.setDepth(-1);
 };
+
+export const changeNameOverlap = (scene, platform, nameIn, nameOut) => {
+  if (scene.avatar.avatarPlayer.y < platform.y) {
+    scene.nameScene.setText(nameIn);
+    return;
+  }
+  scene.nameScene.setText(nameOut);
+};

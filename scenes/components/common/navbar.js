@@ -59,7 +59,7 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
   information.setScrollFactor(0);
   box.add(information);
 
-  const nameScene = scene.add.text(100, 25, traslate(name), {
+  scene.nameScene = scene.add.text(100, 25, traslate(name), {
     font: `40px ${FONT}`,
     fill: COLORS_HEX.white,
     wordWrap: {
@@ -81,11 +81,11 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
       width: 200,
     },
   });
-  box.add(nameScene);
+  box.add(scene.nameScene);
   box.add(scoreUserLabel);
   box.add(scoreUser);
 
   box.setScale(scale);
-  box.setDepth(10);
+  box.setDepth(1000);
   return box;
 };

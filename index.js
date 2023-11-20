@@ -16,6 +16,7 @@ import { AvatarS } from "./scenes/avatar.js";
 import { Question } from "./scenes/question.js";
 import { Outside } from "./scenes/outside.js";
 import { CommissionArea } from "./scenes/commission_area.js";
+import { Cubicle2 } from "./scenes/cubicle2.js";
 
 const config = {
   type: Phaser.AUTO,
@@ -38,6 +39,7 @@ const config = {
     AdministrativeRoom,
     Hallway300,
     Cubicle,
+    Cubicle2,
     Auditorium2,
     Ranking,
     CommissionArea,

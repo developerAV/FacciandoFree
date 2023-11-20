@@ -30,6 +30,9 @@ export class Loading extends Phaser.Scene {
     this.load.image("language", "assets/images/language/language.png");
     this.load.image("btnEnglish", "assets/images/language/btn-english.png");
     this.load.image("btnSpanish", "assets/images/language/btn-spanish.png");
+    this.load.image("redV", "assets/images/accessories/platform/redVertical.png");
+    this.load.image("redH", "assets/images/accessories/platform/redHorizontal.png");
+
   }
 
   create() {

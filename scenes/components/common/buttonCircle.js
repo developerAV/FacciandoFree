@@ -86,6 +86,6 @@ export const createButtonCircle = (
       buttonCircle.containerX.visible = false;
     });
   }
-
+buttonCircle.containerX.setDepth(100);
   return buttonCircle;
 };
