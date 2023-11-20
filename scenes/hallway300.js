@@ -25,8 +25,6 @@ export class Hallway300 extends Phaser.Scene {
     this.load.image("escalera2Pared", "assets/images/hallway300/escalera2Pared.png");
     this.load.image("escalera3", "assets/images/hallway300/escalera3.png");
     this.load.image("escalera4", "assets/images/hallway300/escalera4.png");
-    this.load.image("redV", "assets/images/accessories/platform/redVertical.png");
-    this.load.image("redH", "assets/images/accessories/platform/redHorizontal.png");
 
   
   }
