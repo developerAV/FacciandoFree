@@ -1,4 +1,9 @@
 const preloadIntro = (scene) => {
+  scene.load.scenePlugin({
+    key: "rexuiplugin",
+    url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
+    sceneKey: "rexUI",
+  });
   scene.load.image("boton", "assets/images/boton.png");
 
   // scene.load.image("profile", "assets/images/intro/profile.jpg");

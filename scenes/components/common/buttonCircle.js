@@ -5,7 +5,8 @@ export const createButtonCircle = (
   sceneName,
   platform,
   avatarX,
-  avatarY
+  avatarY,
+  xxxx = false
 ) => {
   const buttonCircle = {};
 
@@ -60,6 +61,10 @@ export const createButtonCircle = (
   });
   scene.input.keyboard.on("keydown-X", () => {
     if (!scene.keyB) return;
+
+    if (xxxx) {
+      window.step = 2;
+    }
     scene.avatar.avatarPlayer.destroy();
     scene.anims.remove("turn");
     scene.anims.remove("left");
@@ -86,6 +91,6 @@ export const createButtonCircle = (
       buttonCircle.containerX.visible = false;
     });
   }
-buttonCircle.containerX.setDepth(100);
+  buttonCircle.containerX.setDepth(100);
   return buttonCircle;
 };

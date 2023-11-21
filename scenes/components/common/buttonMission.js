@@ -17,10 +17,8 @@ export const createButtonMission = (scene) => {
     if (!containerX.list[0]) return;
     if (containerX.list[0].strokeColor === COLORS.white) {
       containerX.list[0].setStrokeStyle(8, COLORS.blue);
-      textX.setColor("#000");
     } else {
       containerX.list[0].setStrokeStyle(4, COLORS.white);
-      textX.setColor("#f2f2f2");
     }
   }, 1000);
 

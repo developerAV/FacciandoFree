@@ -11,6 +11,7 @@ import { getEmployees } from "../services/employee.js";
 import { createButtonCircle } from "../scenes/components/common/buttonCircle.js";
 import { navbar } from "./components/common/navbar.js";
 import { SCENE } from "../utils/constants.js";
+import { alertCard } from "./modeHistory/components/alertCard.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -26,6 +27,12 @@ export class Cubicle extends Phaser.Scene {
     });
   }
   preload() {
+    window.step = 1;
+    this.load.scenePlugin({
+      key: "rexuiplugin",
+      url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
+      sceneKey: "rexUI",
+    });
     this.load.image("pisoCubiculo", "assets/images/cubicle/piso.png");
     this.load.image("paredColor", "assets/images/cubicle/cubiculocolor.jpg");
     this.load.image("paredIzqC", "assets/images/cubicle/paredIzq.png");
@@ -213,7 +220,7 @@ export class Cubicle extends Phaser.Scene {
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredNorte);
-   /*  if (window.mode === "mission") {
+    /*  if (window.mode === "mission") {
       if (window.user.actualMission === 1) {
         console.log("estoy en el cubiculo del profesor moya");
         return;
@@ -221,6 +228,10 @@ export class Cubicle extends Phaser.Scene {
     } */
 
     navbar(this, "cubicle");
+
+    if (window.mode === "mission") {
+      alertCard(this);
+    }
   }
 
   update() {

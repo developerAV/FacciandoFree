@@ -8,10 +8,18 @@ import {
 import { navbar } from "./components/common/navbar.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
 import { SCENE } from "../utils/constants.js";
+import { alertCard } from "./modeHistory/components/alertCard.js";
 
 export class mainHallway1 extends Phaser.Scene {
   constructor() {
     super({ key: "mainHallway1" });
+  }
+  preload() {
+    this.load.scenePlugin({
+      key: "rexuiplugin",
+      url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
+      sceneKey: "rexUI",
+    });
   }
 
   create() {
@@ -89,26 +97,23 @@ export class mainHallway1 extends Phaser.Scene {
       this
     );
 
+    if (window.mode === "mission") {
+      alertCard(this);
+    }
     const botonComission = crearPlataforma(1170, 790, "boton", boton);
     const botonAdministrative = crearPlataforma(690, 790, "boton", boton);
     const botonOutside = crearPlataforma(930, 1010, "boton", boton);
 
     createButtonCircle(this, SCENE.commission_area, botonComission, 1183, 560);
     createButtonCircle(this, SCENE.admin_room, botonAdministrative, 1000, 486);
-    createButtonCircle(this, SCENE.computer_room, botonOutside, 1465, 553);
-    //createButtonCircle(this, SCENE.outside, botonOutside, 1465, 553);
+    //createButtonCircle(this, SCENE.computer_room, botonOutside, 1465, 553);
+    createButtonCircle(this, SCENE.outside, botonOutside, 1465, 553);
 
     this.physics.add.collider(this.avatar.avatarPlayer, platform1);
     this.physics.add.collider(this.avatar.avatarPlayer, platform2);
     this.physics.add.collider(this.avatar.avatarPlayer, boton);
 
     navbar(this, "mainHallway1", 0.65);
-
-
-
-
-    
-    
   }
 
   update() {

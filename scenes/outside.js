@@ -14,6 +14,7 @@ import { createButtonCircle } from "../scenes/components/common/buttonCircle.js"
 import { navbar } from "./components/common/navbar.js";
 import { SCENE } from "../utils/constants.js";
 import { createButtonMission } from "./components/common/buttonMission.js";
+import { alertCard } from "./modeHistory/components/alertCard.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -29,6 +30,11 @@ export class Outside extends Phaser.Scene {
     });
   }
   preload() {
+    this.load.scenePlugin({
+      key: "rexuiplugin",
+      url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
+      sceneKey: "rexUI",
+    });
     // this.load.image("floorExample", "assets/images/outside/facci-general.png");
     this.load.image("patioFacci", "assets/images/outside/patio-facci.png");
     this.load.image("streetEast", "assets/images/outside/calle-este.png");
@@ -50,8 +56,6 @@ export class Outside extends Phaser.Scene {
   }
 
   create() {
-    console.log("x:", window.avatarX);
-    console.log("y:", window.avatarY);
     if (window.avatarX == undefined && window.avatarY == undefined) {
       window.avatarX = 800;
       window.avatarY = 500;
@@ -137,21 +141,23 @@ export class Outside extends Phaser.Scene {
     this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.2);
     const tree2 = crearPlataforma(1287, 665, "tree2", platform1, 0.75);
     dimesionesPlataformaIndividual(tree2, 0.2, 47);
-    createButtonCircle(this, SCENE.floor1, puertaFacci, 930, 920);
+    createButtonCircle(this, SCENE.floor1, puertaFacci, 930, 920, true);
     createButtonCircle(this, SCENE.second_floor1, puertaFacci2, 600, 800);
     //   createButtonCircle(this, "aula", escritorioD, 800, 500);
 
     this.physics.add.collider(this.avatar.avatarPlayer, platform1);
     // this.physics.add.collider(this.avatar.avatarPlayer, paredNorte);
 
+    //**********************************************************************
+    //********      hacer funcion en archivo aparte       ******************
+    //********************************************************************** */
     let teclado = this.input.keyboard;
-
     // Configurar una acción para la tecla "i"
+    // Puedes ejecutar cualquier código que quieras cuando se presione la tecla "i"
     teclado.addKey(Phaser.Input.Keyboard.KeyCodes.I).on(
       "down",
       async function (event) {
         try {
-          // Puedes ejecutar cualquier código que quieras cuando se presione la tecla "i"
           await crearVideo(
             traslate("infoCubicle"),
             "avatarVideo1",
@@ -166,12 +172,15 @@ export class Outside extends Phaser.Scene {
         }
       }.bind(this)
     );
-
+    //**********************************************************************
+    //********      hacer funcion en archivo aparte       ******************
+    //********************************************************************** */
     this.cameras.main.startFollow(this.avatar.avatarPlayer);
 
     this.cameras.main.zoom = 2;
 
     if (window.mode === "mission") {
+      alertCard(this);
       if (window.user.actualMission === 1) {
         const startN1 = crearPlataforma(1005, 565, "redV", example, 0.5);
         const botonM = createButtonMission(this);
