@@ -12,6 +12,7 @@ import { crearCard } from "./module/card.js";
 import { getEmployees } from "../services/employee.js";
 import { createButtonCircle } from "../scenes/components/common/buttonCircle.js";
 import { navbar } from "./components/common/navbar.js";
+import { shortMap, bigMap } from "./components/common/map.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -45,6 +46,9 @@ export class Outside extends Phaser.Scene {
     /*     this.load.image("asientoFacci", "assets/images/outside/asientoFacci.png");*/
     this.load.image("calleBus", "assets/images/outside/calle-bus.png");
     this.load.image("limiteSur", "assets/images/outside/limite-sur-facci.png");
+    this.load.image("mapa", "assets/images/mapa.png");
+    this.load.image("puntoRed", "assets/images/puntoRed.png");
+    this.load.image("bMapa", "assets/images/maps/bigMap.png");
   }
 
   create() {
@@ -125,7 +129,7 @@ export class Outside extends Phaser.Scene {
     const tree = crearPlataforma(1287, 705, "tree", platform1, 0.75);
     dimesionesPlataformaIndividual(tree, 0.2, -5);
 
-    this.avatar = new Avatar(this, 800, 500, 1.2);
+    this.avatar = new Avatar(this, 1000, 600, 1.2);
     const tree2 = crearPlataforma(1287, 665, "tree2", platform1, 0.75);
     dimesionesPlataformaIndividual(tree2, 0.2, 47);
     createButtonCircle(this, "mainHallway1", puertaFacci, 500, 500);
@@ -157,6 +161,10 @@ export class Outside extends Phaser.Scene {
         }
       }.bind(this)
     );
+
+    shortMap(this, "mapa");
+    bigMap(this);
+
 
     this.cameras.main.startFollow(this.avatar.avatarPlayer);
 

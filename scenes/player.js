@@ -146,6 +146,11 @@ export class Avatar extends Phaser.GameObjects.Sprite {
   }
 
   update(scene) {
+
+    //Para saber la ubicación del avatar en el mapa
+    scene.puntoMapa.x = scene.avatar.avatarPlayer.x * scene.factorEscala-87;
+    scene.puntoMapa.y = scene.avatar.avatarPlayer.y * scene.factorEscala;
+ 
     if (!window.avatarUpdateActivo) {
       return;
     }
