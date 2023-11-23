@@ -89,7 +89,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
 
     const contenedorFondo = scene.add.graphics();
     contenedorFondo.fillStyle(0xfff);
-    contenedorFondo.fillRoundedRect(600, 800, 200, 100, 10);
+    // contenedorFondo.fillRoundedRect(600, 800, 200, 100, 10);
 
     scene.buttonContainer.add(contenedorFondo);
     scene.buttonContainer.setDepth(1);
@@ -144,8 +144,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       scene.buttonCentro.y = this.buttonCentroY;
     });
   }
-
-  update(scene) {
+  update() {
     if (!window.avatarUpdateActivo) {
       return;
     }
@@ -222,6 +221,8 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     this.moveTo(0, 0, "turn");
   }
   moveTo(x, y, direction) {
+    // console.log(parseInt(this.avatarPlayer.x), parseInt(this.avatarPlayer.y));
+    console.log("modo", window.mode);
     this.avatarPlayer.setVelocityY(x);
     this.avatarPlayer.setVelocityX(y);
     this.avatarPlayer.anims.play(direction, true);

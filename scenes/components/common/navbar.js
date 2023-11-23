@@ -11,6 +11,9 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
   if (scene.cameras.main.zoom == 1.5) {
     box = scene.add.container(265, 165); //zoom == 1.5
   }
+  if (scene.cameras.main.zoom == 1) {
+    box = scene.add.container(200, 100); //zoom == 1
+  }
 
   box.setScrollFactor(0);
   box.setName("box");
@@ -23,7 +26,7 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
   home.setInteractive();
   home.on("pointerdown", function () {
     scene.scene.restart();
-      scene.scene.stop();
+    scene.scene.stop();
     scene.scene.start("intro");
   });
   home.setScrollFactor(0);
@@ -82,8 +85,11 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
     },
   });
   box.add(scene.nameScene);
-  box.add(scoreUserLabel);
-  box.add(scoreUser);
+
+  if (window.mode === "mission") {
+    box.add(scoreUserLabel);
+    box.add(scoreUser);
+  }
 
   box.setScale(scale);
   box.setDepth(1000);

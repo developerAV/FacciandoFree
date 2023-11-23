@@ -1,3 +1,4 @@
+export const URI_API = "https://server-api-dev-kknd.4.us-1.fl0.io/facciando";
 export const FONT = "Roboto";
 export const FONT_SIZE = {
   smaller: "16px",
@@ -36,11 +37,6 @@ export const COLORS_HEX = {
   grayDark: "#262c2e",
 };
 
-export const URI_API = "https://server-api-dev-kknd.4.us-1.fl0.io/facciando";
-
-export const DIMENSIONS = {
-  height: 0.82,
-};
 
 export const SCENE = {
   cubicle: "cubicle",
@@ -48,7 +44,7 @@ export const SCENE = {
   auditorium2: "auditorium2",
   admin_room: "administrativeRoom",
   classroom: "aula",
-  computer_room: "computerRoom",
+  computer_room: "computer_room",
   cubicle2: "cubicle2",
   commission_area: "commission_area",
   floor1: "mainHallway1",

@@ -159,8 +159,7 @@ export class CommissionArea extends Phaser.Scene {
             false
           );
           await crearVideo(traslate("infoCubicle"), "avatarVideo2", this, true);
-          // await aumentarZoom();
-          // Aquí continúa con el código después de que ambos videos hayan terminado
+        
         } catch (error) {
           console.error("Error:", error);
         }
