@@ -7,6 +7,7 @@ import {
 } from "./module/platform.js";
 import { navbar } from "./components/common/navbar.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
+import { shortMap, bigMap } from "./components/common/map.js";
 import { SCENE } from "../utils/constants.js";
 import { alertCard } from "./modeHistory/components/alertCard.js";
 
@@ -111,12 +112,16 @@ export class mainHallway1 extends Phaser.Scene {
 
     this.physics.add.collider(this.avatar.avatarPlayer, platform1);
     this.physics.add.collider(this.avatar.avatarPlayer, platform2);
+
+    shortMap(this, "mapa");
+    bigMap(this);
     this.physics.add.collider(this.avatar.avatarPlayer, boton);
 
     navbar(this, "mainHallway1", 0.65);
   }
 
   update() {
-    this.avatar.update();
+    this.avatar.update(this);
+ 
   }
 }
