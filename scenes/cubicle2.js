@@ -1,5 +1,9 @@
 import { Avatar } from "./player.js";
 import { crearPlataforma } from "./module/platform.js";
+import { navbar } from "./components/common/navbar.js";
+import { dimesionesPlataforma } from "./module/platform.js";
+import { SCENE } from "../utils/constants.js";
+import { shortMap, bigMap } from "./components/common/map.js";
 
 export class Cubicle2 extends Phaser.Scene {
   constructor() {
@@ -89,7 +93,8 @@ this.physics.add.overlap(this.avatar.avatarPlayer, notBlur, () => {
     // this.cameras.main.startFollow(this.avatar.avatarPlayer);
     // this.cameras.main.zoom = 2; 
   
-
+    shortMap(this, "mapaOutside");
+    bigMap(this);
   }
 
   update() {

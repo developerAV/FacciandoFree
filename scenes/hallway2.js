@@ -3,6 +3,8 @@ import { crearPlataforma } from "./module/platform.js";
 import { navbar } from "./components/common/navbar.js";
 import { dimesionesPlataforma } from "./module/platform.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
+import { SCENE } from "../utils/constants.js";
+import { shortMap, bigMap } from "./components/common/map.js";
 
 export class Hallway2 extends Phaser.Scene {
   constructor() {
@@ -87,6 +89,8 @@ export class Hallway2 extends Phaser.Scene {
     this.cameras.main.startFollow(this.avatar.avatarPlayer);
 
     this.cameras.main.zoom = 2;
+    shortMap(this, "mapaOutside");
+    bigMap(this);
 
     navbar(this, "hallway");
   }

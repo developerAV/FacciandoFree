@@ -2,6 +2,8 @@ import { Avatar } from "./player.js";
 import { crearPlataforma } from "./module/platform.js";
 import { navbar } from "./components/common/navbar.js";
 
+import { shortMap, bigMap } from "./components/common/map.js";
+
 export class ComputerRoom extends Phaser.Scene {
   constructor() {
     super({ key: "computer_room" });
@@ -119,7 +121,8 @@ export class ComputerRoom extends Phaser.Scene {
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasillas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
-
+    shortMap(this, "mapaOutside");
+    bigMap(this);
     navbar(this, "computer_room");
   }
 
