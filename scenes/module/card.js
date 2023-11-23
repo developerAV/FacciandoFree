@@ -6,25 +6,21 @@ export const crearCard = (
   namePlataforma,
   conteinerX,
   conteinerY
-  ) => {
-    let colisionTabla = false;
+) => {
+  let colisionTabla = false;
 
-    const card = {};  
-    
- 
-    card.containerX = scene.add.container(conteinerX, conteinerY);
-    
-    // Configura el color de fondo del contenedor
+  const card = {};
+
+  card.containerX = scene.add.container(conteinerX, conteinerY);
+
+  // Configura el color de fondo del contenedor
   const contenedorFondo = scene.add.graphics();
-  contenedorFondo.fillStyle(0xffffff,0.7); // blanco, puedes ajustar el color según tus preferencias
+  contenedorFondo.fillStyle(0xffffff, 0.7); // blanco, puedes ajustar el color según tus preferencias
   // contenedorFondo.fillRect(0, 0, 200, 100); // Ajusta el tamaño del contenedor según tus necesidades
   contenedorFondo.fillRoundedRect(0, 0, 200, 100, 10);
- 
+
   card.containerX.add(contenedorFondo);
-   // Agregar un borde al contenedor
-
-  
-
+  // Agregar un borde al contenedor
 
   // Crea un sprite para la foto tipo carnet dentro del contenedor
 
@@ -34,7 +30,9 @@ export const crearCard = (
   const informacionTexto = scene.add.text(
     0,
     30,
-    ` \n\n ${teacher.status[window.lan]} \n ${teacher.name}\n ${teacher.age} ${traslate("year")} \n ${teacher.description[window.lan]} `,
+    ` \n\n ${teacher.status[window.lan]} \n ${teacher.name}\n ${
+      teacher.age
+    } ${traslate("year")} \n ${teacher.description[window.lan]} `,
     {
       font: "16px Comic Sans MS, Cambria, Arial",
       fill: "#000000",
@@ -50,10 +48,10 @@ export const crearCard = (
   );
   const fotoCarnet = scene.add.sprite(200, 30, namePhoto); // Cambia las coordenadas y el nombre de la textura según tu juego
   fotoCarnet.setScale(0.3); // Ajusta la escala según tus necesidades
-  
+
   // Ajusta la alineación del texto según tus necesidades
   informacionTexto.setOrigin(0, 0.5);
-  
+
   // Agrega la foto y el texto al contenedor
   card.containerX.add(informacionTexto);
   card.containerX.add(fotoCarnet);
@@ -67,7 +65,15 @@ export const crearCard = (
   scene.physics.add.collider(scene.avatar.avatarPlayer, namePlataforma, () => {
     // Cuando el jugador colisiona con el objeto, muestra la tabla de datos
     card.containerX.setAlpha(1);
+
     colisionTabla = true;
+
+    if (window.mode === "mission") {
+      if (window.user.actualMission === 1) {
+        console.log("estoy en el cubiculo del profesor moya");
+        return;
+      }
+    }
   });
 
   scene.input.keyboard.on("keydown", (event) => {
