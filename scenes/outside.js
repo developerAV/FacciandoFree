@@ -46,7 +46,7 @@ export class Outside extends Phaser.Scene {
     /*     this.load.image("asientoFacci", "assets/images/outside/asientoFacci.png");*/
     this.load.image("calleBus", "assets/images/outside/calle-bus.png");
     this.load.image("limiteSur", "assets/images/outside/limite-sur-facci.png");
-    this.load.image("mapa", "assets/images/mapa.png");
+    this.load.image("mapaOutside", "assets/images/maps/outsideMap.png");
     this.load.image("puntoRed", "assets/images/puntoRed.png");
     this.load.image("bMapa", "assets/images/maps/bigMap.png");
   }
@@ -162,7 +162,7 @@ export class Outside extends Phaser.Scene {
       }.bind(this)
     );
 
-    shortMap(this, "mapa");
+    shortMap(this, "mapaOutside");
     bigMap(this);
 
 
