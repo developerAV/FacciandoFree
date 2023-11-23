@@ -8,6 +8,7 @@ import {
 } from "./module/platform.js";
 import { SCENE } from "../utils/constants.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
+import { shortMap, bigMap } from "./components/common/map.js";
 export class Hallway300 extends Phaser.Scene {
   constructor() {
     super({ key: "hallway300" });
@@ -166,6 +167,9 @@ export class Hallway300 extends Phaser.Scene {
 
     this.cameras.main.startFollow(this.avatar.avatarPlayer);
     this.cameras.main.zoom = 2;
+
+    shortMap(this, "mapaOutside");
+    bigMap(this);
     navbar(this, SCENE.floor3);
   }
 

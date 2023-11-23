@@ -12,6 +12,7 @@ import { crearCard } from "./module/card.js";
 import { getEmployees } from "../services/employee.js";
 import { createButtonCircle } from "../scenes/components/common/buttonCircle.js";
 import { navbar } from "./components/common/navbar.js";
+import { shortMap, bigMap } from "./components/common/map.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -225,6 +226,10 @@ createButtonCircle(this, "mainHallway1", escaleraComision,1050, 780);
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasMedio);
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasNorte);
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
+
+
+    shortMap(this, "mapaOutside");
+    bigMap(this);
 
     navbar(this, "Pasillo Comisiones");
   }

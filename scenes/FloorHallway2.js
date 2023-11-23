@@ -8,6 +8,7 @@ import {
 import { navbar } from "./components/common/navbar.js";
 import { SCENE } from "../utils/constants.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
+import { shortMap, bigMap } from "./components/common/map.js";
 let activeVideo = false;
 
 export class FloorHallway2 extends Phaser.Scene {
@@ -123,6 +124,9 @@ export class FloorHallway2 extends Phaser.Scene {
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredesSupeiores);
     this.physics.add.collider(this.avatar.avatarPlayer, escaleras);
+
+    shortMap(this, "mapaOutside");
+    bigMap(this);
     navbar(this, SCENE.floor2, 0.5);
   }
 

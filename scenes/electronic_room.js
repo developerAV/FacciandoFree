@@ -1,5 +1,9 @@
 import { Avatar } from "./player.js";
 import { crearPlataforma } from "./module/platform.js";
+import { navbar } from "./components/common/navbar.js";
+import { dimesionesPlataforma } from "./module/platform.js";
+import { SCENE } from "../utils/constants.js";
+import { shortMap, bigMap } from "./components/common/map.js";
 
 export class Laboratorio1 extends Phaser.Scene {
   constructor() {
@@ -100,6 +104,9 @@ export class Laboratorio1 extends Phaser.Scene {
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
+    shortMap(this, "mapaOutside");
+    bigMap(this);
+
   }
 
   update() {

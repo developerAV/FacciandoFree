@@ -5,6 +5,8 @@ import {
   overlapPlataforma,
 } from "./module/platform.js";
 import { navbar } from "./components/common/navbar.js";
+import { SCENE } from "../utils/constants.js";
+import { shortMap, bigMap } from "./components/common/map.js";
 
 export class AdministrativeRoom extends Phaser.Scene {
   constructor() {
@@ -94,6 +96,9 @@ export class AdministrativeRoom extends Phaser.Scene {
     this.cameras.main.startFollow(this.avatar.avatarPlayer); // Configurar seguimiento de cámara al personaje
     this.cameras.main.zoom = 2;
 
+
+    shortMap(this, "mapaOutside");
+    bigMap(this);
     navbar(this, "administrativeRoom");
   }
 

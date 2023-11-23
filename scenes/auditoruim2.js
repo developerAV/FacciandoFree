@@ -3,6 +3,7 @@ import { crearPlataforma } from "./module/platform.js";
 import { navbar } from "./components/common/navbar.js";
 import { dimesionesPlataforma } from "./module/platform.js";
 import { SCENE } from "../utils/constants.js";
+import { shortMap, bigMap } from "./components/common/map.js";
 
 export class Auditorium2 extends Phaser.Scene {
   constructor() {
@@ -104,7 +105,8 @@ export class Auditorium2 extends Phaser.Scene {
 
 
     this.cameras.main.zoom = 2; 
-
+    shortMap(this, "mapaOutside");
+    bigMap(this);
     navbar(this, SCENE.auditorium2);
   }
 

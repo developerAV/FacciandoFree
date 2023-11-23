@@ -12,6 +12,7 @@ import { createButtonCircle } from "../scenes/components/common/buttonCircle.js"
 import { navbar } from "./components/common/navbar.js";
 import { SCENE } from "../utils/constants.js";
 import { alertCard } from "./modeHistory/components/alertCard.js";
+import { shortMap, bigMap } from "./components/common/map.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -226,7 +227,8 @@ export class Cubicle extends Phaser.Scene {
         return;
       }
     } */
-
+    shortMap(this, "mapaOutside");
+    bigMap(this);
     navbar(this, "cubicle");
 
     if (window.mode === "mission") {
