@@ -98,9 +98,10 @@ export class mainHallway1 extends Phaser.Scene {
       this
     );
 
-    if (window.mode === "mission") {
+    if (window.missionActive) {
       alertCard(this);
     }
+
     const botonComission = crearPlataforma(1170, 790, "boton", boton);
     const botonAdministrative = crearPlataforma(690, 790, "boton", boton);
     const botonOutside = crearPlataforma(930, 1010, "boton", boton);
@@ -122,6 +123,5 @@ export class mainHallway1 extends Phaser.Scene {
 
   update() {
     this.avatar.update(this);
- 
   }
 }

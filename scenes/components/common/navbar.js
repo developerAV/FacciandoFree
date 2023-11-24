@@ -69,6 +69,7 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
       width: 500,
     },
   });
+  box.add(scene.nameScene);
 
   const scoreUserLabel = scene.add.text(740, 20, traslate("score") + ":", {
     font: `25px ${FONT}`,
@@ -84,12 +85,9 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
       width: 200,
     },
   });
-  box.add(scene.nameScene);
 
-  if (window.mode === "mission") {
-    box.add(scoreUserLabel);
-    box.add(scoreUser);
-  }
+  box.add(scoreUserLabel);
+  box.add(scoreUser);
 
   box.setScale(scale);
   box.setDepth(1000);

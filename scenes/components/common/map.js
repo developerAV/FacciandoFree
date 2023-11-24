@@ -37,10 +37,11 @@ export const bigMap = (scene) => {
   bigMapBackground.displayWidth = 700;
   bigMapBackground.displayHeight = 400;
   scene.bigMapConteiner.add(bigMapBackground);
+  scene.iconMap = scene.add.image(100, 0, "iconMap").setScale(0.3);
+  scene.bigMapConteiner.add(scene.iconMap);
   scene.bigMapConteiner.visible = false;
   scene.bigMapConteiner.setDepth(1100);
   scene.bigMapConteiner.setInteractive();
-
   let lastClickTime = 0;
 
   scene.bigMapConteiner.on(

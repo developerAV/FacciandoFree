@@ -151,6 +151,12 @@ const traslateIntro = {
     es: "Pasillo principal",
     en: "Main hallway",
   },
+
+  //narrador
+  mission1: {
+    es: "El personaje, un estudiante aspirante, llega a la facultad de Ciencias de la vida y tecnologías con la esperanza de ingresar a un emocionante mundo tecnológico. Encontrarás información sobre los requisitos de admisión y el perfil de egreso, que será tu guía a lo largo de tu viaje.",
+    en: "The character, an aspiring student, arrives at the Faculty of Life Sciences and Technologies with the hope of entering an exciting technological world. You will find information about admission requirements and the graduate profile, which will be your guide throughout your journey.",
+  },
 };
 
 export const traslate = (key) => {
