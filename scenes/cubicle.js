@@ -28,7 +28,7 @@ export class Cubicle extends Phaser.Scene {
     });
   }
   preload() {
-    window.step = 1;
+    window.missionActive = false;
     this.load.scenePlugin({
       key: "rexuiplugin",
       url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
@@ -227,11 +227,11 @@ export class Cubicle extends Phaser.Scene {
         return;
       }
     } */
+    navbar(this, "cubicle");
     shortMap(this, "mapaOutside");
     bigMap(this);
-    navbar(this, "cubicle");
 
-    if (window.mode === "mission") {
+    if (window.missionActive) {
       alertCard(this);
     }
   }

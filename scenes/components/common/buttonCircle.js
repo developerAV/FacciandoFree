@@ -62,9 +62,6 @@ export const createButtonCircle = (
   scene.input.keyboard.on("keydown-X", () => {
     if (!scene.keyB) return;
 
-    if (xxxx) {
-      window.step = 2;
-    }
     scene.avatar.avatarPlayer.destroy();
     scene.anims.remove("turn");
     scene.anims.remove("left");

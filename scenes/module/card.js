@@ -68,11 +68,9 @@ export const crearCard = (
 
     colisionTabla = true;
 
-    if (window.mode === "mission") {
-      if (window.user.actualMission === 1) {
-        console.log("estoy en el cubiculo del profesor moya");
-        return;
-      }
+    if (window.user.actualMission === 1) {
+      console.log("estoy en el cubiculo del profesor moya");
+      return;
     }
   });
 
