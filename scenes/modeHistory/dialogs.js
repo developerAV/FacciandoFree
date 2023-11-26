@@ -1,24 +1,36 @@
 // Path: scenes/modeHistory/dialogs.js
 const dialogs = {
   mission1: {
+    positionMap: { x: 100, y: 120 },
+    positionButton: { x: 973, y: 746 },
+    time: 300,
     step1: "Entra por a la puerta principal",
-    step2: "anda a cubiculo",
-    step3: "este es el paso 3 de la mision 1",
-    step4: "este es el paso 4 de la mision 1",
+    step2: "Ve al ascensor",
+    step3: "Ve al piso 2",
+    step4: "Ve a la oficina 2",
   },
   mission2: {
+    positionMap: { x: 500, y: 100 },
+    positionButton: { x: 973, y: 746 },
+    time: 400,
     step1: "este es el paso 1 de la mision 2",
     step2: "este es el paso 2 de la mision 2",
     step3: "este es el paso 3 de la mision 2",
     step4: "este es el paso 4 de la mision 2",
   },
   mission3: {
+    positionMap: { x: 0, y: 0 },
+    positionButton: { x: 973, y: 746 },
+    time: 500,
     step1: "este es el paso 1 de la mision 3",
     step2: "este es el paso 2 de la mision 3",
     step3: "este es el paso 3 de la mision 3",
     step4: "este es el paso 4 de la mision 3",
   },
   mission4: {
+    positionButton: { x: 973, y: 746 },
+    positionMap: { x: 0, y: 0 },
+    time: 1000,
     step1: "este es el paso 1 de la mision 4",
     step2: "este es el paso 2 de la mision 4",
     step3: "este es el paso 3 de la mision 4",
@@ -27,31 +39,44 @@ const dialogs = {
 };
 
 export const dialog = () => {
-  if (!window.step) {
-    window.step = 1;
-  }
   const level = window.user.actualLevel - 1;
   const mission = window.user.actualMission;
-  const step = `step${window.step}`;
-  //const step = `step${window.user.step}`;
+  //const step = `step${window.step}`;
+  const step = `step${window.user.step}`;
 
   const result = mission + level * 3;
   const index = `mission${result}`;
-
   if (!dialogs[index]) {
     return "No hay dialogos";
   }
 
   return dialogs[index][step];
 };
-/* text: "Hola, soy Valentin, el CEO de Facci. Bienvenido a tu primer día de trabajo. ¿Estás listo para empezar?",
-      options: [
-        {
-          text: "Si",
-          nextStep: "step2",
-        },
-        {
-          text: "No",
-          nextStep: "step3",
-        },
-      ], */
+
+export const getPositionMap = (eje, key = "sdf") => {
+  const level = window.user.actualLevel - 1;
+  const mission = window.user.actualMission;
+
+  const result = mission + level * 3;
+  const index = `mission${result}`;
+
+  if (key === "button") {
+    return dialogs[index].positionButton[eje];
+  }
+
+  return dialogs[index].positionMap[eje];
+};
+
+export const getTime = () => {
+  const level = window.user.actualLevel - 1;
+  const mission = window.user.actualMission;
+
+  const result = mission + level * 3;
+  const index = `mission${result}`;
+
+  if (!dialogs[index].time) {
+    return 0;
+  }
+
+  return dialogs[index].time;
+};

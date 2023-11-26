@@ -151,6 +151,9 @@ const traslateIntro = {
     es: "Pasillo principal",
     en: "Main hallway",
   },
+
+  //narrador
+ 
 };
 
 export const traslate = (key) => {

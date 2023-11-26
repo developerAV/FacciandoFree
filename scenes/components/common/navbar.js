@@ -5,7 +5,6 @@ import { getUserById } from "../../../services/user.js";
 import { COLORS_HEX } from "../../../utils/constants.js";
 
 export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
-  //const
   let box = scene.add.container(400, 250); //zoom == 2
 
   if (scene.cameras.main.zoom == 1.5) {
@@ -24,8 +23,11 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
 
   const home = scene.add.image(40, 47, "botonNav").setScale(0.5);
   home.setInteractive();
-  home.on("pointerdown", function () {
-    scene.scene.restart();
+  home.on("pointerdown", async function () {
+    window.user = await getUserById(window.user._id);
+    window.time = 0;
+    window.runTime = false;
+    window.missionActive = false;
     scene.scene.stop();
     scene.scene.start("intro");
   });
@@ -69,6 +71,7 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
       width: 500,
     },
   });
+  box.add(scene.nameScene);
 
   const scoreUserLabel = scene.add.text(740, 20, traslate("score") + ":", {
     font: `25px ${FONT}`,
@@ -84,12 +87,9 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
       width: 200,
     },
   });
-  box.add(scene.nameScene);
 
-  if (window.mode === "mission") {
-    box.add(scoreUserLabel);
-    box.add(scoreUser);
-  }
+  box.add(scoreUserLabel);
+  box.add(scoreUser);
 
   box.setScale(scale);
   box.setDepth(1000);

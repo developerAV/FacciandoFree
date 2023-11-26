@@ -7,48 +7,15 @@ export const buttonsMode = (scene, box, boxGamer, boxScore) => {
   boxGamer.setVisible(false);
   boxScore.setVisible(false);
   const mode = scene.add
-    .image(1412, 550, "mode")
+    .image(220, 820, "mode")
     .setScale(0.75)
     .setName("mode")
-    .setScale(1);
+    .setScale(0.25);
   const mode2 = scene.add
-    .image(1460, 690, "mode")
+    .image(350, 820, "mode2")
     .setScale(0.75)
     .setName("modeSecondary")
-    .setScale(0.7);
-
-  const modeText1 = textButton(
-    scene,
-    1435,
-    569,
-    "mode",
-    COLORS.black,
-    FONT_SIZE.small
-  );
-  const modeText2 = textButton(
-    scene,
-    1470,
-    695,
-    "mode",
-    COLORS.black,
-    FONT_SIZE.smaller
-  );
-  const modePrimary = textButton(
-    scene,
-    1215,
-    520,
-    "exploration",
-    COLORS.black,
-    FONT_SIZE.mediumSmall
-  );
-  const modeSecondary = textButton(
-    scene,
-    1310,
-    660,
-    "mission",
-    COLORS.black,
-    FONT_SIZE.small
-  );
+    .setScale(0.25);
 
   mode.setInteractive();
   mode.on("pointerdown", () => changeButtonsPosition("exploration"));
@@ -72,20 +39,12 @@ export const buttonsMode = (scene, box, boxGamer, boxScore) => {
       boxGamer.setVisible(!boxVisible);
       boxScore.setVisible(!boxVisible);
       swapButtonPositionsLan(scene, mode, mode2);
-      mode.setScale(gameMode === "exploration" ? 1 : 0.7);
-      mode2.setScale(gameMode === "exploration" ? 0.7 : 1);
-      modePrimary.setText(traslate(gameMode));
-      modeSecondary.setText(traslate(gameModeSecondary));
+      /*  mode.setScale(gameMode === "exploration" ? mode.setDepth(1) : mode2.setDepth(0));
+      mode2.setScale(gameMode === "exploration" ? mode.setDepth(0) : mode2.setDepth(1));
+       */
     }
     setTimeout(async () => {
       isTransitionInProgress = false;
     }, 300);
   }
-
-  return {
-    modeText1,
-    modeText2,
-    modePrimary,
-    modeSecondary,
-  };
 };

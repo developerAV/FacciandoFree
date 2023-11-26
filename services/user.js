@@ -46,42 +46,33 @@ export const getUserFirebase = async (id) => {
   }
 };
 export const postUser = async (user) => {
-  const newUser = await fetch(
-    "https://server-api-kuoy-dev.fl0.io/facciando/user",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        idUserFirebase: user.uid,
-        date_birth: "12/12/12",
-        actualLevel: 1,
-        name: user.displayName,
-        actualMission: 1,
-        imageUrl: user.photoURL,
-      }),
-    }
-  );
+  const newUser = await fetch(`${URI_API}/user`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      idUserFirebase: user.uid,
+      date_birth: "12/12/12",
+      actualLevel: 1,
+      name: user.displayName,
+      actualMission: 1,
+      imageUrl: user.photoURL,
+    }),
+  });
   const data = await newUser.json();
   return data;
 };
 
-export const putUser = async (user) => {
-  const newUser = await fetch(
-    `https://server-api-kuoy-dev.fl0.io/facciando/user/${user._id}`,
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: user.name,
-        school: user.school,
-        
-      }),
-    }
-  )};
+export const putUser = async (id, data) => {
+  const newUser = await fetch(`${URI_API}/user/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+};
 export const getTop10UserByScore = async () => {
   try {
     const response = await fetch(`${URI_API}/user/top10`);

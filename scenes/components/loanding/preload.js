@@ -11,12 +11,15 @@ const preloadIntro = (scene) => {
   scene.load.image("backgroundIntro2", "assets/images/intro/intro2.png");
   scene.load.image("play", "assets/images/intro/start.png");
   scene.load.image("mode", "assets/images/intro/mode.png");
+  scene.load.image("mode2", "assets/images/intro/mode2.png");
   scene.load.image("score", "assets/images/intro/score.png");
   //scene.load.image("avatar", "assets/images/intro/avatar.png");
   scene.load.image("fullscreen", "assets/images/intro/fullscreen.png");
   scene.load.image("mute", "assets/images/intro/mute.png");
   scene.load.image("sound", "assets/images/intro/sound.png");
   scene.load.image("logout", "assets/images/intro/logout.png");
+  scene.load.image("logoRedondo", "assets/images/logoRedondo.png");
+
   scene.load.image("facciando", "assets/images/intro/facci.png");
   scene.load.image("avatar", "assets/images/player/avatar.png");
   scene.load.image("avatar2", "assets/images/player/avatar2.png");

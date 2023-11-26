@@ -52,6 +52,9 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     if (window.isMobile && window.avatarUpdateActivo) {
       this.botonMobile(scene);
     }
+    if (window.runTime) {
+      this.runTime(scene);
+    }
   }
 
   botonMobile(scene) {
@@ -144,13 +147,11 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       scene.buttonCentro.y = this.buttonCentroY;
     });
   }
-
   update(scene) {
-
     //Para saber la ubicación del avatar en el mapa
-    scene.puntoMapa.x = scene.avatar.avatarPlayer.x * scene.factorEscala-87;
+    scene.puntoMapa.x = scene.avatar.avatarPlayer.x * scene.factorEscala - 87;
     scene.puntoMapa.y = scene.avatar.avatarPlayer.y * scene.factorEscala;
- 
+
     if (!window.avatarUpdateActivo) {
       return;
     }
@@ -227,10 +228,53 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     this.moveTo(0, 0, "turn");
   }
   moveTo(x, y, direction) {
-    // console.log(parseInt(this.avatarPlayer.x), parseInt(this.avatarPlayer.y));
-    console.log("modo", window.mode);
+    //console.log(parseInt(this.avatarPlayer.x), parseInt(this.avatarPlayer.y));
     this.avatarPlayer.setVelocityY(x);
     this.avatarPlayer.setVelocityX(y);
     this.avatarPlayer.anims.play(direction, true);
+  }
+  runTime(scene) {
+    // Cronómetrocameras.main.zoom
+    //    const zoom = window.zoom;
+    let x = 450; //zoom == 2
+    let y = 325; //zoom == 2
+    if (window.zoom === 1.5) {
+      x = 800; //zoom == 1.5
+      y = 500; //zoom == 1.5
+    }
+    if (window.zoom === 1) {
+      x = 800; //zoom == 1
+      y = 500; //zoom == 1
+    }
+    scene.textoTiempo = scene.add.text(x, y, `Tiempo: ${window.time}`, {
+      fontFamily: "Arial",
+      fontSize: 24,
+      color: "#ffffff",
+    });
+    scene.time.addEvent({
+      delay: 1000,
+      callback: () => {
+        window.time += 1;
+        scene.textoTiempo.setText("Tiempo: " + window.time);
+      },
+      callbackScope: scene,
+      loop: true,
+    });
+    scene.textoTiempo.setScrollFactor(0);
+    scene.textoTiempo.setScale(0.75);
+
+    /*     scene.time.addEvent({
+      delay: 1000,
+      callback: () => {
+        if (window.user.time === 0) {
+          window.user.time = 0;
+          return;
+        }
+        window.user.time--;
+        scene.timeText.setText(window.user.time);
+      },
+      callbackScope: scene,
+      loop: true,
+    }); */
   }
 }

@@ -10,6 +10,7 @@ import { detailsGamer } from "./components/intro/detailsGamer.js";
 import { getTop10UserByScore } from "../services/user.js";
 import { scoreUser } from "./components/intro/scoreUser.js";
 
+import { createButtonMission } from "./components/common/buttonMission.js";
 export class Intro extends Phaser.Scene {
   constructor() {
     super({ key: "intro" });
@@ -202,12 +203,7 @@ export class Intro extends Phaser.Scene {
     } = detailsGamer(this);
     const { boxScore, scoreUserLabel } = await scoreUser(this);
 
-    const { modeText1, modeText2, modePrimary, modeSecondary } = buttonsMode(
-      this,
-      box,
-      boxGamer,
-      boxScore
-    );
+    buttonsMode(this, box, boxGamer, boxScore);
 
     this.updateScene = () => {
       playText.setText(traslate("start"));
@@ -216,10 +212,6 @@ export class Intro extends Phaser.Scene {
       home.setText(traslate("home"));
       ranked.setText(traslate("ranking"));
       avatar.setText(traslate("avatar"));
-      modeText1.setText(traslate("mode"));
-      modeText2.setText(traslate("mode"));
-      modePrimary.setText(traslate(window.mode));
-      modeSecondary.setText(traslate(window.mode2));
 
       levelLabel.setText(traslate("actualLevel"));
       missionLabel.setText(traslate("missionName"));

@@ -16,6 +16,9 @@ import { shortMap, bigMap } from "./components/common/map.js";
 import { SCENE } from "../utils/constants.js";
 import { createButtonMission } from "./components/common/buttonMission.js";
 import { alertCard } from "./modeHistory/components/alertCard.js";
+import { getPositionMap } from "./modeHistory/dialogs.js";
+import { startMission } from "./modeHistory/startMission.js";
+import { endMission } from "./modeHistory/endMission.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -31,6 +34,11 @@ export class Outside extends Phaser.Scene {
     });
   }
   preload() {
+    this.load.plugin(
+      "rexglowfilterpipelineplugin",
+      "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexglowfilterpipelineplugin.min.js",
+      true
+    );
     this.load.scenePlugin({
       key: "rexuiplugin",
       url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
@@ -57,9 +65,11 @@ export class Outside extends Phaser.Scene {
     this.load.image("mapaOutside", "assets/images/maps/outsideMap.png");
     this.load.image("puntoRed", "assets/images/puntoRed.png");
     this.load.image("bMapa", "assets/images/maps/bigMap.png");
+    this.load.image("iconMap", "assets/images/maps/iconMission.png");
   }
 
   create() {
+    window.contador = 100;
     if (window.avatarX == undefined && window.avatarY == undefined) {
       window.avatarX = 800;
       window.avatarY = 500;
@@ -74,7 +84,6 @@ export class Outside extends Phaser.Scene {
     this.add.image(62, 500, "streetEast").setScale(0.75);
     //plataformas
     let platform1 = this.physics.add.staticGroup();
-    const example = this.physics.add.staticGroup();
 
     const building = crearPlataforma(782, 405, "building", platform1, 0.75);
     dimesionesPlataformaIndividual(building, 0.6, 90);
@@ -162,13 +171,8 @@ export class Outside extends Phaser.Scene {
       "down",
       async function (event) {
         try {
-          await crearVideo(
-            traslate("infoCubicle"),
-            "avatarVideo1",
-            this,
-            false
-          );
-          await crearVideo(traslate("infoCubicle"), "avatarVideo2", this, true);
+          await crearVideo(traslate("infoCubicle"), "avatarVideo1", this);
+          await crearVideo(traslate("infoCubicle"), "avatarVideo2", this);
           // await aumentarZoom();
           // Aquí continúa con el código después de que ambos videos hayan terminado
         } catch (error) {
@@ -180,7 +184,6 @@ export class Outside extends Phaser.Scene {
     shortMap(this, "mapaOutside");
     bigMap(this);
 
-
     //**********************************************************************
     //********      hacer funcion en archivo aparte       ******************
     //********************************************************************** */
@@ -188,27 +191,13 @@ export class Outside extends Phaser.Scene {
 
     this.cameras.main.zoom = 2;
 
-    if (window.mode === "mission") {
-      alertCard(this);
-      if (window.user.actualMission === 1) {
-        const startN1 = crearPlataforma(1005, 565, "redV", example, 0.5);
-        const botonM = createButtonMission(this);
-        this.physics.add.overlap(
-          this.avatar.avatarPlayer,
-          example,
-          () => {
-            startN1.destroy();
-            console.log("inicio de mission");
-            //crearVideo(traslate("startMission1"), "avatarVideo2", this, true);
-          },
-          null,
-          this
-        );
-        return;
-      }
-    }
-
     navbar(this, "outside");
+
+    endMission();
+    if (window.user.actualMission === 1 && !window.missionActive) {
+      window.missionActive = true;
+      // startMission(this);
+    }
   }
 
   update() {

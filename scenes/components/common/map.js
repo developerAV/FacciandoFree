@@ -1,3 +1,5 @@
+import { getPositionMap } from "../../modeHistory/dialogs.js";
+
 export const shortMap = (scene, mapa) => {
   scene.factorEscala = 0.125; //200 / 1600;//= 0.125
 
@@ -37,10 +39,13 @@ export const bigMap = (scene) => {
   bigMapBackground.displayWidth = 700;
   bigMapBackground.displayHeight = 400;
   scene.bigMapConteiner.add(bigMapBackground);
+  scene.iconMap = scene.add
+    .image(getPositionMap("x"), getPositionMap("y"), "iconMap")
+    .setScale(0.3);
+  scene.bigMapConteiner.add(scene.iconMap);
   scene.bigMapConteiner.visible = false;
   scene.bigMapConteiner.setDepth(1100);
   scene.bigMapConteiner.setInteractive();
-
   let lastClickTime = 0;
 
   scene.bigMapConteiner.on(
