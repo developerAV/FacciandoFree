@@ -22,8 +22,12 @@ export class Cubicle2 extends Phaser.Scene {
     this.load.image("escalera1Cu2", "assets/images/cubicle2/escalera1Cu2.png");
     this.load.image("escalera2Cu2", "assets/images/cubicle2/escalera2Cu2.png");
     this.load.image("cubicle2ParedSurEste", "assets/images/cubicle2/cubicle2ParedSurEste.png");
-  
-
+    this.load.image("cubicle2ParedMedioVertical", "assets/images/cubicle2/cubicle2ParedMedioVertical.png");
+    this.load.image("cubicle2ParedEntrada", "assets/images/cubicle2/cubicle2ParedEntrada.png");
+    this.load.image("cubicle2ParedSurMedio", "assets/images/cubicle2/cubicle2ParedSurMedio.png");
+    this.load.image("cubicle2ParedSurEste2", "assets/images/cubicle2/cubicle2ParedSurEste2.png");
+    this.load.image("cubiculo2Escritorios", "assets/images/cubicle2/cubiculo2Escritorios.png");
+    this.load.image("cubiculo2Escritorios2", "assets/images/cubicle2/cubiculo2Escritorios2.png");
   
   }
 
@@ -35,10 +39,9 @@ export class Cubicle2 extends Phaser.Scene {
     this.cameras.main.transparent = true;
     
     const fondoaula = this.add.image(800, 500, "pisoCubiculo2");
-   this.add.image(800, 500, "paredCu2");
     // const escalera2 = this.add.image(795, 632,  "escalera2");
     
-   
+    
 
 
    
@@ -54,22 +57,28 @@ export class Cubicle2 extends Phaser.Scene {
    crearPlataforma(59, 417, "paredeIzCu2", plataformas, scale);
    crearPlataforma(255, 504, "paredeIzTotalCu2", plataformas, scale);
    crearPlataforma(1467, 419, "paredeIzCu2", plataformas, scale);
+   this.add.image(750, 350, "cubiculo2Escritorios");
+   this.add.image(1100, 350, "cubiculo2Escritorios2");
    let pared1 = crearPlataforma(591, 524, "cubicle2ParedCentro1", plataformas, scale);
    let pared2 = crearPlataforma(975, 524, "cubicle2ParedCentro2", plataformas, scale);
    let pared3 = crearPlataforma(1100, 724, "cubicle2ParedCentro3", plataformas, scale);
    let escalera1Cu2 = crearPlataforma(782, 874, "escalera1Cu2", plataformaOverlap, scale);
    let escalera2Cu2 = crearPlataforma(891, 819, "escalera2Cu2", plataformaOverlap, scale);
    let paredSurEste = crearPlataforma(1260, 900, "cubicle2ParedSurEste", plataformas, scale);
+   let cubicle2ParedMedioVertical = crearPlataforma(1037, 221, "cubicle2ParedMedioVertical", plataformas, scale);
+   let cubicle2ParedEntrada = crearPlataforma(1147, 562, "cubicle2ParedEntrada", plataformas, scale);
+   let cubicle2ParedSurMedio = crearPlataforma(612, 970, "cubicle2ParedSurMedio", plataformas, scale);
+   let cubicle2ParedSurEste2 = crearPlataforma(1164, 948, "cubicle2ParedSurEste2", plataformas, scale);
    
 
 
-  let blur = crearPlataforma(758, 550, "redH", plataformaOverlap, 0.5);
-  let notBlur = crearPlataforma(758, 610, "redH", plataformaOverlap, 0.5);
-
-this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.5);
-
-
-this.physics.add.overlap(this.avatar.avatarPlayer, blur, () => {
+   let blur = crearPlataforma(758, 550, "redH", plataformaOverlap, 0.5);
+   let notBlur = crearPlataforma(758, 610, "redH", plataformaOverlap, 0.5);
+   
+   this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.5);
+   
+   
+   this.physics.add.overlap(this.avatar.avatarPlayer, blur, () => {
 
   //poner blur una platform
   pared1.alpha = 0.5;
