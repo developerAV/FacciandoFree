@@ -59,7 +59,8 @@ const config = {
   },
 };
 window.isMobile = /iPhone|iPad|iPod|Android/i.test(window.navigator.userAgent);
-window.lan = "en";
+window.lan = "es";
+window.time = 0;
 const game = new Phaser.Game(config);
 
 game.scene.start();

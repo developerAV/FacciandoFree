@@ -28,7 +28,6 @@ export class Cubicle extends Phaser.Scene {
     });
   }
   preload() {
-    window.missionActive = false;
     this.load.scenePlugin({
       key: "rexuiplugin",
       url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
@@ -157,7 +156,7 @@ export class Cubicle extends Phaser.Scene {
     let paredSurIzq = crearPlataforma(322, 720, "paredSurEste", plataformas);
 
     if (activeVideo) {
-      crearVideo(traslate("infoCubicle"), "avatarVideo1", this, true);
+      crearVideo(traslate("infoCubicle"), "avatarVideo1", this);
     }
     this.cameras.main.startFollow(this.avatar.avatarPlayer); // Configurar seguimiento de cámara al personaje
     this.cameras.main.zoom = 2;
@@ -170,13 +169,8 @@ export class Cubicle extends Phaser.Scene {
       async function (event) {
         try {
           // Puedes ejecutar cualquier código que quieras cuando se presione la tecla "i"
-          await crearVideo(
-            traslate("infoCubicle"),
-            "avatarVideo1",
-            this,
-            false
-          );
-          await crearVideo(traslate("infoCubicle"), "avatarVideo2", this, true);
+          await crearVideo(traslate("infoCubicle"), "avatarVideo1", this);
+          await crearVideo(traslate("infoCubicle"), "avatarVideo2", this);
           // await aumentarZoom();
           // Aquí continúa con el código después de que ambos videos hayan terminado
         } catch (error) {

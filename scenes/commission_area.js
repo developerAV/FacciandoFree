@@ -279,7 +279,7 @@ export class CommissionArea extends Phaser.Scene {
     // this.add.image(836, 494, "accesorios");
 
     if (activeVideo) {
-      crearVideo(traslate("infoCubicle"), "avatarVideo1", this, true);
+      crearVideo(traslate("infoCubicle"), "avatarVideo1", this);
     }
     this.cameras.main.startFollow(this.avatar.avatarPlayer); // Configurar seguimiento de cámara al personaje
     this.cameras.main.zoom = 2;
@@ -295,10 +295,9 @@ export class CommissionArea extends Phaser.Scene {
           await crearVideo(
             traslate("infoCubicle"),
             "avatarVideo1",
-            this,
-            false
+            this
           );
-          await crearVideo(traslate("infoCubicle"), "avatarVideo2", this, true);
+          await crearVideo(traslate("infoCubicle"), "avatarVideo2", this);
         } catch (error) {
           console.error("Error:", error);
         }

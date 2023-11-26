@@ -5,8 +5,7 @@ export const createButtonCircle = (
   sceneName,
   platform,
   avatarX,
-  avatarY,
-  xxxx = false
+  avatarY
 ) => {
   const buttonCircle = {};
 

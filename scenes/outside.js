@@ -18,7 +18,7 @@ import { createButtonMission } from "./components/common/buttonMission.js";
 import { alertCard } from "./modeHistory/components/alertCard.js";
 import { getPositionMap } from "./modeHistory/dialogs.js";
 import { startMission } from "./modeHistory/startMission.js";
-import { infoMission } from "./modeHistory/components/infoMission.js";
+import { endMission } from "./modeHistory/endMission.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -171,13 +171,8 @@ export class Outside extends Phaser.Scene {
       "down",
       async function (event) {
         try {
-          await crearVideo(
-            traslate("infoCubicle"),
-            "avatarVideo1",
-            this,
-            false
-          );
-          await crearVideo(traslate("infoCubicle"), "avatarVideo2", this, true);
+          await crearVideo(traslate("infoCubicle"), "avatarVideo1", this);
+          await crearVideo(traslate("infoCubicle"), "avatarVideo2", this);
           // await aumentarZoom();
           // Aquí continúa con el código después de que ambos videos hayan terminado
         } catch (error) {
@@ -197,10 +192,11 @@ export class Outside extends Phaser.Scene {
     this.cameras.main.zoom = 2;
 
     navbar(this, "outside");
+
+    endMission();
     if (window.user.actualMission === 1 && !window.missionActive) {
       window.missionActive = true;
-      //startMission(this);
-      infoMission(this);
+      // startMission(this);
     }
   }
 
