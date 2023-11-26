@@ -5,23 +5,37 @@ import {
   overlapPlataforma,
 } from "./module/platform.js";
 import { navbar } from "./components/common/navbar.js";
-import { SCENE } from "../utils/constants.js";
 import { shortMap, bigMap } from "./components/common/map.js";
+import { startMission } from "./modeHistory/startMission.js";
+import { createButtonCircle } from "./components/common/buttonCircle.js";
+import { SCENE } from "../utils/constants.js";
 
 export class AdministrativeRoom extends Phaser.Scene {
   constructor() {
     super({ key: "administrativeRoom" });
   }
-  
+  preload() {
+    this.load.plugin(
+      "rexglowfilterpipelineplugin",
+      "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexglowfilterpipelineplugin.min.js",
+      true
+    );
+    this.load.scenePlugin({
+      key: "rexuiplugin",
+      url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
+      sceneKey: "rexUI",
+    });
+  }
+
   create() {
     window.avatarUpdateActivo = true;
     // Para iniciar con un desenfoque
     this.cameras.main.fadeIn(500);
-    
+
     const plataformas = this.physics.add.staticGroup();
     const paredPlataforma = this.physics.add.staticGroup();
     const ptfmOverlap = this.physics.add.staticGroup();
-    
+
     //paredes
     crearPlataforma(822, 400, "agua1", plataformas);
     this.add.image(800, 500, "piso").setScale(1.28);
@@ -31,11 +45,13 @@ export class AdministrativeRoom extends Phaser.Scene {
     crearPlataforma(638, 569, "paredMedioLeft", plataformas);
     crearPlataforma(793, 569, "paredMedioRigth", plataformas);
     crearPlataforma(800, 205, "paredSuperior", paredPlataforma, 0.996);
-    
+
     crearPlataforma(590, 363, "copiadora", plataformas);
     crearPlataforma(1004, 600, "mesa2", plataformas);
     crearPlataforma(949, 305, "mesa1", plataformas);
     crearPlataforma(849, 350, "paredMedioTop", plataformas);
+    navbar(this, "administrativeRoom");
+
     this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.3);
     crearPlataforma(817, 500, "muro", plataformas);
     crearPlataforma(785, 782, "paredMedioRigth2", plataformas);
@@ -48,7 +64,8 @@ export class AdministrativeRoom extends Phaser.Scene {
     crearPlataforma(662, 691, "mesa3", plataformas);
     crearPlataforma(592, 788, "mesa4", plataformas);
     //crearPlataforma(785, 689, "poste", plataformas);
-    
+    const puerta = crearPlataforma(1053, 486, "redV", plataformas);
+
     crearPlataforma(800, 827, "paredRi", plataformas, 0.996);
     //crearPlataforma(730, 541, "bordeSuperiorPuerta", plataformas);
     this.add.image(730, 541, "bordeSuperiorPuerta");
@@ -76,6 +93,7 @@ export class AdministrativeRoom extends Phaser.Scene {
     dimesionesPlataforma(plataformas, 0.5, 22);
     dimesionesPlataforma(paredPlataforma, 1, -42);
 
+    createButtonCircle(this, SCENE.floor1, puerta, 839, 786);
     this.physics.add.overlap(
       this.avatar.avatarPlayer,
       ptfmOverlap,
@@ -96,10 +114,15 @@ export class AdministrativeRoom extends Phaser.Scene {
     this.cameras.main.startFollow(this.avatar.avatarPlayer); // Configurar seguimiento de cámara al personaje
     this.cameras.main.zoom = 2;
 
-
     shortMap(this, "mapaOutside");
     bigMap(this);
-    navbar(this, "administrativeRoom");
+
+    if (window.user.actualMission === 1 && !window.missionActive) {
+      window.missionActive = true;
+      startMission(this);
+    }
+
+    // Comienza el cronómetro
   }
 
   update() {

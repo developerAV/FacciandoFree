@@ -1,25 +1,23 @@
-import { traslate } from "../../../data/dialogues.js";
-import { COLORS, COLORS_HEX, FONT } from "../../../utils/constants.js";
-export const infoMission = (
-  scene,
-  topicText = "mission1",
-  messageText = "dfasdfl;asdlfka;sldkf;laskdf"
-) => {
+import { COLORS, FONT } from "../../../utils/constants.js";
+export const infoMission = (scene) => {
   let activeBox = false;
   const box = scene.add.container(1200, 400);
   const boxBtn = scene.add.container(1190, 500);
   box.setName("box");
 
   const boxBg = scene.add.graphics();
-  boxBg.fillStyle(0x00051a, 0.42);
+  boxBg.fillStyle(0x00051a, 0.6);
   boxBg.fillRoundedRect(0, 0, 180, 200, 10);
-  
+
   const boxBgBtn = scene.add.graphics();
   boxBgBtn.fillStyle(COLORS.blueDark, 0.8);
-  boxBgBtn.fillRoundedRect(0, 0, 10, 40, 0);
+  boxBgBtn.fillRoundedRect(0, 0, 5, 40, 0);
   boxBtn.add(boxBgBtn);
+  boxBtn.setScrollFactor(0);
 
   const btn = scene.add.image(0, 0, "mode").setScale(0.1);
+  btn.setScrollFactor(0);
+
   boxBtn.add(btn);
   box.add(boxBg);
 
@@ -33,29 +31,33 @@ export const infoMission = (
     animateBoxMovement(activeBox, scene, box, boxBtn); // Iniciar la animación cuando activeBox es false
   });
 
-  const topic = scene.add.text(20, 60, traslate(topicText), {
-    font: `10px ${FONT}`,
-    fill: "#03bed0",
-    wordWrap: {
-      width: 500,
-    },
-    padding: {
-      x: 10,
-      y: 10,
-    },
-  });
-  const message = scene.add.text(20, 100, messageText, {
-    font: `10px ${FONT}`,
-    fill: "#fff",
-    wordWrap: {
-      width: 450,
-    },
-    lineSpacing: 10,
-    padding: {
-      x: 10,
-      y: 40,
-    },
-  });
+  const topic = scene.add
+    .text(5, 5, window.missionVisibleBox.name[window.lan], {
+      font: `25px ${FONT}`,
+      fill: "#03bed0",
+      wordWrap: {
+        width: 300,
+      },
+      padding: {
+        x: 10,
+        y: 10,
+      },
+    })
+    .setScale(0.5);
+  const message = scene.add
+    .text(5, 10, window.missionVisibleBox.description[window.lan], {
+      font: `25px ${FONT}`,
+      fill: "#fff",
+      wordWrap: {
+        width: 300,
+      },
+      lineSpacing: 10,
+      padding: {
+        x: 10,
+        y: 40,
+      },
+    })
+    .setScale(0.5);
 
   box.add(topic);
   box.add(message);

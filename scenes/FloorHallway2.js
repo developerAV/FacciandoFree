@@ -94,7 +94,7 @@ export class FloorHallway2 extends Phaser.Scene {
     );
 
     if (activeVideo) {
-      crearVideo(mensaje.txtCubicle[window.lan], "avatarVideo", this, true);
+      crearVideo(mensaje.txtCubicle[window.lan], "avatarVideo", this);
     }
 
     this.cameras.main.startFollow(this.avatar.avatarPlayer); //Configurar seguimiento de cámara al personaje
