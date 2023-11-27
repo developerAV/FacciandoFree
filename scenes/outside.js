@@ -169,17 +169,20 @@ export class Outside extends Phaser.Scene {
     // Puedes ejecutar cualquier código que quieras cuando se presione la tecla "i"
     teclado.addKey(Phaser.Input.Keyboard.KeyCodes.I).on(
       "down",
-      async function (event) {
-        try {
-          await crearVideo(traslate("infoCubicle"), "avatarVideo1", this);
-          await crearVideo(traslate("infoCubicle"), "avatarVideo2", this);
-          // await aumentarZoom();
-          // Aquí continúa con el código después de que ambos videos hayan terminado
-        } catch (error) {
-          console.error("Error:", error);
-        }
+      function (event) {
+        showVideo();
       }.bind(this)
     );
+    this.showVideo = async() => {
+      try {
+        await crearVideo(traslate("infoCubicle"), "avatarVideo1", this);
+        await crearVideo(traslate("infoCubicle"), "avatarVideo2", this);
+        // await aumentarZoom();
+        // Aquí continúa con el código después de que ambos videos hayan terminado
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
 
     shortMap(this, "mapaOutside");
     bigMap(this);
@@ -193,7 +196,7 @@ export class Outside extends Phaser.Scene {
 
     navbar(this, "outside");
 
-    endMission();
+    // endMission();
     if (window.user.actualMission === 1 && !window.missionActive) {
       window.missionActive = true;
       // startMission(this);

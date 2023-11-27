@@ -30,6 +30,16 @@ const preloadIntro = (scene) => {
   scene.load.image("ava", "assets/images/player/ava.png");
   scene.load.image("ava2", "assets/images/player/ava2.png");
 
+
+  scene.load.image("frame", "assets/images/info/frame.png");
+  scene.load.image("exit", "assets/images/info/exit.png");
+  scene.load.image("buttonFrame", "assets/images/info/buttonFrame.png");
+  WebFont.load({
+    google: {
+      families: ['Rowdies','Roboto','Droid Sans', 'Droid Serif', 'Lucidity Condensed', 'Press Start 2P', 'game_over', 'game_over2']
+    }
+  });
+ 
   scene.load.video(
     "avatarVideo1",
     "assets/videos/valentin.mp4",
@@ -90,6 +100,7 @@ const computerRoom = (scene) => {};
 const cubicle2 = (scene) => {};
 const botonesNavbar = (scene) => {
   scene.load.image("botonNav", "assets/images/navbar/boton.png");
+  scene.load.image("botonInfo", "assets/images/navbar/botonInfo.png");
 };
 const floorHallway2 = (scene) => {
   const path = "assets/images/2FloorHallway/";
