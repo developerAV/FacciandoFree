@@ -1,5 +1,6 @@
 export const URI_API = "https://server-api-dev-kknd.4.us-1.fl0.io/facciando";
-export const FONT = "Roboto";
+export const FONT = "Droid Sans";
+export const FONT2 = "Rowdies";
 export const FONT_SIZE = {
   smaller: "16px",
   small: "30px",
