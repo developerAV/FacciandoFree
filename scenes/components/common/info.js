@@ -50,13 +50,13 @@ export const info = async (scene) => {
   });
 
   
-  buttonFrameScene.setInteractive();
+  buttonFrameScene.setInteractive().setScrollFactor(0);
   buttonFrameScene.on("pointerdown", function async() {
       infoConteiner.destroy();
     //  scene.showVideo();
   });
 
-  buttonFrameGame.setInteractive();
+  buttonFrameGame.setInteractive().setScrollFactor(0);
   buttonFrameGame.on("pointerdown", function () {
     infoConteiner.destroy();
     async function asyncCall() {
@@ -69,12 +69,12 @@ export const info = async (scene) => {
     }
     asyncCall();
   });
-  buttonFrameMission.setInteractive();
+  buttonFrameMission.setInteractive().setScrollFactor(0);
   buttonFrameMission.on("pointerdown", function () {
     infoConteiner.setVisible(false);
     // scene.showVideo();
 });
-exitFrame.setInteractive();
+exitFrame.setInteractive().setScrollFactor(0);
 exitFrame.on("pointerdown", function () {
     console.log("exit");
     infoConteiner.destroy();
