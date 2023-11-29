@@ -1,4 +1,6 @@
-export const URI_API = "https://server-api-dev-kknd.4.us-1.fl0.io/facciando";
+//export const URI_API = "https://server-api-dev-kknd.4.us-1.fl0.io/facciando"; //fl0
+export const URI_API = "https://facciando-server.onrender.com/facciando"; //render
+
 export const FONT = "Droid Sans";
 export const FONT2 = "Rowdies";
 export const FONT_SIZE = {
@@ -37,7 +39,6 @@ export const COLORS_HEX = {
   orange: "#ffA500",
   grayDark: "#262c2e",
 };
-
 
 export const SCENE = {
   cubicle: "cubicle",
