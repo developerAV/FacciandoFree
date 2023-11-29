@@ -1,20 +1,19 @@
-import { COLORS, FONT } from "../../../utils/constants.js";
+import { COLORS, FONT, FONT2 } from "../../../utils/constants.js";
 import { traslate } from "../../../data/dialogues.js";
 import { getUserById } from "../../../services/user.js";
+import { info } from "./info.js";
 
 import { COLORS_HEX } from "../../../utils/constants.js";
 
 export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
-  //const
   let box = scene.add.container(400, 250); //zoom == 2
-
   if (scene.cameras.main.zoom == 1.5) {
     box = scene.add.container(265, 165); //zoom == 1.5
   }
   if (scene.cameras.main.zoom == 1) {
     box = scene.add.container(200, 100); //zoom == 1
   }
-
+  
   box.setScrollFactor(0);
   box.setName("box");
   const boxBg = scene.add.graphics();
@@ -24,8 +23,11 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
 
   const home = scene.add.image(40, 47, "botonNav").setScale(0.5);
   home.setInteractive();
-  home.on("pointerdown", function () {
-    scene.scene.restart();
+  home.on("pointerdown", async function () {
+    window.user = await getUserById(window.user._id);
+    window.time = 0;
+    window.runTime = false;
+    window.missionActive = false;
     scene.scene.stop();
     scene.scene.start("intro");
   });
@@ -54,10 +56,10 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
   activarSonido.setScrollFactor(0);
   box.add(activarSonido);
 
-  const information = scene.add.image(1380, 47, "botonNav").setScale(0.5);
+  const information = scene.add.image(1380, 47, "botonInfo").setScale(0.5);
   information.setInteractive();
   information.on("pointerdown", function () {
-    scene.showVideo();
+    info(scene);
   });
   information.setScrollFactor(0);
   box.add(information);

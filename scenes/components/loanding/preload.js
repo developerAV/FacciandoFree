@@ -97,6 +97,7 @@ const computerRoom = (scene) => {};
 const cubicle2 = (scene) => {};
 const botonesNavbar = (scene) => {
   scene.load.image("botonNav", "assets/images/navbar/boton.png");
+  scene.load.image("botonInfo", "assets/images/navbar/botonInfo.png");
 };
 const floorHallway2 = (scene) => {
   const path = "assets/images/2FloorHallway/";

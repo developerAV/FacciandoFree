@@ -13,6 +13,14 @@ const traslateIntro = {
     es: "En este ejemplo, setTimeout se usa para retrasar la ejecución de una función (o fragmento de código) durante un tiempo específico en milisegundos. ",
     en: "In this example, setTimeout is used to delay the execution of a function (or code snippet) for a specific amount of time in milliseconds.",
   },
+  infoGame: {
+    es: "El videojuego recorre la facultad de ingeniería en TI de la ULEAM, tiene dos modos de juego, el de recorrer y el de misión.",
+    en: "The video game goes through the IT engineering faculty of the ULEAM, it has two game modes, the tour and the mission.",
+   },
+   infoGame2: {
+    es: "El modo recorrer, permite al jugador recorrer la facultad, conociendo su historia y su infraestructura y para poder hacerlo tienes un mapa en la superior derecha de la pantalla.",
+    en: "The tour mode allows the player to tour the faculty, knowing its history and infrastructure and to be able to do it you have a map in the upper right of the screen.",
+   },
   // intro
   logout: {
     es: "Salir",
@@ -151,12 +159,17 @@ const traslateIntro = {
     es: "Pasillo principal",
     en: "Main hallway",
   },
+  scene: {
+    es: "Escena",
+    en: "Scene",
+  },
+  game: {
+    es: "Juego",
+    en: "Game",
+  },
 
   //narrador
-  mission1: {
-    es: "El personaje, un estudiante aspirante, llega a la facultad de Ciencias de la vida y tecnologías con la esperanza de ingresar a un emocionante mundo tecnológico. Encontrarás información sobre los requisitos de admisión y el perfil de egreso, que será tu guía a lo largo de tu viaje.",
-    en: "The character, an aspiring student, arrives at the Faculty of Life Sciences and Technologies with the hope of entering an exciting technological world. You will find information about admission requirements and the graduate profile, which will be your guide throughout your journey.",
-  },
+ 
 };
 
 export const traslate = (key) => {
