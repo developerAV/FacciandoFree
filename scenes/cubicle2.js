@@ -83,7 +83,6 @@ export class Cubicle2 extends Phaser.Scene {
   //poner blur una platform
   pared1.alpha = 0.5;
   pared2.alpha = 0.5;
-  console.log("blur");
   
 }, null, this);
 this.physics.add.overlap(this.avatar.avatarPlayer, notBlur, () => {
@@ -91,7 +90,6 @@ this.physics.add.overlap(this.avatar.avatarPlayer, notBlur, () => {
   pared1.alpha = 1;
   pared2.alpha = 1;
 
-  console.log("NotBlur");
   
 }, null, this);
 

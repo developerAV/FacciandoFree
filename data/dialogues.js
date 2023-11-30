@@ -1,4 +1,13 @@
 const traslateIntro = {
+  //navbar out
+  goHome: {
+    es: "Ir a inicio",
+    en: "Go to home",
+  },
+  contentGoHome: {
+    es: "¿Estás seguro de que quieres ir a inicio?, se perderá el progreso de la misión.",
+    en: "Are you sure you want to go to home? The mission progress will be lost.",
+  },
   year: {
     es: "Años",
     en: "Years old",
@@ -16,11 +25,11 @@ const traslateIntro = {
   infoGame: {
     es: "El videojuego recorre la facultad de ingeniería en TI de la ULEAM, tiene dos modos de juego, el de recorrer y el de misión.",
     en: "The video game goes through the IT engineering faculty of the ULEAM, it has two game modes, the tour and the mission.",
-   },
-   infoGame2: {
+  },
+  infoGame2: {
     es: "El modo recorrer, permite al jugador recorrer la facultad, conociendo su historia y su infraestructura y para poder hacerlo tienes un mapa en la superior derecha de la pantalla.",
     en: "The tour mode allows the player to tour the faculty, knowing its history and infrastructure and to be able to do it you have a map in the upper right of the screen.",
-   },
+  },
   // intro
   logout: {
     es: "Salir",
@@ -167,9 +176,16 @@ const traslateIntro = {
     es: "Juego",
     en: "Game",
   },
-
-  //narrador
- 
+  // narrador por mission
+  mission1: {
+    es: "Hola, soy el narrador.",
+    en: "Hello, I'm the narrator.",
+  },
+  //dialogos de los videos de las misiones
+  dialog1: {
+    es: "Hola, soy el avatar de la facultad de ingeniería en TI, y te voy a guiar en esta aventura.",
+    en: "Hello, I am the avatar of the faculty of engineering in IT, and I will guide you on this adventure.",
+  },
 };
 
 export const traslate = (key) => {

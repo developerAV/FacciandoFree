@@ -9,6 +9,8 @@ import { shortMap, bigMap } from "./components/common/map.js";
 import { startMission } from "./modeHistory/startMission.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
 import { SCENE } from "../utils/constants.js";
+import { crearCard, crearCard2 } from "./module/card.js";
+import { putUser } from "../services/user.js";
 
 export class AdministrativeRoom extends Phaser.Scene {
   constructor() {
@@ -27,7 +29,7 @@ export class AdministrativeRoom extends Phaser.Scene {
     });
   }
 
-  create() {
+  async create() {
     window.avatarUpdateActivo = true;
     // Para iniciar con un desenfoque
     this.cameras.main.fadeIn(500);
@@ -108,8 +110,6 @@ export class AdministrativeRoom extends Phaser.Scene {
       null,
       this
     );
-    this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
-    this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
 
     this.cameras.main.startFollow(this.avatar.avatarPlayer); // Configurar seguimiento de cámara al personaje
     this.cameras.main.zoom = 2;
@@ -117,12 +117,25 @@ export class AdministrativeRoom extends Phaser.Scene {
     shortMap(this, "mapaOutside");
     bigMap(this);
 
-    if (window.user.actualMission === 1 && !window.missionActive) {
-      window.missionActive = true;
-      startMission(this);
-    }
+    if (window.user.actualMission === 1 && window.missionActive) {
+      const avatar2 = crearPlataforma(736, 697, "dude", plataformas).setScale(
+        1.3
+      );
+      this.physics.add.collider(this.avatar.avatarPlayer, avatar2, () => {
+        crearCard2(this, "hola");
+      });
 
-    // Comienza el cronómetro
+      this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
+      this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
+      //startMission(this);
+    }
+/* 
+    await putUser(window.user._id, {
+      scene: SCENE.admin_room,
+      position: { x: 1000, y: 486 },
+    });
+ */
+    //  el cronómetro
   }
 
   update() {

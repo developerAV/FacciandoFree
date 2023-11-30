@@ -65,13 +65,21 @@ export const postUser = async (user) => {
 };
 
 export const putUser = async (id, data) => {
-  const newUser = await fetch(`${URI_API}/user/${id}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  console.log(id, data);
+  try {
+    const newUser = await fetch(`${URI_API}/user/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const dataUser = await newUser.json();
+    console.log(dataUser);
+    return dataUser;
+  } catch (error) {
+    console.error(error.message);
+  }
 };
 export const getTop10UserByScore = async () => {
   try {

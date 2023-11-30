@@ -2,7 +2,7 @@ import { COLORS, FONT_SIZE } from "../utils/constants.js";
 import { textButton } from "./module/textButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
 import { traslate } from "../data/dialogues.js";
-import { buttonLogout } from "./components/intro/buttonLogout.js";
+import { buttonLogout } from "./components/intro/buttonLogout/buttonLogout.js";
 
 export class AvatarS extends Phaser.Scene {
   constructor() {

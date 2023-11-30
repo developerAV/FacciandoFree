@@ -59,3 +59,13 @@ export const SCENE = {
   electronic_room: "electronic_room",
   second_floor1: "hallway2",
 };
+
+export const PROPERTY = {
+  iconMap: "positionMap",
+  buttonMission: "positionButton",
+  dialog: "digalogoAvatar",
+  time: "time",
+  video: "video",
+  step: "step",
+  narrador: "narrador",
+};

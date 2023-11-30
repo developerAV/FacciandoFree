@@ -1,5 +1,6 @@
 import { putUser } from "../../services/user.js";
-import { getTime } from "./dialogs.js";
+import { PROPERTY } from "../../utils/constants.js";
+import { getInfoMission } from "./infoMission.js";
 
 export const endMission = async () => {
   window.runTime = false;
@@ -7,7 +8,7 @@ export const endMission = async () => {
 
   window.time = 120;
   window.answerScore = parseInt(70 * 0.7);
-  window.timeScore = calcularPuntos(getTime(), window.time);
+  window.timeScore = calcularPuntos(getInfoMission(PROPERTY.time), window.time);
 
   window.score = window.answerScore + window.timeCalculate;
 

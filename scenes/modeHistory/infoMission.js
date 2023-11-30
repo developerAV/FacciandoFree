@@ -1,18 +1,24 @@
+import { PROPERTY } from "../../utils/constants.js";
+
 // Path: scenes/modeHistory/dialogs.js
 const dialogs = {
   mission1: {
     positionMap: { x: 100, y: 120 },
     positionButton: { x: 973, y: 746 },
+    narrador: "mission1",
+    dialogs: "dialog1",
+    video: "avatarVideo1",
+    
     time: 300,
     step1: "Entra por a la puerta principal",
-    step2: "Ve al ascensor",
-    step3: "Ve al piso 2",
-    step4: "Ve a la oficina 2",
+    step2: "Entra a secretaria",
+    step3: "Acercate a la secretaria",
   },
   mission2: {
     positionMap: { x: 500, y: 100 },
     positionButton: { x: 973, y: 746 },
     time: 400,
+    video: "avatarVideo2",
     step1: "este es el paso 1 de la mision 2",
     step2: "este es el paso 2 de la mision 2",
     step3: "este es el paso 3 de la mision 2",
@@ -38,45 +44,26 @@ const dialogs = {
   },
 };
 
-export const dialog = () => {
+export const getInfoMission = (property) => {
+  const { index, step } = getIndexMission();
+
+  if (!dialogs[index]) {
+    return "No hay mission agregada";
+  }
+
+  if (property === PROPERTY.step) {
+    return dialogs[index][step];
+  }
+
+  return dialogs[index][property];
+};
+
+export const getIndexMission = () => {
   const level = window.user.actualLevel - 1;
   const mission = window.user.actualMission;
-  //const step = `step${window.step}`;
   const step = `step${window.user.step}`;
 
   const result = mission + level * 3;
   const index = `mission${result}`;
-  if (!dialogs[index]) {
-    return "No hay dialogos";
-  }
-
-  return dialogs[index][step];
-};
-
-export const getPositionMap = (eje, key = "sdf") => {
-  const level = window.user.actualLevel - 1;
-  const mission = window.user.actualMission;
-
-  const result = mission + level * 3;
-  const index = `mission${result}`;
-
-  if (key === "button") {
-    return dialogs[index].positionButton[eje];
-  }
-
-  return dialogs[index].positionMap[eje];
-};
-
-export const getTime = () => {
-  const level = window.user.actualLevel - 1;
-  const mission = window.user.actualMission;
-
-  const result = mission + level * 3;
-  const index = `mission${result}`;
-
-  if (!dialogs[index].time) {
-    return 0;
-  }
-
-  return dialogs[index].time;
+  return { index, step };
 };

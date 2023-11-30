@@ -1,25 +1,21 @@
 import { Avatar } from "./player.js";
 import {
   crearPlataforma,
-  dimesionesPlataforma,
   dimesionesPlataformaIndividual,
 } from "./module/platform.js";
-
 import { traslate } from "../data/dialogues.js";
 import { crearVideo } from "./module/videoInfo.js";
-
-import { crearCard } from "./module/card.js";
 import { getEmployees } from "../services/employee.js";
 import { createButtonCircle } from "../scenes/components/common/buttonCircle.js";
 import { navbar } from "./components/common/navbar.js";
 import { shortMap, bigMap } from "./components/common/map.js";
 import { SCENE } from "../utils/constants.js";
+import { startMission } from "./modeHistory/startMission.js";
+/* import { crearCard } from "./module/card.js";
 import { createButtonMission } from "./components/common/buttonMission.js";
 import { alertCard } from "./modeHistory/components/alertCard.js";
-import { getPositionMap } from "./modeHistory/dialogs.js";
-import { startMission } from "./modeHistory/startMission.js";
 import { endMission } from "./modeHistory/endMission.js";
-// let window.lan = "en";
+// let window.lan = "en"; */
 let activeVideo = false;
 
 export class Outside extends Phaser.Scene {
@@ -70,6 +66,7 @@ export class Outside extends Phaser.Scene {
 
   create() {
     window.contador = 100;
+
     if (window.avatarX == undefined && window.avatarY == undefined) {
       window.avatarX = 800;
       window.avatarY = 500;
@@ -173,7 +170,7 @@ export class Outside extends Phaser.Scene {
         showVideo();
       }.bind(this)
     );
-    this.showVideo = async() => {
+    this.showVideo = async () => {
       try {
         await crearVideo(traslate("infoCubicle"), "avatarVideo1", this);
         await crearVideo(traslate("infoCubicle"), "avatarVideo2", this);
@@ -182,14 +179,13 @@ export class Outside extends Phaser.Scene {
       } catch (error) {
         console.error("Error:", error);
       }
-    }
-
-    shortMap(this, "mapaOutside");
-    bigMap(this);
+    };
 
     //**********************************************************************
     //********      hacer funcion en archivo aparte       ******************
     //********************************************************************** */
+    shortMap(this, "mapaOutside");
+    bigMap(this);
     this.cameras.main.startFollow(this.avatar.avatarPlayer);
 
     this.cameras.main.zoom = 2;
@@ -198,8 +194,7 @@ export class Outside extends Phaser.Scene {
 
     // endMission();
     if (window.user.actualMission === 1 && !window.missionActive) {
-      window.missionActive = true;
-      // startMission(this);
+      startMission(this);
     }
   }
 
