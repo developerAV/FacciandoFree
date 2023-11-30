@@ -1,8 +1,9 @@
 export class Avatar extends Phaser.GameObjects.Sprite {
-  constructor(scene, x, y, scale) {
-    super(scene, x, y, "dude", scale);
+  constructor(scene, x, y, scale, avatarSprite = window.avatarSprite) {
+    super(scene, x, y, scale, avatarSprite);
 
-    this.avatarPlayer = scene.physics.add.sprite(x, y, "dude").setScale(scale);
+    console.log("Avatar", avatarSprite);
+    this.avatarPlayer = scene.physics.add.sprite(x, y, avatarSprite).setScale(scale);
 
     this.avatarPlayer.setCollideWorldBounds(true);
     this.cursors = scene.input.keyboard.createCursorKeys();
@@ -11,16 +12,16 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     if (!scene.anims.exists("turn"))
       scene.anims.create({
         key: "turn",
-        frames: [{ key: "dude", frame: 1 }],
+        frames: [{ key: avatarSprite, frame: 1 }],
         frameRate: 10,
       });
 
     if (!scene.anims.exists("up"))
       scene.anims.create({
         key: "up",
-        frames: scene.anims.generateFrameNumbers("dude", {
-          start: 10,
-          end: 13,
+        frames: scene.anims.generateFrameNumbers(avatarSprite, {
+          start: 9,
+          end: 11,
         }),
         frameRate: 10,
         repeat: -1,
@@ -28,7 +29,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     if (!scene.anims.exists("right"))
       scene.anims.create({
         key: "right",
-        frames: scene.anims.generateFrameNumbers("dude", { start: 7, end: 9 }),
+        frames: scene.anims.generateFrameNumbers(avatarSprite, { start: 6, end: 8 }),
         frameRate: 10,
         repeat: -1,
       });
@@ -36,7 +37,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     if (!scene.anims.exists("left"))
       scene.anims.create({
         key: "left",
-        frames: scene.anims.generateFrameNumbers("dude", { start: 4, end: 6 }),
+        frames: scene.anims.generateFrameNumbers(avatarSprite, { start: 3, end: 5 }),
         frameRate: 10,
         repeat: -1,
       });
@@ -44,7 +45,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     if (!scene.anims.exists("down"))
       scene.anims.create({
         key: "down",
-        frames: scene.anims.generateFrameNumbers("dude", { start: 0, end: 3 }),
+        frames: scene.anims.generateFrameNumbers(avatarSprite, { start: 0, end: 2 }),
         frameRate: 10,
         repeat: -1,
       });
