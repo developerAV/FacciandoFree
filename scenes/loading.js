@@ -26,6 +26,10 @@ export class Loading extends Phaser.Scene {
       frameWidth: 31,
       frameHeight: 48,
     });
+    this.load.spritesheet("spriteBoy", "../assets/images/player/spriteBoy.png", {
+      frameWidth: 31,
+      frameHeight: 48,
+    });
     this.load.audio("musica", "assets/music/GrassyWorld.mp3");
     this.load.video(
       "loading",

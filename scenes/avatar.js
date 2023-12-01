@@ -134,9 +134,13 @@ export class AvatarS extends Phaser.Scene {
 
 
 
+let avatarContainer = this.add.container(0, 0);
+    this.avatarGirl = new Avatar(this,900, 500, 7, "spriteGirl");
+    this.button = this.add.image(900, 700, "play").setScale(0.5);
 
-    this.avatar = new Avatar(this,800, 500, 5, "spriteGirl");
-
+    this.avatarBatista = new Avatar(this,600, 500, 7, "spriteBatista");
+    this.avatarBoy = new Avatar(this,1200, 500, 7, "spriteBoy");
+    
     
 
 
