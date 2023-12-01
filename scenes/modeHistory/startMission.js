@@ -4,21 +4,47 @@ import { dimesionesPlataformaIndividual } from "../module/platform.js";
 import { crearVideo } from "../module/videoInfo.js";
 import { traslate } from "../../data/dialogues.js";
 import { infoMission } from "./components/infoMission.js";
-import { getPositionMap } from "./dialogs.js";
+import { getInfoMission } from "./infoMission.js";
+import { PROPERTY } from "../../utils/constants.js";
 
 export const startMission = (scene) => {
   const example = scene.physics.add.staticGroup();
 
-  const startN1 = crearPlataforma(
-    getPositionMap("x", "button"),
-    getPositionMap("y", "button"),
-    "logoRedondo",
+  const { x, y } = getInfoMission(PROPERTY.buttonMission); //pbtiene las posiciones del boton de la mision
+
+  const { startN1 } = crearBotonMision(scene, x, y, example);
+
+  dimesionesPlataformaIndividual(startN1, 1, 0);
+  scene.physics.add.overlap(
+    scene.avatar.avatarPlayer,
     example,
-    0.04
+    async () => {
+      window.missionActive = true;
+
+      const narradorVideo = getInfoMission(PROPERTY.narrador);
+      scene.avatar.moveTo(0, 0, "turn");
+      scene.iconMap.destroy();
+      startN1.destroy();
+      await crearVideo(
+        traslate(narradorVideo),
+        getInfoMission(PROPERTY.video),
+        scene
+      );
+      window.runTime = true;
+      scene.avatar.runTime(scene);
+      infoMission(scene);
+      alertCard(scene);
+    },
+    null,
+    scene
   );
+};
+const crearBotonMision = (scene, x, y, example) => {
+  const startN1 = crearPlataforma(x, y, "logoRedondo", example, 0.04);
   startN1.setDepth(10000);
 
   const Between = Phaser.Math.Between;
+
   var postFxPlugin = scene.plugins.get("rexglowfilterpipelineplugin");
 
   var pipeline = postFxPlugin.add(startN1);
@@ -31,25 +57,7 @@ export const startMission = (scene) => {
     repeat: -1,
     yoyo: true,
   });
-
   dimesionesPlataformaIndividual(startN1, 1, 0);
-  scene.physics.add.overlap(
-    scene.avatar.avatarPlayer,
-    example,
-    async () => {
-      window.zoom = scene.cameras.main.zoom;
-      console.log("zoom", window.zoom);
-      scene.avatar.moveTo(0, 0, "turn");
-      scene.iconMap.destroy();
-      startN1.destroy();
-      await crearVideo(traslate("mission1"), "avatarVideo1", scene);
-      window.runTime = true;
-      scene.avatar.runTime(scene);
-      //scene.iconMap.setPosition(getPositionMap("x"), getPositionMap("y"));
-      infoMission(scene);
-      alertCard(scene);
-    },
-    null,
-    scene
-  );
+
+  return { startN1 };
 };

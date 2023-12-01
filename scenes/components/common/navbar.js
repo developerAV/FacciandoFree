@@ -1,9 +1,11 @@
 import { COLORS, FONT, FONT2 } from "../../../utils/constants.js";
 import { traslate } from "../../../data/dialogues.js";
-import { getUserById } from "../../../services/user.js";
+import { getUserById, putUser } from "../../../services/user.js";
 import { info } from "./info.js";
 
 import { COLORS_HEX } from "../../../utils/constants.js";
+import { buttonLogout } from "../intro/buttonLogout/buttonLogout.js";
+import { style } from "../intro/buttonLogout/styles.js";
 
 export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
   let box = scene.add.container(400, 250); //zoom == 2
@@ -13,7 +15,7 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
   if (scene.cameras.main.zoom == 1) {
     box = scene.add.container(200, 100); //zoom == 1
   }
-  
+
   box.setScrollFactor(0);
   box.setName("box");
   const boxBg = scene.add.graphics();
@@ -22,14 +24,45 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
   box.add(boxBg);
 
   const home = scene.add.image(40, 47, "botonNav").setScale(0.5);
-  home.setInteractive();
+  home.setInteractive({ useHandCursor: true });
   home.on("pointerdown", async function () {
-    window.user = await getUserById(window.user._id);
-    window.time = 0;
-    window.runTime = false;
-    window.missionActive = false;
-    scene.scene.stop();
-    scene.scene.start("intro");
+    home.disableInteractive();
+    window.avatarUpdateActivo = false;
+    scene.rexUI.add
+      .confirmDialog(style)
+      .setScrollFactor(0)
+      .setPosition(800, 500)
+      .setScale(0.5)
+      .setDraggable("title")
+      .resetDisplayContent({
+        title: traslate("goHome"),
+        content: traslate("contentGoHome"),
+        buttonA: traslate("yes"),
+        buttonB: traslate("no"),
+      })
+      .layout()
+      .modalPromise()
+      .then(async function (data) {
+        window.avatarUpdateActivo = true;
+
+        if (data.index === 0) {
+          window.user = await getUserById(window.user._id);
+
+          if (window.missionActive && window.user.step !== 1) {
+            window.missionActive = false;
+            window.user.step = 1;
+            await putUser(window.user._id, { step: 1 });
+          }
+          window.avatarX = undefined;
+          window.avatarY = undefined;
+          window.time = 0;
+          window.runTime = false;
+          scene.scene.stop();
+          scene.scene.start("intro");
+          return;
+        }
+        home.setInteractive({ useHandCursor: true });
+      });
   });
   home.setScrollFactor(0);
   box.add(home);

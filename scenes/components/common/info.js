@@ -2,7 +2,6 @@ import { COLORS_HEX, FONT, FONT2 } from "./../../../utils/constants.js";
 import { traslate } from "../../../data/dialogues.js";
 import { crearVideo } from "./../../module/videoInfo.js";
 
-
 export const info = async (scene) => {
   const infoConteiner = scene.add.container();
   const frame = scene.add.image(800, 500, "frame");
@@ -49,10 +48,9 @@ export const info = async (scene) => {
     },
   });
 
-  
   buttonFrameScene.setInteractive().setScrollFactor(0);
   buttonFrameScene.on("pointerdown", function async() {
-      infoConteiner.destroy();
+    infoConteiner.destroy();
     //  scene.showVideo();
   });
 
@@ -73,23 +71,22 @@ export const info = async (scene) => {
   buttonFrameMission.on("pointerdown", function () {
     infoConteiner.setVisible(false);
     // scene.showVideo();
-});
-exitFrame.setInteractive().setScrollFactor(0);
-exitFrame.on("pointerdown", function () {
-    console.log("exit");
+  });
+  exitFrame.setInteractive().setScrollFactor(0);
+  exitFrame.on("pointerdown", function () {
     infoConteiner.destroy();
-});
-infoConteiner.add(frame);
-infoConteiner.add(buttonFrameScene);
-infoConteiner.add(buttonFrameGame);
-infoConteiner.add(buttonFrameMission);
-infoConteiner.add(exitFrame);
-infoConteiner.add(labelInfo);
-infoConteiner.add(labelScene);
-infoConteiner.add(labelGame);
-infoConteiner.add(labelMission);
-infoConteiner.setVisible(true);
-infoConteiner.setScrollFactor(0);
-infoConteiner.setDepth(1000);
-return infoConteiner;
+  });
+  infoConteiner.add(frame);
+  infoConteiner.add(buttonFrameScene);
+  infoConteiner.add(buttonFrameGame);
+  infoConteiner.add(buttonFrameMission);
+  infoConteiner.add(exitFrame);
+  infoConteiner.add(labelInfo);
+  infoConteiner.add(labelScene);
+  infoConteiner.add(labelGame);
+  infoConteiner.add(labelMission);
+  infoConteiner.setVisible(true);
+  infoConteiner.setScrollFactor(0);
+  infoConteiner.setDepth(1000);
+  return infoConteiner;
 };

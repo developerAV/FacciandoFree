@@ -1,6 +1,3 @@
-import { traslate } from "../../../data/dialogues.js";
-import { COLORS, FONT_SIZE } from "../../../utils/constants.js";
-import { textButton } from "../../module/textButton.js";
 import { swapButtonPositionsLan } from "../../module/swapButtonPositions.js";
 
 export const buttonsMode = (scene, box, boxGamer, boxScore) => {
@@ -39,9 +36,6 @@ export const buttonsMode = (scene, box, boxGamer, boxScore) => {
       boxGamer.setVisible(!boxVisible);
       boxScore.setVisible(!boxVisible);
       swapButtonPositionsLan(scene, mode, mode2);
-      /*  mode.setScale(gameMode === "exploration" ? mode.setDepth(1) : mode2.setDepth(0));
-      mode2.setScale(gameMode === "exploration" ? mode.setDepth(0) : mode2.setDepth(1));
-       */
     }
     setTimeout(async () => {
       isTransitionInProgress = false;

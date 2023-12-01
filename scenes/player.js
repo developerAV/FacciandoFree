@@ -233,6 +233,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     this.avatarPlayer.setVelocityX(y);
     this.avatarPlayer.anims.play(direction, true);
   }
+
   runTime(scene) {
     // Cronómetrocameras.main.zoom
     //    const zoom = window.zoom;
@@ -262,19 +263,5 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     });
     scene.textoTiempo.setScrollFactor(0);
     scene.textoTiempo.setScale(0.75);
-
-    /*     scene.time.addEvent({
-      delay: 1000,
-      callback: () => {
-        if (window.user.time === 0) {
-          window.user.time = 0;
-          return;
-        }
-        window.user.time--;
-        scene.timeText.setText(window.user.time);
-      },
-      callbackScope: scene,
-      loop: true,
-    }); */
   }
 }

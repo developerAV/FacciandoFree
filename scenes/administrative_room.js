@@ -6,9 +6,16 @@ import {
 } from "./module/platform.js";
 import { navbar } from "./components/common/navbar.js";
 import { shortMap, bigMap } from "./components/common/map.js";
-import { startMission } from "./modeHistory/startMission.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
 import { SCENE } from "../utils/constants.js";
+import { getDiaglogMission } from "../data/traslateDialogs.js";
+import { cardDialog } from "./modeHistory/components/dialogCard.js";
+import { crearCard } from "./module/card.js";
+import { getUserById, putUser } from "../services/user.js";
+import { endMission } from "./modeHistory/endMission.js";
+import { startMission } from "./modeHistory/startMission.js";
+import { handleSteps } from "./modeHistory/handleSteps.js";
+import { alertCard } from "./modeHistory/components/alertCard.js";
 
 export class AdministrativeRoom extends Phaser.Scene {
   constructor() {
@@ -27,7 +34,8 @@ export class AdministrativeRoom extends Phaser.Scene {
     });
   }
 
-  create() {
+  async create() {
+    window.updateUser = false;
     window.avatarUpdateActivo = true;
     // Para iniciar con un desenfoque
     this.cameras.main.fadeIn(500);
@@ -52,7 +60,12 @@ export class AdministrativeRoom extends Phaser.Scene {
     crearPlataforma(849, 350, "paredMedioTop", plataformas);
     navbar(this, "administrativeRoom");
 
-    this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.3);
+    this.avatar = new Avatar(
+      this,
+      window.avatarX ?? window.user.position.x,
+      window.avatarY ?? window.user.position.y,
+      1.3
+    );
     crearPlataforma(817, 500, "muro", plataformas);
     crearPlataforma(785, 782, "paredMedioRigth2", plataformas);
 
@@ -108,8 +121,6 @@ export class AdministrativeRoom extends Phaser.Scene {
       null,
       this
     );
-    this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
-    this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
 
     this.cameras.main.startFollow(this.avatar.avatarPlayer); // Configurar seguimiento de cámara al personaje
     this.cameras.main.zoom = 2;
@@ -117,12 +128,24 @@ export class AdministrativeRoom extends Phaser.Scene {
     shortMap(this, "mapaOutside");
     bigMap(this);
 
-    if (window.user.actualMission === 1 && !window.missionActive) {
-      window.missionActive = true;
-      startMission(this);
+    //mision 1
+    if (window.user.actualMission === 1 && window.missionActive) {
+      alertCard(this);
+      this.add.image(736, 697, "dude").setScale(1.3);
+      const redZone = crearPlataforma(790, 697, "boton", plataformas);
+      this.physics.add.overlap(this.avatar.avatarPlayer, redZone, async () => {
+        window.avatarUpdateActivo = false;
+        this.avatar.moveTo(0, 0, "turn");
+        redZone.destroy();
+        const dialogs = getDiaglogMission(); //obtener los dialogos de la mision
+        await cardDialog(this, dialogs, 736, 697);
+     
+      });
     }
 
-    // Comienza el cronómetro
+    this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
+    this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
+    navbar(this, SCENE.admin_room);
   }
 
   update() {

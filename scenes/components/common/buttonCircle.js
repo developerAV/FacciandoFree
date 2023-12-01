@@ -1,5 +1,6 @@
+import { putUser } from "../../../services/user.js";
 import { COLORS } from "../../../utils/constants.js";
-
+import { handleSteps } from "../../modeHistory/handleSteps.js";
 export const createButtonCircle = (
   scene,
   sceneName,
@@ -58,7 +59,7 @@ export const createButtonCircle = (
       scene.scene.start(sceneName);
     });
   });
-  scene.input.keyboard.on("keydown-X", () => {
+  scene.input.keyboard.on("keydown-X", async () => {
     if (!scene.keyB) return;
 
     scene.avatar.avatarPlayer.destroy();
@@ -68,6 +69,7 @@ export const createButtonCircle = (
     scene.anims.remove("up");
     scene.anims.remove("down");
 
+    await handleSteps(); // cambiar de alerta a la mission actualizando los pasos
     scene.scene.start(window.sceneName);
     // scene.scene.remove(scene.key);
   });
@@ -89,4 +91,25 @@ export const createButtonCircle = (
   }
   buttonCircle.containerX.setDepth(100);
   return buttonCircle;
+};
+
+const mission = async () => {
+  const mission = window.user.actualMission;
+  const active = window.missionActive;
+  const step = window.user.step;
+
+  if (mission === 1 && active) {
+    if (step === 1) {
+      window.user.step = 2;
+      putUser(window.user._id, { step: 2 });
+    }
+    if (step === 2) {
+      window.user.step = 3;
+      putUser(window.user._id, { step: 3 });
+    }
+    if (step === 4) {
+      window.user.step = 5;
+      putUser(window.user._id, { step: 5 });
+    }
+  }
 };
