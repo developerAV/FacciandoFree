@@ -2,11 +2,10 @@ import { putUser } from "../../services/user.js";
 import { PROPERTY } from "../../utils/constants.js";
 import { getInfoMission } from "./infoMission.js";
 
-export const endMission = async () => {
+export const endMission = async (nameScene, position) => {
   window.runTime = false;
   window.missionActive = false;
 
-  window.time = 120;
   window.answerScore = parseInt(70 * 0.7);
   window.timeScore = calcularPuntos(getInfoMission(PROPERTY.time), window.time);
 
@@ -44,6 +43,8 @@ export const endMission = async () => {
     missions: listMission,
     score: window.user.score + window.timeScore + window.answerScore,
     ...newLevel,
+    scene: nameScene,
+    position,
   };
 
   await putUser(window.user._id, data);

@@ -108,7 +108,6 @@ export class mainHallway1 extends Phaser.Scene {
 
     createButtonCircle(this, SCENE.commission_area, botonComission, 1183, 560);
     createButtonCircle(this, SCENE.admin_room, botonAdministrative, 1000, 486);
-    //createButtonCircle(this, SCENE.computer_room, botonOutside, 1465, 553);
     createButtonCircle(this, SCENE.outside, botonOutside, 1465, 553);
 
     this.physics.add.collider(this.avatar.avatarPlayer, platform1);

@@ -46,6 +46,6 @@ export const alertCard = (scene) => {
     .setDepth(1000);
 
   setTimeout(function () {
-    alert.scaleDownDestroy(100);
+    if (alert) alert.scaleDownDestroy(100);
   }, 4000); // 4000 milisegundos = 4 segundos
 };

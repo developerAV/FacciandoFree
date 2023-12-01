@@ -6,11 +6,16 @@ import {
 } from "./module/platform.js";
 import { navbar } from "./components/common/navbar.js";
 import { shortMap, bigMap } from "./components/common/map.js";
-import { startMission } from "./modeHistory/startMission.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
 import { SCENE } from "../utils/constants.js";
-import { crearCard, crearCard2 } from "./module/card.js";
-import { putUser } from "../services/user.js";
+import { getDiaglogMission } from "../data/traslateDialogs.js";
+import { cardDialog } from "./modeHistory/components/dialogCard.js";
+import { crearCard } from "./module/card.js";
+import { getUserById, putUser } from "../services/user.js";
+import { endMission } from "./modeHistory/endMission.js";
+import { startMission } from "./modeHistory/startMission.js";
+import { handleSteps } from "./modeHistory/handleSteps.js";
+import { alertCard } from "./modeHistory/components/alertCard.js";
 
 export class AdministrativeRoom extends Phaser.Scene {
   constructor() {
@@ -30,6 +35,7 @@ export class AdministrativeRoom extends Phaser.Scene {
   }
 
   async create() {
+    window.updateUser = false;
     window.avatarUpdateActivo = true;
     // Para iniciar con un desenfoque
     this.cameras.main.fadeIn(500);
@@ -54,7 +60,12 @@ export class AdministrativeRoom extends Phaser.Scene {
     crearPlataforma(849, 350, "paredMedioTop", plataformas);
     navbar(this, "administrativeRoom");
 
-    this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.3);
+    this.avatar = new Avatar(
+      this,
+      window.avatarX ?? window.user.position.x,
+      window.avatarY ?? window.user.position.y,
+      1.3
+    );
     crearPlataforma(817, 500, "muro", plataformas);
     crearPlataforma(785, 782, "paredMedioRigth2", plataformas);
 
@@ -117,25 +128,24 @@ export class AdministrativeRoom extends Phaser.Scene {
     shortMap(this, "mapaOutside");
     bigMap(this);
 
+    //mision 1
     if (window.user.actualMission === 1 && window.missionActive) {
-      const avatar2 = crearPlataforma(736, 697, "dude", plataformas).setScale(
-        1.3
-      );
-      this.physics.add.collider(this.avatar.avatarPlayer, avatar2, () => {
-        crearCard2(this, "hola");
+      alertCard(this);
+      this.add.image(736, 697, "dude").setScale(1.3);
+      const redZone = crearPlataforma(790, 697, "boton", plataformas);
+      this.physics.add.overlap(this.avatar.avatarPlayer, redZone, async () => {
+        window.avatarUpdateActivo = false;
+        this.avatar.moveTo(0, 0, "turn");
+        redZone.destroy();
+        const dialogs = getDiaglogMission(); //obtener los dialogos de la mision
+        await cardDialog(this, dialogs, 736, 697);
+     
       });
-
-      this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
-      this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
-      //startMission(this);
     }
-/* 
-    await putUser(window.user._id, {
-      scene: SCENE.admin_room,
-      position: { x: 1000, y: 486 },
-    });
- */
-    //  el cronómetro
+
+    this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
+    this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
+    navbar(this, SCENE.admin_room);
   }
 
   update() {

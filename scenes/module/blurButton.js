@@ -22,7 +22,7 @@ export const blurButton = (boton, escena) => {
       // escena.cameras.main.fadeOut(500); // Desvanecer la pantalla durante 500 milisegundos
 
       window.firstInit = true;
-      escena.scene.start(window.user.scdafene ?? "outside");
+      escena.scene.start(window.user.scene ?? "outside");
       //  escena.scene.start("floorHallway2");
     }
     if (boton.name === "score") {

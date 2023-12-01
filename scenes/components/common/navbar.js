@@ -53,6 +53,8 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
             window.user.step = 1;
             await putUser(window.user._id, { step: 1 });
           }
+          window.avatarX = undefined;
+          window.avatarY = undefined;
           window.time = 0;
           window.runTime = false;
           scene.scene.stop();

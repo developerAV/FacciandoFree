@@ -8,14 +8,15 @@ const dialogs = {
     narrador: "mission1",
     dialogs: "dialog1",
     video: "avatarVideo1",
-    
     time: 300,
     step1: "Entra por a la puerta principal",
-    step2: "Entra a secretaria",
+    step2: "Entra a secretaría",
     step3: "Acercate a la secretaria",
+    step4: "Sal al pasillo y dirigete al cubiculos de abajo",
+    step5: "Acercate al cubiculo",
   },
   mission2: {
-    positionMap: { x: 500, y: 100 },
+    positionMap: { x: 100, y: 100 },
     positionButton: { x: 973, y: 746 },
     time: 400,
     video: "avatarVideo2",

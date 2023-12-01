@@ -1,5 +1,5 @@
 import { traslate } from "../../data/dialogues.js";
-import { FONT } from "../../utils/constants.js";
+
 export const crearCard = (
   scene,
   teacher,
@@ -92,51 +92,4 @@ export const crearCard = (
     });
   }
   return card.containerX;
-};
-export const crearCard2 = (scene, messageText) => {
-  let indice = 0;
-
-  const box = scene.add.container(736, 697); // avatar 2
-
-  box.setName("box");
-
-  const boxBg = scene.add.graphics();
-  boxBg.fillStyle(0x00051a, 0.42);
-  boxBg.fillRoundedRect(0, 0, 30, 60, 10);
-
-  box.add(boxBg);
-  const message = scene.add.text(0, 0, "", {
-    font: `28px ${FONT}`,
-    fill: "#fff",
-    wordWrap: {
-      width: 450,
-    },
-    lineSpacing: 10,
-    padding: {
-      x: 10,
-      y: 40,
-    },
-  });
-
-  scene.time.addEvent({
-    delay: 50, // Ajusta el valor para controlar la velocidad de escritura
-    callback: escribirTexto,
-    loop: true,
-    callbackScope: scene,
-  });
-
-  function escribirTexto() {
-    if (indice <= messageText.length) {
-      message.setText(messageText.substring(0, indice));
-      indice++;
-    } else {
-      scene.time.addEvent({
-        delay: 2000, // Ajusta el valor para controlar la velocidad de escritura
-        loop: false,
-        callbackScope: scene,
-      });
-    }
-  }
-
-  box.add(message);
 };
