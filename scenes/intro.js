@@ -9,6 +9,7 @@ import { news } from "./components/intro/news.js";
 import { detailsGamer } from "./components/intro/detailsGamer.js";
 import { getTop10UserByScore } from "../services/user.js";
 import { scoreUser } from "./components/intro/scoreUser.js";
+import { Avatar } from "./player.js";
 
 import { createButtonMission } from "./components/common/buttonMission.js";
 export class Intro extends Phaser.Scene {
@@ -91,8 +92,14 @@ export class Intro extends Phaser.Scene {
       this
     );
 
-    //construir boton con enfoque y funciones (nameBoton, Escena)
-    blurButton(play, this);
+    play.setInteractive();
+    play.on("pointerdown", () => {
+      // Antes de cambiar de escena, detén el intervalo
+      clearInterval(intervalo);
+      this.scene.start("outside");
+    });
+
+   
 
     // Music
     const music = this.sound.add("musica", { loop: true });
@@ -101,6 +108,8 @@ export class Intro extends Phaser.Scene {
     // Agrega el botón de sonido a la escena
     btnSosund.setInteractive();
     btnSosund.on("pointerdown", () => {
+      // Antes de cambiar de escena, detén el intervalo
+
       if (music.mute) {
         music.mute = false;
         btnSosund.setTexture("sound");
@@ -156,35 +165,54 @@ export class Intro extends Phaser.Scene {
 
     ranked.setInteractive();
     ranked.on("pointerdown", async () => {
+      // Antes de cambiar de escena, detén el intervalo
+      clearInterval(intervalo);
       window.top10UserList = await getTop10UserByScore();
+      // Antes de cambiar de escena, detén el intervalo
+      clearInterval(intervalo);
       this.scene.start("ranking");
     });
 
     avatar.setDepth(1);
     avatar.setInteractive();
     avatar.on("pointerdown", () => {
+      clearInterval(intervalo);
       this.scene.start("avatarS");
     });
-    const ava = this.add.image(1000, 600, "ava").setScale(0.6);
-    const ava2 = this.add.image(1000, 600, "ava2").setScale(0.6);
 
-    let currentImage = ava;
+    
 
-    setInterval(() => {
-      if (currentImage === ava) {
-        currentImage = ava2;
-      } else {
-        currentImage = ava;
-      }
+   
+    this.avatar2 = new Avatar(this, 1100, 600, 7, window.avatarSprite);
+    console.log(window.avatarSprite);
+    // Crear un array con las animaciones
+    let animaciones = ["down", "right", "up", "left"];
 
-      currentImage.setVisible(true);
-      if (currentImage === ava2) {
-        ava.setVisible(false);
-      } else {
-        ava2.setVisible(false);
-      }
-    }, 3000);
+    let index = 0; // Indice para recorrer las animaciones
+    let intervalo; // Variable para almacenar el intervalo
 
+    // Función para ejecutar las animaciones
+    let ejecutarAnimacion = () => {
+      
+      this.avatar2.avatarPlayer.anims.play(animaciones[index], true); // Ejecutar la animación actual
+      index = (index + 1) % animaciones.length; // Avanzar al siguiente índice, volviendo al inicio si se llega al final
+    };
+
+    // Función para iniciar el intervalo
+    let iniciarIntervalo = () => {
+      ejecutarAnimacion(); // Ejecutar la primera animación
+      intervalo = setInterval(ejecutarAnimacion, 3000); // Establecer el intervalo para ejecutar las animaciones cada 3 segundos
+    };
+
+    // Función para reiniciar el intervalo
+    let reiniciarIntervalo = () => {
+      
+      clearInterval(intervalo); // Detener el intervalo actual
+      iniciarIntervalo(); // Iniciar un nuevo intervalo
+    };
+
+    // Iniciar el intervalo
+    iniciarIntervalo();
     const logoutButton = buttonLogout(this);
     const btnLanguage = this.add.image(1537, 70, "language").setScale(0.4);
     buttonEnglish(btnLanguage, this);
@@ -229,4 +257,5 @@ export class Intro extends Phaser.Scene {
     };
     this.updateScene();
   }
+ 
 }

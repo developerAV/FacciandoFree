@@ -18,6 +18,18 @@ export class Loading extends Phaser.Scene {
       frameWidth: 25.92,
       frameHeight: 32,
     });
+    this.load.spritesheet("spriteBatista", "../assets/images/player/spriteBatista.png", {
+      frameWidth: 31,
+      frameHeight: 48,
+    });
+    this.load.spritesheet("spriteGirl", "../assets/images/player/spriteGirl.png", {
+      frameWidth: 31,
+      frameHeight: 48,
+    });
+    this.load.spritesheet("spriteBoy", "../assets/images/player/spriteBoy.png", {
+      frameWidth: 31,
+      frameHeight: 48,
+    });
     this.load.audio("musica", "assets/music/GrassyWorld.mp3");
     this.load.video(
       "loading",
@@ -37,6 +49,7 @@ export class Loading extends Phaser.Scene {
 
   create() {
     // Añade aquí un mensaje de carga o una barra de progreso.
+    window.avatarSprite = "spriteBatista";
 
     window.avatarUpdateActivo = false;
     let video = this.add.video(800, 500, "loading");

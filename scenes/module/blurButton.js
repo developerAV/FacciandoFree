@@ -1,6 +1,7 @@
 import { loginGoogle } from "../../Firebase/googleLogin.js";
 
 export const blurButton = (boton, escena) => {
+  
   // Hacer que la imagen sea interactiva
   boton.setInteractive();
   if (boton.name != "logout") {
