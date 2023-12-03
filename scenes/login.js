@@ -17,6 +17,7 @@ export class Login extends Phaser.Scene {
   }
 
   async create() {
+    window.loadOut = false;
     window.stateLogin = true;
     const background2 = this.add.rectangle(
       this.cameras.main.width / 2, // Posición X centrada en la pantalla

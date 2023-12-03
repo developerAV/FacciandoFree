@@ -60,8 +60,7 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
           window.runTime = false;
           
           scene.avatar.avatarPlayer.destroy();
-        /*   scene.scene.stop();
-          scene.scene.restart(); */
+          window.loadAvatar=false;
           scene.scene.start("intro");
           return;
         }

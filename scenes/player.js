@@ -1,34 +1,40 @@
 export class Avatar extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, scale) {
     super(scene, x, y, scale, window.avatarSprite);
-    this.avatarPlayer = scene.physics.add
-      .sprite(x, y, window.avatarSprite)
+    this.avatarPlayer = this.scene.physics.add.sprite(x, y, window.avatarSprite)
       .setScale(scale);
+
+    this.scene = scene;
+    this.create();
+    this.update();
+  }
+
+  create() {
     this.avatarPlayer.setCollideWorldBounds(true);
-    this.cursors = scene.input.keyboard.createCursorKeys();
+    this.cursors = this.scene.input.keyboard.createCursorKeys();
     this.avatarPlayer.body.allowGravity = false;
 
-    if (!scene.anims.exists("turn"))
-      scene.anims.create({
+    if (!this.scene.anims.exists("turn"))
+      this.scene.anims.create({
         key: "turn",
         frames: [{ key: window.avatarSprite, frame: 1 }],
         frameRate: 10,
       });
 
-    if (!scene.anims.exists("up"))
-      scene.anims.create({
+    if (!this.scene.anims.exists("up"))
+      this.scene.anims.create({
         key: "up",
-        frames: scene.anims.generateFrameNumbers(window.avatarSprite, {
+        frames: this.scene.anims.generateFrameNumbers(window.avatarSprite, {
           start: 9,
           end: 11,
         }),
         frameRate: 10,
         repeat: -1,
       });
-    if (!scene.anims.exists("right"))
-      scene.anims.create({
+    if (!this.scene.anims.exists("right"))
+      this.scene.anims.create({
         key: "right",
-        frames: scene.anims.generateFrameNumbers(window.avatarSprite, {
+        frames: this.scene.anims.generateFrameNumbers(window.avatarSprite, {
           start: 6,
           end: 8,
         }),
@@ -36,10 +42,10 @@ export class Avatar extends Phaser.GameObjects.Sprite {
         repeat: -1,
       });
 
-    if (!scene.anims.exists("left"))
-      scene.anims.create({
+    if (!this.scene.anims.exists("left"))
+      this.scene.anims.create({
         key: "left",
-        frames: scene.anims.generateFrameNumbers(window.avatarSprite, {
+        frames: this.scene.anims.generateFrameNumbers(window.avatarSprite, {
           start: 3,
           end: 5,
         }),
@@ -47,10 +53,10 @@ export class Avatar extends Phaser.GameObjects.Sprite {
         repeat: -1,
       });
 
-    if (!scene.anims.exists("down"))
-      scene.anims.create({
+    if (!this.scene.anims.exists("down"))
+      this.scene.anims.create({
         key: "down",
-        frames: scene.anims.generateFrameNumbers(window.avatarSprite, {
+        frames: this.scene.anims.generateFrameNumbers(window.avatarSprite, {
           start: 0,
           end: 2,
         }),
@@ -59,65 +65,65 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       });
 
     if (window.isMobile && window.avatarUpdateActivo) {
-      this.botonMobile(scene);
+      this.botonMobile(this.scene);
     }
     if (window.runTime) {
-      this.runTime(scene);
+      this.runTime(this.scene);
     }
   }
 
-  botonMobile(scene) {
+  botonMobile() {
     this.isDragging = false;
     this.maxRange = 90;
 
     this.buttonCentroX = 530;
     this.buttonCentroY = 620;
 
-    scene.buttonContainer = scene.add.container(0, 0);
-    scene.buttonContainer.setScrollFactor(0); //no se mueve con la camara
+    this.scene.buttonContainer = this.scene.add.container(0, 0);
+    this.scene.buttonContainer.setScrollFactor(0); //no se mueve con la camara
 
-    scene.buttonPrimero = scene.add.circle(
+    this.scene.buttonPrimero = this.scene.add.circle(
       this.buttonCentroX,
       this.buttonCentroY,
       90,
       0x505050,
       0.5
     );
-    scene.buttonPrimero.setScrollFactor(0); //no se mueve con la camara
-    scene.buttonPrimero.setStrokeStyle(1, 0xffffff);
+    this.scene.buttonPrimero.setScrollFactor(0); //no se mueve con la camara
+    this.scene.buttonPrimero.setStrokeStyle(1, 0xffffff);
 
-    scene.buttonCentro = scene.add.circle(
+    this.scene.buttonCentro = this.scene.add.circle(
       this.buttonCentroX,
       this.buttonCentroY,
       25,
       0xf2f2f2,
       0.6
     );
-    scene.buttonCentro.setScrollFactor(0);
-    scene.buttonCentro.setStrokeStyle(4, 0xffffff);
+    this.scene.buttonCentro.setScrollFactor(0);
+    this.scene.buttonCentro.setStrokeStyle(4, 0xffffff);
 
-    scene.buttonContainer.add(scene.buttonPrimero);
-    scene.buttonContainer.add(scene.buttonCentro);
+    this.scene.buttonContainer.add(this.scene.buttonPrimero);
+    this.scene.buttonContainer.add(this.scene.buttonCentro);
 
-    const contenedorFondo = scene.add.graphics();
+    const contenedorFondo = this.scene.add.graphics();
     contenedorFondo.fillStyle(0xfff);
     // contenedorFondo.fillRoundedRect(600, 800, 200, 100, 10);
 
-    scene.buttonContainer.add(contenedorFondo);
-    scene.buttonContainer.setDepth(1);
-    scene.buttonContainer.setAlpha(1);
+    this.scene.buttonContainer.add(contenedorFondo);
+    this.scene.buttonContainer.setDepth(1);
+    this.scene.buttonContainer.setAlpha(1);
 
-    const cursors = scene.input.keyboard.createCursorKeys();
+    const cursors = this.scene.input.keyboard.createCursorKeys();
 
     // Configurar eventos de inicio -de arrastre (ratón y tacto)
-    scene.buttonCentro.setInteractive();
-    scene.buttonCentro.on("pointerdown", (pointer) => {
+    this.scene.buttonCentro.setInteractive();
+    this.scene.buttonCentro.on("pointerdown", (pointer) => {
       this.isDragging = true;
-      this.pointerOffsetX = scene.buttonCentro.x - pointer.x;
-      this.pointerOffsetY = scene.buttonCentro.y - pointer.y;
+      this.pointerOffsetX = this.scene.buttonCentro.x - pointer.x;
+      this.pointerOffsetY = this.scene.buttonCentro.y - pointer.y;
     });
 
-    scene.input.on("pointermove", (pointer) => {
+    this.scene.input.on("pointermove", (pointer) => {
       if (this.isDragging) {
         this.newX = pointer.x + this.pointerOffsetX;
         this.newY = pointer.y + this.pointerOffsetY;
@@ -146,21 +152,23 @@ export class Avatar extends Phaser.GameObjects.Sprite {
           this.buttonCentroY + this.maxRange + 2
         );
 
-        scene.buttonCentro.x = this.newX;
-        scene.buttonCentro.y = this.newY;
+        this.scene.buttonCentro.x = this.newX;
+        this.scene.buttonCentro.y = this.newY;
       }
     });
-    scene.input.on("pointerup", () => {
+    this.scene.input.on("pointerup", () => {
       this.isDragging = false;
-      scene.buttonCentro.x = this.buttonCentroX;
-      scene.buttonCentro.y = this.buttonCentroY;
+      this.scene.buttonCentro.x = this.buttonCentroX;
+      this.scene.buttonCentro.y = this.buttonCentroY;
     });
   }
-  update(scene) {
+  update() {
     //Para saber la ubicación del avatar en el mapa
     try {
-      scene.puntoMapa.x = scene.avatar.avatarPlayer.x * scene.factorEscala - 87;
-      scene.puntoMapa.y = scene.avatar.avatarPlayer.y * scene.factorEscala;
+      this.scene.puntoMapa.x =
+        this.scene.avatar.avatarPlayer.x * this.scene.factorEscala - 87;
+      this.scene.puntoMapa.y =
+        this.scene.avatar.avatarPlayer.y * this.scene.factorEscala;
     } catch (error) {
       // console.log("Error en update avatar", error);
     }
@@ -260,21 +268,26 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       x = 800; //zoom == 1
       y = 500; //zoom == 1
     }
-    scene.textoTiempo = scene.add.text(x, y, `Tiempo: ${window.time}`, {
-      fontFamily: "Arial",
-      fontSize: 24,
-      color: "#ffffff",
-    });
-    scene.time.addEvent({
+    this.scene.textoTiempo = this.scene.add.text(
+      this.x,
+      y,
+      `Tiempo: ${window.time}`,
+      {
+        fontFamily: "Arial",
+        fontSize: 24,
+        color: "#ffffff",
+      }
+    );
+    this.scene.time.addEvent({
       delay: 1000,
       callback: () => {
         window.time += 1;
-        scene.textoTiempo.setText("Tiempo: " + window.time);
+        this.scene.textoTiempo.setText("Tiempo: " + window.time);
       },
       callbackScope: scene,
       loop: true,
     });
-    scene.textoTiempo.setScrollFactor(0);
-    scene.textoTiempo.setScale(0.75);
+    this.scene.textoTiempo.setScrollFactor(0);
+    this.scene.textoTiempo.setScale(0.75);
   }
 }

@@ -24,6 +24,7 @@ export class Question extends Phaser.Scene {
   }
 
   create() {
+    window.loadOut = false;
     const background2 = this.add.rectangle(
       this.cameras.main.width / 2, // Posición X centrada en la pantalla
       this.cameras.main.height / 2, // Posición Y centrada en la pantalla
