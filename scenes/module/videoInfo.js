@@ -58,7 +58,7 @@ export const crearVideo = async (mensaje, videoFile, scene) => {
     function escribirTexto() {
       if (indice <= mensaje.length) {
         texto.setText(mensaje.substring(0, indice));
-        console.log(mensaje.substring(0, indice));
+
         indice++;
       } else {
         video.stop();

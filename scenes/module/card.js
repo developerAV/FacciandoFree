@@ -1,4 +1,5 @@
 import { traslate } from "../../data/dialogues.js";
+
 export const crearCard = (
   scene,
   teacher,
@@ -7,7 +8,7 @@ export const crearCard = (
   conteinerX,
   conteinerY
 ) => {
-  let colisionTabla = false;
+  //let colisionTabla = false;
 
   const card = {};
 
@@ -67,11 +68,6 @@ export const crearCard = (
     card.containerX.setAlpha(1);
 
     colisionTabla = true;
-
-    if (window.user.actualMission === 1) {
-      console.log("estoy en el cubiculo del profesor moya");
-      return;
-    }
   });
 
   scene.input.keyboard.on("keydown", (event) => {

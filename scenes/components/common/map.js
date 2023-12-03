@@ -1,4 +1,5 @@
-import { getPositionMap } from "../../modeHistory/dialogs.js";
+import { PROPERTY } from "../../../utils/constants.js";
+import { getInfoMission } from "../../modeHistory/infoMission.js";
 
 export const shortMap = (scene, mapa) => {
   scene.factorEscala = 0.125; //200 / 1600;//= 0.125
@@ -31,6 +32,7 @@ export const shortMap = (scene, mapa) => {
 };
 
 export const bigMap = (scene) => {
+  const { x, y } = getInfoMission(PROPERTY.iconMap);
   scene.bigMapConteiner = scene.add
     .container(800, 500)
     .setScrollFactor(0)
@@ -39,9 +41,7 @@ export const bigMap = (scene) => {
   bigMapBackground.displayWidth = 700;
   bigMapBackground.displayHeight = 400;
   scene.bigMapConteiner.add(bigMapBackground);
-  scene.iconMap = scene.add
-    .image(getPositionMap("x"), getPositionMap("y"), "iconMap")
-    .setScale(0.3);
+  scene.iconMap = scene.add.image(x, y, "iconMap").setScale(0.3);
   scene.bigMapConteiner.add(scene.iconMap);
   scene.bigMapConteiner.visible = false;
   scene.bigMapConteiner.setDepth(1100);

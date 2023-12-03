@@ -8,11 +8,11 @@ import {
 import { textButton } from "./module/textButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
 import { traslate } from "../data/dialogues.js";
-import { buttonLogout } from "./components/intro/buttonLogout.js";
 import { Avatar } from "./player.js";
 import { swapButtonPositionsAvatar } from "./module/swapButtonPositions.js";
 let currentIndex = 0;
 const arrayAvatar = ['spriteBatista', 'spriteBoy', 'spriteGirl', 'spriteGirl2', 'spriteGirl3'];
+import { buttonLogout } from "./components/intro/buttonLogout/buttonLogout.js";
 
 export class AvatarS extends Phaser.Scene {
   constructor() {

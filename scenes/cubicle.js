@@ -13,6 +13,9 @@ import { navbar } from "./components/common/navbar.js";
 import { SCENE } from "../utils/constants.js";
 import { alertCard } from "./modeHistory/components/alertCard.js";
 import { shortMap, bigMap } from "./components/common/map.js";
+import { cardDialog } from "./modeHistory/components/dialogCard.js";
+import { getDiaglogMission } from "../data/traslateDialogs.js";
+import { endMission } from "./modeHistory/endMission.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -212,22 +215,33 @@ export class Cubicle extends Phaser.Scene {
     createButtonCircle(this, SCENE.floor1, escaleraX, 592, 251);
 
     createButtonCircle(this, "aula", escritorioD, 800, 500);
-
+    if (window.missionActive) {
+      alertCard(this);
+      if (window.user.actualMission === 1) {
+        const redZone = crearPlataforma(800, 500, "boton", plataformas);
+        this.physics.add.overlap(
+          this.avatar.avatarPlayer,
+          redZone,
+          async () => {
+            window.avatarUpdateActivo = true;
+            this.avatar.moveTo(0, 0, "turn");
+            redZone.destroy();
+            const dialogs = ["0Termino la mission"]; //getDiaglogMission(); //obtener los dialogos de la mision
+            await cardDialog(this, dialogs, 736, 697);
+            await endMission(SCENE.cubicle, {
+              x: this.avatar.avatarPlayer.x,
+              y: this.avatar.avatarPlayer.y,
+            });
+          }
+        );
+      }
+    }
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredNorte);
-    /*  if (window.mode === "mission") {
-      if (window.user.actualMission === 1) {
-        console.log("estoy en el cubiculo del profesor moya");
-        return;
-      }
-    } */
+
     navbar(this, "cubicle");
     shortMap(this, "mapaOutside");
     bigMap(this);
-
-    if (window.missionActive) {
-      alertCard(this);
-    }
   }
 
   update() {

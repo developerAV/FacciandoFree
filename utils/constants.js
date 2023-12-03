@@ -38,7 +38,6 @@ export const COLORS_HEX = {
   grayDark: "#262c2e",
 };
 
-
 export const SCENE = {
   cubicle: "cubicle",
   floor2: "floorHallway2",
@@ -57,4 +56,14 @@ export const SCENE = {
   floor3: "hallway300",
   electronic_room: "electronic_room",
   second_floor1: "hallway2",
+};
+
+export const PROPERTY = {
+  iconMap: "positionMap",
+  buttonMission: "positionButton",
+  dialog: "digalogoAvatar",
+  time: "time",
+  video: "video",
+  step: "step",
+  narrador: "narrador",
 };

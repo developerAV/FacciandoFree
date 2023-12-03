@@ -1,5 +1,5 @@
-import { COLORS } from "../../../utils/constants.js";
-import { dialog } from "../dialogs.js";
+import { COLORS, PROPERTY } from "../../../utils/constants.js";
+import { getInfoMission } from "../infoMission.js";
 const style = {
   width: 150,
   space: {
@@ -39,13 +39,13 @@ export const alertCard = (scene) => {
     .confirmDialog(style)
     .setPosition(x, y)
     .resetDisplayContent({
-      content: dialog(),
+      content: getInfoMission(PROPERTY.step),
     })
     .layout()
     .setScrollFactor(0)
     .setDepth(1000);
 
   setTimeout(function () {
-    alert.scaleDownDestroy(100);
+    if (alert) alert.scaleDownDestroy(100);
   }, 4000); // 4000 milisegundos = 4 segundos
 };

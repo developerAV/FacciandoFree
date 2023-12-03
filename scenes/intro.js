@@ -3,7 +3,7 @@ import { COLORS, FONT_SIZE } from "../utils/constants.js";
 import { textButton } from "./module/textButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
 import { traslate } from "../data/dialogues.js";
-import { buttonLogout } from "./components/intro/buttonLogout.js";
+import { buttonLogout } from "./components/intro/buttonLogout/buttonLogout.js";
 import { buttonsMode } from "./components/intro/buttonsMode.js";
 import { news } from "./components/intro/news.js";
 import { detailsGamer } from "./components/intro/detailsGamer.js";
@@ -31,8 +31,10 @@ export class Intro extends Phaser.Scene {
     });
   }
   async create() {
-    window.mode = "exploration";
-    window.mode2 = "mission";
+    if (window.mode === undefined) {
+      window.mode = "exploration";
+      window.mode2 = "mission";
+    }
     const background2 = this.add.rectangle(
       this.cameras.main.width / 2, // Posición X centrada en la pantalla
       this.cameras.main.height / 2,
