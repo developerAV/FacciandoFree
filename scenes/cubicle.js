@@ -226,7 +226,7 @@ export class Cubicle extends Phaser.Scene {
             window.avatarUpdateActivo = true;
             this.avatar.moveTo(0, 0, "turn");
             redZone.destroy();
-            const dialogs = ["0Termino la mission"]; //getDiaglogMission(); //obtener los dialogos de la mision
+            const dialogs = ["0Termino la mission"]; //obtener los dialogos de la mision
             await cardDialog(this, dialogs, 736, 697);
             await endMission(SCENE.cubicle, {
               x: this.avatar.avatarPlayer.x,

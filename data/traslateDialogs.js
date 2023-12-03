@@ -6,8 +6,8 @@ const data = {
    *******************************************************/
   mission1: {
     es: [
-      "hola, soy la secretaria, ¿en que puedo ayudarte?",
-      "0estudiante: hola, necesito información sobre la carrera de T.I. por favor",
+      "Hola, soy la secretaria, ¿en que puedo ayudarte?",
+      "0Hola, necesito información sobre la carrera de T.I. por favor",
       "Dirigite al cubiculo que está en la parte de abajo",
     ],
     en: [

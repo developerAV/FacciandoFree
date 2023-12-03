@@ -149,6 +149,7 @@ export class Outside extends Phaser.Scene {
     dimesionesPlataformaIndividual(tree, 0.2, -5);
 
     this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.2);
+
     const tree2 = crearPlataforma(1287, 665, "tree2", platform1, 0.75);
     dimesionesPlataformaIndividual(tree2, 0.2, 47);
     createButtonCircle(this, SCENE.floor1, puertaFacci, 930, 920, true);
