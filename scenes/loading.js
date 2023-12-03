@@ -49,6 +49,7 @@ export class Loading extends Phaser.Scene {
 
   create() {
     // Añade aquí un mensaje de carga o una barra de progreso.
+    window.avatarSprite = "spriteBatista";
 
     window.avatarUpdateActivo = false;
     let video = this.add.video(800, 500, "loading");

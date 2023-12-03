@@ -3,7 +3,9 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     super(scene, x, y, scale, avatarSprite);
 
     console.log("Avatar", avatarSprite);
-    this.avatarPlayer = scene.physics.add.sprite(x, y, avatarSprite).setScale(scale);
+    this.avatarPlayer = scene.physics.add
+      .sprite(x, y, avatarSprite)
+      .setScale(scale);
 
     this.avatarPlayer.setCollideWorldBounds(true);
     this.cursors = scene.input.keyboard.createCursorKeys();
@@ -29,7 +31,10 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     if (!scene.anims.exists("right"))
       scene.anims.create({
         key: "right",
-        frames: scene.anims.generateFrameNumbers(avatarSprite, { start: 6, end: 8 }),
+        frames: scene.anims.generateFrameNumbers(avatarSprite, {
+          start: 6,
+          end: 8,
+        }),
         frameRate: 10,
         repeat: -1,
       });
@@ -37,7 +42,10 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     if (!scene.anims.exists("left"))
       scene.anims.create({
         key: "left",
-        frames: scene.anims.generateFrameNumbers(avatarSprite, { start: 3, end: 5 }),
+        frames: scene.anims.generateFrameNumbers(avatarSprite, {
+          start: 3,
+          end: 5,
+        }),
         frameRate: 10,
         repeat: -1,
       });
@@ -45,7 +53,10 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     if (!scene.anims.exists("down"))
       scene.anims.create({
         key: "down",
-        frames: scene.anims.generateFrameNumbers(avatarSprite, { start: 0, end: 2 }),
+        frames: scene.anims.generateFrameNumbers(avatarSprite, {
+          start: 0,
+          end: 2,
+        }),
         frameRate: 10,
         repeat: -1,
       });
@@ -150,8 +161,12 @@ export class Avatar extends Phaser.GameObjects.Sprite {
   }
   update(scene) {
     //Para saber la ubicación del avatar en el mapa
-    scene.puntoMapa.x = scene.avatar.avatarPlayer.x * scene.factorEscala - 87;
-    scene.puntoMapa.y = scene.avatar.avatarPlayer.y * scene.factorEscala;
+    try {
+      scene.puntoMapa.x = scene.avatar.avatarPlayer.x * scene.factorEscala - 87;
+      scene.puntoMapa.y = scene.avatar.avatarPlayer.y * scene.factorEscala;
+    } catch (error) {
+      // console.log("Error en update avatar", error);
+    }
 
     if (!window.avatarUpdateActivo) {
       return;

@@ -174,32 +174,15 @@ export class Intro extends Phaser.Scene {
     avatar.setDepth(1);
     avatar.setInteractive();
     avatar.on("pointerdown", () => {
-      // Antes de cambiar de escena, detén el intervalo
-      window.avatarSprite = "";
       clearInterval(intervalo);
       this.scene.start("avatarS");
     });
-    // const ava = this.add.image(1000, 600, "ava").setScale(0.6);
-    // const ava2 = this.add.image(1000, 600, "ava2").setScale(0.6);
 
-    // let currentImage = ava;
+    
 
-    // setInterval(() => {
-    //   if (currentImage === ava) {
-    //     currentImage = ava2;
-    //   } else {
-    //     currentImage = ava;
-    //   }
-
-    //   currentImage.setVisible(true);
-    //   if (currentImage === ava2) {
-    //     ava.setVisible(false);
-    //   } else {
-    //     ava2.setVisible(false);
-    //   }
-    // }, 3000);
-    window.avatarSprite = "spriteBoy";
+   
     this.avatar2 = new Avatar(this, 1100, 600, 7, window.avatarSprite);
+    console.log(window.avatarSprite);
     // Crear un array con las animaciones
     let animaciones = ["down", "right", "up", "left"];
 
@@ -208,6 +191,7 @@ export class Intro extends Phaser.Scene {
 
     // Función para ejecutar las animaciones
     let ejecutarAnimacion = () => {
+      
       this.avatar2.avatarPlayer.anims.play(animaciones[index], true); // Ejecutar la animación actual
       index = (index + 1) % animaciones.length; // Avanzar al siguiente índice, volviendo al inicio si se llega al final
     };
@@ -220,6 +204,7 @@ export class Intro extends Phaser.Scene {
 
     // Función para reiniciar el intervalo
     let reiniciarIntervalo = () => {
+      
       clearInterval(intervalo); // Detener el intervalo actual
       iniciarIntervalo(); // Iniciar un nuevo intervalo
     };
@@ -270,4 +255,5 @@ export class Intro extends Phaser.Scene {
     };
     this.updateScene();
   }
+ 
 }

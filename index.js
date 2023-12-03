@@ -61,7 +61,7 @@ const config = {
 window.isMobile = /iPhone|iPad|iPod|Android/i.test(window.navigator.userAgent);
 window.lan = "es";
 window.time = 0;
-window.avatarSprite = "spriteBatista";
+
 const game = new Phaser.Game(config);
 
 game.scene.start();

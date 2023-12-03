@@ -1,9 +1,18 @@
-import { COLORS, FONT_SIZE } from "../utils/constants.js";
+import {
+  COLORS,
+  COLORS_HEX,
+  FONT,
+  FONT2,
+  FONT_SIZE,
+} from "../utils/constants.js";
 import { textButton } from "./module/textButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
 import { traslate } from "../data/dialogues.js";
 import { buttonLogout } from "./components/intro/buttonLogout.js";
 import { Avatar } from "./player.js";
+import { swapButtonPositionsAvatar } from "./module/swapButtonPositions.js";
+let currentIndex = 0;
+const arrayAvatar = ['spriteBatista', 'spriteBoy', 'spriteGirl', 'spriteGirl2', 'spriteGirl3'];
 
 export class AvatarS extends Phaser.Scene {
   constructor() {
@@ -23,7 +32,7 @@ export class AvatarS extends Phaser.Scene {
     );
     // fondo dinamico
     const background = this.add.sprite(1500, 500, "facciando").setScale(1.6);
-    background.alpha = 0.4;
+    background.alpha = 0.1;
 
     const tween = this.tweens.add({
       targets: background,
@@ -127,30 +136,125 @@ export class AvatarS extends Phaser.Scene {
     ranked.on("pointerdown", () => {
       this.scene.start("ranking");
     });
-
+    
     const logoutButton = buttonLogout(this);
     const btnLanguage = this.add.image(1537, 70, "language").setScale(0.4);
     buttonEnglish(btnLanguage, this);
+    const objetAvatar = {
+      avatar1:{
+        idAvatar: "spriteBatista",
+      name: "Batista",
+      },
+      avatar2:{
+        idAvatar: "spriteBoy",
+        name: "Jhon"
+      },
+      avatar3:{
+        idAvatar: "spriteGirl",
+        name: "Adriana"
+      },     
+    };
+
+    let avatarContainer = this.add.container(0, 0);
+    this.buttonName = this.add.image(800, 700, "play").setScale(0.5);
+    this.textName = this.add.text(745, 680, objetAvatar.avatar2.name, {
+      fontFamily: FONT,
+      fontSize: FONT_SIZE.small,
+      color: COLORS_HEX.white,
+    });
+
+    this.buttonSave = this.add.image(1300, 900, "play").setScale(1);
+    this.textSave = this.add.text(1245, 880, traslate("save"), {
+      fontFamily: FONT,
+      fontSize: FONT_SIZE.small,
+      color: COLORS_HEX.white,
+    });
+
+    this.avatar1 = new Avatar(this, 1100, 500, 7, objetAvatar.avatar1.idAvatar);
+    this.avatar2 = new Avatar(this, 800, 500, 7, objetAvatar.avatar2.idAvatar);
+    this.avatar3 = new Avatar(this, 500, 500, 7, objetAvatar.avatar3.idAvatar);
 
 
 
-let avatarContainer = this.add.container(0, 0);
-    this.avatarGirl = new Avatar(this,900, 500, 7, "spriteGirl");
-    this.button = this.add.image(900, 700, "play").setScale(0.5);
+    this.arrowRight = this.add.image(1400, 500, "arrowRight").setScale(0.4);
+    this.arrowLeft = this.add.image(200, 500, "arrowRight").setScale(0.4);
+    this.arrowLeft.flipX = true;
 
-    this.avatarBatista = new Avatar(this,600, 500, 7, "spriteBatista");
-    this.avatarBoy = new Avatar(this,1200, 500, 7, "spriteBoy");
+    this.arrowRight.setInteractive();
+    this.arrowLeft.setInteractive();
+ // Configuración de eventos de clic para las flechas
+ this.arrowRight.on('pointerdown', () => this.changeAvatar('right'));
+ this.arrowLeft.on('pointerdown', () => this.changeAvatar('left'));
+ let trasitionInProgress = false;
+ this.changeAvatar = async(direction) => {
+    if (direction === 'right') {
+
+      if (trasitionInProgress) return;
+      trasitionInProgress = true;
+      await swapButtonPositionsAvatar(this,this.avatar3.avatarPlayer, this.avatar2.avatarPlayer,  this.avatar1.avatarPlayer);
+    // console.log("A1", this.avatar1.avatarPlayer.x, "A2", this.avatar2.avatarPlayer.x, "A3",this.avatar3.avatarPlayer.x);
+      // this.updateNameAvatar();
+      this.updateNameAvatar();
+    }
+    if (direction === 'left') {
+      if (trasitionInProgress) return;
+      trasitionInProgress = true;
+      await swapButtonPositionsAvatar(this,this.avatar1.avatarPlayer, this.avatar2.avatarPlayer,  this.avatar3.avatarPlayer);
+       this.updateNameAvatar2();
+
+    }
+
+    setTimeout(async () => {
+      trasitionInProgress = false;
+    }, 400);
+
+  }
+  this.updateNameAvatar = () => {
+  
+     if(this.avatar1.avatarPlayer.x === 500){
+      this.textName.setText(objetAvatar.avatar1.name);
+      window.idAvatar = objetAvatar.avatar1.idAvatar;
+      return;
+    }
+    if(this.avatar2.avatarPlayer.x === 500){
+      this.textName.setText(objetAvatar.avatar2.name);
+      window.idAvatar = objetAvatar.avatar2.idAvatar;
+      return;
+    }
+    if(this.avatar3.avatarPlayer.x === 500){
+      this.textName.setText(objetAvatar.avatar3.name);
+      window.idAvatar = objetAvatar.avatar3.idAvatar;
+    return;
+    }
+
+  }
+
+
+  this.updateNameAvatar2 = () => {
+    if(this.avatar1.avatarPlayer.x === 1100){
+      this.textName.setText(objetAvatar.avatar1.name);
+      window.idAvatar = objetAvatar.avatar1.idAvatar;
+      return;
+    }
+    if(this.avatar2.avatarPlayer.x === 1100){
+      this.textName.setText(objetAvatar.avatar2.name);
+      window.idAvatar = objetAvatar.avatar2.idAvatar;
+      return;
+    }
+    if(this.avatar3.avatarPlayer.x === 1100){
+      this.textName.setText(objetAvatar.avatar3.name);
+      window.idAvatar = objetAvatar.avatar3.idAvatar;
+    return;
+    }
+  }
+
+    this.buttonSave.setInteractive();
+    this.buttonSave.on("pointerdown", () => {
+      window.avatarSprite = window.idAvatar;
+      // window.avatar2.avatarPlayer.setTexture(window.avatarSprite);
+      console.log("Guardado Con Exito!", window.avatarSprite);
     
-    
-
-
-
-
-
-
-
-
-
+    });
 
 
     this.updateScene = () => {
