@@ -4,7 +4,7 @@ import { getUserById, putUser } from "../../../services/user.js";
 import { info } from "./info.js";
 
 import { COLORS_HEX } from "../../../utils/constants.js";
-import { buttonLogout } from "../intro/buttonLogout/buttonLogout.js";
+//import { buttonLogout } from "../intro/buttonLogout/buttonLogout.js";
 import { style } from "../intro/buttonLogout/styles.js";
 
 export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
@@ -36,7 +36,9 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
       .setDraggable("title")
       .resetDisplayContent({
         title: traslate("goHome"),
-        content: traslate("contentGoHome"),
+        content: !window.missionActive
+          ? traslate("goToMenu")
+          : traslate("contentGoHome"),
         buttonA: traslate("yes"),
         buttonB: traslate("no"),
       })
@@ -47,7 +49,6 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
 
         if (data.index === 0) {
           window.user = await getUserById(window.user._id);
-
           if (window.missionActive && window.user.step !== 1) {
             window.missionActive = false;
             window.user.step = 1;
@@ -57,7 +58,10 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
           window.avatarY = undefined;
           window.time = 0;
           window.runTime = false;
-          scene.scene.stop();
+          
+          scene.avatar.avatarPlayer.destroy();
+        /*   scene.scene.stop();
+          scene.scene.restart(); */
           scene.scene.start("intro");
           return;
         }

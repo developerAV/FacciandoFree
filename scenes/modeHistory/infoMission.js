@@ -8,7 +8,7 @@ const dialogs = {
     narrador: "mission1",
     dialogs: "dialog1",
     video: "avatarVideo1",
-    time: 300,
+    time: 60,
     step1: "Entra por a la puerta principal",
     step2: "Entra a secretaría",
     step3: "Acercate a la secretaria",

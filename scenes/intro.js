@@ -31,6 +31,7 @@ export class Intro extends Phaser.Scene {
     });
   }
   async create() {
+    window.avatarSprite = window.user.sprite;
     if (window.mode === undefined) {
       window.mode = "exploration";
       window.mode2 = "mission";
@@ -95,11 +96,12 @@ export class Intro extends Phaser.Scene {
     play.setInteractive();
     play.on("pointerdown", () => {
       // Antes de cambiar de escena, detén el intervalo
-      clearInterval(intervalo);
+      // clearInterval(intervalo);
+      
+      this.scene.restart();
+      this.scene.stop();
       this.scene.start("outside");
     });
-
-   
 
     // Music
     const music = this.sound.add("musica", { loop: true });
@@ -177,14 +179,19 @@ export class Intro extends Phaser.Scene {
     avatar.setInteractive();
     avatar.on("pointerdown", () => {
       clearInterval(intervalo);
+
+      this.scene.restart();
+      this.scene.stop();
       this.scene.start("avatarS");
     });
 
-    
+    this.avatar = this.physics.add
+      .sprite(1100, 600, window.avatarSprite)
+      .setScale(7);
+    this.avatar.body.allowGravity = false;
 
-   
-    this.avatar2 = new Avatar(this, 1100, 600, 7, window.avatarSprite);
-    console.log(window.avatarSprite);
+    this.avatar.setTexture(window.avatarSprite);
+
     // Crear un array con las animaciones
     let animaciones = ["down", "right", "up", "left"];
 
@@ -193,8 +200,7 @@ export class Intro extends Phaser.Scene {
 
     // Función para ejecutar las animaciones
     let ejecutarAnimacion = () => {
-      
-      this.avatar2.avatarPlayer.anims.play(animaciones[index], true); // Ejecutar la animación actual
+      this.avatar.anims.play(animaciones[index], true); // Ejecutar la animación actual
       index = (index + 1) % animaciones.length; // Avanzar al siguiente índice, volviendo al inicio si se llega al final
     };
 
@@ -206,13 +212,12 @@ export class Intro extends Phaser.Scene {
 
     // Función para reiniciar el intervalo
     let reiniciarIntervalo = () => {
-      
       clearInterval(intervalo); // Detener el intervalo actual
       iniciarIntervalo(); // Iniciar un nuevo intervalo
     };
 
     // Iniciar el intervalo
-    iniciarIntervalo();
+    //iniciarIntervalo();
     const logoutButton = buttonLogout(this);
     const btnLanguage = this.add.image(1537, 70, "language").setScale(0.4);
     buttonEnglish(btnLanguage, this);
@@ -257,5 +262,4 @@ export class Intro extends Phaser.Scene {
     };
     this.updateScene();
   }
- 
 }

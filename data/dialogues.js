@@ -8,6 +8,10 @@ const traslateIntro = {
     es: "¿Estás seguro de que quieres ir a inicio?, se perderá el progreso de la misión.",
     en: "Are you sure you want to go to home? The mission progress will be lost.",
   },
+  goToMenu: {
+    es: "¿Estás seguro de que quieres ir a inicio?",
+    en: "Are you sure you want to go to home?",
+  },
   year: {
     es: "Años",
     en: "Years old",
@@ -178,14 +182,16 @@ const traslateIntro = {
   },
   // narrador por mission
   mission1: {
-    es: "Hola, soy el narrador.",
-    en: "Hello, I'm the narrator.",
+    es: "Bienvenido a la facultad de ingeniería en TI, en esta misión tendrás que reconocer las ubicaciones de secretaría y los cubículos de los docentes de la planta baja.",
+    en: "Welcome to the faculty of engineering in IT, in this mission you will have to recognize the locations of the secretary and the cubicles of the teachers on the ground floor.",
   },
   //dialogos de los videos de las misiones
   dialog1: {
     es: "Hola, soy el avatar de la facultad de ingeniería en TI, y te voy a guiar en esta aventura.",
     en: "Hello, I am the avatar of the faculty of engineering in IT, and I will guide you on this adventure.",
   },
+  es: "Conocer la entrada principal de la facultad, secretaría y los cubículos de los docentes de la planta baja.",
+  en: "Know the main entrance of the faculty, the secretary and the cubicles of the teachers on the ground floor.",
 };
 
 export const traslate = (key) => {

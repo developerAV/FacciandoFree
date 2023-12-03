@@ -1,12 +1,9 @@
 export class Avatar extends Phaser.GameObjects.Sprite {
-  constructor(scene, x, y, scale, avatarSprite = window.avatarSprite) {
-    super(scene, x, y, scale, avatarSprite);
-
-    console.log("Avatar", avatarSprite);
+  constructor(scene, x, y, scale) {
+    super(scene, x, y, scale, window.avatarSprite);
     this.avatarPlayer = scene.physics.add
-      .sprite(x, y, avatarSprite)
+      .sprite(x, y, window.avatarSprite)
       .setScale(scale);
-
     this.avatarPlayer.setCollideWorldBounds(true);
     this.cursors = scene.input.keyboard.createCursorKeys();
     this.avatarPlayer.body.allowGravity = false;
@@ -14,14 +11,14 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     if (!scene.anims.exists("turn"))
       scene.anims.create({
         key: "turn",
-        frames: [{ key: avatarSprite, frame: 1 }],
+        frames: [{ key: window.avatarSprite, frame: 1 }],
         frameRate: 10,
       });
 
     if (!scene.anims.exists("up"))
       scene.anims.create({
         key: "up",
-        frames: scene.anims.generateFrameNumbers(avatarSprite, {
+        frames: scene.anims.generateFrameNumbers(window.avatarSprite, {
           start: 9,
           end: 11,
         }),
@@ -31,7 +28,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     if (!scene.anims.exists("right"))
       scene.anims.create({
         key: "right",
-        frames: scene.anims.generateFrameNumbers(avatarSprite, {
+        frames: scene.anims.generateFrameNumbers(window.avatarSprite, {
           start: 6,
           end: 8,
         }),
@@ -42,7 +39,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     if (!scene.anims.exists("left"))
       scene.anims.create({
         key: "left",
-        frames: scene.anims.generateFrameNumbers(avatarSprite, {
+        frames: scene.anims.generateFrameNumbers(window.avatarSprite, {
           start: 3,
           end: 5,
         }),
@@ -53,7 +50,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     if (!scene.anims.exists("down"))
       scene.anims.create({
         key: "down",
-        frames: scene.anims.generateFrameNumbers(avatarSprite, {
+        frames: scene.anims.generateFrameNumbers(window.avatarSprite, {
           start: 0,
           end: 2,
         }),

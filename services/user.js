@@ -65,7 +65,6 @@ export const postUser = async (user) => {
 };
 
 export const putUser = async (id, data) => {
-  console.log(id, data);
   try {
     const newUser = await fetch(`${URI_API}/user/${id}`, {
       method: "PUT",
