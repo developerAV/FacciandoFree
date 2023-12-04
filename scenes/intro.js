@@ -31,6 +31,7 @@ export class Intro extends Phaser.Scene {
     });
   }
   async create() {
+    window.loadOut = true;
     window.avatarSprite = window.user.sprite;
     if (window.mode === undefined) {
       window.mode = "exploration";
@@ -100,7 +101,7 @@ export class Intro extends Phaser.Scene {
       
       this.scene.restart();
       this.scene.stop();
-      this.scene.start("outside");
+      this.scene.start("loading");
     });
 
     // Music

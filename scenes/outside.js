@@ -66,6 +66,12 @@ export class Outside extends Phaser.Scene {
 
   create() {
     window.contador = 100;
+    if(window.loadAvatar){
+      window.loadAvatar = false;
+
+      this.scene.restart();
+     
+    }
 
     if (window.avatarX == undefined && window.avatarY == undefined) {
       window.avatarX = 800;
@@ -141,21 +147,23 @@ export class Outside extends Phaser.Scene {
       "limiteSur",
       platform1,
       0.75
-    ).setScale(3.55, 1);
-
-    dimesionesPlataformaIndividual(limiteSur, 0.9, 15);
-
-    const tree = crearPlataforma(1287, 705, "tree", platform1, 0.75);
-    dimesionesPlataformaIndividual(tree, 0.2, -5);
-
+      ).setScale(3.55, 1);
+      
+      dimesionesPlataformaIndividual(limiteSur, 0.9, 15);
+      
+      const tree = crearPlataforma(1287, 705, "tree", platform1, 0.75);
+      dimesionesPlataformaIndividual(tree, 0.2, -5);
+      
+ 
     this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.2);
+ 
 
     const tree2 = crearPlataforma(1287, 665, "tree2", platform1, 0.75);
     dimesionesPlataformaIndividual(tree2, 0.2, 47);
     createButtonCircle(this, SCENE.floor1, puertaFacci, 930, 920, true);
     createButtonCircle(this, SCENE.second_floor1, puertaFacci2, 600, 800);
     //   createButtonCircle(this, "aula", escritorioD, 800, 500);
-
+    
     this.physics.add.collider(this.avatar.avatarPlayer, platform1);
     // this.physics.add.collider(this.avatar.avatarPlayer, paredNorte);
 
@@ -191,6 +199,9 @@ export class Outside extends Phaser.Scene {
 
     this.cameras.main.zoom = 2;
 
+    
+     
+
     navbar(this, "outside");
 
     // endMission();
@@ -200,6 +211,6 @@ export class Outside extends Phaser.Scene {
   }
 
   update() {
-    this.avatar.update(this);
+    this.avatar.update();
   }
 }

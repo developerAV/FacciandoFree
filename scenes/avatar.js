@@ -274,12 +274,18 @@ export class AvatarS extends Phaser.Scene {
 
     this.buttonSave.setInteractive();
     this.buttonSave.on("pointerdown", async () => {
+      
+
       window.avatarSprite = window.idAvatar;
 
       window.user = await putUser(window.user._id, {
         sprite: window.avatarSprite,
       });
-
+  
+      window.loadOut = false;
+      // window.location.reload()
+      // this.game.restart();
+      window.loadAvatar = true;
       this.scene.restart();
       this.scene.stop();
       this.scene.start("intro");

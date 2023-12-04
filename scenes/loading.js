@@ -1,7 +1,7 @@
-import { Avatar } from "./player.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
 import { auth } from "../Firebase/firebase.js";
 import "../Firebase/googleLogin.js";
+import { Avatar } from "./player.js";
 
 import { preloads } from "./components/loanding/preload.js";
 import { getAllLevels } from "../services/level.js";
@@ -18,18 +18,30 @@ export class Loading extends Phaser.Scene {
       frameWidth: 25.92,
       frameHeight: 32,
     });
-    this.load.spritesheet("spriteBatista", "../assets/images/player/spriteBatista.png", {
-      frameWidth: 31,
-      frameHeight: 48,
-    });
-    this.load.spritesheet("spriteGirl", "../assets/images/player/spriteGirl.png", {
-      frameWidth: 31,
-      frameHeight: 48,
-    });
-    this.load.spritesheet("spriteBoy", "../assets/images/player/spriteBoy.png", {
-      frameWidth: 31,
-      frameHeight: 48,
-    });
+    this.load.spritesheet(
+      "spriteBatista",
+      "../assets/images/player/spriteBatista.png",
+      {
+        frameWidth: 31,
+        frameHeight: 48,
+      }
+    );
+    this.load.spritesheet(
+      "spriteGirl",
+      "../assets/images/player/spriteGirl.png",
+      {
+        frameWidth: 31,
+        frameHeight: 48,
+      }
+    );
+    this.load.spritesheet(
+      "spriteBoy",
+      "../assets/images/player/spriteBoy.png",
+      {
+        frameWidth: 31,
+        frameHeight: 48,
+      }
+    );
     this.load.audio("musica", "assets/music/GrassyWorld.mp3");
     this.load.video(
       "loading",
@@ -42,15 +54,17 @@ export class Loading extends Phaser.Scene {
     this.load.image("language", "assets/images/language/language.png");
     this.load.image("btnEnglish", "assets/images/language/btn-english.png");
     this.load.image("btnSpanish", "assets/images/language/btn-spanish.png");
-    this.load.image("redV", "assets/images/accessories/platform/redVertical.png");
-    this.load.image("redH", "assets/images/accessories/platform/redHorizontal.png");
-
+    this.load.image(
+      "redV",
+      "assets/images/accessories/platform/redVertical.png"
+    );
+    this.load.image(
+      "redH",
+      "assets/images/accessories/platform/redHorizontal.png"
+    );
   }
 
   create() {
-    // Añade aquí un mensaje de carga o una barra de progreso.
-    window.avatarSprite = "spriteBatista";
-
     window.avatarUpdateActivo = false;
     let video = this.add.video(800, 500, "loading");
     video.setAlpha(1);
@@ -59,6 +73,22 @@ export class Loading extends Phaser.Scene {
     // Puedes personalizar el mensaje y la barra de progreso según tus necesidades.
     // this.avatar = new Avatar(this, 250, 1000, 3);
     // list for auth state changes
+
+    if (window.loadOut) {
+      //el video dure 3 segundos
+      this.time.delayedCall(
+        2000,
+        () => {
+           
+          this.scene.start("outside");
+          video.destroy();
+        },
+        [],
+        this
+      );
+      
+      return;
+    }
 
     onAuthStateChanged(auth, async (user) => {
       if (user) {
