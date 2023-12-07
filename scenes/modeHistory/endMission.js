@@ -5,6 +5,7 @@ import { getInfoMission } from "./infoMission.js";
 export const endMission = async (nameScene, position) => {
   window.runTime = false;
   window.missionActive = false;
+  
 
   window.answerScore = parseInt(70 * 0.7);
   window.timeScore = calcularPuntos(getInfoMission(PROPERTY.time), window.time);
@@ -47,7 +48,7 @@ export const endMission = async (nameScene, position) => {
     position,
   };
 
-  await putUser(window.user._id, data);
+  window.user = await putUser(window.user._id, data);
 };
 
 function calcularPuntos(tiempoMision, tiempoTranscurrido) {
