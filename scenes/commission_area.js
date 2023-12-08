@@ -194,7 +194,7 @@ export class CommissionArea extends Phaser.Scene {
     );
     let paredCentro3ComisionOverlap = crearPlataforma(
       767,
-      670,
+      670,+
       "paredCentro3Comision",
       plataformasOverlap
     );
