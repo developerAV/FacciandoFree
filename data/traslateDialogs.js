@@ -6,38 +6,51 @@ const data = {
    *******************************************************/
   mission1: {
     es: [
-      "Hola, bienvenido a la universidad, ¿en que te puedo ayudar?",
+      "1Hola, bienvenido a la universidad, ¿en que te puedo ayudar?",
       `0Hola, soy ${window.name}, soy nuevo en la universidad y necesito información`,
       "0sobre la carrera de T.I. por favor",
-      "la facultad cuenta con 3 pisos, en el primer piso se encuentra la secretaría, ",
-      "en la planta baja se encuentran los cubículos de los profesores los cuales ",
-      "puedes visitar para obtener información sobre la carrera",
+      "1la facultad cuenta con 3 pisos, en el primer piso se encuentra la secretaría, ",
+      "1en la planta baja se encuentran los cubículos de los profesores los cuales ",
+      "1puedes visitar para obtener información sobre la carrera",
       "0Muchas gracias!",
     ],
     en: [
-      "Hello, welcome to the university, how can I help you?",
+      "1Hello, welcome to the university, how can I help you?",
       `0Hello, I'm ${window.name}, I'm new to the university and I need information`,
       "0about the IT career please",
-      "the faculty has 3 floors, on the first floor is the secretary's office, ",
-      "on the ground floor are the cubicles of the teachers which ",
-      "you can visit to get information about the career",
+      "1the faculty has 3 floors, on the first floor is the secretary's office, ",
+      "1on the ground floor are the cubicles of the teachers which ",
+      "1you can visit to get information about the career",
       "0Thank you very much!",
     ],
   },
   mission2: {
-    //en este dialogo esta la primera parte, se tiene que esperar la respuesta del jugador para continuar con la segunda parte del dialogo, con la funcion eleccionesDialogos() se obtiene la respuesta del jugador y se continua con el dialogo
     es: [
       "0Hola, ¿podría explicarme sobre las asignaturas básicas de la carrera?",
-      "¡Claro! Necesitas conocer de manera básica los fundamentos de programación, estadística y matemáticas discretas, ¿Te interesan esas asignaturas?",
+      "1¡Claro! Necesitas conocer de manera básica los fundamentos de programación, estadística y matemáticas discretas, ¿Te interesan esas asignaturas?",
     ],
     en: [
       "0Hello, could you explain to me about the basic subjects of the career?",
-      "Of course! You need to know the basics of programming, statistics and discrete mathematics, are you interested in those subjects?",
+      "1Of course! You need to know the basics of programming, statistics and discrete mathematics, are you interested in those subjects?",
     ],
   },
   mission3: {
-    es: [],
-    en: [],
+    es: [
+      "0Hola, ¿usted es el director de la carrera?",
+      "1¡Hola! Si, soy el director de la carrera, ¿en que te puedo ayudar?",
+      "0me gustaría iniciar el proceso de matriculación para iniciar mis estudios académicos",
+      "0aquí presento la documentación pertinente para empezar con la carrera",
+      "1listo teniendo en cuenta todos los requisitos solicitados tu matricula está habilitada.",
+      "1Bienvenido a la Facultad de Ciencias de la vida y Tecnologías en la carrera de Tecnologías de la información.",
+    ],
+    en: [
+      "0Hello, are you the director of the career?",
+      "1Hello! Yes, I am the director of the career, how can I help you?",
+      "0I would like to start the enrollment process to start my academic studies",
+      "0here I present the relevant documentation to start the career",
+      "1ready taking into account all the requirements requested your registration is enabled.",
+      "1Welcome to the Faculty of Life Sciences and Technologies in the Information Technologies career.",
+    ],
   },
   mission4: {
     es: [],

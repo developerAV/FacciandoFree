@@ -13,6 +13,7 @@ import { getEmployees } from "../services/employee.js";
 import { createButtonCircle } from "../scenes/components/common/buttonCircle.js";
 import { navbar } from "./components/common/navbar.js";
 import { shortMap, bigMap } from "./components/common/map.js";
+import { startMission } from "./modeHistory/startMission.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -28,6 +29,11 @@ export class CommissionArea extends Phaser.Scene {
     });
   }
   preload() {
+    this.load.plugin(
+      "rexglowfilterpipelineplugin",
+      "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexglowfilterpipelineplugin.min.js",
+      true
+    );
     this.load.image(
       "pisoComision",
       "assets/images/commission_area/PisoComisiones.png"
@@ -260,7 +266,7 @@ export class CommissionArea extends Phaser.Scene {
       "table02",
       plataformasOverlap
     );
-    this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.5);
+    this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.3);
 
     let areaPractica = crearPlataforma(
       994,
@@ -292,11 +298,7 @@ export class CommissionArea extends Phaser.Scene {
       async function (event) {
         try {
           // Puedes ejecutar cualquier código que quieras cuando se presione la tecla "i"
-          await crearVideo(
-            traslate("infoCubicle"),
-            "avatarVideo1",
-            this
-          );
+          await crearVideo(traslate("infoCubicle"), "avatarVideo1", this);
           await crearVideo(traslate("infoCubicle"), "avatarVideo2", this);
         } catch (error) {
           console.error("Error:", error);
@@ -369,6 +371,10 @@ export class CommissionArea extends Phaser.Scene {
       null,
       this
     );
+
+    if (!window.missionActive && window.user.actualMission === 3) {
+      startMission(this);
+    }
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasMedio);
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasNorte);

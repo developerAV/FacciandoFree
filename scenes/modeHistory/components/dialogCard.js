@@ -6,30 +6,38 @@ export const cardDialog = async (scene, dialogs, x, y) => {
    ** NOTA: En los dialogos, los string que comienzan con "0" **
    ** son para el avatar del jugador                          **
    *************************************************************/
+
   scene.avatar.moveTo(0, 0, "turn");
   window.avatarUpdateActivo = false;
-
+  let noDelay = undefined;
+  let indexBefore;
+  let time;
   const mostrarDialogo = (index) => {
     return new Promise(async (resolve) => {
       if (index >= dialogs.length) {
         window.avatarUpdateActivo = true;
-        //await handleSteps(true); // cambiar de alerta a la mission actualizando los pasos
+        handleSteps(true); // cambiar de alerta a la mission actualizando los pasos
         alertCard(scene);
         return resolve(); // Si se alcanza el final de los diálogos, se detiene
       }
 
       let dialog = dialogs[index];
+      if (index > -1) {
+        indexBefore = index - 1;
+        let time = noDelay === dialog[0] ? 500 : 5000;
+      }
 
       let posX = x;
       let posY = y;
 
+      noDelay = dialog[0];
       if (dialog[0] === "0") {
         //si el dialogo comienza con 0 es para el avatar del jugador
         posX = scene.avatar.avatarPlayer.x - 50;
         posY = scene.avatar.avatarPlayer.y - 50;
-        dialog = dialog.substring(1); //eliminamos el 0 del dialogo
         //por eso camabiamos la posicion del dialogo
       }
+
       const box = scene.add.container(posX, posY);
       box.setName("box");
 
@@ -56,9 +64,9 @@ export const cardDialog = async (scene, dialogs, x, y) => {
       box.setDepth(20);
 
       await escribirTexto(message, dialog); // Mostrar el mensaje
-
+      console.log(time);
       // Eliminar el contenedor después de un tiempo
-      await scene.time.delayedCall(1500, async () => {
+      await scene.time.delayedCall(time, async () => {
         box.destroy();
         await mostrarDialogo(index + 1); // Mostrar el próximo diálogo
         resolve(); // Resuelve la promesa después de completar la secuencia de diálogos
@@ -67,6 +75,7 @@ export const cardDialog = async (scene, dialogs, x, y) => {
   };
 
   const escribirTexto = (textObject, dialog) => {
+    dialog = dialog.substring(1);
     return new Promise((resolve) => {
       let indice = 0;
       const escribir = () => {
@@ -85,4 +94,3 @@ export const cardDialog = async (scene, dialogs, x, y) => {
   // Comenzar mostrando el primer diálogo
   await mostrarDialogo(0);
 };
-

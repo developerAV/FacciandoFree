@@ -25,12 +25,9 @@ const dialogs = {
   },
   mission3: {
     positionMap: { x: 0, y: 0 },
-    positionButton: { x: 973, y: 746 },
-    time: 500,
-    step1: "este es el paso 1 de la mision 3",
-    step2: "este es el paso 2 de la mision 3",
-    step3: "este es el paso 3 de la mision 3",
-    step4: "este es el paso 4 de la mision 3",
+    positionButton:  { x: 380 , y: 565 },
+    time: 10,
+    step1: "Acercate al area del director de carrera",
   },
   mission4: {
     positionButton: { x: 973, y: 746 },

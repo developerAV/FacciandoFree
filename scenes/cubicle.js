@@ -19,6 +19,7 @@ import { endMission } from "./modeHistory/endMission.js";
 import { createButtonMission } from "./components/common/buttonMission.js";
 import { startMission } from "./modeHistory/startMission.js";
 import { style } from "./components/intro/buttonLogout/styles.js";
+import { mission1Final } from "./modeHistory/missions/mission1.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -226,32 +227,14 @@ export class Cubicle extends Phaser.Scene {
     if (window.missionActive) {
       alertCard(this);
       if (window.user.actualMission === 1 && window.user.step === 5) {
-        const redZone = crearPlataforma(800, 500, "boton", plataformas);
-        this.physics.add.overlap(
-          this.avatar.avatarPlayer,
-          redZone,
-          async () => {
-            this.avatar.runTime(false);
-            window.avatarUpdateActivo = true;
-            this.avatar.moveTo(0, 0, "turn");
-            redZone.destroy();
-            const dialogs = ["0Termino la mission"]; //obtener los dialogos de la mision
-            await cardDialog(this, dialogs, 736, 697);
-            await endMission(SCENE.cubicle, {
-              x: this.avatar.avatarPlayer.x,
-              y: this.avatar.avatarPlayer.y,
-            });
-            //************************************************************** */
-            //MISION 2
-            startMission(this);
-          }
-        );
+        mission1Final(this);
       }
     }
 
     if (!window.missionActive && window.user.actualMission === 2) {
       startMission(this);
     }
+
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredNorte);
 

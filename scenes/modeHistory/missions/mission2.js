@@ -5,9 +5,8 @@ import { cardDialog } from "../components/dialogCard.js";
 import { endMission } from "../endMission.js";
 import { traslate } from "../../../data/dialogues.js";
 import { style } from "../../components/intro/buttonLogout/styles.js";
-import { alertCard } from "../components/alertCard.js";
 
-export const mission2 = (scene) => {
+export const mission2 = async (scene) => {
   let plataformas = scene.physics.add.staticGroup();
   scene.add.image(834, 350, "dude").setScale(1.3);
   const redZone2 = crearPlataforma(834, 400, "boton", plataformas);
@@ -17,12 +16,8 @@ export const mission2 = (scene) => {
     const dialogs = getDiaglogMission(); //obtener los dialogos de la mision
 
     await cardDialog(scene, dialogs, 834, 350);
-
-    window.user.step = 2;
-
-    //await handleSteps(true); // cambiar de alerta a la mission actualizando los pasos
-
-    scene.rexUI.add
+    console.log(window.user.step, "step");
+    await scene.rexUI.add
       .confirmDialog(style)
       .setScrollFactor(0)
       .setPosition(800, 500)
@@ -41,19 +36,21 @@ export const mission2 = (scene) => {
           window.avatarUpdateActivo = false;
           const dialogs = getDiaglogMission("si"); //obtener los dialogos de la mision
           await cardDialog(scene, dialogs, 834, 350);
-          /*    await endMission(SCENE.cubicle, {
-            x: scene.avatar.avatarPlayer.x,
-            y: scene.avatar.avatarPlayer.y,
-          }); */
+
           return;
         }
         window.avatarUpdateActivo = false;
         const dialogs = getDiaglogMission("no"); //obtener los dialogos de la mision
         await cardDialog(scene, dialogs, 834, 350);
-        /* await endMission(SCENE.cubicle, {
-          x: scene.avatar.avatarPlayer.x,
-          y: scene.avatar.avatarPlayer.y,
-        });*/
       });
+    /*  CARTEL DE QUE LA MISSION TERMINÓ*/
+    await cardDialog(scene, ["mission terminada"], 800, 500);
+    /*  CARTEL DE QUE LA MISSION TERMINÓ*/
+    window.runTime = false;
+    scene.avatar.runTime(false);
+    await endMission(SCENE.cubicle, {
+      x: 800,
+      y: 500,
+    });
   });
 };
