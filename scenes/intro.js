@@ -1,5 +1,5 @@
 import { blurButton } from "./module/blurButton.js";
-import { COLORS, FONT_SIZE } from "../utils/constants.js";
+import { COLORS, FONT_SIZE, SCENE } from "../utils/constants.js";
 import { textButton } from "./module/textButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
 import { traslate } from "../data/dialogues.js";
@@ -101,7 +101,7 @@ export class Intro extends Phaser.Scene {
       
       this.scene.restart();
       this.scene.stop();
-      this.scene.start("loading");
+      this.scene.start(SCENE.loading);
     });
 
     // Music

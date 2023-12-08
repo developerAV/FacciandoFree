@@ -1,7 +1,10 @@
+import { COLORS } from "../utils/constants.js";
+
 export class Avatar extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, scale) {
     super(scene, x, y, scale, window.avatarSprite);
-    this.avatarPlayer = this.scene.physics.add.sprite(x, y, window.avatarSprite)
+    this.avatarPlayer = this.scene.physics.add
+      .sprite(x, y, window.avatarSprite)
       .setScale(scale);
 
     this.scene = scene;
@@ -255,22 +258,42 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     this.avatarPlayer.anims.play(direction, true);
   }
 
-  runTime(scene) {
-    // Cronómetrocameras.main.zoom
-    //    const zoom = window.zoom;
-    let x = 450; //zoom == 2
-    let y = 325; //zoom == 2
-    if (window.zoom === 1.5) {
-      x = 800; //zoom == 1.5
-      y = 500; //zoom == 1.5
+  runTime(scene = this.scene) {
+    if (!window.runTime) {
+      if (this.scene.box) {
+        this.scene.box.destroy();
+        this.scene.textoTiempo.destroy();
+        this.scene.boxBg.destroy();
+        this.scene.time.removeAllEvents();
+      }
+      return;
     }
-    if (window.zoom === 1) {
+    // Cronómetrocameras.main.zoom
+
+    let x = 405; //zoom == 2
+    let y = 305; //zoom == 2
+    let scala = 0.75;
+
+    if (window.zoom == 1.5) {
+      x = 272; //zoom == 1.5s
+      y = 235; //zoom == 1.5
+      scala = 0.9;
+    }
+    if (window.zoom == 1) {
       x = 800; //zoom == 1
       y = 500; //zoom == 1
     }
+    this.scene.box = scene.add.container(x, y);
+    this.scene.box.setName("box");
+    this.scene.boxBg = scene.add.graphics();
+    this.scene.boxBg.fillStyle(COLORS.red, 0.75);
+    this.scene.boxBg.fillRoundedRect(0, 0, 120, 50, 5);
+    this.scene.box.add(this.scene.boxBg);
+    this.scene.box.setScale(scala);
+
     this.scene.textoTiempo = this.scene.add.text(
-      this.x,
-      y,
+      10,
+      10,
       `Tiempo: ${window.time}`,
       {
         fontFamily: "Arial",
@@ -287,7 +310,10 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       callbackScope: scene,
       loop: true,
     });
+
     this.scene.textoTiempo.setScrollFactor(0);
-    this.scene.textoTiempo.setScale(0.75);
+    this.scene.textoTiempo.setScale(scala);
+    this.scene.box.add(this.scene.textoTiempo).setScrollFactor(0);
+    this.scene.box.setDepth(200);
   }
 }
