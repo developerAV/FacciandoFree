@@ -188,7 +188,7 @@ export class CommissionArea extends Phaser.Scene {
     );
     let paredCentro3ComisionOverlap = crearPlataforma(
       767,
-      670,
+      670,+
       "paredCentro3Comision",
       plataformasOverlap
     );
@@ -292,11 +292,7 @@ export class CommissionArea extends Phaser.Scene {
       async function (event) {
         try {
           // Puedes ejecutar cualquier código que quieras cuando se presione la tecla "i"
-          await crearVideo(
-            traslate("infoCubicle"),
-            "avatarVideo1",
-            this
-          );
+          await crearVideo(traslate("infoCubicle"), "avatarVideo1", this);
           await crearVideo(traslate("infoCubicle"), "avatarVideo2", this);
         } catch (error) {
           console.error("Error:", error);
