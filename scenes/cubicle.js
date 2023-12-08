@@ -16,6 +16,10 @@ import { shortMap, bigMap } from "./components/common/map.js";
 import { cardDialog } from "./modeHistory/components/dialogCard.js";
 import { getDiaglogMission } from "../data/traslateDialogs.js";
 import { endMission } from "./modeHistory/endMission.js";
+import { createButtonMission } from "./components/common/buttonMission.js";
+import { startMission } from "./modeHistory/startMission.js";
+import { style } from "./components/intro/buttonLogout/styles.js";
+import { mission1Final } from "./modeHistory/missions/mission1.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -31,6 +35,11 @@ export class Cubicle extends Phaser.Scene {
     });
   }
   preload() {
+    this.load.plugin(
+      "rexglowfilterpipelineplugin",
+      "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexglowfilterpipelineplugin.min.js",
+      true
+    );
     this.load.scenePlugin({
       key: "rexuiplugin",
       url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
@@ -217,25 +226,15 @@ export class Cubicle extends Phaser.Scene {
     createButtonCircle(this, "aula", escritorioD, 800, 500);
     if (window.missionActive) {
       alertCard(this);
-      if (window.user.actualMission === 1) {
-        const redZone = crearPlataforma(800, 500, "boton", plataformas);
-        this.physics.add.overlap(
-          this.avatar.avatarPlayer,
-          redZone,
-          async () => {
-            window.avatarUpdateActivo = true;
-            this.avatar.moveTo(0, 0, "turn");
-            redZone.destroy();
-            const dialogs = ["0Termino la mission"]; //obtener los dialogos de la mision
-            await cardDialog(this, dialogs, 736, 697);
-            await endMission(SCENE.cubicle, {
-              x: this.avatar.avatarPlayer.x,
-              y: this.avatar.avatarPlayer.y,
-            });
-          }
-        );
+      if (window.user.actualMission === 1 && window.user.step === 5) {
+        mission1Final(this);
       }
     }
+
+    if (!window.missionActive && window.user.actualMission === 2) {
+      startMission(this);
+    }
+
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredNorte);
 

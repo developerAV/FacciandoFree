@@ -6,6 +6,7 @@ import { traslate } from "../../data/dialogues.js";
 import { infoMission } from "./components/infoMission.js";
 import { getInfoMission } from "./infoMission.js";
 import { PROPERTY } from "../../utils/constants.js";
+import { MISSIONS } from "./missions/index.js";
 
 export const startMission = (scene) => {
   const example = scene.physics.add.staticGroup();
@@ -26,7 +27,7 @@ export const startMission = (scene) => {
       scene.iconMap.destroy();
       startN1.destroy();
       await crearVideo(
-        traslate(narradorVideo),
+        traslate("narradorVideo"),
         getInfoMission(PROPERTY.video),
         scene
       );
@@ -34,6 +35,12 @@ export const startMission = (scene) => {
       scene.avatar.runTime(scene);
       infoMission(scene);
       alertCard(scene);
+
+      if (window.user.actualMission === 1) {
+        return;
+      }
+      MISSIONS["mission" + window.user.actualMission](scene);
+      return;
     },
     null,
     scene

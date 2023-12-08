@@ -16,6 +16,7 @@ import { endMission } from "./modeHistory/endMission.js";
 import { startMission } from "./modeHistory/startMission.js";
 import { handleSteps } from "./modeHistory/handleSteps.js";
 import { alertCard } from "./modeHistory/components/alertCard.js";
+import { mission1 } from "./modeHistory/missions/mission1.js";
 
 export class AdministrativeRoom extends Phaser.Scene {
   constructor() {
@@ -130,22 +131,12 @@ export class AdministrativeRoom extends Phaser.Scene {
 
     //mision 1
     if (window.user.actualMission === 1 && window.missionActive) {
-      alertCard(this);
-      this.add.image(736, 697, "dude").setScale(1.3);
-      const redZone = crearPlataforma(790, 697, "boton", plataformas);
-      this.physics.add.overlap(this.avatar.avatarPlayer, redZone, async () => {
-        window.avatarUpdateActivo = false;
-        this.avatar.moveTo(0, 0, "turn");
-        redZone.destroy();
-        const dialogs = getDiaglogMission(); //obtener los dialogos de la mision
-        await cardDialog(this, dialogs, 736, 697);
-     
-      });
+      mission1(this);
     }
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
-    navbar(this, SCENE.admin_room);
+    this.box = navbar(this, SCENE.admin_room);
   }
 
   update() {

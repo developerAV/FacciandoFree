@@ -136,6 +136,7 @@ export class Question extends Phaser.Scene {
         name: window.user.name,
         school: window.user.school,
       };
+      window.name = data.name;
       putUser(window.user._id, data);
       this.scene.start("intro");
     });

@@ -1,4 +1,4 @@
-import { COLORS, FONT, FONT2 } from "../../../utils/constants.js";
+import { COLORS, FONT, FONT2, SCENE } from "../../../utils/constants.js";
 import { traslate } from "../../../data/dialogues.js";
 import { getUserById, putUser } from "../../../services/user.js";
 import { info } from "./info.js";
@@ -58,10 +58,10 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
           window.avatarY = undefined;
           window.time = 0;
           window.runTime = false;
-          
+
           scene.avatar.avatarPlayer.destroy();
-          window.loadAvatar=false;
-          scene.scene.start("intro");
+          window.loadAvatar = false;
+          scene.scene.start(SCENE.intro);
           return;
         }
         home.setInteractive({ useHandCursor: true });

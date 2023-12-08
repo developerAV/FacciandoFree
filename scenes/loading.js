@@ -7,6 +7,7 @@ import { preloads } from "./components/loanding/preload.js";
 import { getAllLevels } from "../services/level.js";
 import { getUserFirebase, postUser } from "../services/user.js";
 import { getMissionByLevel } from "../services/mission.js";
+import { SCENE } from "../utils/constants.js";
 export class Loading extends Phaser.Scene {
   constructor() {
     super({ key: "loading" });
@@ -66,7 +67,7 @@ export class Loading extends Phaser.Scene {
 
   create() {
     window.avatarUpdateActivo = false;
-    let video = this.add.video(800, 500, "loading");
+    const video = this.add.video(800, 500, "loading");
     video.setAlpha(1);
     video.setBlendMode(Phaser.BlendModes.NORMAL);
     video.play(true);
@@ -75,18 +76,18 @@ export class Loading extends Phaser.Scene {
     // list for auth state changes
 
     if (window.loadOut) {
-      //el video dure 3 segundos
       this.time.delayedCall(
-        2000,
+        1000,
         () => {
-           
-          this.scene.start("outside");
+          window.avatarX = window.user.position.x ?? 800;
+          window.avatarY = window.user.position.y ?? 500;
+          this.scene.start(window.user.scene ?? "outside");
           video.destroy();
         },
         [],
         this
       );
-      
+
       return;
     }
 
@@ -129,14 +130,8 @@ export class Loading extends Phaser.Scene {
           [],
           this
         );
-
-        // setupPosts([]);
-        // loginCheck(user);
       }
     });
     //
-  }
-  update() {
-    // this.avatar.moveTo(0, 200, "right");
   }
 }

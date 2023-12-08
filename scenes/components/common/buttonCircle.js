@@ -1,5 +1,5 @@
 import { putUser } from "../../../services/user.js";
-import { COLORS } from "../../../utils/constants.js";
+import { COLORS, SCENE } from "../../../utils/constants.js";
 import { handleSteps } from "../../modeHistory/handleSteps.js";
 export const createButtonCircle = (
   scene,
@@ -54,10 +54,11 @@ export const createButtonCircle = (
 
     buttonCircle.containerX.list[0].setInteractive();
     buttonCircle.containerX.list[0].on("pointerdown", async () => {
+      zoomWithNameScene(window.sceneName);
       await handleSteps(); // cambiar de alerta a la mission actualizando los pasos
       scene.scene.restart();
       scene.scene.stop();
-      scene.scene.start(sceneName);
+      scene.scene.start(window.sceneName);
     });
   });
   scene.input.keyboard.on("keydown-X", async () => {
@@ -69,7 +70,7 @@ export const createButtonCircle = (
     scene.anims.remove("right");
     scene.anims.remove("up");
     scene.anims.remove("down");
-
+    zoomWithNameScene(window.sceneName);
     await handleSteps(); // cambiar de alerta a la mission actualizando los pasos
     scene.scene.start(window.sceneName);
     // scene.scene.remove(scene.key);
@@ -113,4 +114,14 @@ const mission = async () => {
       putUser(window.user._id, { step: 5 });
     }
   }
+};
+
+const zoomWithNameScene = (nameScene) => {
+  console.log(nameScene);
+  console.log(nameScene === SCENE.floor1);
+  if (nameScene === SCENE.floor1) {
+    window.zoom = 1.5;
+    return;
+  }
+  window.zoom = 2;
 };
