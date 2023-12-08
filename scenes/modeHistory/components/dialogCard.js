@@ -9,8 +9,7 @@ export const cardDialog = async (scene, dialogs, x, y) => {
 
   scene.avatar.moveTo(0, 0, "turn");
   window.avatarUpdateActivo = false;
-  let noDelay = undefined;
-  let indexBefore;
+
   let time;
   const mostrarDialogo = (index) => {
     return new Promise(async (resolve) => {
@@ -22,15 +21,13 @@ export const cardDialog = async (scene, dialogs, x, y) => {
       }
 
       let dialog = dialogs[index];
-      if (index > -1) {
-        indexBefore = index - 1;
-        let time = noDelay === dialog[0] ? 500 : 5000;
+      if (index > -1 && index < dialogs.length - 1) {
+        time = dialogs[index + 1][0] === dialog[0] ? 500 : 1500;
       }
 
       let posX = x;
       let posY = y;
 
-      noDelay = dialog[0];
       if (dialog[0] === "0") {
         //si el dialogo comienza con 0 es para el avatar del jugador
         posX = scene.avatar.avatarPlayer.x - 50;

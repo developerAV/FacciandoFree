@@ -106,22 +106,22 @@ const dataDialogoSegunRespuesta = {
   mission2: {
     si: {
       es: [
-        "¡Muy bien! Estas asignaturas son fundamentales para desarrollar una base sólida en tecnologías de la información.",
-        "Te proporcionarán las herramientas necesarias para abordar problemas complejos en la carrera.",
+        "1¡Muy bien! Estas asignaturas son fundamentales para desarrollar una base sólida en tecnologías de la información.",
+        "1Te proporcionarán las herramientas necesarias para abordar problemas complejos en la carrera.",
       ],
       en: [
-        "Very well! These subjects are fundamental to develop a solid base in information technologies.",
-        "They will provide you with the necessary tools to address complex problems in the career.",
+        "1Very well! These subjects are fundamental to develop a solid base in information technologies.",
+        "1They will provide you with the necessary tools to address complex problems in the career.",
       ],
     },
     no: {
       es: [
-        "Entiendo, no todas las asignaturas son del agrado de todos. Sin embargo, estas materias son pilares",
-        "para comprender conceptos clave en la carrera. Te animo a considerar su importancia para tu formación.",
+        "1Entiendo, no todas las asignaturas son del agrado de todos. Sin embargo, estas materias son pilares",
+        "1para comprender conceptos clave en la carrera. Te animo a considerar su importancia para tu formación.",
       ],
       en: [
-        "I understand, not all subjects are to everyone's liking. However, these subjects are pillars",
-        "to understand key concepts in the career. I encourage you to consider their importance for your training.",
+        "1I understand, not all subjects are to everyone's liking. However, these subjects are pillars",
+        "1to understand key concepts in the career. I encourage you to consider their importance for your training.",
       ],
     },
   },
