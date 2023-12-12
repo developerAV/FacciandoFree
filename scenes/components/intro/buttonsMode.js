@@ -4,16 +4,24 @@ export const buttonsMode = (scene, box, boxGamer, boxScore) => {
   boxGamer.setVisible(false);
   boxScore.setVisible(false);
   const mode = scene.add
-    .image(220, 820, "mode")
-    .setScale(0.75)
+    .image(192, 820, "modox")
     .setName("mode")
-    .setScale(0.25);
+    .setScale(0.5);
   const mode2 = scene.add
-    .image(350, 820, "mode2")
-    .setScale(0.75)
+    .image(372, 820, "modox")
     .setName("modeSecondary")
-    .setScale(0.25);
+    .setScale(0.5);
 
+  const labelMode = scene.add.text(120, 800, "Exploración", {
+    fontFamily: "Roboto",
+    fontSize: 30,
+    color: "#ffffff",
+  });
+  const labelMode2 = scene.add.text(320, 800, "Misión", {
+    fontFamily: "Roboto",
+    fontSize: 30,
+    color: "#ffffff",
+  });
   mode.setInteractive();
   mode.on("pointerdown", () => changeButtonsPosition("exploration"));
 
@@ -35,7 +43,14 @@ export const buttonsMode = (scene, box, boxGamer, boxScore) => {
       box.setVisible(boxVisible);
       boxGamer.setVisible(!boxVisible);
       boxScore.setVisible(!boxVisible);
-      swapButtonPositionsLan(scene, mode, mode2);
+      // swapButtonPositionsLan(scene, mode, mode2);
+    if(window.mode === "exploration"){
+      mode.setAlpha(0.5);
+      mode2.setAlpha(1);
+    }else{
+      mode.setAlpha(1);
+      mode2.setAlpha(0.5);
+    }
     }
     setTimeout(async () => {
       isTransitionInProgress = false;
