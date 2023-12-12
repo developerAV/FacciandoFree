@@ -53,8 +53,36 @@ const data = {
     ],
   },
   mission4: {
-    es: [],
-    en: [],
+    es: [
+      "1Hola, ¿Ya tienes proyecto de vinculación?",
+      "0no, ni siquiera sé de que se trata la vinculación ",
+      "1*explica* para más información anda donde la ingeniera Adriana Macias, encargada en el área de vinculación.",
+      "0Listo compañero, ¡Muchas gracias",
+    ],
+    en: [
+      "1Hello, do you already have a link project?",
+      "0no, I don't even know what the link is about",
+      "1*explains* for more information go where the engineer Adriana Macias, in charge of the link area.",
+      "0Ready partner, thank you very much",
+    ],
+  },
+  mission4_1: {
+    es: [
+      "0Hola, mucho gusto, quisiera saber sobre el proceso de vinculación",
+      "1Hola, el proceso de vinculación es muy sencillo, solo debes tener en cuenta los siguientes requisitos:",
+      "1Necesitas, bla bla bla....",
+      "1La temática es realizar un E-comerce para una empresa y...",
+      "1para la segunda fase de vinculación un artículo científico sobre el ecomerce.",
+      "0Listo, muchas gracias! Me parece muy interesante",
+    ],
+    en: [
+      "0Hello, nice to meet you, I would like to know about the link process",
+      "1Hello, the link process is very simple, you just have to take into account the following requirements:",
+      "1You need, bla bla bla....",
+      "1The theme is to make an E-comerce for a company and...",
+      "1for the second phase of linking a scientific article on ecomerce.",
+      "0Ready, thank you very much! I find it very interesting",
+    ],
   },
   mission5: {
     es: [],
@@ -127,7 +155,7 @@ const dataDialogoSegunRespuesta = {
   },
 };
 export const getDiaglogMission = (respuesta = "") => {
-  const { index } = getIndexMission();
+  let { index } = getIndexMission();
 
   if (respuesta !== "") {
     if (!dataDialogoSegunRespuesta[index][respuesta]) {

@@ -9,12 +9,18 @@ import {
 import { SCENE } from "../utils/constants.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
 import { shortMap, bigMap } from "./components/common/map.js";
+import { startMission } from "./modeHistory/startMission.js";
 export class Hallway300 extends Phaser.Scene {
   constructor() {
     super({ key: "hallway300" });
   }
 
   preload() {
+    this.load.plugin(
+      "rexglowfilterpipelineplugin",
+      "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexglowfilterpipelineplugin.min.js",
+      true
+    );
     this.load.image(
       "backgroundHallway300",
       "assets/images/hallway300/Piso.png"
@@ -159,6 +165,14 @@ export class Hallway300 extends Phaser.Scene {
       null,
       this
     );
+
+    if (
+      window.user.actualLevel === 2 &&
+      window.user.actualMission === 1 &&
+      !window.missionActive
+    ) {
+      startMission(this);
+    }
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, plataformaNorte);

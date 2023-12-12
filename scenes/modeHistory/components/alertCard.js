@@ -46,13 +46,10 @@ export const alertCard = (scene) => {
     .setScale(0.5);
   scene.box.add(message);
   scene.box.setDepth(20);
-  // alert.getElement("background").setStrokeStyle(3, COLORS.blue);
   scene.box.setScale(scala);
   scene.box.setScrollFactor(0);
 
   setTimeout(function () {
-    if (scene.box) {
-      scene.box.destroy();
-    }
-  }, 4000); // 4000 milisegundos = 4 segundos
-}
+    scene.box.destroy();
+  }, 4000);
+};

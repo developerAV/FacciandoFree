@@ -9,8 +9,8 @@ export const cardDialog = async (scene, dialogs, x, y) => {
 
   scene.avatar.moveTo(0, 0, "turn");
   window.avatarUpdateActivo = false;
-
   let time;
+
   const mostrarDialogo = (index) => {
     return new Promise(async (resolve) => {
       if (index >= dialogs.length) {
