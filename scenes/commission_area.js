@@ -14,6 +14,8 @@ import { createButtonCircle } from "../scenes/components/common/buttonCircle.js"
 import { navbar } from "./components/common/navbar.js";
 import { shortMap, bigMap } from "./components/common/map.js";
 import { startMission } from "./modeHistory/startMission.js";
+import { getIndexMission } from "./modeHistory/infoMission.js";
+import { mission4Final } from "./modeHistory/missions/mission4.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -194,8 +196,8 @@ export class CommissionArea extends Phaser.Scene {
     );
     let paredCentro3ComisionOverlap = crearPlataforma(
       767,
-      670,+
-      "paredCentro3Comision",
+      670,
+      +"paredCentro3Comision",
       plataformasOverlap
     );
 
@@ -374,6 +376,9 @@ export class CommissionArea extends Phaser.Scene {
 
     if (!window.missionActive && window.user.actualMission === 3) {
       startMission(this);
+    }
+    if (window.missionActive && getIndexMission().index === "mission4") {
+      mission4Final(this);
     }
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasMedio);

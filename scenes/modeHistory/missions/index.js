@@ -6,10 +6,12 @@ import { mission5 } from "./mission5.js";
 import { mission6 } from "./mission6.js";
 
 export const MISSIONS = {
+  //listo
   mission1: (scene) => mission1(scene),
   mission2: (scene) => mission2(scene),
   mission3: (scene) => mission3(scene),
 
+  //pendientes
   mission4: (scene) => mission4(scene),
   mission5: (scene) => mission5(scene),
   mission6: (scene) => mission6(scene),
@@ -21,8 +23,5 @@ export const MISSIONS = {
   mission10: (scene) => mission10(scene),
   mission11: (scene) => mission11(scene),
   mission12: (scene) => mission12(scene),
-  
-  mission13: (scene) => mission13(scene),
-  mission14: (scene) => mission14(scene),
-  mission15: (scene) => mission15(scene),*/
+  */
 };
