@@ -201,6 +201,8 @@ export const detailsGamer = (scene, width = 50, height = 200) => {
     window.missionVisibleBox = window.listMissions[mission];
     window.missionSelect = mission + 1;
     completed.setColor(COLORS_HEX.green);
+    mission1.setTexture("insigniaOro");
+    mission1.setScale(0.25);
     window.completedMission = getItemOfUser("completed");
     boxLock.visible = true;
     lock.visible = false;
