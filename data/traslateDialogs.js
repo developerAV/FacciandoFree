@@ -77,21 +77,23 @@ const data = {
       "0Hola, mucho gusto, quisiera saber sobre el proceso de vinculación",
       "1Hola, el proceso de vinculación es muy sencillo, solo debes tener en cuenta los siguientes requisitos:",
       "1Necesitas, estar en 5to semestre para poder realizar la primera fase de vinculación",
-      "1debes buscar un grupo de compañeros con quien hacerla, no es individual, se te asignara un asesor",
-      "1para que te guie en el proceso...",
-      "1La temática es realizar un E-comerce para una empresa escogida por el grupo, si no llegan a un acuerdo",
-      "1se te asignara una empresa para la cual deberan hacer la respectiva investigación y desarrollo del proyecto",
+      "1debes buscar un grupo de compañeros con quien hacerla",
+      "1no es individual, se te asignara un asesor para que te guie en el proceso...",
+      "1La temática es realizar un E-comerce para una empresa escogida por el grupo",
+      "1si no llegan a un acuerdo se te asignara una empresa para la cual deberan hacer",
+      "1la respectiva investigación y desarrollo del proyecto",
       "1para la segunda fase de vinculación un artículo científico sobre el ecomerce.",
       "0Listo, muchas gracias! Me parece muy interesante",
     ],
     en: [
-      "0Hello, nice to meet you, I would like to know about the link process",
-      "1Hello, the link process is very simple, you just have to take into account the following requirements:",
-      "1You need to be in the 5th semester to be able to carry out the first phase of linkage",
-      "1you must look for a group of colleagues with whom to do it, it is not individual, an advisor will be assigned to you",
-      "1to guide you in the process...",
-      "1The theme is to make an E-comerce for a company chosen by the group, if they do not reach an agreement",
-      "1a company will be assigned to you for which you must do the respective research and development of the project",
+      "0Hello, nice to meet you, I would like to know about the linkage process",
+      "1Hello, the linkage process is very simple, you just have to take into account the following requirements:",
+      "1You need to be in the 5th semester in order to carry out the first phase of linkage",
+      "1you must look for a group of colleagues with whom to do it",
+      "1it is not individual, an advisor will be assigned to guide you in the process...",
+      "1The theme is to make an E-comerce for a company chosen by the group",
+      "1if they do not reach an agreement, a company will be assigned to you for which they must do",
+      "1the respective research and development of the project",
       "1for the second phase of linkage a scientific article on ecomerce.",
       "0Ready, thank you very much! I find it very interesting",
     ],
@@ -180,6 +182,8 @@ export const getDiaglogMission = (respuesta = "") => {
 
     return dataDialogoSegunRespuesta[index][respuesta][window.lan];
   }
+
+  console.log(index);
   if (!data[index]) {
     return "No hay mission agregada";
   }

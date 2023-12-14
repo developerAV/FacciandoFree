@@ -69,10 +69,10 @@ export const getIndexMission = () => {
   const step = `step${window.user.step}`;
 
   const result = mission + level * 3;
-  const index = `mission${result}`;
+  let index = `mission${result}`;
 
   if (window.moreDialogs) {
-    index = `$mission${index}_1`;
+    index = `${index}_1`;
   }
 
   return { index, step };
