@@ -40,6 +40,6 @@ export const loginGoogle = async (escena) => {
 
     return;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };

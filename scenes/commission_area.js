@@ -14,6 +14,9 @@ import { createButtonCircle } from "../scenes/components/common/buttonCircle.js"
 import { navbar } from "./components/common/navbar.js";
 import { shortMap, bigMap } from "./components/common/map.js";
 import { startMission } from "./modeHistory/startMission.js";
+import { getIndexMission } from "./modeHistory/infoMission.js";
+import { mission4Final } from "./modeHistory/missions/mission4.js";
+import { SIZE_AVATAR } from "../utils/constants.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -194,8 +197,8 @@ export class CommissionArea extends Phaser.Scene {
     );
     let paredCentro3ComisionOverlap = crearPlataforma(
       767,
-      670,+
-      "paredCentro3Comision",
+      670,
+      +"paredCentro3Comision",
       plataformasOverlap
     );
 
@@ -266,7 +269,12 @@ export class CommissionArea extends Phaser.Scene {
       "table02",
       plataformasOverlap
     );
-    this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.3);
+    this.avatar = new Avatar(
+      this,
+      window.avatarX,
+      window.avatarY,
+      SIZE_AVATAR.v1_2
+    );
 
     let areaPractica = crearPlataforma(
       994,
@@ -348,7 +356,7 @@ export class CommissionArea extends Phaser.Scene {
       this
     );
 
-    this.physics.add.overlap(
+    /*   this.physics.add.overlap(
       this.avatar.avatarPlayer,
       puertaOverlap1,
       () => {
@@ -361,8 +369,7 @@ export class CommissionArea extends Phaser.Scene {
       },
       null,
       this
-    );
-    this.physics.add.overlap(
+    ); this.physics.add.overlap(
       this.avatar.avatarPlayer,
       puertaOverlap2,
       () => {
@@ -370,10 +377,13 @@ export class CommissionArea extends Phaser.Scene {
       },
       null,
       this
-    );
+    ); */
 
     if (!window.missionActive && window.user.actualMission === 3) {
       startMission(this);
+    }
+    if (window.missionActive && getIndexMission().index === "mission4") {
+      mission4Final(this);
     }
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasMedio);

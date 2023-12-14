@@ -6,15 +6,21 @@ import {
   dimesionesPlataformaIndividual,
   overlapPlataforma,
 } from "./module/platform.js";
-import { SCENE } from "../utils/constants.js";
+import { SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
 import { shortMap, bigMap } from "./components/common/map.js";
+import { startMission } from "./modeHistory/startMission.js";
 export class Hallway300 extends Phaser.Scene {
   constructor() {
     super({ key: "hallway300" });
   }
 
   preload() {
+    this.load.plugin(
+      "rexglowfilterpipelineplugin",
+      "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexglowfilterpipelineplugin.min.js",
+      true
+    );
     this.load.image(
       "backgroundHallway300",
       "assets/images/hallway300/Piso.png"
@@ -111,7 +117,12 @@ export class Hallway300 extends Phaser.Scene {
     crearPlataforma(1036, 545, "paredHor2", plataformas, scale);
     crearPlataforma(791, 543, "escalera1", plataformas, scale);
     this.add.image(1021, 605, "escalera4");
-    this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.3);
+    this.avatar = new Avatar(
+      this,
+      window.avatarX,
+      window.avatarY,
+      SIZE_AVATAR.v1_2
+    );
     this.add.image(796, 668, "escalera2Pared");
     crearPlataforma(789, 771, "paredSur", plataformaSur, scale);
 
@@ -137,7 +148,7 @@ export class Hallway300 extends Phaser.Scene {
       0.5
     );
 
-    createButtonCircle(this, SCENE.cubicle2, cubicle2Floor, 1000, 556);
+    createButtonCircle(this, SCENE.cubicle2, cubicle2Floor, 988, 816);
     createButtonCircle(this, "floorHallway2", floorHallway2Pl, 1105, 375);
     createButtonCircle(this, "auditorium2", auditorium2Pl, 1105, 375);
 
@@ -159,6 +170,14 @@ export class Hallway300 extends Phaser.Scene {
       null,
       this
     );
+
+    if (
+      window.user.actualLevel === 2 &&
+      window.user.actualMission === 1 &&
+      !window.missionActive
+    ) {
+      startMission(this);
+    }
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, plataformaNorte);

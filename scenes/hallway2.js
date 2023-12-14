@@ -3,7 +3,7 @@ import { crearPlataforma } from "./module/platform.js";
 import { navbar } from "./components/common/navbar.js";
 import { dimesionesPlataforma } from "./module/platform.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
-import { SCENE } from "../utils/constants.js";
+import { SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { shortMap, bigMap } from "./components/common/map.js";
 
 export class Hallway2 extends Phaser.Scene {
@@ -60,7 +60,7 @@ export class Hallway2 extends Phaser.Scene {
       paredPlataformaSuperior,
       scale
     );
-    this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.3);
+    this.avatar = new Avatar(this, window.avatarX, window.avatarY, SIZE_AVATAR.v1_2);
     // this.plataforma = new Platform();
 
     crearPlataforma(304, 501, "paredAuditorio", plataformas, scale);

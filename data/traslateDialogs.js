@@ -27,11 +27,13 @@ const data = {
   mission2: {
     es: [
       "0Hola, ¿podría explicarme sobre las asignaturas básicas de la carrera?",
-      "1¡Claro! Necesitas conocer de manera básica los fundamentos de programación, estadística y matemáticas discretas, ¿Te interesan esas asignaturas?",
+      "1¡Claro! Necesitas conocer de manera básica los fundamentos de programación, ",
+      "1estadística y matemáticas discretas, ¿Te interesan esas asignaturas?",
     ],
     en: [
       "0Hello, could you explain to me about the basic subjects of the career?",
-      "1Of course! You need to know the basics of programming, statistics and discrete mathematics, are you interested in those subjects?",
+      "1Of course! You need to know the basics of programming, ",
+      "1statistics and discrete mathematics, are you interested in those subjects?",
     ],
   },
   mission3: {
@@ -53,8 +55,48 @@ const data = {
     ],
   },
   mission4: {
-    es: [],
-    en: [],
+    es: [
+      "1Hola, ¿Ya tienes proyecto de vinculación?",
+      "0no, ni siquiera sé de que se trata la vinculación ",
+      "1La vinculación es un proyecto en grupo, se divide en dos partes, a partir del 5to semestre...",
+      "1se comienza con la primera fase, para más información anda donde la ingeniera Adriana Macias",
+      "1encargada en el área de vinculación.",
+      "0Listo compañero, ¡Muchas gracias",
+    ],
+    en: [
+      "1Hello, do you already have a link project?",
+      "0no, I don't even know what the link is about ",
+      "1The link is a group project, it is divided into two parts, from the 5th semester...",
+      "1you start with the first phase, for more information go where the engineer Adriana Macias",
+      "1in charge in the area of ​​linkage.",
+      "0Ready mate, Thank you very much",
+    ],
+  },
+  mission4_1: {
+    es: [
+      "0Hola, mucho gusto, quisiera saber sobre el proceso de vinculación",
+      "1Hola, el proceso de vinculación es muy sencillo, solo debes tener en cuenta los siguientes requisitos:",
+      "1Necesitas, estar en 5to semestre para poder realizar la primera fase de vinculación",
+      "1debes buscar un grupo de compañeros con quien hacerla",
+      "1no es individual, se te asignara un asesor para que te guie en el proceso...",
+      "1La temática es realizar un E-comerce para una empresa escogida por el grupo",
+      "1si no llegan a un acuerdo se te asignara una empresa para la cual deberan hacer",
+      "1la respectiva investigación y desarrollo del proyecto",
+      "1para la segunda fase de vinculación un artículo científico sobre el ecomerce.",
+      "0Listo, muchas gracias! Me parece muy interesante",
+    ],
+    en: [
+      "0Hello, nice to meet you, I would like to know about the linkage process",
+      "1Hello, the linkage process is very simple, you just have to take into account the following requirements:",
+      "1You need to be in the 5th semester in order to carry out the first phase of linkage",
+      "1you must look for a group of colleagues with whom to do it",
+      "1it is not individual, an advisor will be assigned to guide you in the process...",
+      "1The theme is to make an E-comerce for a company chosen by the group",
+      "1if they do not reach an agreement, a company will be assigned to you for which they must do",
+      "1the respective research and development of the project",
+      "1for the second phase of linkage a scientific article on ecomerce.",
+      "0Ready, thank you very much! I find it very interesting",
+    ],
   },
   mission5: {
     es: [],
@@ -106,28 +148,32 @@ const dataDialogoSegunRespuesta = {
   mission2: {
     si: {
       es: [
-        "¡Muy bien! Estas asignaturas son fundamentales para desarrollar una base sólida en tecnologías de la información.",
-        "Te proporcionarán las herramientas necesarias para abordar problemas complejos en la carrera.",
+        "1¡Muy bien! Estas asignaturas son fundamentales para desarrollar una base sólida",
+        "1en tecnologías de la información. Te proporcionarán las herramientas necesarias...",
+        "1para abordar problemas complejos en la carrera.",
       ],
       en: [
-        "Very well! These subjects are fundamental to develop a solid base in information technologies.",
-        "They will provide you with the necessary tools to address complex problems in the career.",
+        "1Very well! These subjects are fundamental to develop a solid base",
+        "1in information technologies. They will provide you with the necessary tools...",
+        "1to address complex problems in the career.",
       ],
     },
     no: {
       es: [
-        "Entiendo, no todas las asignaturas son del agrado de todos. Sin embargo, estas materias son pilares",
-        "para comprender conceptos clave en la carrera. Te animo a considerar su importancia para tu formación.",
+        "1Entiendo, no todas las asignaturas son del agrado de todos. Sin embargo,",
+        "1estas materias son pilares para comprender conceptos clave en la carrera.",
+        "1 Te animo a considerar su importancia para tu formación.",
       ],
       en: [
-        "I understand, not all subjects are to everyone's liking. However, these subjects are pillars",
-        "to understand key concepts in the career. I encourage you to consider their importance for your training.",
+        "1I understand, not all subjects are to everyone's liking. However,",
+        "1these subjects are pillars to understand key concepts in the career.",
+        "1 I encourage you to consider its importance for your training.",
       ],
     },
   },
 };
 export const getDiaglogMission = (respuesta = "") => {
-  const { index } = getIndexMission();
+  let { index } = getIndexMission();
 
   if (respuesta !== "") {
     if (!dataDialogoSegunRespuesta[index][respuesta]) {
@@ -136,6 +182,8 @@ export const getDiaglogMission = (respuesta = "") => {
 
     return dataDialogoSegunRespuesta[index][respuesta][window.lan];
   }
+
+  console.log(index);
   if (!data[index]) {
     return "No hay mission agregada";
   }

@@ -8,7 +8,7 @@ export const crearCard = (
   conteinerX,
   conteinerY
 ) => {
-  //let colisionTabla = false;
+  let colisionTabla = false;
 
   const card = {};
 

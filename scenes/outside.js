@@ -9,7 +9,7 @@ import { getEmployees } from "../services/employee.js";
 import { createButtonCircle } from "../scenes/components/common/buttonCircle.js";
 import { navbar } from "./components/common/navbar.js";
 import { shortMap, bigMap } from "./components/common/map.js";
-import { SCENE } from "../utils/constants.js";
+import { SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { startMission } from "./modeHistory/startMission.js";
 /* import { crearCard } from "./module/card.js";
 import { createButtonMission } from "./components/common/buttonMission.js";
@@ -65,12 +65,11 @@ export class Outside extends Phaser.Scene {
   }
 
   create() {
-    window.contador = 100;
-    if(window.loadAvatar){
+    // window.contador = 100;
+    if (window.loadAvatar) {
       window.loadAvatar = false;
 
       this.scene.restart();
-     
     }
 
     if (window.avatarX == undefined && window.avatarY == undefined) {
@@ -147,23 +146,26 @@ export class Outside extends Phaser.Scene {
       "limiteSur",
       platform1,
       0.75
-      ).setScale(3.55, 1);
-      
-      dimesionesPlataformaIndividual(limiteSur, 0.9, 15);
-      
-      const tree = crearPlataforma(1287, 705, "tree", platform1, 0.75);
-      dimesionesPlataformaIndividual(tree, 0.2, -5);
-      
- 
-    this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.2);
- 
+    ).setScale(3.55, 1);
+
+    dimesionesPlataformaIndividual(limiteSur, 0.9, 15);
+
+    const tree = crearPlataforma(1287, 705, "tree", platform1, 0.75);
+    dimesionesPlataformaIndividual(tree, 0.2, -5);
+
+    this.avatar = new Avatar(
+      this,
+      window.avatarX,
+      window.avatarY,
+      SIZE_AVATAR.v1_2
+    );
 
     const tree2 = crearPlataforma(1287, 665, "tree2", platform1, 0.75);
     dimesionesPlataformaIndividual(tree2, 0.2, 47);
     createButtonCircle(this, SCENE.floor1, puertaFacci, 930, 920, true);
     createButtonCircle(this, SCENE.second_floor1, puertaFacci2, 600, 800);
     //   createButtonCircle(this, "aula", escritorioD, 800, 500);
-    
+
     this.physics.add.collider(this.avatar.avatarPlayer, platform1);
     // this.physics.add.collider(this.avatar.avatarPlayer, paredNorte);
 
@@ -199,15 +201,13 @@ export class Outside extends Phaser.Scene {
 
     this.cameras.main.zoom = 2;
 
-    
-     
-
     navbar(this, "outside");
 
     // endMission();
     if (window.user.actualMission === 1 && !window.missionActive) {
       startMission(this);
     }
+    
   }
 
   update() {

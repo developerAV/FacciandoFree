@@ -18,24 +18,33 @@ const dialogs = {
   mission2: {
     positionMap: { x: 25, y: 80 },
     positionButton: { x: 600, y: 350 },
+    dialogs: "dialog2",
+    video: "avatarVideo2",
     time: 400,
+    narrador: "mission2",
     video: "avatarVideo2",
     step1: "Acercate al cubiculo de la ing Hiraida",
     step2: "Elige la opcion que creas correcta",
   },
   mission3: {
+    dialogs: "dialog3",
+    video: "avatarVideo1",
+    narrador: "mission3",
     positionMap: { x: 0, y: 0 },
-    positionButton:  { x: 380 , y: 565 },
+    positionButton: { x: 380, y: 565 },
     time: 10,
     step1: "Acercate al area del director de carrera",
   },
   mission4: {
-    positionButton: { x: 973, y: 746 },
+    dialogs: "dialog4",
+    video: "avatarVideo2",
+    narrador: "mission4",
+    positionButton: { x: 546, y: 583 },
     positionMap: { x: 0, y: 0 },
-    time: 1000,
-    step1: "este es el paso 1 de la mision 4",
-    step2: "este es el paso 2 de la mision 4",
-    step3: "este es el paso 3 de la mision 4",
+    time: 120,
+    step1: "Acercate al compañero de clase",
+    step2: "Dirigete a el area de comisiones",
+    step3: "Acercate donde esta la ing Adriana",
     step4: "este es el paso 4 de la mision 4",
   },
 };
@@ -60,6 +69,11 @@ export const getIndexMission = () => {
   const step = `step${window.user.step}`;
 
   const result = mission + level * 3;
-  const index = `mission${result}`;
+  let index = `mission${result}`;
+
+  if (window.moreDialogs) {
+    index = `${index}_1`;
+  }
+
   return { index, step };
 };

@@ -58,6 +58,7 @@ const config = {
     },
   },
 };
+
 window.isMobile = /iPhone|iPad|iPod|Android/i.test(window.navigator.userAgent);
 window.lan = "es";
 window.time = 0;

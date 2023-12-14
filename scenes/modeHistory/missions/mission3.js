@@ -1,6 +1,7 @@
 import { getDiaglogMission } from "../../../data/traslateDialogs.js";
 import { SCENE } from "../../../utils/constants.js";
 import { crearPlataforma } from "../../module/platform.js";
+import { cardEndMission } from "../components/cardEndMission.js";
 import { cardDialog } from "../components/dialogCard.js";
 import { endMission } from "../endMission.js";
 /********************************************************
@@ -24,9 +25,10 @@ export const mission3 = (scene) => {
     await cardDialog(scene, dialogs, 370, 798); //cambiar a pantalla grande
     director.destroy();
 
-    /*    await endMission(SCENE.a, {
-      x: scene.avatar.avatarPlayer.x,
-      y: scene.avatar.avatarPlayer.y,
-    }); */
+    cardEndMission(scene);
+    await endMission(SCENE.floor3, {
+      x: 800,
+      y: 500,
+    });
   });
 };

@@ -49,11 +49,8 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
 
         if (data.index === 0) {
           window.user = await getUserById(window.user._id);
-          if (window.missionActive && window.user.step !== 1) {
-            window.missionActive = false;
-            window.user.step = 1;
-            await putUser(window.user._id, { step: 1 });
-          }
+          window.missionActive = false;
+          window.user.step = 1;
           window.avatarX = undefined;
           window.avatarY = undefined;
           window.time = 0;

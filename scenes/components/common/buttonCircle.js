@@ -117,8 +117,6 @@ const mission = async () => {
 };
 
 const zoomWithNameScene = (nameScene) => {
-  console.log(nameScene);
-  console.log(nameScene === SCENE.floor1);
   if (nameScene === SCENE.floor1) {
     window.zoom = 1.5;
     return;
