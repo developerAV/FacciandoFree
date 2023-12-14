@@ -35,14 +35,14 @@ export const crearVideo = async (mensaje, videoFile, scene) => {
 
     // Crear un objeto de texto encima del video
     texto = scene.add
-      .text(550, 700, "", {
+      .text(600, 720, "", {
         font: `30px Arial`,
         fill: "#000",
         wordWrap: {
-          width: 1200, // Ajusta este valor para definir el límite de ancho
+          width: 900, // Ajusta este valor para definir el límite de ancho
         },
       })
-      .setScale(0.75);
+      .setScale(0.6);
     texto.setOrigin(0, 1);
     let efectoEsc = scene.time.addEvent({
       delay: 50, // Ajusta el valor para controlar la velocidad de escritura

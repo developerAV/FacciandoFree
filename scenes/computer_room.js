@@ -3,6 +3,7 @@ import { crearPlataforma } from "./module/platform.js";
 import { navbar } from "./components/common/navbar.js";
 
 import { shortMap, bigMap } from "./components/common/map.js";
+import { SIZE_AVATAR } from "../utils/constants.js";
 
 export class ComputerRoom extends Phaser.Scene {
   constructor() {
@@ -37,7 +38,7 @@ export class ComputerRoom extends Phaser.Scene {
 
     crearPlataforma(800, 110, "paredAula", paredPlataforma, scale);
     crearPlataforma(800, 130, "pizarraAula", plataformas, scale);
-    this.avatar = new Avatar(this, 800, 1000, 2);
+    this.avatar = new Avatar(this, 800, 1000, SIZE_AVATAR.v1_5);
 
     // crearPlataforma(800, 880, "mesaAula", plataformas);
     crearPlataforma(455, 613, "paredIzq", plataformas, scale);

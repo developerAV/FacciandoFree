@@ -27,7 +27,7 @@ export const startMission = (scene) => {
       scene.iconMap.destroy();
       startN1.destroy();
       await crearVideo(
-        traslate("narradorVideo"),
+        traslate(narradorVideo),
         getInfoMission(PROPERTY.video),
         scene
       );
@@ -41,7 +41,6 @@ export const startMission = (scene) => {
         return;
       }
 
-      console.log("indexMission", index);
       MISSIONS[index](scene);
       return;
     },

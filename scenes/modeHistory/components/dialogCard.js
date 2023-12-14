@@ -55,13 +55,13 @@ export const cardDialog = async (scene, dialogs, x, y) => {
             x: 10,
             y: 40,
           },
+          
         })
         .setScale(0.5);
       box.add(message);
       box.setDepth(20);
 
       await escribirTexto(message, dialog); // Mostrar el mensaje
-      console.log(time);
       // Eliminar el contenedor después de un tiempo
       await scene.time.delayedCall(time, async () => {
         box.destroy();
