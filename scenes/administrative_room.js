@@ -7,15 +7,7 @@ import {
 import { navbar } from "./components/common/navbar.js";
 import { shortMap, bigMap } from "./components/common/map.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
-import { SCENE } from "../utils/constants.js";
-import { getDiaglogMission } from "../data/traslateDialogs.js";
-import { cardDialog } from "./modeHistory/components/dialogCard.js";
-import { crearCard } from "./module/card.js";
-import { getUserById, putUser } from "../services/user.js";
-import { endMission } from "./modeHistory/endMission.js";
-import { startMission } from "./modeHistory/startMission.js";
-import { handleSteps } from "./modeHistory/handleSteps.js";
-import { alertCard } from "./modeHistory/components/alertCard.js";
+import { SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { mission1 } from "./modeHistory/missions/mission1.js";
 
 export class AdministrativeRoom extends Phaser.Scene {
@@ -65,7 +57,7 @@ export class AdministrativeRoom extends Phaser.Scene {
       this,
       window.avatarX ?? window.user.position.x,
       window.avatarY ?? window.user.position.y,
-      1.3
+      SIZE_AVATAR.v1_25
     );
     crearPlataforma(817, 500, "muro", plataformas);
     crearPlataforma(785, 782, "paredMedioRigth2", plataformas);
@@ -108,6 +100,7 @@ export class AdministrativeRoom extends Phaser.Scene {
     dimesionesPlataforma(paredPlataforma, 1, -42);
 
     createButtonCircle(this, SCENE.floor1, puerta, 839, 786);
+    
     this.physics.add.overlap(
       this.avatar.avatarPlayer,
       ptfmOverlap,
@@ -136,7 +129,7 @@ export class AdministrativeRoom extends Phaser.Scene {
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
-    this.box = navbar(this, SCENE.admin_room);
+    navbar(this, SCENE.admin_room);
   }
 
   update() {

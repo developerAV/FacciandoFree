@@ -4,6 +4,7 @@ import { cardDialog } from "../components/dialogCard.js";
 import { alertCard } from "../components/alertCard.js";
 import { endMission } from "../endMission.js";
 import { SCENE } from "../../../utils/constants.js";
+import { cardEndMission } from "../components/cardEndMission.js";
 
 /********************************************************
  ********************* 3ER PISO *************************
@@ -36,7 +37,9 @@ export const mission4Final = (scene) => {
     await cardDialog(scene, dialogs, 935, 244);
     adriana.destroy();
     window.moreDialogs = false;
-    endMission(SCENE.commission_area, {
+    cardEndMission(scene);
+
+    await endMission(SCENE.commission_area, {
       x: scene.avatar.avatarPlayer.x,
       y: scene.avatar.avatarPlayer.y,
     });
