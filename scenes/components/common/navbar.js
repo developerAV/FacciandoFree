@@ -23,7 +23,7 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
   boxBg.fillRoundedRect(0, 0, 1700, 100, 0);
   box.add(boxBg);
 
-  const home = scene.add.image(40, 47, "botonNav").setScale(0.5);
+  const home = scene.add.image(40, 47, "home").setScale(0.5);
   home.setInteractive({ useHandCursor: true });
   home.on("pointerdown", async function () {
     home.disableInteractive();

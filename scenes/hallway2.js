@@ -1,10 +1,11 @@
 import { Avatar } from "./player.js";
 import { crearPlataforma } from "./module/platform.js";
 import { navbar } from "./components/common/navbar.js";
-import { dimesionesPlataforma } from "./module/platform.js";
+import { dimesionesPlataforma, dimesionesPlataformaIndividual } from "./module/platform.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
 import { SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { shortMap, bigMap } from "./components/common/map.js";
+
 
 export class Hallway2 extends Phaser.Scene {
   constructor() {
@@ -68,24 +69,29 @@ export class Hallway2 extends Phaser.Scene {
     crearPlataforma(1335, 348, "paredEste", plataformas, scale);
     crearPlataforma(1072, 715, "paredInferiorHallway2", plataformas, scale);
     crearPlataforma(1276, 564, "paredInferiorEste", plataformas, scale);
-   let lineRed = crearPlataforma(1217, 490, "redV", plataformaOverlap, 0.5);
+   let lineRed = crearPlataforma(1217, 490, "redV", plataformas, 1);
     dimesionesPlataforma(paredPlataformaSuperior, 0.6, 75);
 
-    this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
+
+
+    let outside = crearPlataforma(600, 835, "redH", plataformas, 1);
+    // dimesionesPlataformaIndividual(outside, 0.1, 1);
+
+
+
+      
+    createButtonCircle(this, "cubicle2", lineRed, 509, 773);
+      
+   
+    
+    createButtonCircle(this, "outside", outside, 515, 568);
+
+     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasillas);
     this.physics.add.collider(
       this.avatar.avatarPlayer,
       paredPlataformaSuperior
     );
-
-
-
-    this.physics.add.overlap(this.avatar.avatarPlayer, lineRed, () => {
-
-      createButtonCircle(this, "floorHallway2", lineRed, 1105, 390);
-      
-    }, null, this);
-    
     this.cameras.main.startFollow(this.avatar.avatarPlayer);
 
     this.cameras.main.zoom = 2;
