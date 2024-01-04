@@ -172,6 +172,7 @@ const mainHallway1 = (scene) => {
   scene.load.image("sillaBasura", `${path}sillaBasura.png`);
   scene.load.image("escaleraAbajo1", `${path}escaleraAbajo.png`);
   scene.load.image("escaleraArriba1", `${path}escaleraArriba.png`);
+  scene.load.image("floor1Map", `assets/images/maps/floor1Map.png`);
 };
 const outside = (scene) => {
   scene.load.image("asientoFacci", "assets/images/outside/asientofacci.png");
