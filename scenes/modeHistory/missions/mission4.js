@@ -34,7 +34,6 @@ export const mission4Final = (scene) => {
   scene.physics.add.overlap(scene.avatar.avatarPlayer, redZone, async () => {
     redZone.destroy();
     const dialogs = getDiaglogMission(); //obtener los dialogos de la mision
-
     await cardDialog(scene, dialogs, 935, 244);
     adriana.destroy();
     window.moreDialogs = false;

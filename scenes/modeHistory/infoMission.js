@@ -47,6 +47,17 @@ const dialogs = {
     step3: "Acercate donde esta la ing Adriana",
     step4: "este es el paso 4 de la mision 4",
   },
+  mission5: {
+    dialogs: "dialog5",
+    video: "avatarVideo1",
+    narrador: "mission5",
+    positionMap: { x: 0, y: 0 },
+    positionButton: { x: 1200 , y: 800},
+    time: 60,
+    step1: "Acercate al profesor",
+    step2: "Ve a la sala de electonica",
+    step3: "Pidele ayuda al profesor",
+  },
 };
 
 export const getInfoMission = (property) => {
