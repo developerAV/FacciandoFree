@@ -216,7 +216,6 @@ export class AvatarS extends Phaser.Scene {
           this.avatar2,
           this.avatar1
         );
-        // console.log("A1", this.avatar1.x, "A2", this.avatar2.x, "A3",this.avatar3.x);
         // this.updateNameAvatar();
         this.updateNameAvatar();
       }
@@ -274,14 +273,12 @@ export class AvatarS extends Phaser.Scene {
 
     this.buttonSave.setInteractive();
     this.buttonSave.on("pointerdown", async () => {
-      
-
       window.avatarSprite = window.idAvatar;
 
       window.user = await putUser(window.user._id, {
         sprite: window.avatarSprite,
       });
-  
+
       window.loadOut = false;
       // window.location.reload()
       // this.game.restart();

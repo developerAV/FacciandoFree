@@ -6,7 +6,7 @@ import {
   overlapPlataforma,
 } from "./module/platform.js";
 import { navbar } from "./components/common/navbar.js";
-import { SCENE } from "../utils/constants.js";
+import { SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
 import { shortMap, bigMap } from "./components/common/map.js";
 let activeVideo = false;
@@ -45,7 +45,12 @@ export class FloorHallway2 extends Phaser.Scene {
 
     crearPlataforma(1010, 750, "mesaVertical", plataformas, 0.5);
     crearPlataforma(1438, 731, "mesaMedio", plataformas);
-    this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.3);
+    this.avatar = new Avatar(
+      this,
+      window.avatarX,
+      window.avatarY,
+      SIZE_AVATAR.v1_2
+    );
     crearPlataforma(1446, 665, "muroFloor2", plataformas);
 
     crearPlataforma(554, 713, "cursos", plataformas);
@@ -118,7 +123,7 @@ export class FloorHallway2 extends Phaser.Scene {
       this
     );
 
-    createButtonCircle(this, SCENE.floor1, escarleraAbajo, 603, 149);
+    createButtonCircle(this, SCENE.cubicle2, escarleraAbajo, 507, 925);
     createButtonCircle(this, SCENE.floor3, escaleraArriba, 871, 545);
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);

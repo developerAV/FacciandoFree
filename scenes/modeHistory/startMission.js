@@ -4,7 +4,7 @@ import { dimesionesPlataformaIndividual } from "../module/platform.js";
 import { crearVideo } from "../module/videoInfo.js";
 import { traslate } from "../../data/dialogues.js";
 import { infoMission } from "./components/infoMission.js";
-import { getInfoMission } from "./infoMission.js";
+import { getIndexMission, getInfoMission } from "./infoMission.js";
 import { PROPERTY } from "../../utils/constants.js";
 import { MISSIONS } from "./missions/index.js";
 
@@ -27,7 +27,7 @@ export const startMission = (scene) => {
       scene.iconMap.destroy();
       startN1.destroy();
       await crearVideo(
-        traslate("narradorVideo"),
+        traslate(narradorVideo),
         getInfoMission(PROPERTY.video),
         scene
       );
@@ -36,10 +36,12 @@ export const startMission = (scene) => {
       infoMission(scene);
       alertCard(scene);
 
-      if (window.user.actualMission === 1) {
+      const { index } = getIndexMission();
+      if (index === "mission1") {
         return;
       }
-      MISSIONS["mission" + window.user.actualMission](scene);
+
+      MISSIONS[index](scene);
       return;
     },
     null,

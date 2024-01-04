@@ -34,10 +34,26 @@ const traslateIntro = {
     es: "El modo recorrer, permite al jugador recorrer la facultad, conociendo su historia y su infraestructura y para poder hacerlo tienes un mapa en la superior derecha de la pantalla.",
     en: "The tour mode allows the player to tour the faculty, knowing its history and infrastructure and to be able to do it you have a map in the upper right of the screen.",
   },
+  floorHallway2: {
+    es: "Pasillo 2",
+    en: "Hallway 2",
+  },
   // intro
   logout: {
     es: "Salir",
     en: "Logout",
+  },
+  hallway300: {
+    es: "Pasillo 300",
+    en: "Hallway 300",
+  },
+  commission_area: {
+    es: "Área de comisiones",
+    en: "Commission area",
+  },
+  administrativeRoom: {
+    es: "Secretaría",
+    en: "Secretary",
   },
   start: {
     es: "INICIAR",
@@ -74,6 +90,10 @@ const traslateIntro = {
   yes: {
     es: "Sí",
     en: "Yes",
+  },
+  missionCompleted: {
+    es: "Misión completada",
+    en: "Mission completed",
   },
   // news
   news: {
@@ -185,9 +205,21 @@ const traslateIntro = {
     es: "Bienvenido a la facultad de ingeniería en TI, en esta misión tendrás que reconocer las ubicaciones de secretaría y los cubículos de los docentes de la planta baja.",
     en: "Welcome to the faculty of engineering in IT, in this mission you will have to recognize the locations of the secretary and the cubicles of the teachers on the ground floor.",
   },
+  mission2: {
+    es: "En esta mision tienes que encontrar el cubiculo de la ing. Hiraida y para que te informe un poco de las materias básicas.",
+    en: "In this mission you have to find the cubicle of the ing. Hiraida and for you to inform a little about the basic subjects.",
+  },
+  mission3: {
+    es: "Ya tienes todo lo necesario para poder matricularte en la carrera, ahora tienes que darselo al director de carrera y presentar todo los documentos para la matriculación.",
+    en: "You already have everything you need to be able to enroll in the career, now you have to give it to the career director and present all the documents for enrollment.",
+  },
+  mission4: {
+    es: "Estas en un nivel superior, pero, aun no has hecho algo importante para medir tus conocimientos ademas de las materias que estas cursando, parece que ese compañero tiene algo que decirte.",
+    en: "You are at a higher level, but you have not yet done something important to measure your knowledge in addition to the subjects you are studying, it seems that that partner has something to tell you.",
+  },
   //dialogos de los videos de las misiones
   dialog1: {
-    es: "Hola, soy el avatar de la facultad de ingeniería en TI, y te voy a guiar en esta aventura.",
+    es: "Hola, soy el avatar de la facultad de ingeniería en TI, y te voy a guiar en esta aventura, el icono ",
     en: "Hello, I am the avatar of the faculty of engineering in IT, and I will guide you on this adventure.",
   },
   es: "Conocer la entrada principal de la facultad, secretaría y los cubículos de los docentes de la planta baja.",

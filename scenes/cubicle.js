@@ -10,7 +10,7 @@ import { crearCard } from "./module/card.js";
 import { getEmployees } from "../services/employee.js";
 import { createButtonCircle } from "../scenes/components/common/buttonCircle.js";
 import { navbar } from "./components/common/navbar.js";
-import { SCENE } from "../utils/constants.js";
+import { SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { alertCard } from "./modeHistory/components/alertCard.js";
 import { shortMap, bigMap } from "./components/common/map.js";
 import { cardDialog } from "./modeHistory/components/dialogCard.js";
@@ -141,7 +141,12 @@ export class Cubicle extends Phaser.Scene {
 
     let silla2 = crearPlataforma(530, 330, "sillaB6", sillasB);
 
-    this.avatar = new Avatar(this, window.avatarX, window.avatarY, 1.5);
+    this.avatar = new Avatar(
+      this,
+      window.avatarX,
+      window.avatarY,
+      SIZE_AVATAR.v1_2
+    );
     let escritorioD = crearPlataforma(1005, 611, "escritoriosD", plataformas);
     crearPlataforma(690, 947, "paredPuertaSur", plataformas);
     crearPlataforma(761, 796, "paredPuertaDer", plataformas);
@@ -241,6 +246,7 @@ export class Cubicle extends Phaser.Scene {
     navbar(this, "cubicle");
     shortMap(this, "mapaOutside");
     bigMap(this);
+    
   }
 
   update() {

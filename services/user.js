@@ -74,7 +74,6 @@ export const putUser = async (id, data) => {
       body: JSON.stringify(data),
     });
     const dataUser = await newUser.json();
-    console.log(dataUser);
     return dataUser;
   } catch (error) {
     console.error(error.message);

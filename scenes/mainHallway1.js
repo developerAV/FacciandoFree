@@ -8,8 +8,9 @@ import {
 import { navbar } from "./components/common/navbar.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
 import { shortMap, bigMap } from "./components/common/map.js";
-import { SCENE } from "../utils/constants.js";
+import { COLORS, COLORS_HEX, SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { alertCard } from "./modeHistory/components/alertCard.js";
+import { traslate } from "../data/dialogues.js";
 
 export class mainHallway1 extends Phaser.Scene {
   constructor() {
@@ -69,7 +70,12 @@ export class mainHallway1 extends Phaser.Scene {
       ptfmOverlap,
       1.61
     );
-    this.avatar = new Avatar(this, window.avatarX, window.avatarY, 2);
+    this.avatar = new Avatar(
+      this,
+      window.avatarX,
+      window.avatarY,
+      SIZE_AVATAR.v1_4
+    );
     crearPlataforma(795, 900, "paredBaja1", platform1, 1.61);
     crearPlataforma(1064, 907, "paredBaja2", platform1, 1.61);
 
@@ -85,7 +91,7 @@ export class mainHallway1 extends Phaser.Scene {
     this.cameras.main.zoom = 1.5;
 
     createButtonCircle(this, SCENE.cubicle, escaleraAbajo, 723, 876);
-    createButtonCircle(this, SCENE.cubicle2, escaleraArriba, 1103, 436);
+    createButtonCircle(this, SCENE.cubicle2, escaleraArriba, 701, 806);
 
     this.physics.add.overlap(
       this.avatar.avatarPlayer,
@@ -102,9 +108,27 @@ export class mainHallway1 extends Phaser.Scene {
       alertCard(this);
     }
 
-    const botonComission = crearPlataforma(1170, 790, "boton", boton);
-    const botonAdministrative = crearPlataforma(690, 790, "boton", boton);
-    const botonOutside = crearPlataforma(930, 1010, "boton", boton);
+    const botonAdministrative = crearPlataforma(775, 790, "redV", boton);
+    const botonComission = crearPlataforma(1080, 790, "redV", boton);
+    const botonOutside = crearPlataforma(930, 990, "redH", boton);
+
+    //añadir un texto fijo
+    this.add.text(1100, 725, traslate(SCENE.commission_area), {
+      fontFamily: "Arial",
+      fontSize: 50,
+      color: COLORS_HEX.white,
+      textAlign: "center",
+
+      wordWrap: { width: 100 },
+    });
+    this.add.text(450, 750, traslate(SCENE.admin_room), {
+      textAlign: "center",
+      fontFamily: "Arial",
+      fontSize: 50,
+      color: COLORS_HEX.white,
+
+      wordWrap: { width: 100 },
+    });
 
     createButtonCircle(this, SCENE.commission_area, botonComission, 1183, 560);
     createButtonCircle(this, SCENE.admin_room, botonAdministrative, 1000, 486);

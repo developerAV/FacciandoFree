@@ -29,6 +29,8 @@ const preloadIntro = (scene) => {
 
   scene.load.image("arrowRight", "assets/images/intro/arrow_right.png");
   scene.load.image("lock", "assets/images/intro/lock.png");
+  scene.load.image("modox", "assets/images/intro/modox.png");
+  scene.load.image("insigniaOro", "assets/images/intro/insigniaOro.png");
   scene.load.image("ava", "assets/images/player/ava.png");
   scene.load.image("ava2", "assets/images/player/ava2.png");
 
@@ -98,6 +100,7 @@ const cubicle2 = (scene) => {};
 const botonesNavbar = (scene) => {
   scene.load.image("botonNav", "assets/images/navbar/boton.png");
   scene.load.image("botonInfo", "assets/images/navbar/botonInfo.png");
+  scene.load.image("home", "assets/images/navbar/botonMenu.png");
 };
 const floorHallway2 = (scene) => {
   const path = "assets/images/2FloorHallway/";
