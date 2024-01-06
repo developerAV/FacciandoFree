@@ -52,11 +52,13 @@ const dialogs = {
     video: "avatarVideo1",
     narrador: "mission5",
     positionMap: { x: 0, y: 0 },
-    positionButton: { x: 1200 , y: 800},
+    positionButton: { x: 1200, y: 800 },
     time: 60,
     step1: "Acercate al profesor",
     step2: "Ve a la sala de electonica",
     step3: "Pidele ayuda al profesor",
+    step4: "Busca el componente que te pide el profesor",
+    step5: "Entregaselo al profesor",
   },
 };
 
@@ -83,7 +85,7 @@ export const getIndexMission = () => {
   let index = `mission${result}`;
 
   if (window.moreDialogs) {
-    index = `${index}_1`;
+    index = `${index}_${window.dialogNumber}`;
   }
 
   return { index, step };

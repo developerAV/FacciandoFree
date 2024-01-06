@@ -173,6 +173,7 @@ export class Cubicle2 extends Phaser.Scene {
 
     let piso1 = crearPlataforma(750, 830, "redV", plataformas, 0.5);
     let piso2 = crearPlataforma(480, 930, "redV", plataformas, 0.5);
+    let piso1_1 = crearPlataforma(480, 790, "redV", plataformas, 0.5);
 
     this.avatar = new Avatar(
       this,
@@ -197,6 +198,7 @@ export class Cubicle2 extends Phaser.Scene {
 
     dimesionesPlataformaIndividual(piso1, 0.1, 1);
     dimesionesPlataformaIndividual(piso2, 0.1, 1);
+    dimesionesPlataformaIndividual(piso1_1, 0.1, 1);
 
     this.physics.add.overlap(
       this.avatar.avatarPlayer,
@@ -209,8 +211,10 @@ export class Cubicle2 extends Phaser.Scene {
       this
     );
 
-    createButtonCircle(this, SCENE.floor1, piso1, 580, 160);
+    createButtonCircle(this, SCENE.floor1, piso1, 500, 160);
     createButtonCircle(this, SCENE.floor2, piso2, 1097, 423);
+    createButtonCircle(this, SCENE.second_floor1, piso1_1, 1194, 490);
+
 
     //   this.physics.add.overlap(this.avatar.avatarPlayer, blur, () => {
 

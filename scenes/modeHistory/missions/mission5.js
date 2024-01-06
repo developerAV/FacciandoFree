@@ -17,8 +17,31 @@ export const mission5 = (scene) => {
   scene.physics.add.overlap(scene.avatar.avatarPlayer, redZone, async () => {
     redZone.destroy();
     const dialogs = getDiaglogMission(); //obtener los dialogos de la mision
-
     await cardDialog(scene, dialogs, 1005, 642);//aca llama a la alerta de dialogo
     compain.destroy();
+  });
+};
+
+export const mission5Medio = async (scene) => {
+  /*   const dialogs = getDiaglogMission(); //obtener los dialogos de la mision
+    cardEndMission(scene, dialogs, 1005, 642);
+    endMission(scene, SCENE.MISSION_5);
+   */
+  let plataformas = scene.physics.add.staticGroup();
+  window.moreDialogs = true;
+  window.dialogNumber = 1;
+  const machuca = scene.add.image(1116, 711, "dude").setScale(1.3);
+  const redZone = crearPlataforma(1100, 566, "boton", plataformas);
+  scene.physics.add.overlap(scene.avatar.avatarPlayer, redZone, async () => {
+    redZone.destroy();
+    const dialogs = getDiaglogMission(); //obtener los dialogos de la mision
+    await cardDialog(scene, dialogs, 935, 244);
+    machuca.destroy();
+    window.moreDialogs = false;
+    cardEndMission(scene);
+  /*   await endMission(SCENE.commission_area, {
+      x: scene.avatar.avatarPlayer.x,
+      y: scene.avatar.avatarPlayer.y,
+    }); */
   });
 };

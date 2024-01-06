@@ -52,6 +52,8 @@ export class Hallway2 extends Phaser.Scene {
     let plataformasillas = this.physics.add.staticGroup();
     let paredPlataformaSuperior = this.physics.add.staticGroup();
     let plataformaOverlap = this.physics.add.staticGroup();
+    let boton = this.physics.add.staticGroup();
+
 
     crearPlataforma(
       835,
@@ -68,7 +70,9 @@ export class Hallway2 extends Phaser.Scene {
     crearPlataforma(1335, 348, "paredEste", plataformas, scale);
     crearPlataforma(1072, 715, "paredInferiorHallway2", plataformas, scale);
     crearPlataforma(1276, 564, "paredInferiorEste", plataformas, scale);
-   let lineRed = crearPlataforma(1217, 490, "redV", plataformaOverlap, 0.5);
+    const lineRed = crearPlataforma(1217, 490, "redV", boton, 0.5)
+    const lineRed2 = crearPlataforma(886, 436, "redH", boton, 0.5);
+
     dimesionesPlataforma(paredPlataformaSuperior, 0.6, 75);
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
@@ -80,18 +84,18 @@ export class Hallway2 extends Phaser.Scene {
 
 
 
-    this.physics.add.overlap(this.avatar.avatarPlayer, lineRed, () => {
+    createButtonCircle(this, SCENE.electronic_room, lineRed2, 1465, 553);
+    createButtonCircle(this, SCENE.floor2, lineRed, 1465, 553);
 
-      createButtonCircle(this, "floorHallway2", lineRed, 1105, 390);
-      
-    }, null, this);
-    
+
+
     this.cameras.main.startFollow(this.avatar.avatarPlayer);
 
     this.cameras.main.zoom = 2;
     shortMap(this, "mapaOutside");
     bigMap(this);
 
+    this.physics.add.collider(this.avatar.avatarPlayer, boton);
     navbar(this, "hallway");
   }
 
