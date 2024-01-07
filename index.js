@@ -1,3 +1,4 @@
+import { Uleam } from "./scenes/uleam.js";
 import { Loading } from "./scenes/loading.js";
 import { Login } from "./scenes/login.js";
 import { Intro } from "./scenes/intro.js";
@@ -25,6 +26,7 @@ const config = {
   backgroundColor: "#000",
   // transparent: true, // Comentado porque no se usa
   scene: [
+    Uleam,
     Loading,
     Outside,
     Login,

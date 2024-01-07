@@ -393,7 +393,7 @@ export class CommissionArea extends Phaser.Scene {
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasNorte);
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
 
-    shortMap(this, "mapaOutside");
+    shortMap(this, "commisionMap");
     bigMap(this);
 
     navbar(this, "Pasillo Comisiones");

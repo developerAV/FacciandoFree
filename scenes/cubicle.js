@@ -244,7 +244,7 @@ export class Cubicle extends Phaser.Scene {
     this.physics.add.collider(this.avatar.avatarPlayer, paredNorte);
 
     navbar(this, "cubicle");
-    shortMap(this, "mapaOutside");
+    shortMap(this, "cubicleMap");
     bigMap(this);
     
   }
