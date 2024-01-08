@@ -137,7 +137,7 @@ export class mainHallway1 extends Phaser.Scene {
     this.physics.add.collider(this.avatar.avatarPlayer, platform1);
     this.physics.add.collider(this.avatar.avatarPlayer, platform2);
 
-    shortMap(this, "mapa");
+    shortMap(this, "floor1Map");
     bigMap(this);
     this.physics.add.collider(this.avatar.avatarPlayer, boton);
 

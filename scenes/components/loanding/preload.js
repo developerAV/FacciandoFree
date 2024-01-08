@@ -131,6 +131,7 @@ const eletronicRoom = (scene) => {
 const botonesNavbar = (scene) => {
   scene.load.image("botonNav", "assets/images/navbar/boton.png");
   scene.load.image("botonInfo", "assets/images/navbar/botonInfo.png");
+  scene.load.image("home", "assets/images/navbar/botonMenu.png");
 };
 const floorHallway2 = (scene) => {
   const path = "assets/images/2FloorHallway/";
@@ -205,6 +206,10 @@ const mainHallway1 = (scene) => {
   scene.load.image("sillaBasura", `${path}sillaBasura.png`);
   scene.load.image("escaleraAbajo1", `${path}escaleraAbajo.png`);
   scene.load.image("escaleraArriba1", `${path}escaleraArriba.png`);
+  scene.load.image("floor1Map", `assets/images/maps/floor1Map.png`);
+  scene.load.image("cubicleMap", `assets/images/maps/cubicleMap.png`);
+  scene.load.image("secreMap", `assets/images/maps/secreMap.png`);
+  scene.load.image("commisionMap", `assets/images/maps/commisionMap.png`);
 };
 const outside = (scene) => {
   scene.load.image("asientoFacci", "assets/images/outside/asientofacci.png");

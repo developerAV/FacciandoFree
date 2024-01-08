@@ -198,7 +198,7 @@ export class CommissionArea extends Phaser.Scene {
     let paredCentro3ComisionOverlap = crearPlataforma(
       767,
       670,
-      +"paredCentro3Comision",
+      "paredCentro3Comision",
       plataformasOverlap
     );
 
@@ -263,6 +263,9 @@ export class CommissionArea extends Phaser.Scene {
       plataformasOverlap
     );
     let mesaT01 = crearPlataforma(900, 850, "table02", plataformasMedio);
+    let mesaT02 = crearPlataforma(370, 694, "table02", plataformasMedio);
+    //mesaT02 girar horizontal
+    mesaT02.flipX = true;
     let mesaT01Overlap = crearPlataforma(
       900,
       850,
@@ -390,7 +393,7 @@ export class CommissionArea extends Phaser.Scene {
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasNorte);
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
 
-    shortMap(this, "mapaOutside");
+    shortMap(this, "commisionMap");
     bigMap(this);
 
     navbar(this, "Pasillo Comisiones");

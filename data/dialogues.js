@@ -34,6 +34,14 @@ const traslateIntro = {
     es: "El modo recorrer, permite al jugador recorrer la facultad, conociendo su historia y su infraestructura y para poder hacerlo tienes un mapa en la superior derecha de la pantalla.",
     en: "The tour mode allows the player to tour the faculty, knowing its history and infrastructure and to be able to do it you have a map in the upper right of the screen.",
   },
+  infoMission: {
+    es: "Las misiones inician al tocar el icono de facciando, se pueden buscar en el mapa, y al tocarlas se activan.",
+    en: "The missions start when you touch the facciando icon, they can be searched on the map, and when you touch them they are activated.",
+  },
+  infoMission2: {
+    es: "Las misiones tienen un tiempo límite para ser completadas, y si se completa la misión se obtiene una insignia.",
+    en: "The missions have a time limit to be completed, and if the mission is completed, a badge is obtained.",
+  },
   floorHallway2: {
     es: "Pasillo 2",
     en: "Hallway 2",
