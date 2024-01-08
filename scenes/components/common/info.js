@@ -69,8 +69,16 @@ export const info = async (scene) => {
   });
   buttonFrameMission.setInteractive().setScrollFactor(0);
   buttonFrameMission.on("pointerdown", function () {
-    infoConteiner.setVisible(false);
-    // scene.showVideo();
+    infoConteiner.destroy();
+    async function asyncCall() {
+      try {
+        await crearVideo(traslate("infoMission"), "avatarVideo1", scene);
+        await crearVideo(traslate("infoMission2"), "avatarVideo2", scene);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+    asyncCall();
   });
   exitFrame.setInteractive().setScrollFactor(0);
   exitFrame.on("pointerdown", function () {

@@ -57,7 +57,7 @@ export class AdministrativeRoom extends Phaser.Scene {
       this,
       window.avatarX ?? window.user.position.x,
       window.avatarY ?? window.user.position.y,
-      SIZE_AVATAR.v1_25
+      SIZE_AVATAR.v1_2
     );
     crearPlataforma(817, 500, "muro", plataformas);
     crearPlataforma(785, 782, "paredMedioRigth2", plataformas);
@@ -119,7 +119,7 @@ export class AdministrativeRoom extends Phaser.Scene {
     this.cameras.main.startFollow(this.avatar.avatarPlayer); // Configurar seguimiento de cámara al personaje
     this.cameras.main.zoom = 2;
 
-    shortMap(this, "mapaOutside");
+    shortMap(this, "secreMap");
     bigMap(this);
 
     //mision 1
