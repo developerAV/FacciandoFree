@@ -9,11 +9,25 @@ import { navbar } from "./components/common/navbar.js";
 import { SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
 import { shortMap, bigMap } from "./components/common/map.js";
+import { startMission } from "./modeHistory/startMission.js";
+import { alertCard } from "./modeHistory/components/alertCard.js";
 let activeVideo = false;
 
 export class FloorHallway2 extends Phaser.Scene {
   constructor() {
     super({ key: "floorHallway2" });
+  }
+  preload() {
+    this.load.plugin(
+      "rexglowfilterpipelineplugin",
+      "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexglowfilterpipelineplugin.min.js",
+      true
+    );
+    this.load.scenePlugin({
+      key: "rexuiplugin",
+      url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
+      sceneKey: "rexUI",
+    });
   }
 
   create() {
@@ -125,6 +139,18 @@ export class FloorHallway2 extends Phaser.Scene {
 
     createButtonCircle(this, SCENE.cubicle2, escarleraAbajo, 507, 925);
     createButtonCircle(this, SCENE.floor3, escaleraArriba, 871, 545);
+
+    if (window.missionActive) {
+      alertCard(this);
+    }
+
+    if (
+      !window.missionActive &&
+      window.user.actualMission === 2 &&
+      window.user.actualLevel === 2
+    ) {
+      startMission(this);
+    }
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredesSupeiores);

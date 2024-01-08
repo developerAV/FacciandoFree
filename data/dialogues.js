@@ -225,6 +225,10 @@ const traslateIntro = {
     es: "Estas en un nivel superior, pero, aun no has hecho algo importante para medir tus conocimientos ademas de las materias que estas cursando, parece que ese compañero tiene algo que decirte.",
     en: "You are at a higher level, but you have not yet done something important to measure your knowledge in addition to the subjects you are studying, it seems that that partner has something to tell you.",
   },
+  mission5: {
+    es: "En esta misión tendras que hacer un proyecto de IoT para una materia, y solicitar ayuda para poder realizarlo.",
+    en: "In this mission you will have to make an IoT project for a subject, and ask for help to be able to do it.",
+  },
   //dialogos de los videos de las misiones
   dialog1: {
     es: "Hola, soy el avatar de la facultad de ingeniería en TI, y te voy a guiar en esta aventura, el icono ",

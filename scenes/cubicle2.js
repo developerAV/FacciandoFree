@@ -174,6 +174,7 @@ export class Cubicle2 extends Phaser.Scene {
     let piso1 = crearPlataforma(750, 830, "redV", plataformas, 0.5);
     let piso3 = crearPlataforma(940, 825, "redV", plataformas, 0.5);
     let piso2 = crearPlataforma(480, 930, "redV", plataformas, 0.5);
+    let piso1_1 = crearPlataforma(480, 790, "redV", plataformas, 0.5);
     let piso1b = crearPlataforma(470, 800, "redV", plataformas, 1);
 
     this.avatar = new Avatar(
@@ -199,6 +200,7 @@ export class Cubicle2 extends Phaser.Scene {
 
     dimesionesPlataformaIndividual(piso1, 0.1, 1);
     dimesionesPlataformaIndividual(piso2, 0.1, 1);
+    dimesionesPlataformaIndividual(piso1_1, 0.1, 1);
     dimesionesPlataformaIndividual(piso3, 0.1, 1);
     // dimesionesPlataformaIndividual(piso1b, 0.1, 1);
 
@@ -213,8 +215,10 @@ export class Cubicle2 extends Phaser.Scene {
       this
     );
 
-    createButtonCircle(this, SCENE.floor1, piso1, 580, 160);
+    createButtonCircle(this, SCENE.floor1, piso1, 500, 160);
     createButtonCircle(this, SCENE.floor2, piso2, 1097, 423);
+    createButtonCircle(this, SCENE.second_floor1, piso1_1, 1194, 490);
+
     createButtonCircle(this, SCENE.floor3, piso3, 983, 549);
     createButtonCircle(this, SCENE.second_floor1, piso1b, 1181, 504);
 
