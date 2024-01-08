@@ -83,14 +83,14 @@ export class Hallway2 extends Phaser.Scene {
 
 
 
-      
+
     createButtonCircle(this, "cubicle2", lineRed, 509, 773);
-      
-   
-    
+
+
+
     createButtonCircle(this, "outside", outside, 515, 568);
 
-     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
+    this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasillas);
     this.physics.add.collider(
       this.avatar.avatarPlayer,
