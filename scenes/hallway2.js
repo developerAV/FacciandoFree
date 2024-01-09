@@ -13,28 +13,7 @@ export class Hallway2 extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("background3", "assets/images/hallway2/pasillo_piso.png");
-    this.load.image(
-      "paredAuditorio",
-      "assets/images/hallway2/pared_auditorio.png"
-    );
-    this.load.image(
-      "paredbatMujer",
-      "assets/images/hallway2/pared_batMujer.png"
-    );
-    this.load.image("paredEste", "assets/images/hallway2/pared_este.png");
-    this.load.image(
-      "paredSuperior2Hallway2",
-      "assets/images/hallway2/pared_frontal.png"
-    );
-    this.load.image(
-      "paredInferiorHallway2",
-      "assets/images/hallway2/pared_inferior.png"
-    );
-    this.load.image(
-      "paredInferiorEste",
-      "assets/images/hallway2/pared_comunidad.png"
-    );
+
   }
 
   create() {

@@ -45,44 +45,7 @@ export class Cubicle extends Phaser.Scene {
       url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
       sceneKey: "rexUI",
     });
-    this.load.image("pisoCubiculo", "assets/images/cubicle/piso.png");
-    this.load.image("paredColor", "assets/images/cubicle/cubiculocolor.jpg");
-    this.load.image("paredIzqC", "assets/images/cubicle/paredIzq.png");
-    this.load.image("paredSurEste", "assets/images/cubicle/paredSurEste.png");
-    this.load.image(
-      "paredPuertaIzq",
-      "assets/images/cubicle/paredPuertaIzq.png"
-    );
-    this.load.image(
-      "paredPuertaSur",
-      "assets/images/cubicle/paredPuertaNorSur.png"
-    );
-    this.load.image(
-      "paredPuertaNor",
-      "assets/images/cubicle/paredPuertaNor.png"
-    );
-    this.load.image(
-      "paredPuertaDer",
-      "assets/images/cubicle/paredPuertaDer.png"
-    );
-    this.load.image("paredNorte", "assets/images/cubicle/paredNorte.png");
-    this.load.image("paredEscalera", "assets/images/cubicle/paredEscalera.png");
-    this.load.image("paredSurDer", "assets/images/cubicle/paredSurDer.png");
-    this.load.image("paredDer", "assets/images/cubicle/paredDer.png");
-
-    this.load.image("escritoriosA", "assets/images/cubicle/escritoriosA.png");
-    this.load.image("escritoriosB", "assets/images/cubicle/escritoriosB.png");
-    this.load.image("escritorioB6", "assets/images/cubicle/escritorioB6.png");
-    this.load.image("escritoriosC", "assets/images/cubicle/escritoriosC.png");
-    this.load.image("escritoriosD", "assets/images/cubicle/escritoriosD.png");
-    this.load.image("sillaB6", "assets/images/accessories/chair/0005.png");
-
-    this.load.image("escalera", "assets/images/cubicle/escalera.png");
-    this.load.image("impresora", "assets/images/cubicle/impresora.png");
-    this.load.image("servidor", "assets/images/cubicle/servidor.png");
-    this.load.image("anaquel", "assets/images/cubicle/anaquel.png");
-
-    this.load.image("fotoCarnet", "assets/images/avatars/avatar1.png");
+   
   }
 
   async create() {

@@ -8,12 +8,7 @@ export class Login extends Phaser.Scene {
     super({ key: "login" });
   }
   preload() {
-    this.load.image("background", "assets/images/intro/facci.png");
-    this.load.image("googleES", "assets/images/login/google2.png");
-    this.load.image("googleEN", "assets/images/login/google3.png");
-    this.load.image("facciando2", "assets/images/intro/Facciando2.png");
-    this.load.image("confirm", "assets/images/login/confirm.png");
-    this.load.image("save", "assets/images/login/save.png");
+
   }
 
   async create() {

@@ -16,59 +16,7 @@ export class Cubicle2 extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("pisoCubiculo2", "assets/images/cubicle2/pisoC2.png");
-    this.load.image("paredCu2", "assets/images/cubicle2/paredesColor.png");
-    this.load.image(
-      "paredNorteCu2",
-      "assets/images/cubicle2/paredNorteCu2.png"
-    );
-    this.load.image("paredeIzCu2", "assets/images/cubicle2/paredeIzCu2.png");
-    this.load.image(
-      "paredeIzTotalCu2",
-      "assets/images/cubicle2/paredeIzTotalCu2.png"
-    );
-    this.load.image(
-      "cubicle2ParedCentro1",
-      "assets/images/cubicle2/cubicle2ParedCentro1.png"
-    );
-    this.load.image(
-      "cubicle2ParedCentro2",
-      "assets/images/cubicle2/cubicle2ParedCentro2.png"
-    );
-    this.load.image(
-      "cubicle2ParedCentro3",
-      "assets/images/cubicle2/cubicle2ParedCentro3.png"
-    );
-    this.load.image("escalera1Cu2", "assets/images/cubicle2/escalera1Cu2.png");
-    this.load.image("escalera2Cu2", "assets/images/cubicle2/escalera2Cu2.png");
-    this.load.image(
-      "cubicle2ParedSurEste",
-      "assets/images/cubicle2/cubicle2ParedSurEste.png"
-    );
-    this.load.image(
-      "cubicle2ParedMedioVertical",
-      "assets/images/cubicle2/cubicle2ParedMedioVertical.png"
-    );
-    this.load.image(
-      "cubicle2ParedEntrada",
-      "assets/images/cubicle2/cubicle2ParedEntrada.png"
-    );
-    this.load.image(
-      "cubicle2ParedSurMedio",
-      "assets/images/cubicle2/cubicle2ParedSurMedio.png"
-    );
-    this.load.image(
-      "cubicle2ParedSurEste2",
-      "assets/images/cubicle2/cubicle2ParedSurEste2.png"
-    );
-    this.load.image(
-      "cubiculo2Escritorios",
-      "assets/images/cubicle2/cubiculo2Escritorios.png"
-    );
-    this.load.image(
-      "cubiculo2Escritorios2",
-      "assets/images/cubicle2/cubiculo2Escritorios2.png"
-    );
+    
   }
 
   create() {
