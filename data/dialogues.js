@@ -34,6 +34,14 @@ const traslateIntro = {
     es: "El modo recorrer, permite al jugador recorrer la facultad, conociendo su historia y su infraestructura y para poder hacerlo tienes un mapa en la superior derecha de la pantalla.",
     en: "The tour mode allows the player to tour the faculty, knowing its history and infrastructure and to be able to do it you have a map in the upper right of the screen.",
   },
+  infoMission: {
+    es: "Las misiones inician al tocar el icono de facciando, se pueden buscar en el mapa, y al tocarlas se activan.",
+    en: "The missions start when you touch the facciando icon, they can be searched on the map, and when you touch them they are activated.",
+  },
+  infoMission2: {
+    es: "Las misiones tienen un tiempo límite para ser completadas, y si se completa la misión se obtiene una insignia.",
+    en: "The missions have a time limit to be completed, and if the mission is completed, a badge is obtained.",
+  },
   floorHallway2: {
     es: "Pasillo 2",
     en: "Hallway 2",
@@ -216,6 +224,10 @@ const traslateIntro = {
   mission4: {
     es: "Estas en un nivel superior, pero, aun no has hecho algo importante para medir tus conocimientos ademas de las materias que estas cursando, parece que ese compañero tiene algo que decirte.",
     en: "You are at a higher level, but you have not yet done something important to measure your knowledge in addition to the subjects you are studying, it seems that that partner has something to tell you.",
+  },
+  mission5: {
+    es: "En esta misión tendras que hacer un proyecto de IoT para una materia, y solicitar ayuda para poder realizarlo.",
+    en: "In this mission you will have to make an IoT project for a subject, and ask for help to be able to do it.",
   },
   //dialogos de los videos de las misiones
   dialog1: {

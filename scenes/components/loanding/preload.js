@@ -92,11 +92,42 @@ const preloadAdmistrativeRoom = (scene) => {
   scene.load.image("mesa4", `${path}mesa4.png`);
   scene.load.image("poste", `${path}poste.png`);
 };
-const cubicle = (scene) => {};
-const auditorium2 = (scene) => {};
-const classRoom = (scene) => {};
-const computerRoom = (scene) => {};
-const cubicle2 = (scene) => {};
+const cubicle = (scene) => { };
+const auditorium2 = (scene) => { };
+const classRoom = (scene) => { };
+const computerRoom = (scene) => { };
+const cubicle2 = (scene) => { };
+const eletronicRoom = (scene) => {
+  scene.load.image("pisoLab1", "assets/images/electronic_room/pisoLab1.png");
+  scene.load.image(
+    "escritorio",
+    "assets/images/electronic_room/escritorio.png"
+  );
+  scene.load.image(
+    "mesasLab",
+    "assets/images/electronic_room/mesasLaboratio1.png"
+  );
+  scene.load.image(
+    "paredILaborario",
+    "assets/images/electronic_room/paredIzq.png"
+  );
+  scene.load.image(
+    "paredDLaborario",
+    "assets/images/electronic_room/paredDer.png"
+  );
+  scene.load.image(
+    "paredSLaborario",
+    "assets/images/electronic_room/paredSuperior.png"
+  );
+  scene.load.image(
+    "paredPILaborario",
+    "assets/images/electronic_room/puertaDer.png"
+  );
+  scene.load.image(
+    "paredPDLaborario",
+    "assets/images/electronic_room/puertaIzq.png"
+  );
+};
 const botonesNavbar = (scene) => {
   scene.load.image("botonNav", "assets/images/navbar/boton.png");
   scene.load.image("botonInfo", "assets/images/navbar/botonInfo.png");
@@ -175,6 +206,10 @@ const mainHallway1 = (scene) => {
   scene.load.image("sillaBasura", `${path}sillaBasura.png`);
   scene.load.image("escaleraAbajo1", `${path}escaleraAbajo.png`);
   scene.load.image("escaleraArriba1", `${path}escaleraArriba.png`);
+  scene.load.image("floor1Map", `assets/images/maps/floor1Map.png`);
+  scene.load.image("cubicleMap", `assets/images/maps/cubicleMap.png`);
+  scene.load.image("secreMap", `assets/images/maps/secreMap.png`);
+  scene.load.image("commisionMap", `assets/images/maps/commisionMap.png`);
 };
 const outside = (scene) => {
   scene.load.image("asientoFacci", "assets/images/outside/asientofacci.png");
@@ -192,4 +227,5 @@ export const preloads = (scene) => {
   hallway2(scene);
   outside(scene);
   mainHallway1(scene);
+  eletronicRoom(scene);
 };

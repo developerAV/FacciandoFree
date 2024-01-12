@@ -43,5 +43,24 @@ export const handleSteps = (dialog = false) => {
         return;
       }
     }
+    if (mission === 2 && active) {
+      if (step === 1) {
+        window.user.step = 2;
+        return;
+      }
+      if (step === 2 && window.sceneName === SCENE.electronic_room) {
+        window.user.step = 3;
+        return;
+      }
+
+     /*  if (step === 3) {
+        window.user.step = 4;
+        return;
+      }
+      if (step === 4) {
+        window.user.step = 5;
+        return;
+      } */
+    }
   }
 };

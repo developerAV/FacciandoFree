@@ -53,7 +53,7 @@ export const crearVideo = async (mensaje, videoFile, scene) => {
     responsiveVoice.speak(mensaje, traslate("voiceSpeak"));
     container.add(video);
     container.add(texto);
-    container.setDepth(1000);
+    container.setDepth(10000);
     container.setScrollFactor(0);
     function escribirTexto() {
       if (indice <= mensaje.length) {

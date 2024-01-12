@@ -99,8 +99,70 @@ const data = {
     ],
   },
   mission5: {
-    es: [],
-    en: [],
+    es: [
+      "1Y bien, terminó la clase, voy a enviar un proyecto para que lo realices en casa, se trata de un...",
+      /* "1proyecto, el cual debe estar vinculado con un web y una aplicación móvil para mostrar los datos.",
+      "0Entiendo, ¿cual es el tema del proyecto?",
+      "1El proyecto es de IoT el cual debe recoger datos de un sensor de temperatura y humedad... ",
+      "1estos datos deben ser enviados a una base de datos en la nube, y desde ahí se debe mostrar...",
+      "1en una página web y una aplicación móvil.",
+      "0¿Que es IoT?",
+      "1No tengo tiempo para explicarte, mil disculpas, puedes ir a la sala de electronica por informacion.", */
+    ],
+    en: [
+      "1Well, the class is over, I'm going to send a project for you to do at home, it's about a...",
+      "1project, which must be linked to a web and a mobile application to show the data.",
+      "0I understand, what is the theme of the project?",
+      "1The project is IoT which must collect data from a temperature and humidity sensor... ",
+      "1this data must be sent to a database in the cloud, and from there it must be shown...",
+      "1on a web page and a mobile application.",
+      "0What is IoT?",
+      "1I don't have time to explain, a thousand apologies, you can go to the electronics room for information.",
+    ],
+  },
+  mission5_1: {
+    es: [
+      "0Hola, me puede explicar algo sobre IoT?",
+      "1Hola, claro que si, IoT es el internet de las cosas, es un concepto que se refiere a la interconexión...",
+      "1de objetos cotidianos con internet, estos objetos pueden ser controlados a través de una aplicación...",
+      "1en un dispositivo móvil, por ejemplo, un refrigerador, un televisor, un reloj, etc.",
+      "0Entiendo, es muy interensante, el ingeniero Zamora nos dejó un proyecto sobre IoT,",
+      "0con un sensor de temperatura y humedad, ¿me podría ayudar a realizar la parte de electronica?",
+      "1Claro, te puedo ayudar, pero primero pasame los componentes para ayudarte.",
+    ],
+    en: [
+      "0Hello, can you explain something about IoT?",
+      "1Hello, of course, IoT is the internet of things, it is a concept that refers to the interconnection...",
+      "1of everyday objects with the internet, these objects can be controlled through an application...",
+      "1on a mobile device, for example, a refrigerator, a television, a watch, etc.",
+      "0I understand, it is very interesting, engineer Zamora left us a project on IoT,",
+      "0with a temperature and humidity sensor, could you help me with the electronics part?",
+      "1Of course, I can help you, but first give me the components to help you.",
+    ],
+
+  },
+  mission5_2: {
+    es: [
+      "1Listo, ahora te explico como conectar el sensor de temperatura y humedad a la placa de desarrollo...",
+      "1para ello debes conectar el sensor a la placa de desarrollo en los pines correspondientes...",
+      "1y luego cargar el código en la placa de desarrollo.",
+      "1Donde mostraras los datos?",
+      "0El ingeniero nos dijo que debemos mostrar los datos en una página web y una aplicación móvil.",
+      "0de eso si me encargo yo, ya tengo los conocimientos necesarios para realizarlo.",
+      "1Muy bien, ya tienes los conocimientos necesarios, te felicito.",
+      "0Muchas gracias, nos vemos luego.",
+
+    ],
+    en: [
+      "1Ready, now I'll explain how to connect the temperature and humidity sensor to the development board...",
+      "1for this you must connect the sensor to the development board in the corresponding pins...",
+      "1and then load the code into the development board.",
+      "1Where will you show the data?",
+      "0The engineer told us that we must show the data on a web page and a mobile application.",
+      "0I take care of that, I already have the necessary knowledge to do it.",
+      "1Very well, you already have the necessary knowledge, I congratulate you.",
+      "0Thank you very much, see you later.",
+    ],
   },
   mission6: {
     es: [],
@@ -130,18 +192,7 @@ const data = {
     es: [],
     en: [],
   },
-  mission13: {
-    es: [],
-    en: [],
-  },
-  mission14: {
-    es: [],
-    en: [],
-  },
-  mission15: {
-    es: [],
-    en: [],
-  },
+
 };
 
 const dataDialogoSegunRespuesta = {
@@ -183,7 +234,6 @@ export const getDiaglogMission = (respuesta = "") => {
     return dataDialogoSegunRespuesta[index][respuesta][window.lan];
   }
 
-  console.log(index);
   if (!data[index]) {
     return "No hay mission agregada";
   }

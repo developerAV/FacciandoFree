@@ -34,7 +34,7 @@ export class mainHallway1 extends Phaser.Scene {
     let platform2 = this.physics.add.staticGroup();
     let escaleras = this.physics.add.staticGroup();
     let ptfmOverlap = this.physics.add.staticGroup();
-    let boton = this.physics.add.staticGroup();
+    let boton = this.physics.add.staticGroup(); 
 
     crearPlataforma(724, 72.5, "paredSuperior1", platform2, 1.61);
     crearPlataforma(1058, 103, "paredSuperior2", platform2, 1.61);
@@ -137,7 +137,7 @@ export class mainHallway1 extends Phaser.Scene {
     this.physics.add.collider(this.avatar.avatarPlayer, platform1);
     this.physics.add.collider(this.avatar.avatarPlayer, platform2);
 
-    shortMap(this, "mapa");
+    shortMap(this, "floor1Map");
     bigMap(this);
     this.physics.add.collider(this.avatar.avatarPlayer, boton);
 
