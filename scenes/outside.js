@@ -6,7 +6,7 @@ import {
 } from "./module/platform.js";
 import { traslate } from "../data/dialogues.js";
 import { crearVideo } from "./module/videoInfo.js";
-import { getEmployees } from "../services/employee.js";
+import { getEmployees } from "../services/employee.service.js";
 import { createButtonCircle } from "../scenes/components/common/buttonCircle.js";
 import { navbar } from "./components/common/navbar.js";
 import { shortMap, bigMap } from "./components/common/map.js";

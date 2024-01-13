@@ -6,10 +6,10 @@ import {
 import { auth } from "./firebase.js";
 
 //services
-import { getUserFirebase } from "../services/user.js";
-import { getAllLevels } from "../services/level.js";
-import { postUser } from "../services/user.js";
-import { getMissionByLevel } from "../services/mission.js";
+import { getUserFirebase } from "../services/user.service.js";
+import { getAllLevels } from "../services/level.service.js";
+import { postUser } from "../services/user.service.js";
+import { getMissionByLevel } from "../services/mission.service.js";
 
 import { navbar } from "../scenes/components/common/navbar.js";
 

@@ -18,6 +18,7 @@ import { Question } from "./scenes/question.js";
 import { Outside } from "./scenes/outside.js";
 import { CommissionArea } from "./scenes/commission_area.js";
 import { Cubicle2 } from "./scenes/cubicle2.js";
+import { Forum } from "./scenes/forum.js";
 
 const config = {
   type: Phaser.AUTO,
@@ -46,6 +47,7 @@ const config = {
     Ranking,
     CommissionArea,
     AvatarS,
+    Forum,
   ],
   scale: {
     mode: Phaser.Scale.FIT,

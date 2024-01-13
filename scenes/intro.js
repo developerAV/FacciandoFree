@@ -1,5 +1,5 @@
 import { blurButton } from "./module/blurButton.js";
-import { COLORS, FONT_SIZE, SCENE } from "../utils/constants.js";
+import { COLORS, COLORS_HEX, FONT, FONT2, FONT_SIZE, SCENE } from "../utils/constants.js";
 import { textButton } from "./module/textButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
 import { traslate } from "../data/dialogues.js";
@@ -7,9 +7,11 @@ import { buttonLogout } from "./components/intro/buttonLogout/buttonLogout.js";
 import { buttonsMode } from "./components/intro/buttonsMode.js";
 import { news } from "./components/intro/news.js";
 import { detailsGamer } from "./components/intro/detailsGamer.js";
-import { getTop10UserByScore } from "../services/user.js";
+import { getTop10UserByScore } from "../services/user.service.js";
 import { scoreUser } from "./components/intro/scoreUser.js";
 import { Avatar } from "./player.js";
+
+import { getForum } from "../services/forum.service.js";
 
 import { createButtonMission } from "./components/common/buttonMission.js";
 export class Intro extends Phaser.Scene {
@@ -187,7 +189,7 @@ export class Intro extends Phaser.Scene {
     });
 
     this.avatar = this.physics.add
-      .sprite(1100, 600, window.avatarSprite)
+      .sprite(920, 600, window.avatarSprite)
       .setScale(7);
     this.avatar.body.allowGravity = false;
 
@@ -241,6 +243,86 @@ export class Intro extends Phaser.Scene {
 
     buttonsMode(this, box, boxGamer, boxScore);
 
+    // ================FORUM================
+    const forumX = await getForum(this);
+    let randomForum;
+    // console.log(forumX[0])
+//forumX extrae varios objetos del foro, necesito uno al azar
+const boxForum = this.add.container(1070, 500);
+const boxForumBg = this.add.graphics();
+const boxForumBgLevel = this.add.graphics();
+boxForum.setName("boxForum");  
+boxForumBg.fillStyle(0x00051a, 0.42);
+
+
+boxForumBgLevel.fillStyle(COLORS.white, 0.42);
+boxForumBgLevel.fillRoundedRect(0, 0, 500, 300, 15);
+boxForumBgLevel.lineStyle(4, COLORS.blue, 1);
+
+
+  const forumLabel = this.add.text(30, 20, traslate("forum"), {
+    fontFamily: FONT2,
+    fontSize: "40px",
+    color: "#00051A",
+  });
+  let randomForumComments;
+  let forumComments;
+  let forum;
+  setInterval(() => {
+
+    randomForum = Math.floor(Math.random() * forumX.length);
+    forum = forumX[randomForum];
+    forumComments = forum.comments;
+    randomForumComments = Math.floor(Math.random() * forumComments.length);
+    console.log(randomForum);
+    console.log(forum);
+
+topicLabel.setText(forum.title);
+contentLabel.setText(forum.comments[randomForumComments].content);	
+
+
+}, 3000);
+
+    const topicLabel = this.add.text(30, 70, "Tema", {
+      fontFamily: FONT2,
+      fontSize: "40px",
+      color: "#004AAD",
+    });
+
+    const contentLabel = this.add.text(30, 130, "contenido", {
+      fontFamily: FONT,
+      fontSize: "28px",
+      color: "#00051A",
+      // backgroundColor: "#fff",
+      width: 50,
+      height: 20,
+      wordWrap: { width: 400, useAdvancedWrap: true },
+    });
+    const btnForum = this.add.image(250, 280, "modox").setScale(0.8);
+    btnForum.setInteractive();
+    btnForum.on("pointerdown", () => {
+      clearInterval(intervalo);
+      this.scene.start("forum");
+    });
+    const btnLabel = this.add.text(210, 265, traslate("participar"), {
+      fontFamily: FONT2,
+      fontSize: "28px",
+      color: "#fff",
+    });
+
+
+    boxForum.add(boxForumBg);
+    boxForum.add(boxForumBgLevel);
+    boxForum.add(forumLabel);
+    boxForum.add(topicLabel);
+    boxForum.add(contentLabel);
+    boxForum.add(btnForum);
+    boxForum.add(btnLabel);
+
+
+
+
+    
     this.updateScene = () => {
       playText.setText(traslate("start"));
       logoutButton.setText(traslate("logout"));

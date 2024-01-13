@@ -3,7 +3,7 @@ import { buttonEnglish } from "./module/buttonEnglish.js";
 import { traslate } from "../data/dialogues.js";
 import { loginGoogle } from "../Firebase/googleLogin.js";
 import { blurButton } from "./module/blurButton.js";
-import { putUser } from "../services/user.js";
+import { putUser } from "../services/user.service.js";
 export class Question extends Phaser.Scene {
   constructor() {
     super({ key: "question" });

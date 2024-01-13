@@ -1,5 +1,5 @@
-export const URI_API = "https://facciando-server.onrender.com/facciando";
-// export const URI_API = "http://localhost:3000/facciando";
+// export const URI_API = "https://facciando-server.onrender.com/facciando";
+export const URI_API = "http://localhost:3000/facciando";
 export const FONT = "Droid Sans";
 export const FONT2 = "Rowdies";
 export const FONT_SIZE = {
