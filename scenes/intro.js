@@ -268,9 +268,9 @@ boxForumBgLevel.lineStyle(4, COLORS.blue, 1);
   let randomForumComments;
   let forumComments;
   let forum;
-  setInterval(() => {
-
-    randomForum = Math.floor(Math.random() * forumX.length);
+const intervalox = setInterval(() => {
+try {
+  randomForum = Math.floor(Math.random() * forumX.length);
     forum = forumX[randomForum];
     forumComments = forum.comments;
     randomForumComments = Math.floor(Math.random() * forumComments.length);
@@ -280,6 +280,10 @@ boxForumBgLevel.lineStyle(4, COLORS.blue, 1);
 topicLabel.setText(forum.title);
 contentLabel.setText(forum.comments[randomForumComments].content);	
 
+} catch (error) {
+  clearInterval(intervalox);
+}
+    
 
 }, 3000);
 
@@ -301,7 +305,7 @@ contentLabel.setText(forum.comments[randomForumComments].content);
     const btnForum = this.add.image(250, 280, "modox").setScale(0.8);
     btnForum.setInteractive();
     btnForum.on("pointerdown", () => {
-      clearInterval(intervalo);
+      clearInterval(intervalox);
       this.scene.start("forum");
     });
     const btnLabel = this.add.text(210, 265, traslate("participar"), {

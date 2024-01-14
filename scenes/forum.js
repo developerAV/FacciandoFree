@@ -8,18 +8,10 @@ import {
 import { textButton } from "./module/textButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
 import { traslate } from "../data/dialogues.js";
-import { Avatar } from "./player.js";
-import { swapButtonPositionsAvatar } from "./module/swapButtonPositions.js";
+import { getForum } from "../services/forum.service.js";
 let currentIndex = 0;
-const arrayAvatar = [
-  "spriteBatista",
-  "spriteBoy",
-  "spriteGirl",
-  "spriteGirl2",
-  "spriteGirl3",
-];
+
 import { buttonLogout } from "./components/intro/buttonLogout/buttonLogout.js";
-import { putUser } from "../services/user.service.js";
 
 export class Forum extends Phaser.Scene {
   constructor() {
@@ -28,8 +20,13 @@ export class Forum extends Phaser.Scene {
   preload() {
     if (this.textures.exists("profile")) this.textures.remove("profile");
     this.load.image("profile", window.imageUrl);
+    this.load.scenePlugin({
+      key: "rexuiplugin",
+      url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
+      sceneKey: "rexUI",
+    });
   }
-  create() {
+  async create() {
     const background2 = this.add.rectangle(
       this.cameras.main.width / 2, // Posición X centrada en la pantalla
       this.cameras.main.height / 2,
@@ -39,7 +36,7 @@ export class Forum extends Phaser.Scene {
     );
     // fondo dinamico
     const background = this.add.sprite(1500, 500, "facciando").setScale(1.6);
-    background.alpha = 0.1;
+    background.alpha = 0.9;
 
     const tween = this.tweens.add({
       targets: background,
@@ -149,21 +146,162 @@ export class Forum extends Phaser.Scene {
     const logoutButton = buttonLogout(this);
     const btnLanguage = this.add.image(1537, 70, "language").setScale(0.4);
     buttonEnglish(btnLanguage, this);
- 
 
-    let avatarContainer = this.add.container(0, 0);
-    this.buttonName = this.add.image(800, 700, "play").setScale(0.5);
-    this.textName = this.add.text(745, 680, objetAvatar.avatar2.name, {
-      fontFamily: FONT,
-      fontSize: FONT_SIZE.small,
+    this.forumX = await getForum(this);
+    let randomForum;
+    // console.log(forumX[0])
+    //forumX extrae varios objetos del foro, necesito uno al azar
+    const boxForum = this.add.container(10, 150);
+    const boxForumBg = this.add.graphics();
+
+    boxForum.setName("boxForum");
+
+    boxForumBg.fillStyle(COLORS.blue, 0.7);
+    boxForumBg.fillRoundedRect(0, 0, 500, 700, 15);
+    boxForumBg.lineStyle(4, COLORS.blue, 1);
+
+    const forumLabel = this.add.text(10, 10, traslate("forum"), {
+      fontFamily: FONT2,
+      fontSize: FONT_SIZE.medium,
       color: COLORS_HEX.white,
+      align: "center",
     });
 
-    this.buttonSave = this.add.image(1300, 900, "play").setScale(1);
-    this.textSave = this.add.text(1245, 880, traslate("save"), {
+    //add button container
+    const btnContainer = this.add
+      .container(40, 607)
+      .setSize(800, 100)
+      .setName("btnContainer");
+    const btnBg = this.add.graphics();
+    btnBg.fillStyle(COLORS.blueDark, 0.7);
+    btnBg.fillRoundedRect(0, 0, 400, 80, 25);
+    btnBg.lineStyle(4, COLORS.white, 1);
+    //btnText en medio del container
+
+    const btnText = this.add.text(100, 22, "CREAR FORO", {
       fontFamily: FONT,
-      fontSize: FONT_SIZE.small,
+      fontSize: "26px",
       color: COLORS_HEX.white,
+      align: "center",
     });
+
+    btnContainer.add(btnBg);
+    btnContainer.add(btnText);
+    btnContainer.setInteractive();
+    btnContainer.on("pointerdown", () => {
+      console.log("click");
+    });
+
+    boxForum.add(boxForumBg);
+    boxForum.add(forumLabel);
+    boxForum.add(btnContainer);
+
+    let panel = this.rexUI.add
+      .scrollablePanel({
+        x: 270,
+        y: 490,
+        height: 500,
+
+        scrollMode: 0,
+
+        // background: this.rexUI.add.roundRectangle({ strokeColor: 0x000000, strokeWidth: 2}),
+        panel: {
+          child: CreatePanel(this),
+        },
+
+        slider: {
+          track: this.rexUI.add.roundRectangle({
+            width: 20,
+            height: 20,
+            radius: 10,
+            color: COLORS.blue,
+          }),
+          thumb: this.rexUI.add.roundRectangle({
+            radius: 13,
+            color: COLORS.black,
+          }),
+        },
+
+        space: { panel: 4 },
+      })
+      .layout();
+
+      // console.log(this.forumX[0]._id);
+    panel.scrollToChild(panel.getByName("", true));
+
+    const boxForumComments = this.add.container(550, 150);
+    const boxForumCommentsBg = this.add.graphics();
+    boxForumComments.setName("boxForumComments");
+    boxForumCommentsBg.fillStyle(0x00051a, 0.7);
+    boxForumCommentsBg.fillRoundedRect(0, 0, 1000, 700, 15);
+    boxForumCommentsBg.lineStyle(4, COLORS.blue, 1);
+    boxForumComments.add(boxForumCommentsBg);
   }
 }
+let CreatePanel = function (scene) {
+  let panel = scene.rexUI.add.sizer({
+    width: 450,
+    orientation: "y",
+    space: { item: 4 },
+  });
+  scene.forumX.forEach((element) => {
+    let name = `item-${element.id}`;
+
+    let label = scene.rexUI.add.label({
+      background: scene.rexUI.add.roundRectangle({
+        color: COLORS.white,
+        radius: 10,
+        alpha: 0.7,
+      }),
+
+      text: scene.add.text(0, 0, element.title, {
+        fontFamily: FONT,
+        fontSize: "26px",
+        color: COLORS_HEX.black,
+        align: "center",
+      }),
+      space: { left: 10, right: 10, top: 20, bottom: 20 },
+      name: name,
+    });
+    label.setDepth(1);
+
+    label.setInteractive().on("pointerdown", () => {
+      console.log(`Clicked on ${name}`);
+      currentIndex = element._id;
+      console.log(currentIndex);
+      // scene.scene.start("forumComments", { id: currentIndex });
+    });
+
+    panel.add(label, { expand: true });
+  });
+
+  // for (let i = 0; i < 50; i++) {
+  //   let name = `item-${i}`;
+
+  //   let label = scene.rexUI.add.label({
+  //     background: scene.rexUI.add.roundRectangle({
+  //       color: COLORS.white,
+  //       radius: 10,
+  //       alpha: 0.7,
+  //     }),
+
+  //     text: scene.add.text(0, 0, name, {
+  //       fontFamily: FONT,
+  //       fontSize: "26px",
+  //       color: COLORS_HEX.black,
+  //       align: "center",
+  //     }),
+  //     space: { left: 10, right: 10, top: 20, bottom: 20 },
+  //     name: name,
+  //   });
+  //   label.setDepth(1);
+
+  //   label.setInteractive().on('pointerdown', () => {
+  //     console.log(`Clicked on ${name}`);
+  //   });
+
+  //   panel.add(label, { expand: true });
+  // }
+
+  return panel;
+};

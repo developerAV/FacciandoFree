@@ -83,9 +83,15 @@ export const news = (
       y: 10,
     },
   });
-  setInterval(() => {
+  let inter = null;
+  inter = setInterval(() => {
+  try {
     keyMessage = returnList();
-  }, 15000);
+  } catch (error) {
+    clearInterval(inter);
+  }
+}, 15000);
+ 
   scene.time.addEvent({
     delay: 50, // Ajusta el valor para controlar la velocidad de escritura
     callback: escribirTexto,
