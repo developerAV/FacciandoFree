@@ -5,6 +5,7 @@ import {
   FONT2,
   FONT_SIZE,
 } from "../utils/constants.js";
+import { panelComment } from "./components/forum/panelComment.js";
 import { textButton } from "./module/textButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
 import { traslate } from "../data/dialogues.js";
@@ -18,6 +19,7 @@ export class Forum extends Phaser.Scene {
     super({ key: "forum" });
   }
   preload() {
+    
     if (this.textures.exists("profile")) this.textures.remove("profile");
     this.load.image("profile", window.imageUrl);
     this.load.scenePlugin({
@@ -235,7 +237,32 @@ export class Forum extends Phaser.Scene {
     boxForumCommentsBg.fillStyle(0x00051a, 0.7);
     boxForumCommentsBg.fillRoundedRect(0, 0, 1000, 700, 15);
     boxForumCommentsBg.lineStyle(4, COLORS.blue, 1);
+    
+    
+    this.topicChat = this.add.text(80, 22, "Topic", {
+      fontFamily: FONT,
+      fontSize: "46px",
+      color: COLORS_HEX.white,
+      align: "center",
+      fontStyle: 'bold',
+    });
+    this.descriptionChat = this.add.text(80, 80, "Description", {
+      fontFamily: FONT,
+      fontSize: "26px",
+      color: COLORS_HEX.white,
+      align: "center",
+    });
     boxForumComments.add(boxForumCommentsBg);
+    boxForumComments.add(this.topicChat);
+    boxForumComments.add(this.descriptionChat);
+
+
+
+
+    //COntenido del foro comentarios 
+
+      
+
   }
 }
 let CreatePanel = function (scene) {
@@ -266,8 +293,19 @@ let CreatePanel = function (scene) {
     label.setDepth(1);
 
     label.setInteractive().on("pointerdown", () => {
+      try {
+        
+        scene.container.destroy();
+        scene.scrollablePanel2.destroy();
+      } catch (error) {
+        
+      }
+      
       console.log(`Clicked on ${name}`);
       currentIndex = element._id;
+      scene.topicChat.setText(element.title);
+      scene.descriptionChat.setText(element.description);
+      panelComment(scene, element.comments);
       console.log(currentIndex);
       // scene.scene.start("forumComments", { id: currentIndex });
     });
