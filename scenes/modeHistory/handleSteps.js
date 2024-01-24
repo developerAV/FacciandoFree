@@ -52,15 +52,14 @@ export const handleSteps = (dialog = false) => {
         window.user.step = 3;
         return;
       }
-
-     /*  if (step === 3) {
+      if (step === 3 && dialog) {
         window.user.step = 4;
         return;
       }
-      if (step === 4) {
+      if (step === 4 && dialog) {
         window.user.step = 5;
         return;
-      } */
+      }
     }
   }
 };

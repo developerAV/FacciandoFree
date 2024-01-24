@@ -29,12 +29,9 @@ export const mission1Final = (scene) => {
   let plataformas = scene.physics.add.staticGroup();
   const redZone = crearPlataforma(800, 500, "boton", plataformas);
   scene.physics.add.overlap(scene.avatar.avatarPlayer, redZone, async () => {
-    window.runTime = false;
-    scene.avatar.runTime(false);
     window.avatarUpdateActivo = true;
     scene.avatar.moveTo(0, 0, "turn");
     redZone.destroy();
-
     cardEndMission(scene);
     await endMission(SCENE.cubicle, {
       x: scene.avatar.avatarPlayer.x,

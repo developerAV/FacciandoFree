@@ -164,11 +164,6 @@ export const detailsGamer = (scene, width = 50, height = 200) => {
 
   buttonContainer.setSize(90, 100);
 
-
-
-  console.log("window.missionVisibleBox", window.listMissions)
-
-
   const misisionComplete1 = getMissionCompleted(0, actualLevel + 1);
   const mission1 = scene.add.sprite(0, 0, misisionComplete1 ? "insigniaOro" : "level1").setScale(misisionComplete1 ? 0.23 : 0.8);
 

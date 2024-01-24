@@ -24,8 +24,8 @@ export const alertCard = (scene) => {
     scala = 1.2;
   }
   if (scene.cameras.main.zoom == 1) {
-    x = 800; //zoom == 1
-    y = 500; //zoom == 1
+    x = 1200; //zoom == 1
+    y = 800; //zoom == 1
     scala = 2;
   }
   scene.box = scene.add.container(x, y);

@@ -1,11 +1,12 @@
 import { Avatar } from "./player.js";
-import { crearPlataforma, overlapPlataforma } from "./module/platform.js";
+import { crearPlataforma, dimesionesPlataformaIndividual, overlapPlataforma } from "./module/platform.js";
 import { navbar } from "./components/common/navbar.js";
 import { dimesionesPlataforma } from "./module/platform.js";
 import { SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { shortMap, bigMap } from "./components/common/map.js";
 import { alertCard } from "./modeHistory/components/alertCard.js";
 import { mission5Medio } from "./modeHistory/missions/mission5.js";
+import { createButtonCircle } from "./components/common/buttonCircle.js";
 
 export class Laboratorio1 extends Phaser.Scene {
   constructor() {
@@ -13,10 +14,21 @@ export class Laboratorio1 extends Phaser.Scene {
   }
 
   preload() {
-
+    this.load.plugin(
+      "rexglowfilterpipelineplugin",
+      "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexglowfilterpipelineplugin.min.js",
+      true
+    );
+    this.load.scenePlugin({
+      key: "rexuiplugin",
+      url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
+      sceneKey: "rexUI",
+    });
   }
 
   create() {
+    window.avatarUpdateActivo = true;
+
     // Para iniciar con un desenfoque
     this.cameras.main.fadeIn(500);
 
@@ -55,6 +67,9 @@ export class Laboratorio1 extends Phaser.Scene {
     crearPlataforma(888, 947, "paredPILaborario", plataformas, 2);
     crearPlataforma(376, 944, "paredPDLaborario", plataformas, 2);
 
+    let outRoom = crearPlataforma(466, 915, "redH", plataformas);
+    dimesionesPlataformaIndividual(outRoom);
+
 
     dimesionesPlataforma(plataformas, 0.7, 30);
     dimesionesPlataforma(paredPlataforma, 0.6, 25);
@@ -78,24 +93,21 @@ export class Laboratorio1 extends Phaser.Scene {
       null,
       this
     );
+    createButtonCircle(this, SCENE.second_floor1, outRoom, 861, 457);
+
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
 
 
     if (window.missionActive) {
       alertCard(this);
-      console.log(window.user.actualMission);
-      console.log(window.user.actualLevel);
-      console.log(window.user.step);
       if (window.user.actualMission === 2 && window.user.actualLevel == 2 && window.user.step === 3) {
         mission5Medio(this);
       }
 
     }
-
-    shortMap(this, "mapaOutside");
-    bigMap(this);
-
+    navbar(this, SCENE.electronic_room, 1);
+ 
   }
 
   update() {

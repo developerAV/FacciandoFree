@@ -13,18 +13,12 @@ export const mission3 = (scene) => {
   const redZone = crearPlataforma(500, 800, "boton", plataformas);
 
   scene.physics.add.overlap(scene.avatar.avatarPlayer, redZone, async () => {
-    if (scene.box) {
-      scene.box.destroy();
-    }
-    window.runTime = false;
-    scene.avatar.runTime(false);
-    scene.avatar.moveTo(0, 0, "turn");
     redZone.destroy();
-    /*  CARTER DE QUE LA MISSION TERMINÓ*/
     const dialogs = getDiaglogMission(); //obtener los dialogos de la mision
     await cardDialog(scene, dialogs, 370, 798); //cambiar a pantalla grande
     director.destroy();
-
+      
+    /*  CARTER DE QUE LA MISSION TERMINÓ*/
     cardEndMission(scene);
     await endMission(SCENE.floor3, {
       x: 800,

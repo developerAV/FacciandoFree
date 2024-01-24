@@ -1,14 +1,14 @@
 import { FONT } from "../../../utils/constants.js";
 import { alertCard } from "./alertCard.js";
 import { handleSteps } from "../../modeHistory/handleSteps.js";
-export const cardDialog = async (scene, dialogs, x, y) => {
+export const cardDialog = async (scene, dialogs, x, y, endmission = false) => {
   /*************************************************************
    ** NOTA: En los dialogos, los string que comienzan con "0" **
    ** son para el avatar del jugador                          **
    *************************************************************/
 
-  scene.avatar.moveTo(0, 0, "turn");
   window.avatarUpdateActivo = false;
+  scene.avatar.moveTo(0, 0, "turn");
   let time;
 
   const mostrarDialogo = (index) => {
@@ -16,7 +16,8 @@ export const cardDialog = async (scene, dialogs, x, y) => {
       if (index >= dialogs.length) {
         window.avatarUpdateActivo = true;
         handleSteps(true); // cambiar de alerta a la mission actualizando los pasos
-        alertCard(scene);
+
+        !endmission && alertCard(scene);
         return resolve(); // Si se alcanza el final de los diálogos, se detiene
       }
 
@@ -55,11 +56,12 @@ export const cardDialog = async (scene, dialogs, x, y) => {
             x: 10,
             y: 40,
           },
-          
+
         })
         .setScale(0.5);
       box.add(message);
       box.setDepth(20);
+      if (window.zoom === 1) box.setScale(2);
 
       await escribirTexto(message, dialog); // Mostrar el mensaje
       // Eliminar el contenedor después de un tiempo

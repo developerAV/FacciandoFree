@@ -58,15 +58,15 @@ const dialogs = {
     step2: "Ve a la sala de electonica",
     step3: "Pidele ayuda al profesor",
     step4: "Busca el componente que te pide el profesor",
-    step5: "Entregaselo al profesor",
+    step5: "Entrégaselo al profesor",
   },
 };
 
 export const getInfoMission = (property) => {
-  const { index, step } = getIndexMission();
+  const { index, step } = getIndexMission(true)
 
   if (!dialogs[index]) {
-    return "No hay mission agregada";
+    return "No hay mission agregada" + index;
   }
 
   if (property === PROPERTY.step) {

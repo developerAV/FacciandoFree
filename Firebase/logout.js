@@ -9,6 +9,6 @@ export const logout = async (escena) => {
 
     await escena.scene.start("login"); // Usar escena.scene en lugar de escena.escene
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };

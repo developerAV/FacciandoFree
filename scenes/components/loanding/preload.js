@@ -54,7 +54,6 @@ const preloadIntro = (scene) => {
     true
   );
 };
-
 const preloadAdmistrativeRoom = (scene) => {
   const path = "assets/images/administrative_room/";
   //piso
@@ -352,6 +351,7 @@ const cubicle2 = (scene) => {
   );
 };
 const eletronicRoom = (scene) => {
+  scene.load.image("placa", "assets/placa.png");
   scene.load.image("pisoLab1", "assets/images/electronic_room/pisoLab1.png");
   scene.load.image(
     "escritorio",
@@ -442,10 +442,10 @@ const hallway2 = (scene) => {
   scene.load.image("background3", `${path}pasillo_piso.png`);
   scene.load.image("paredAuditorioHallway2", `${path}pared_auditorio.png`);
   scene.load.image("paredbatMujerHallway2", `${path}pared_batMujer.png`);
-  scene.load.image("paredEsteHallway2", `${path}pared_este.png`);
-  scene.load.image("paredSuperiorHallway2", `${path}pared_frontal.png`);
+  scene.load.image("paredEste", `${path}pared_este.png`);
+  scene.load.image("paredSuperior2Hallway2", `${path}pared_frontal.png`);
   scene.load.image("paredInferiorHallway2", `${path}pared_inferior.png`);
-  scene.load.image("paredInferiorEsteHallway2", `${path}pared_comunidad.png`);
+  scene.load.image("paredEsteHallway2", `${path}pared_comunidad.png`);
 };
 const mainHallway1 = (scene) => {
   const path = "assets/images/mainHallway1/";
@@ -556,4 +556,5 @@ export const preloads = (scene) => {
   commission_area(scene);
   hallway300(scene);
   login(scene);
-};
+  question(scene);
+}; 

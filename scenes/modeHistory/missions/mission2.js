@@ -46,8 +46,6 @@ export const mission2 = async (scene) => {
 
     hiraida.destroy();
     cardEndMission(scene);
-    window.runTime = false;
-    scene.avatar.runTime(false);
     await endMission(SCENE.cubicle, {
       x: 800,
       y: 500,

@@ -71,7 +71,7 @@ export const createButtonCircle = (
     scene.anims.remove("up");
     scene.anims.remove("down");
     zoomWithNameScene(window.sceneName);
-    await handleSteps(); // cambiar de alerta a la mission actualizando los pasos
+    handleSteps(); // cambiar de alerta a la mission actualizando los pasos
     scene.scene.start(window.sceneName);
     // scene.scene.remove(scene.key);
   });
@@ -95,30 +95,15 @@ export const createButtonCircle = (
   return buttonCircle;
 };
 
-const mission = async () => {
-  const mission = window.user.actualMission;
-  const active = window.missionActive;
-  const step = window.user.step;
 
-  if (mission === 1 && active) {
-    if (step === 1) {
-      window.user.step = 2;
-      putUser(window.user._id, { step: 2 });
-    }
-    if (step === 2) {
-      window.user.step = 3;
-      putUser(window.user._id, { step: 3 });
-    }
-    if (step === 4) {
-      window.user.step = 5;
-      putUser(window.user._id, { step: 5 });
-    }
-  }
-};
 
 const zoomWithNameScene = (nameScene) => {
   if (nameScene === SCENE.floor1) {
     window.zoom = 1.5;
+    return;
+  }
+  if (nameScene === SCENE.electronic_room) {
+    window.zoom = 1;
     return;
   }
   window.zoom = 2;

@@ -166,6 +166,9 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     });
   }
   update() {
+    if (!window.avatarUpdateActivo) {
+      return;
+    }
     //Para saber la ubicación del avatar en el mapa
     try {
       this.scene.puntoMapa.x =
@@ -176,9 +179,7 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       // console.log("Error en update avatar", error);
     }
 
-    if (!window.avatarUpdateActivo) {
-      return;
-    }
+
 
     if (window.isMobile) {
       if (!this.isDragging) {
@@ -280,16 +281,16 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       scala = 0.9;
     }
     if (window.zoom == 1) {
-      x = 800; //zoom == 1
-      y = 500; //zoom == 1
+      scala = 1.5;
+      x = 10; //zoom == 1
+      y = 100; //zoom == 1
     }
     this.scene.box = scene.add.container(x, y);
     this.scene.box.setName("box");
     this.scene.boxBg = scene.add.graphics();
     this.scene.boxBg.fillStyle(COLORS.red, 0.75);
-    this.scene.boxBg.fillRoundedRect(0, 0, 120, 50, 5);
+    this.scene.boxBg.fillRoundedRect(0, 0, 150, 50, 5);
     this.scene.box.add(this.scene.boxBg);
-    this.scene.box.setScale(scala);
 
     this.scene.textoTiempo = this.scene.add.text(
       10,
@@ -297,10 +298,10 @@ export class Avatar extends Phaser.GameObjects.Sprite {
       `Tiempo: ${window.time}`,
       {
         fontFamily: "Arial",
-        fontSize: 24,
+        fontSize: 48,
         color: "#ffffff",
       }
-    );
+    ).setScale(0.5);
     this.scene.time.addEvent({
       delay: 1000,
       callback: () => {
@@ -312,8 +313,9 @@ export class Avatar extends Phaser.GameObjects.Sprite {
     });
 
     this.scene.textoTiempo.setScrollFactor(0);
-    this.scene.textoTiempo.setScale(scala);
+    //this.scene.textoTiempo.setScale(scala);
     this.scene.box.add(this.scene.textoTiempo).setScrollFactor(0);
     this.scene.box.setDepth(200);
+    this.scene.box.setScale(scala);
   }
 }

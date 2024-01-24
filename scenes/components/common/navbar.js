@@ -9,11 +9,13 @@ import { style } from "../intro/buttonLogout/styles.js";
 
 export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
   let box = scene.add.container(400, 250); //zoom == 2
+  // let box = scene.add.container(800, 500); //zoom == 2
+
   if (scene.cameras.main.zoom == 1.5) {
     box = scene.add.container(265, 165); //zoom == 1.5
   }
   if (scene.cameras.main.zoom == 1) {
-    box = scene.add.container(200, 100); //zoom == 1
+    box = scene.add.container(0, 0); //zoom == 1
   }
 
   box.setScrollFactor(0);
@@ -32,7 +34,7 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
       .confirmDialog(style)
       .setScrollFactor(0)
       .setPosition(800, 500)
-      .setScale(0.5)
+      .setScale(scale).setDepth(1000)
       .setDraggable("title")
       .resetDisplayContent({
         title: traslate("goHome"),
@@ -62,7 +64,7 @@ export const navbar = async (scene, name = "cubicle", scale = 0.5) => {
           return;
         }
         home.setInteractive({ useHandCursor: true });
-      });
+      })
   });
   home.setScrollFactor(0);
   box.add(home);

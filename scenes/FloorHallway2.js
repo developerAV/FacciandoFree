@@ -162,6 +162,7 @@ export class FloorHallway2 extends Phaser.Scene {
   }
 
   update() {
-    this.avatar.update(this);
+
+    window.avatarUpdateActivo &&  this.avatar.update(this);
   }
 }

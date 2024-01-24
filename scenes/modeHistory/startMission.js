@@ -20,8 +20,6 @@ export const startMission = (scene) => {
     scene.avatar.avatarPlayer,
     example,
     async () => {
-      window.missionActive = true;
-
       const narradorVideo = getInfoMission(PROPERTY.narrador);
       scene.avatar.moveTo(0, 0, "turn");
       scene.iconMap.destroy();
