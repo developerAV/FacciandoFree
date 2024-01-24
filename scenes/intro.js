@@ -1,5 +1,12 @@
 import { blurButton } from "./module/blurButton.js";
-import { COLORS, COLORS_HEX, FONT, FONT2, FONT_SIZE, SCENE } from "../utils/constants.js";
+import {
+  COLORS,
+  COLORS_HEX,
+  FONT,
+  FONT2,
+  FONT_SIZE,
+  SCENE,
+} from "../utils/constants.js";
 import { textButton } from "./module/textButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
 import { traslate } from "../data/dialogues.js";
@@ -12,6 +19,7 @@ import { scoreUser } from "./components/intro/scoreUser.js";
 import { Avatar } from "./player.js";
 
 import { getForum } from "../services/forum.service.js";
+import { getAllUsers } from "../services/user.service.js";
 
 import { createButtonMission } from "./components/common/buttonMission.js";
 export class Intro extends Phaser.Scene {
@@ -19,6 +27,7 @@ export class Intro extends Phaser.Scene {
     super({ key: "intro" });
   }
   preload() {
+ 
     this.load.plugin(
       "rexlineprogresscanvasplugin",
       "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexlineprogresscanvasplugin.min.js",
@@ -33,6 +42,16 @@ export class Intro extends Phaser.Scene {
     });
   }
   async create() {
+       //obtener todos los usuarios el name getallusers
+      await getAllUsers().then((users) => {
+        console.log(user);
+        users.forEach((user) => {
+        const imageUrl = user.imageUrl;
+        this.load.image(user.idUserFirebase, imageUrl);
+        this.load.start();
+        }
+        );
+      });
     window.loadOut = true;
     window.avatarSprite = window.user.sprite;
     if (window.mode === undefined) {
@@ -100,7 +119,7 @@ export class Intro extends Phaser.Scene {
     play.on("pointerdown", () => {
       // Antes de cambiar de escena, detén el intervalo
       // clearInterval(intervalo);
-      
+
       this.scene.restart();
       this.scene.stop();
       this.scene.start(SCENE.loading);
@@ -247,45 +266,40 @@ export class Intro extends Phaser.Scene {
     const forumX = await getForum(this);
     let randomForum;
     // console.log(forumX[0])
-//forumX extrae varios objetos del foro, necesito uno al azar
-const boxForum = this.add.container(1070, 500);
-const boxForumBg = this.add.graphics();
-const boxForumBgLevel = this.add.graphics();
-boxForum.setName("boxForum");  
-boxForumBg.fillStyle(0x00051a, 0.42);
+    //forumX extrae varios objetos del foro, necesito uno al azar
+    const boxForum = this.add.container(1070, 500);
+    const boxForumBg = this.add.graphics();
+    const boxForumBgLevel = this.add.graphics();
+    boxForum.setName("boxForum");
+    boxForumBg.fillStyle(0x00051a, 0.42);
 
+    boxForumBgLevel.fillStyle(COLORS.white, 0.42);
+    boxForumBgLevel.fillRoundedRect(0, 0, 500, 300, 15);
+    boxForumBgLevel.lineStyle(4, COLORS.blue, 1);
 
-boxForumBgLevel.fillStyle(COLORS.white, 0.42);
-boxForumBgLevel.fillRoundedRect(0, 0, 500, 300, 15);
-boxForumBgLevel.lineStyle(4, COLORS.blue, 1);
+    const forumLabel = this.add.text(30, 20, traslate("forum"), {
+      fontFamily: FONT2,
+      fontSize: "40px",
+      color: "#00051A",
+    });
+    let randomForumComments;
+    let forumComments;
+    let forum;
+    const intervalox = setInterval(() => {
+      try {
+        randomForum = Math.floor(Math.random() * forumX.length);
+        forum = forumX[randomForum];
+        forumComments = forum.comments;
+        randomForumComments = Math.floor(Math.random() * forumComments.length);
+        console.log(randomForum);
+        console.log(forum);
 
-
-  const forumLabel = this.add.text(30, 20, traslate("forum"), {
-    fontFamily: FONT2,
-    fontSize: "40px",
-    color: "#00051A",
-  });
-  let randomForumComments;
-  let forumComments;
-  let forum;
-const intervalox = setInterval(() => {
-try {
-  randomForum = Math.floor(Math.random() * forumX.length);
-    forum = forumX[randomForum];
-    forumComments = forum.comments;
-    randomForumComments = Math.floor(Math.random() * forumComments.length);
-    console.log(randomForum);
-    console.log(forum);
-
-topicLabel.setText(forum.title);
-contentLabel.setText(forum.comments[randomForumComments].content);	
-
-} catch (error) {
-  clearInterval(intervalox);
-}
-    
-
-}, 3000);
+        topicLabel.setText(forum.title);
+        contentLabel.setText(forum.comments[randomForumComments].content);
+      } catch (error) {
+        clearInterval(intervalox);
+      }
+    }, 3000);
 
     const topicLabel = this.add.text(30, 70, "Tema", {
       fontFamily: FONT2,
@@ -314,7 +328,6 @@ contentLabel.setText(forum.comments[randomForumComments].content);
       color: "#fff",
     });
 
-
     boxForum.add(boxForumBg);
     boxForum.add(boxForumBgLevel);
     boxForum.add(forumLabel);
@@ -323,10 +336,6 @@ contentLabel.setText(forum.comments[randomForumComments].content);
     boxForum.add(btnForum);
     boxForum.add(btnLabel);
 
-
-
-
-    
     this.updateScene = () => {
       playText.setText(traslate("start"));
       logoutButton.setText(traslate("logout"));

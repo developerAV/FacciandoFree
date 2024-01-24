@@ -6,6 +6,7 @@ import {
   FONT_SIZE,
 } from "../utils/constants.js";
 import { panelComment } from "./components/forum/panelComment.js";
+import { panelCreate } from "./components/forum/panelCreateForum.js";
 import { textButton } from "./module/textButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
 import { traslate } from "../data/dialogues.js";
@@ -27,6 +28,7 @@ export class Forum extends Phaser.Scene {
       url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
       sceneKey: "rexUI",
     });
+    
   }
   async create() {
     const background2 = this.add.rectangle(
@@ -191,7 +193,8 @@ export class Forum extends Phaser.Scene {
     btnContainer.add(btnText);
     btnContainer.setInteractive();
     btnContainer.on("pointerdown", () => {
-      console.log("click");
+      console.log("click");//==================================================================================
+    panelCreate(this);
     });
 
     boxForum.add(boxForumBg);

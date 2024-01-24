@@ -1,6 +1,7 @@
 
 import { COLORS } from "../../../utils/constants.js";
 import { getUserById } from "../../../services/user.service.js";
+import { FONT } from "../../../utils/constants.js";
 
 export const panelComment = function (scene, listComments) {
     
@@ -12,13 +13,14 @@ export const panelComment = function (scene, listComments) {
       height: 450,
 
       scrollMode: 0,
+
    
 
 
-      // background: scene.rexUI.add.roundRectangle({
-      //   strokeColor: COLORS.blue,
-      //   radius: 10,
-      // }),
+      background: scene.rexUI.add.roundRectangle({
+        strokeColor: COLORS.blue,
+        radius: 10,
+      }),
 
       panel: {
         child: createPanel2(scene, listComments ),
@@ -26,7 +28,6 @@ export const panelComment = function (scene, listComments) {
       },
 
       slider: {
-        value: 1,
         track: scene.rexUI.add.roundRectangle({
           width: 20,
 
@@ -46,19 +47,21 @@ export const panelComment = function (scene, listComments) {
       },
       mouseWheelScroller: {
         focus: false,
-        speed: 0.5,
+        speed: 0.1,
       },
       space: {
         left: 40,
         right: 0,
         top: 0,
         bottom: 0,
-        panel: 0,
+        panel: 10,
       },
     })
     .layout();
-    return scene.scrollablePanel2;
+    return;
+
 }
+
 
 
 let createPanel2 = function (scene, listComments) {
@@ -71,28 +74,34 @@ let createPanel2 = function (scene, listComments) {
     listComments.forEach(async(listComment, index) => {
        user = await getUserById(listComment.user);
         console.log("user -----", user.idUserFirebase);
+    let color = user.idUserFirebase === window.user.idUserFirebase ? COLORS.blue : COLORS.COLOR_PRIMARY;
+      let imgX = user.idUserFirebase === window.user.idUserFirebase ? 850 : 50;
+      let nameX = user.idUserFirebase === window.user.idUserFirebase ? 650 : 80;
     
       let container2 = scene.add.container(xInit, yInit);
   
       const boxBg = scene.add.graphics();
       boxBg.fillGradientStyle(
-        COLORS.blue,
-        COLORS.blue,
-        0x054294,
-        0x054294,
+        color,
+        color,
+        color,
+        color,
         0.9,
         1,
-        0.8
+        0.3
       );
-      boxBg.fillRect(0, 0, 900, 90);
+      // boxBg.fillRect(0, 0, 900, 90);
   
       // const profile2 = scene.add.image(50, 45, listComments.user.idUserFirebase ? "profile" : "avatar");
 
-      const profile2 = scene.add.image(50, 45, user.idUserFirebase);
+      const imageUrl = user.imageUrl;
+      scene.load.image(user.idUserFirebase, imageUrl);
+      scene.load.start(); // Inicia la carga
+      const profile2 = scene.add.image(imgX, 45, user.idUserFirebase);
       profile2.setScale(0.7);
   //cargar imagen con load desde create
-      const name = scene.add.text(100, 10, listComment.name  ? "xx" : "xd" , {
-        font: `32px arial`,
+      const name = scene.add.text(nameX, 5, user.name, {
+        font: `20px ${FONT}`,
         fill: "#fff",
         wordWrap: {
           width: 500,
@@ -102,8 +111,8 @@ let createPanel2 = function (scene, listComments) {
           y: 10,
         },
       });
-      const commenst = scene.add.text(100, 50, listComment.content ?? "No school", {
-        font: `14px arial`,
+      const commenst = scene.add.text(100, 30, listComment.content ?? "No school", {
+        font: `24px ${FONT}`,
         fill: "#fff",
         wordWrap: {
           width: 600,
@@ -113,15 +122,19 @@ let createPanel2 = function (scene, listComments) {
           y: 10,
         },
       });
+      yInit = yInit + commenst.height+ 50;
      
+      boxBg.fillRect(0, 0, 900, commenst.height+ 35);
       container2.add(boxBg);
       container2.add(name);
       container2.add(commenst);
     
       scene.container.add(container2);
   
+     //update heigth at container
+      scene.container.setSize(200, yInit);
+      //update boxBg fillRect height
      
-      yInit = yInit + 100;
       container2.add(profile2);
   
     });
