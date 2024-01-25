@@ -67,6 +67,7 @@ window.isMobile = /iPhone|iPad|iPod|Android/i.test(window.navigator.userAgent);
 window.lan = "es";
 window.time = 0;
 window.loadOut = false;
+window.forumId = "";
 const game = new Phaser.Game(config);
 
 game.scene.start();

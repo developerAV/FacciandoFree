@@ -7,6 +7,7 @@ import {
 } from "../utils/constants.js";
 import { panelComment } from "./components/forum/panelComment.js";
 import { panelCreate } from "./components/forum/panelCreateForum.js";
+import { inputComment } from "./components/forum/inputComment.js";
 import { textButton } from "./module/textButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
 import { traslate } from "../data/dialogues.js";
@@ -20,7 +21,6 @@ export class Forum extends Phaser.Scene {
     super({ key: "forum" });
   }
   preload() {
-    
     if (this.textures.exists("profile")) this.textures.remove("profile");
     this.load.image("profile", window.imageUrl);
     this.load.scenePlugin({
@@ -28,7 +28,8 @@ export class Forum extends Phaser.Scene {
       url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
       sceneKey: "rexUI",
     });
-    
+
+
   }
   async create() {
     const background2 = this.add.rectangle(
@@ -129,7 +130,7 @@ export class Forum extends Phaser.Scene {
       this,
       1100,
       30,
-      "avatar",
+      "forum",
       COLORS.grayDark,
       FONT_SIZE.small,
       0.9
@@ -193,8 +194,8 @@ export class Forum extends Phaser.Scene {
     btnContainer.add(btnText);
     btnContainer.setInteractive();
     btnContainer.on("pointerdown", () => {
-      console.log("click");//==================================================================================
-    panelCreate(this);
+      console.log("click"); //==================================================================================
+      panelCreate(this);
     });
 
     boxForum.add(boxForumBg);
@@ -231,7 +232,7 @@ export class Forum extends Phaser.Scene {
       })
       .layout();
 
-      // console.log(this.forumX[0]._id);
+    // console.log(this.forumX[0]._id);
     panel.scrollToChild(panel.getByName("", true));
 
     const boxForumComments = this.add.container(550, 150);
@@ -240,14 +241,13 @@ export class Forum extends Phaser.Scene {
     boxForumCommentsBg.fillStyle(0x00051a, 0.7);
     boxForumCommentsBg.fillRoundedRect(0, 0, 1000, 700, 15);
     boxForumCommentsBg.lineStyle(4, COLORS.blue, 1);
-    
-    
+
     this.topicChat = this.add.text(80, 22, "Topic", {
       fontFamily: FONT,
       fontSize: "46px",
       color: COLORS_HEX.white,
       align: "center",
-      fontStyle: 'bold',
+      fontStyle: "bold",
     });
     this.descriptionChat = this.add.text(80, 80, "Description", {
       fontFamily: FONT,
@@ -259,13 +259,9 @@ export class Forum extends Phaser.Scene {
     boxForumComments.add(this.topicChat);
     boxForumComments.add(this.descriptionChat);
 
+    //COntenido del foro comentarios
 
-
-
-    //COntenido del foro comentarios 
-
-      
-
+    inputComment(this);
   }
 }
 let CreatePanel = function (scene) {
@@ -297,17 +293,15 @@ let CreatePanel = function (scene) {
 
     label.setInteractive().on("pointerdown", () => {
       try {
-        
         scene.container.destroy();
         scene.scrollablePanel2.destroy();
-      } catch (error) {
-        
-      }
-      
+      } catch (error) {}
+
       console.log(`Clicked on ${name}`);
       currentIndex = element._id;
       scene.topicChat.setText(element.title);
       scene.descriptionChat.setText(element.description);
+      window.forumId = element._id;
       panelComment(scene, element.comments);
       console.log(currentIndex);
       // scene.scene.start("forumComments", { id: currentIndex });
@@ -315,34 +309,6 @@ let CreatePanel = function (scene) {
 
     panel.add(label, { expand: true });
   });
-
-  // for (let i = 0; i < 50; i++) {
-  //   let name = `item-${i}`;
-
-  //   let label = scene.rexUI.add.label({
-  //     background: scene.rexUI.add.roundRectangle({
-  //       color: COLORS.white,
-  //       radius: 10,
-  //       alpha: 0.7,
-  //     }),
-
-  //     text: scene.add.text(0, 0, name, {
-  //       fontFamily: FONT,
-  //       fontSize: "26px",
-  //       color: COLORS_HEX.black,
-  //       align: "center",
-  //     }),
-  //     space: { left: 10, right: 10, top: 20, bottom: 20 },
-  //     name: name,
-  //   });
-  //   label.setDepth(1);
-
-  //   label.setInteractive().on('pointerdown', () => {
-  //     console.log(`Clicked on ${name}`);
-  //   });
-
-  //   panel.add(label, { expand: true });
-  // }
 
   return panel;
 };

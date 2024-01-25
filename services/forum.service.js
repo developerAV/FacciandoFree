@@ -36,14 +36,14 @@ export const postForum = async (forum) => {
     }
     }
 
-export const putForum = async (forum) => {  
+export const putForum = async (id, content) => {  
     try {
-        const response = await fetch(`${URI_API}/forum/${forum.id}`, {
+        const response = await fetch(`${URI_API}/forum/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(forum),
+            body: JSON.stringify(content),
         });
         const data = await response.json();
         return data;
