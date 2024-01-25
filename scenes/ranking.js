@@ -12,11 +12,8 @@ export class Ranking extends Phaser.Scene {
     super({ key: "ranking" });
   }
   preload() {
-    window.top10UserList.map((user) => {
-      if (this.textures.exists(user.idUserFirebase))
-        this.textures.remove(user.idUserFirebase);
-      this.load.image(user.idUserFirebase, user.imageUrl);
-    });
+    
+  
 
     this.load.image("profile", window.imageUrl);
 

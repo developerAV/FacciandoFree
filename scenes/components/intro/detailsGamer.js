@@ -5,7 +5,7 @@ import {
   FONT,
   FONT_SIZE,
 } from "../../../utils/constants.js";
-import { getMissionByLevel } from "../../../services/mission.js";
+import { getMissionByLevel } from "../../../services/mission.service.js";
 
 const cursor = { useHandCursor: true };
 export const detailsGamer = (scene, width = 50, height = 200) => {

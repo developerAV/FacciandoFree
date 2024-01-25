@@ -1,4 +1,4 @@
-import { putUser } from "../../services/user.js";
+import { putUser } from "../../services/user.service.js";
 import { PROPERTY } from "../../utils/constants.js";
 import { getInfoMission } from "./infoMission.js";
 
