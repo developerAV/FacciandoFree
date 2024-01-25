@@ -5,8 +5,8 @@ import { dimesionesPlataforma } from "./module/platform.js";
 import { SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { shortMap, bigMap } from "./components/common/map.js";
 import { alertCard } from "./modeHistory/components/alertCard.js";
-import { mission5Medio } from "./modeHistory/missions/mission5.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
+import { mission6Medio } from "./modeHistory/missions/mission6.js";
 
 export class Laboratorio1 extends Phaser.Scene {
   constructor() {
@@ -102,7 +102,7 @@ export class Laboratorio1 extends Phaser.Scene {
     if (window.missionActive) {
       alertCard(this);
       if (window.user.actualMission === 2 && window.user.actualLevel == 2 && window.user.step === 3) {
-        mission5Medio(this);
+        mission6Medio(this);
       }
 
     }

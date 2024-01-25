@@ -146,7 +146,7 @@ export class FloorHallway2 extends Phaser.Scene {
 
     if (
       !window.missionActive &&
-      window.user.actualMission === 2 &&
+      window.user.actualMission === 3 &&
       window.user.actualLevel === 2
     ) {
       startMission(this);
@@ -163,6 +163,6 @@ export class FloorHallway2 extends Phaser.Scene {
 
   update() {
 
-    window.avatarUpdateActivo &&  this.avatar.update(this);
+    window.avatarUpdateActivo && this.avatar.update(this);
   }
 }

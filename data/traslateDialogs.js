@@ -36,7 +36,7 @@ const data = {
       "1statistics and discrete mathematics, are you interested in those subjects?",
     ],
   },
-  mission3: {
+  mission4: {
     es: [
       "0Hola, ¿usted es el director de la carrera?",
       "1¡Hola! Si, soy el director de la carrera, ¿en que te puedo ayudar?",
@@ -54,7 +54,7 @@ const data = {
       "1Welcome to the Faculty of Life Sciences and Technologies in the Information Technologies career.",
     ],
   },
-  mission4: {
+  mission5: {
     es: [
       "1Hola, ¿Ya tienes proyecto de vinculación?",
       "0no, ni siquiera sé de que se trata la vinculación ",
@@ -72,7 +72,7 @@ const data = {
       "0Ready mate, Thank you very much",
     ],
   },
-  mission4_1: {
+  mission5_1: {
     es: [
       "0Hola, mucho gusto, quisiera saber sobre el proceso de vinculación",
       "1Hola, el proceso de vinculación es muy sencillo, solo debes tener en cuenta los siguientes requisitos:",
@@ -98,7 +98,7 @@ const data = {
       "0Ready, thank you very much! I find it very interesting",
     ],
   },
-  mission5: {
+  mission6: {
     es: [
       "1Y bien, terminó la clase, voy a enviar un proyecto para que lo realices en casa, se trata de un...",
       /* "1proyecto, el cual debe estar vinculado con un web y una aplicación móvil para mostrar los datos.",
@@ -120,7 +120,7 @@ const data = {
       "1I don't have time to explain, a thousand apologies, you can go to the electronics room for information.",
     ],
   },
-  mission5_1: {
+  mission6_1: {
     es: [
       "0Hola, me puede explicar algo sobre IoT?",
       "1Hola, claro que si, IoT es el internet de las cosas, es un concepto que se refiere a la interconexión...",
@@ -141,7 +141,7 @@ const data = {
     ],
 
   },
-  mission5_2: {
+  mission6_2: {
     es: [
       "1Listo, ahora te explico como conectar el sensor de temperatura y humedad a la placa de desarrollo...",
       "1para ello debes conectar el sensor a la placa de desarrollo en los pines correspondientes...",
@@ -163,10 +163,6 @@ const data = {
       "1Very well, you already have the necessary knowledge, I congratulate you.",
       "0Thank you very much, see you later.",
     ],
-  },
-  mission6: {
-    es: [],
-    en: [],
   },
   mission7: {
     es: [],

@@ -149,7 +149,7 @@ export class Hallway300 extends Phaser.Scene {
 
     if (
       window.user.actualLevel === 2 &&
-      window.user.actualMission === 1 &&
+      window.user.actualMission === 2 &&
       !window.missionActive
     ) {
       startMission(this);

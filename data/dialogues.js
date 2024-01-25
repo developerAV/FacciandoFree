@@ -218,14 +218,19 @@ const traslateIntro = {
     en: "In this mission you have to find the cubicle of the ing. Hiraida and for you to inform a little about the basic subjects.",
   },
   mission3: {
+    es: "En esta corta misión tienes que ir a conocer donde queda el área de comisiones, que es una de la importantes áreas de la facultad.",
+    en: "In this short mission you have to go to know where the commissions area is, which is one of the important areas of the faculty.",
+  }
+  ,
+  mission4: {
     es: "Ya tienes todo lo necesario para poder matricularte en la carrera, ahora tienes que darselo al director de carrera y presentar todo los documentos para la matriculación.",
     en: "You already have everything you need to be able to enroll in the career, now you have to give it to the career director and present all the documents for enrollment.",
   },
-  mission4: {
+  mission5: {
     es: "Estas en un nivel superior, pero, aun no has hecho algo importante para medir tus conocimientos ademas de las materias que estas cursando, parece que ese compañero tiene algo que decirte.",
     en: "You are at a higher level, but you have not yet done something important to measure your knowledge in addition to the subjects you are studying, it seems that that partner has something to tell you.",
   },
-  mission5: {
+  mission6: {
     es: "En esta misión tendras que hacer un proyecto de IoT para una materia, y solicitar ayuda para poder realizarlo.",
     en: "In this mission you will have to make an IoT project for a subject, and ask for help to be able to do it.",
   },

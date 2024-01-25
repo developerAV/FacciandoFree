@@ -45,7 +45,7 @@ export class Cubicle extends Phaser.Scene {
       url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
       sceneKey: "rexUI",
     });
-   
+
   }
 
   async create() {
@@ -199,7 +199,7 @@ export class Cubicle extends Phaser.Scene {
       }
     }
 
-    if (!window.missionActive && window.user.actualMission === 2) {
+    if (!window.missionActive && (window.user.actualMission === 2 || window.user.actualMission === 3)) {
       startMission(this);
     }
 
@@ -209,7 +209,7 @@ export class Cubicle extends Phaser.Scene {
     navbar(this, "cubicle");
     shortMap(this, "cubicleMap");
     bigMap(this);
-    
+
   }
 
   update() {

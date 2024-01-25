@@ -27,18 +27,29 @@ const dialogs = {
     step2: "Elige la opcion que creas correcta",
   },
   mission3: {
+    positionMap: { x: 0, y: 0 },
+    positionButton: { x: 600, y: 700 },
     dialogs: "dialog3",
-    video: "avatarVideo1",
+    video: "avatarVideo2",
     narrador: "mission3",
+    time: 60,
+    step1: "Acercate al profesor",
+    step2: "Dirigete a el area de comisiones",
+
+  },
+  mission4: {
+    dialogs: "dialog4",
+    video: "avatarVideo1",
+    narrador: "mission4",
     positionMap: { x: 0, y: 0 },
     positionButton: { x: 380, y: 565 },
     time: 10,
     step1: "Acercate al area del director de carrera",
   },
-  mission4: {
-    dialogs: "dialog4",
+  mission5: {
+    dialogs: "dialog5",
     video: "avatarVideo2",
-    narrador: "mission4",
+    narrador: "mission5",
     positionButton: { x: 546, y: 583 },
     positionMap: { x: 0, y: 0 },
     time: 120,
@@ -47,10 +58,10 @@ const dialogs = {
     step3: "Acercate donde esta la ing Adriana",
     step4: "este es el paso 4 de la mision 4",
   },
-  mission5: {
-    dialogs: "dialog5",
+  mission6: {
+    dialogs: "dialog6",
     video: "avatarVideo1",
-    narrador: "mission5",
+    narrador: "mission6",
     positionMap: { x: 0, y: 0 },
     positionButton: { x: 1200, y: 800 },
     time: 60,
@@ -60,6 +71,7 @@ const dialogs = {
     step4: "Busca el componente que te pide el profesor",
     step5: "Entrégaselo al profesor",
   },
+
 };
 
 export const getInfoMission = (property) => {
