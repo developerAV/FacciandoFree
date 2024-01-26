@@ -28,7 +28,7 @@ export class Login extends Phaser.Scene {
     );
     // fondo dinamico
     const background = this.add.sprite(1500, 500, "background").setScale(1.6);
-    background.alpha = 0.1;
+    background.alpha = 0.3;
 
     const tween = this.tweens.add({
       targets: background,
@@ -40,7 +40,7 @@ export class Login extends Phaser.Scene {
     });
 
     //letras facciando2
-    this.add.image(800, 100, "facciando2").setScale(1);
+    this.add.image(800, 375, "facciando2").setScale(1);
 
     const googleButton = this.add.image(800, 500, "googleEN");
 
