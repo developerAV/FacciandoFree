@@ -4,9 +4,9 @@ import "../Firebase/googleLogin.js";
 import { Avatar } from "./player.js";
 
 import { preloads } from "./components/loanding/preload.js";
-import { getAllLevels } from "../services/level.js";
-import { getUserFirebase, postUser } from "../services/user.js";
-import { getMissionByLevel } from "../services/mission.js";
+import { getAllLevels } from "../services/level.service.js";
+import { getUserFirebase, postUser } from "../services/user.service.js";
+import { getMissionByLevel } from "../services/mission.service.js";
 import { SCENE } from "../utils/constants.js";
 export class Loading extends Phaser.Scene {
   constructor() {

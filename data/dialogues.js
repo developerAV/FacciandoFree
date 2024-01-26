@@ -208,6 +208,14 @@ const traslateIntro = {
     es: "Juego",
     en: "Game",
   },
+  forum: {
+    es: "Foro",
+    en: "Forum",
+  },
+  participar: {
+    es: "Participar",
+    en: "Participate",
+  },
   // narrador por mission
   mission1: {
     es: "Bienvenido a la facultad de ingeniería en TI, en esta misión tendrás que reconocer las ubicaciones de secretaría y los cubículos de los docentes de la planta baja.",

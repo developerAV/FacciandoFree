@@ -1,6 +1,6 @@
 import { COLORS, FONT, FONT2, SCENE } from "../../../utils/constants.js";
 import { traslate } from "../../../data/dialogues.js";
-import { getUserById, putUser } from "../../../services/user.js";
+import { getUserById, putUser } from "../../../services/user.service.js";
 import { info } from "./info.js";
 
 import { COLORS_HEX } from "../../../utils/constants.js";

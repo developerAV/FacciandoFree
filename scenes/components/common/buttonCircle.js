@@ -1,4 +1,4 @@
-import { putUser } from "../../../services/user.js";
+import { putUser } from "../../../services/user.service.js";
 import { COLORS, SCENE } from "../../../utils/constants.js";
 import { handleSteps } from "../../modeHistory/handleSteps.js";
 export const createButtonCircle = (

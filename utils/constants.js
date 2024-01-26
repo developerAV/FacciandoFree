@@ -33,6 +33,7 @@ export const COLORS_HEX = {
   green: "#00ff00",
   blue: "#03bed0",
   blueDark: "#0000ff",
+  blueDark2: "#00051a",
   yellow: "#ffff00",
   orange: "#ffA500",
   grayDark: "#262c2e",

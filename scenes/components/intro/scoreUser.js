@@ -1,6 +1,6 @@
 import { traslate } from "../../../data/dialogues.js";
 import { COLORS, COLORS_HEX, FONT } from "../../../utils/constants.js";
-import { getUserById } from "../../../services/user.js";
+import { getUserById } from "../../../services/user.service.js";
 export const scoreUser = async (scene, x = 1070, y = 200) => {
   const user = await getUserById(window.user?._id);
 

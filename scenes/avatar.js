@@ -19,7 +19,7 @@ const arrayAvatar = [
   "spriteGirl3",
 ];
 import { buttonLogout } from "./components/intro/buttonLogout/buttonLogout.js";
-import { putUser } from "../services/user.js";
+import { putUser } from "../services/user.service.js";
 
 export class AvatarS extends Phaser.Scene {
   constructor() {
