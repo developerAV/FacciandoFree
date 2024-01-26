@@ -64,48 +64,48 @@ export class Outside extends Phaser.Scene {
 
   create() {
     // window.contador = 100;
-    socket = io('http://localhost:3000' ,{ transports :['websocket'] }); // Cambia la URL según tu entorno
+    // socket = io('http://localhost:3000' ,{ transports :['websocket'] }); // Cambia la URL según tu entorno
 
  
 
+    // // socket.on('actualizarPosicion', (data) => {
+    // //   console.log(`Recibido: ${data.id} en (${data.x}, ${data.y}, avatar: ${data.nameAvatar})`);
+    // //  this.avatar2.avatarPlayer.x = data.x;
+    // //   this.avatar2.avatarPlayer.y = data.y;
+    // //   this.avatar2.avatarPlayer.anims.play(data.nameAvatar, true);
+
+
+    // //   // Actualiza la posición del avatar o realiza otras acciones necesarias
+    // // });
     // socket.on('actualizarPosicion', (data) => {
-    //   console.log(`Recibido: ${data.id} en (${data.x}, ${data.y}, avatar: ${data.nameAvatar})`);
-    //  this.avatar2.avatarPlayer.x = data.x;
-    //   this.avatar2.avatarPlayer.y = data.y;
-    //   this.avatar2.avatarPlayer.anims.play(data.nameAvatar, true);
+    //   console.log(`Recibido: ${data.id} en (${data.moving})`);
+    //   if (data.moving == "left") {
+    //     this.avatar2.moveTo(0, -200, "left");
+    //     return;
+    //   }
+    //   if (data.moving == "right") {
+    //     this.avatar2.moveTo(0, 200, "right");
+    //     return;
+    //   }
+    //   if ( data.moving == "up") {
+    //     this.avatar2.moveTo(-200, 0, "up");
+    //     return;
+    //   }
+    //   if (data.moving == "down") {
+    //     this.avatar2.moveTo(200, 0, "down");
+    //     return;
+    //   }
+  
+    //   this.avatar2.moveTo(0, 0, "turn");
 
-
+ 
     //   // Actualiza la posición del avatar o realiza otras acciones necesarias
     // });
-    socket.on('actualizarPosicion', (data) => {
-      console.log(`Recibido: ${data.id} en (${data.moving})`);
-      if (data.moving == "left") {
-        this.avatar2.moveTo(0, -200, "left");
-        return;
-      }
-      if (data.moving == "right") {
-        this.avatar2.moveTo(0, 200, "right");
-        return;
-      }
-      if ( data.moving == "up") {
-        this.avatar2.moveTo(-200, 0, "up");
-        return;
-      }
-      if (data.moving == "down") {
-        this.avatar2.moveTo(200, 0, "down");
-        return;
-      }
   
-      this.avatar2.moveTo(0, 0, "turn");
-
- 
-      // Actualiza la posición del avatar o realiza otras acciones necesarias
-    });
-  
-    socket.on('eliminarAvatar', (data) => {
-      console.log(`Cliente desconectado: ${data.id}`);
-      // Elimina el avatar o realiza otras acciones necesarias
-    });
+    // socket.on('eliminarAvatar', (data) => {
+    //   console.log(`Cliente desconectado: ${data.id}`);
+    //   // Elimina el avatar o realiza otras acciones necesarias
+    // });
   
    
 
@@ -268,26 +268,15 @@ export class Outside extends Phaser.Scene {
     this.avatar.update();
     // socket.emit('enviarPosicion', { x: this.avatar.avatarPlayer.x, y: this.avatar.avatarPlayer.y , nameAvatar: "spriteGirl" });
      //enviar un socket diciendo up, down, left, right por mediode una variabe moving
-    let moving;
-    if (this.avatar.avatarPlayer.body.velocity.x > 0) {
-      moving = "right";
-    } else if (this.avatar.avatarPlayer.body.velocity.x < 0) {
-      moving = "left";
-    } else if (this.avatar.avatarPlayer.body.velocity.y > 0) {
-      moving = "down";
-    } else if (this.avatar.avatarPlayer.body.velocity.y < 0) {
-      moving = "up";
-    } else {
-      moving = "stop";
-    }
+ 
     // console.log(moving);
-    socket.emit('enviarMovimiento', { moving: moving });
+    // socket.emit('enviarMovimiento', { moving: moving });
  
   }
 }
-// Manejar la desconexión del juego
-window.addEventListener('beforeunload', () => {
-  if (socket) {
-    socket.disconnect();
-  }
-});
+// // Manejar la desconexión del juego
+// window.addEventListener('beforeunload', () => {
+//   if (socket) {
+//     socket.disconnect();
+//   }
+// });
