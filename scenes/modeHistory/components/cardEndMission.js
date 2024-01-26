@@ -1,7 +1,7 @@
 import { traslate } from "../../../data/dialogues.js";
 import { COLORS, COLORS_HEX, FONT } from "../../../utils/constants.js";
 
-export const cardEndMission = (scene) => {
+export const cardEndMission = async (scene) => {
   window.runTime = false;
   scene.avatar.runTime(false);
   const boxEndMission = scene.add.container(600, 500);
@@ -31,9 +31,9 @@ export const cardEndMission = (scene) => {
 
 
 
-  setTimeout(function () {
-    text.destroy();
-    boxEndMission.destroy();
+  setTimeout(async function () {
+    await text.destroy();
+    await boxEndMission.destroy();
     window.avatarUpdateActivo = true;
   }, 4000);
 };

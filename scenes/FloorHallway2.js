@@ -11,6 +11,7 @@ import { createButtonCircle } from "./components/common/buttonCircle.js";
 import { shortMap, bigMap } from "./components/common/map.js";
 import { startMission } from "./modeHistory/startMission.js";
 import { alertCard } from "./modeHistory/components/alertCard.js";
+import { getIndexMission } from "./modeHistory/infoMission.js";
 let activeVideo = false;
 
 export class FloorHallway2 extends Phaser.Scene {
@@ -145,9 +146,7 @@ export class FloorHallway2 extends Phaser.Scene {
     }
 
     if (
-      !window.missionActive &&
-      window.user.actualMission === 3 &&
-      window.user.actualLevel === 2
+      !window.missionActive && getIndexMission().index === "mission6"
     ) {
       startMission(this);
     }

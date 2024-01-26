@@ -20,6 +20,7 @@ import { createButtonMission } from "./components/common/buttonMission.js";
 import { startMission } from "./modeHistory/startMission.js";
 import { style } from "./components/intro/buttonLogout/styles.js";
 import { mission1Final } from "./modeHistory/missions/mission1.js";
+import { getIndexMission } from "./modeHistory/infoMission.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -194,12 +195,12 @@ export class Cubicle extends Phaser.Scene {
     createButtonCircle(this, "aula", escritorioD, 800, 500);
     if (window.missionActive) {
       alertCard(this);
-      if (window.user.actualMission === 1 && window.user.step === 5) {
+      if (getIndexMission().index === "mission1" && window.user.step === 5) {
         mission1Final(this);
       }
     }
 
-    if (!window.missionActive && (window.user.actualMission === 2 || window.user.actualMission === 3)) {
+    if (!window.missionActive && getIndexMission().index === "mission4") {
       startMission(this);
     }
 

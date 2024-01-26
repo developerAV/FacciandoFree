@@ -30,10 +30,16 @@ export const handleSteps = (dialog = false) => {
         return;
       }
     }
+    if (mission === 3 && active) {
+      if (step === 1 && window.sceneName === SCENE.commission_area) {
+        window.user.step = 2;
+        return;
+      }
+    }
   }
 
   if (level == 2) {
-    if (mission === 1 && active) {
+    if (mission === 2 && active) {
       if (step === 1) {
         window.user.step = 2;
         return;
@@ -43,7 +49,7 @@ export const handleSteps = (dialog = false) => {
         return;
       }
     }
-    if (mission === 2 && active) {
+    if (mission === 3 && active) {
       if (step === 1) {
         window.user.step = 2;
         return;

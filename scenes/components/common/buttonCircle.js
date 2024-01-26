@@ -55,7 +55,7 @@ export const createButtonCircle = (
     buttonCircle.containerX.list[0].setInteractive();
     buttonCircle.containerX.list[0].on("pointerdown", async () => {
       zoomWithNameScene(window.sceneName);
-      await handleSteps(); // cambiar de alerta a la mission actualizando los pasos
+      handleSteps(); // cambiar de alerta a la mission actualizando los pasos
       scene.scene.restart();
       scene.scene.stop();
       scene.scene.start(window.sceneName);

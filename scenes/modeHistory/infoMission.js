@@ -28,13 +28,13 @@ const dialogs = {
   },
   mission3: {
     positionMap: { x: 0, y: 0 },
-    positionButton: { x: 600, y: 700 },
+    positionButton: { x: 524, y: 486 },
     dialogs: "dialog3",
     video: "avatarVideo2",
     narrador: "mission3",
     time: 60,
-    step1: "Acercate al profesor",
-    step2: "Dirigete a el area de comisiones",
+    step1: "Dirigete a el area de comisiones",
+    step2: "avanza hasta al punto rojo",
 
   },
   mission4: {

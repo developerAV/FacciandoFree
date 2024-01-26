@@ -100,7 +100,7 @@ export class AdministrativeRoom extends Phaser.Scene {
     dimesionesPlataforma(paredPlataforma, 1, -42);
 
     createButtonCircle(this, SCENE.floor1, puerta, 839, 786);
-    
+
     this.physics.add.overlap(
       this.avatar.avatarPlayer,
       ptfmOverlap,
@@ -123,7 +123,7 @@ export class AdministrativeRoom extends Phaser.Scene {
     bigMap(this);
 
     //mision 1
-    if (window.user.actualMission === 1 && window.missionActive) {
+    if (window.missionActive && getIndexMission().index === "mission1") {
       mission1(this);
     }
 

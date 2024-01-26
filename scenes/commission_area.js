@@ -17,6 +17,7 @@ import { startMission } from "./modeHistory/startMission.js";
 import { getIndexMission } from "./modeHistory/infoMission.js";
 import { SIZE_AVATAR } from "../utils/constants.js";
 import { mission5Final } from "./modeHistory/missions/mission5.js";
+import { mission3 } from "./modeHistory/missions/mission3.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -276,11 +277,14 @@ export class CommissionArea extends Phaser.Scene {
       this
     ); */
 
-    if (!window.missionActive && window.user.actualMission === 1 && window.user.actualLevel === 2) {
+    if (!window.missionActive && getIndexMission().index === "mission4") {
       startMission(this);
     }
-    if (window.missionActive && getIndexMission().index === "mission5") {
-      mission5Final(this);
+
+    if (window.missionActive) {
+      if (getIndexMission().index === "mission3") mission3(this);
+      if (getIndexMission().index === "mission5") mission5Final(this);
+
     }
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasMedio);

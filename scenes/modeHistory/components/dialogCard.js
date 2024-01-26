@@ -7,8 +7,8 @@ export const cardDialog = async (scene, dialogs, x, y, endmission = false) => {
    ** son para el avatar del jugador                          **
    *************************************************************/
 
-  window.avatarUpdateActivo = false;
   scene.avatar.moveTo(0, 0, "turn");
+  window.avatarUpdateActivo = false;
   let time;
 
   const mostrarDialogo = (index) => {

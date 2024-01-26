@@ -9,6 +9,9 @@ import { PROPERTY } from "../../utils/constants.js";
 import { MISSIONS } from "./missions/index.js";
 
 export const startMission = (scene) => {
+
+  window.missionActive = true;
+
   const example = scene.physics.add.staticGroup();
 
   const { x, y } = getInfoMission(PROPERTY.buttonMission); //pbtiene las posiciones del boton de la mision
@@ -35,7 +38,8 @@ export const startMission = (scene) => {
       alertCard(scene);
 
       const { index } = getIndexMission();
-      if (index === "mission1") {
+      
+      if (index === "mission1" || index === "mission3") {
         return;
       }
 
