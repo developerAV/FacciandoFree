@@ -11,18 +11,7 @@ export class Aula extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("background2", "assets/images/classroom/piso.png");
-    this.load.image("paredAula", "assets/images/classroom/paredNorte.png");
-    this.load.image("paredIzq", "assets/images/classroom/paredIzq.png");
-    this.load.image("paredDer", "assets/images/classroom/paredDer.png");
-    this.load.image("paredInf", "assets/images/classroom/paredInf.png");
-    this.load.image("mesaAula", "assets/images/classroom/mesas.png");
-    this.load.image("escritorioAula", "assets/images/classroom/escritorio.png");
-    this.load.image("pizarraAula", "assets/images/classroom/pizarra.png");
-    this.load.spritesheet("dude", "assets/images/dude.png", {
-      frameWidth: 32,
-      frameHeight: 48,
-    });
+
   }
 
   create() {

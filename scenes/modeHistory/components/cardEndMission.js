@@ -1,7 +1,9 @@
 import { traslate } from "../../../data/dialogues.js";
 import { COLORS, COLORS_HEX, FONT } from "../../../utils/constants.js";
 
-export const cardEndMission = (scene) => {
+export const cardEndMission = async (scene) => {
+  window.runTime = false;
+  scene.avatar.runTime(false);
   const boxEndMission = scene.add.container(600, 500);
   boxEndMission.setName("boxEndMission");
 
@@ -20,13 +22,18 @@ export const cardEndMission = (scene) => {
     .setScale(0.5);
   text.setScrollFactor(0);
   boxEndMission.add(text);
+
   boxEndMission.setScrollFactor(0);
+
+  window.zoom == 1 ? boxEndMission.setScale(2) : boxEndMission.setScale(1);
 
   window.avatarUpdateActivo = false;
 
-  setTimeout(function () {
-    text.destroy();
-    boxEndMission.destroy();
+
+
+  setTimeout(async function () {
+    await text.destroy();
+    await boxEndMission.destroy();
     window.avatarUpdateActivo = true;
   }, 4000);
 };

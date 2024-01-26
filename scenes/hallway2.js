@@ -13,28 +13,7 @@ export class Hallway2 extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("background3", "assets/images/hallway2/pasillo_piso.png");
-    this.load.image(
-      "paredAuditorio",
-      "assets/images/hallway2/pared_auditorio.png"
-    );
-    this.load.image(
-      "paredbatMujer",
-      "assets/images/hallway2/pared_batMujer.png"
-    );
-    this.load.image("paredEste", "assets/images/hallway2/pared_este.png");
-    this.load.image(
-      "paredSuperior2Hallway2",
-      "assets/images/hallway2/pared_frontal.png"
-    );
-    this.load.image(
-      "paredInferiorHallway2",
-      "assets/images/hallway2/pared_inferior.png"
-    );
-    this.load.image(
-      "paredInferiorEste",
-      "assets/images/hallway2/pared_comunidad.png"
-    );
+
   }
 
   create() {
@@ -66,13 +45,13 @@ export class Hallway2 extends Phaser.Scene {
     this.avatar = new Avatar(this, window.avatarX, window.avatarY, SIZE_AVATAR.v1_2);
     // this.plataforma = new Platform();
 
-    crearPlataforma(304, 501, "paredAuditorio", plataformas, scale);
-    crearPlataforma(499, 715, "paredbatMujer", plataformas, scale);
+    crearPlataforma(304, 501, "paredAuditorioHallway2", plataformas, scale);
+    crearPlataforma(499, 715, "paredbatMujerHallway2", plataformas, scale);
     crearPlataforma(1335, 348, "paredEste", plataformas, scale);
     crearPlataforma(1072, 715, "paredInferiorHallway2", plataformas, scale);
-    crearPlataforma(1276, 564, "paredInferiorEste", plataformas, scale);
-    const lineRed = crearPlataforma(1217, 490, "redV", boton, 0.5)
-    const lineRed2 = crearPlataforma(886, 436, "redH", boton, 0.5);
+    crearPlataforma(1276, 564, "paredEsteHallway2", plataformas, scale);
+    const lineRed = crearPlataforma(1217, 550, "redV", boton, 0.5)
+    const lineRed2 = crearPlataforma(865, 340, "redV", boton, 0.5);
 
     dimesionesPlataforma(paredPlataformaSuperior, 0.6, 75);
 
@@ -81,28 +60,19 @@ export class Hallway2 extends Phaser.Scene {
     let outside = crearPlataforma(600, 835, "redH", plataformas, 1);
     // dimesionesPlataformaIndividual(outside, 0.1, 1);
 
-
-
-      
     createButtonCircle(this, "cubicle2", lineRed, 509, 773);
-      
-   
-    
+
     createButtonCircle(this, "outside", outside, 515, 568);
 
-     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
+    this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, plataformasillas);
     this.physics.add.collider(
       this.avatar.avatarPlayer,
       paredPlataformaSuperior
     );
 
-
-
     createButtonCircle(this, SCENE.electronic_room, lineRed2, 1465, 553);
     createButtonCircle(this, SCENE.floor2, lineRed, 1465, 553);
-
-
 
     this.cameras.main.startFollow(this.avatar.avatarPlayer);
 
@@ -119,6 +89,6 @@ export class Hallway2 extends Phaser.Scene {
     // this.cameras.main.zoom = 1 + (this.avatar.avatarPlayer.y - 300) / 600; // Ajustar el valor 300 y 600 según tus necesidades
 
     // Llamamos a la función "update()" del avatar
-    this.avatar.update(this);
+    window.avatarUpdateActivo && this.avatar.update(this);
   }
 }

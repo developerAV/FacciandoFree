@@ -38,28 +38,6 @@ export class Outside extends Phaser.Scene {
       url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
       sceneKey: "rexUI",
     });
-    // this.load.image("floorExample", "assets/images/outside/facci-general.png");
-    this.load.image("patioFacci", "assets/images/outside/patio-facci.png");
-    this.load.image("streetEast", "assets/images/outside/calle-este.png");
-    this.load.image("building", "assets/images/outside/edificio.png");
-    this.load.image("plant", "assets/images/outside/planta.png");
-    this.load.image("tree", "assets/images/outside/arbolExterior.png");
-    this.load.image("tree2", "assets/images/outside/arbolExterior2.png");
-    this.load.image(
-      "ladoNortePuerta",
-      "assets/images/outside/lado-norte-puerta.png"
-    );
-    this.load.image("ladoOeste", "assets/images/outside/lado-oeste.png");
-    this.load.image("puertaFacci", "assets/images/outside/puertaFacci.png");
-    this.load.image("puertaFacci2", "assets/images/outside/puertaFacci2.png");
-    this.load.image("asientoPlanta", "assets/images/outside/asientoPlanta.png");
-    /*     this.load.image("asientoFacci", "assets/images/outside/asientoFacci.png");*/
-    this.load.image("calleBus", "assets/images/outside/calle-bus.png");
-    this.load.image("limiteSur", "assets/images/outside/limite-sur-facci.png");
-    this.load.image("mapaOutside", "assets/images/maps/outsideMap.png");
-    this.load.image("puntoRed", "assets/images/puntoRed.png");
-    this.load.image("bMapa", "assets/images/maps/bigMap.png");
-    this.load.image("iconMap", "assets/images/maps/iconMission.png");
   }
 
   create() {
@@ -256,7 +234,7 @@ export class Outside extends Phaser.Scene {
     if (window.user.actualMission === 1 && !window.missionActive) {
       startMission(this);
     }
-    
+
   }
 
   update() {

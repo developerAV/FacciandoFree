@@ -1,7 +1,7 @@
 import { loginGoogle } from "../../Firebase/googleLogin.js";
 
 export const blurButton = (boton, escena) => {
-  
+
   // Hacer que la imagen sea interactiva
   boton.setInteractive();
   if (boton.name != "logout") {
@@ -24,7 +24,7 @@ export const blurButton = (boton, escena) => {
 
       //window.firstInit = true;
       //escena.avatar2.avatarPlayer.destroy();
-      
+
       escena.scene.start(window.user.scene ?? "outside");
       //  escena.scene.start("floorHallway2");
     }

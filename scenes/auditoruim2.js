@@ -11,38 +11,7 @@ export class Auditorium2 extends Phaser.Scene {
   }
 
   preload() {
-    //piso
-    this.load.image("Auditorio2", "assets/images/auditorium2/Auditorio2.png");
-    //paredes
-    this.load.image(
-      "paredDer",
-      "assets/images/auditorium2/paredes/paredDer.png"
-    );
-    this.load.image(
-      "paredInferior",
-      "assets/images/auditorium2/paredes/paredInferior.png"
-    );
-    this.load.image(
-      "paredIzq1",
-      "assets/images/auditorium2/paredes/paredIzq1.png"
-    );
-    this.load.image(
-      "paredIzq2",
-      "assets/images/auditorium2/paredes/paredIzq2.png"
-    );
-    this.load.image(
-      "paredSuperiorA2",
-      "assets/images/auditorium2/paredes/paredSuperior.png"
-    );
 
-    //
-    this.load.image("fila1", "assets/images/auditorium2/fila1.png");
-    this.load.image("fila2", "assets/images/auditorium2/fila2.png");
-    this.load.image("fila3", "assets/images/auditorium2/fila3.png");
-    this.load.image("fila4", "assets/images/auditorium2/fila4.png");
-    this.load.image("fila5", "assets/images/auditorium2/fila5.png");
-    this.load.image("mesa", "assets/images/auditorium2/mesa.png");
-    this.load.image("silla2", "assets/images/auditorium2/silla2.png");
   }
 
   create() {

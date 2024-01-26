@@ -87,6 +87,12 @@ export const detailsGamer = (scene, width = 50, height = 200) => {
       arrowLeft.setAlpha(0);
       arrowLeft.setInteractive(cursor);
     }
+    const misisionComplete1 = getMissionCompleted(0, window.actualLevelUser);
+    const misisionComplete2 = getMissionCompleted(1, window.actualLevelUser);
+    const misisionComplete3 = getMissionCompleted(2, window.actualLevelUser);
+    mission1.setTexture(misisionComplete1 ? "insigniaOro" : "level1").setScale(misisionComplete1 ? 0.23 : 0.8);
+    mission2.setTexture(misisionComplete2 ? "insigniaOro" : "level1").setScale(misisionComplete2 ? 0.23 : 0.8);
+    mission3.setTexture(misisionComplete3 ? "insigniaOro" : "level1").setScale(misisionComplete3 ? 0.23 : 0.8);
   });
   arrowRight.setInteractive(cursor).on("pointerdown", async () => {
     arrowRight.disableInteractive();
@@ -112,6 +118,12 @@ export const detailsGamer = (scene, width = 50, height = 200) => {
       arrowRight.setAlpha(0);
       arrowRight.setInteractive(cursor);
     }
+    const misisionComplete1 = getMissionCompleted(0, window.actualLevelUser);
+    const misisionComplete2 = getMissionCompleted(1, window.actualLevelUser);
+    const misisionComplete3 = getMissionCompleted(2, window.actualLevelUser);
+    mission1.setTexture(misisionComplete1 ? "insigniaOro" : "level1").setScale(misisionComplete1 ? .23 : 0.8);;
+    mission2.setTexture(misisionComplete2 ? "insigniaOro" : "level1").setScale(misisionComplete2 ? .23 : 0.8);;
+    mission3.setTexture(misisionComplete3 ? "insigniaOro" : "level1").setScale(misisionComplete3 ? .23 : 0.8);;
   });
 
   const levelLabel = scene.add.text(
@@ -152,9 +164,14 @@ export const detailsGamer = (scene, width = 50, height = 200) => {
 
   buttonContainer.setSize(90, 100);
 
-  const mission1 = scene.add.sprite(0, 0, "level1").setScale(0.8);
-  const mission2 = scene.add.sprite(120, 0, "level1").setScale(0.8);
-  const mission3 = scene.add.sprite(240, 0, "level1").setScale(0.8);
+  const misisionComplete1 = getMissionCompleted(0, actualLevel + 1);
+  const mission1 = scene.add.sprite(0, 0, misisionComplete1 ? "insigniaOro" : "level1").setScale(misisionComplete1 ? 0.23 : 0.8);
+
+  const misisionComplete2 = getMissionCompleted(1, actualLevel + 1);
+  const mission2 = scene.add.sprite(120, 0, misisionComplete2 ? "insigniaOro" : "level1").setScale(misisionComplete2 ? 0.23 : 0.8);
+
+  const misisionComplete3 = getMissionCompleted(2, actualLevel + 1);
+  const mission3 = scene.add.sprite(240, 0, misisionComplete3 ? "insigniaOro" : "level1").setScale(misisionComplete3 ? 0.23 : 0.8);
 
   mission1.setAlpha(0.5);
   mission2.setAlpha(0.5);
@@ -163,6 +180,7 @@ export const detailsGamer = (scene, width = 50, height = 200) => {
   if (actuaMission === 1) mission1.setAlpha(1);
   if (actuaMission === 2) mission2.setAlpha(1);
   if (actuaMission === 3) mission3.setAlpha(1);
+
 
   mission1.setInteractive(cursor).on("pointerdown", () => changueMission(0));
   mission2.setInteractive(cursor).on("pointerdown", () => changueMission(1));
@@ -181,7 +199,6 @@ export const detailsGamer = (scene, width = 50, height = 200) => {
   boxLock.add(timeLabel);
   boxLock.add(scoreText);
   boxLock.add(timeText);
-  // box.add(level1);
 
   boxLock.add(buttonContainer);
   box.add(arrowRight);
@@ -201,8 +218,7 @@ export const detailsGamer = (scene, width = 50, height = 200) => {
     window.missionVisibleBox = window.listMissions[mission];
     window.missionSelect = mission + 1;
     completed.setColor(COLORS_HEX.green);
-    mission1.setTexture("insigniaOro");
-    mission1.setScale(0.25);
+
     window.completedMission = getItemOfUser("completed");
     boxLock.visible = true;
     lock.visible = false;
@@ -243,8 +259,7 @@ function getItemOfUser(item) {
 const addLabelsInScene = (scene) => {
   const missionLabel = scene.add.text(165, 80, "", {
     font: `${FONT_SIZE.small} ${FONT}`,
-    // backgroundColor: COLORS_HEX.white,
-    // alpha: 0,
+
     fill: COLORS_HEX.white,
     wordWrap: {
       width: 450,
@@ -351,3 +366,13 @@ const addLabelsInScene = (scene) => {
     scoreText,
   };
 };
+
+const getMissionCompleted = (index, level) => {
+
+  const indexMission = (level - 1) * 3 + index;
+
+  const completeMission = window.user.missions[indexMission].completed
+
+  return completeMission;
+
+}

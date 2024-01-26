@@ -34,7 +34,7 @@ export class mainHallway1 extends Phaser.Scene {
     let platform2 = this.physics.add.staticGroup();
     let escaleras = this.physics.add.staticGroup();
     let ptfmOverlap = this.physics.add.staticGroup();
-    let boton = this.physics.add.staticGroup(); 
+    let boton = this.physics.add.staticGroup();
 
     crearPlataforma(724, 72.5, "paredSuperior1", platform2, 1.61);
     crearPlataforma(1058, 103, "paredSuperior2", platform2, 1.61);
@@ -90,7 +90,7 @@ export class mainHallway1 extends Phaser.Scene {
     this.cameras.main.startFollow(this.avatar.avatarPlayer);
     this.cameras.main.zoom = 1.5;
 
-    createButtonCircle(this, SCENE.cubicle, escaleraAbajo, 723, 876);
+    createButtonCircle(this, SCENE.cubicle, escaleraAbajo, 670, 806);
     createButtonCircle(this, SCENE.cubicle2, escaleraArriba, 701, 806);
 
     this.physics.add.overlap(

@@ -10,47 +10,24 @@ import { SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
 import { shortMap, bigMap } from "./components/common/map.js";
 import { startMission } from "./modeHistory/startMission.js";
+import { getIndexMission } from "./modeHistory/infoMission.js";
 export class Hallway300 extends Phaser.Scene {
   constructor() {
     super({ key: "hallway300" });
   }
 
   preload() {
+    this.load.scenePlugin({
+      key: "rexuiplugin",
+      url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
+      sceneKey: "rexUI",
+    });
     this.load.plugin(
       "rexglowfilterpipelineplugin",
       "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexglowfilterpipelineplugin.min.js",
       true
     );
-    this.load.image(
-      "backgroundHallway300",
-      "assets/images/hallway300/Piso.png"
-    );
-    this.load.image("pardColor", "assets/images/hallway300/paredesColor.png");
-    this.load.image("paredSur", "assets/images/hallway300/paredsur.png");
-    this.load.image("paredNorte300", "assets/images/hallway300/parednorte.png");
-    this.load.image("cuadro", "assets/images/hallway300/cuadro.png");
-    this.load.image("paredIzq300", "assets/images/hallway300/paredIzq.png");
-    this.load.image("pared209", "assets/images/hallway300/pared209.png");
-    this.load.image(
-      "paredDer300",
-      "assets/images/hallway300/paredes-308-309.png"
-    );
-    this.load.image(
-      "paredHor1",
-      "assets/images/hallway300/paredHorizontal210.png"
-    );
-    this.load.image(
-      "paredHor2",
-      "assets/images/hallway300/paredHorizontal210-2.png"
-    );
-    this.load.image("escalera1", "assets/images/hallway300/escalera1.png");
-    this.load.image("escalera2", "assets/images/hallway300/escalera2.png");
-    this.load.image(
-      "escalera2Pared",
-      "assets/images/hallway300/escalera2Pared.png"
-    );
-    this.load.image("escalera3", "assets/images/hallway300/escalera3.png");
-    this.load.image("escalera4", "assets/images/hallway300/escalera4.png");
+
   }
 
   create() {
@@ -172,8 +149,7 @@ export class Hallway300 extends Phaser.Scene {
     );
 
     if (
-      window.user.actualLevel === 2 &&
-      window.user.actualMission === 1 &&
+      getIndexMission().index === "mission5" &&
       !window.missionActive
     ) {
       startMission(this);
