@@ -203,12 +203,7 @@ export class Outside extends Phaser.Scene {
       window.avatarY,
       SIZE_AVATAR.v1_2
     );
-    this.avatar2 = new Avatar(
-      this,
-      1246,
-      650,
-      SIZE_AVATAR.v1_2
-    );
+ 
      // Envía la posición del avatar al servidor cada segundo (solo como ejemplo)
     
 
