@@ -11,16 +11,7 @@ export class ComputerRoom extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("background2", "assets/images/classroom/piso.png");
-    this.load.image("paredAula", "assets/images/classroom/paredNorte.png");
-    this.load.image("paredIzq", "assets/images/classroom/paredIzq.png");
-    this.load.image("paredDer", "assets/images/classroom/paredDer.png");
-    this.load.image("paredInf", "assets/images/classroom/paredInf.png");
-    this.load.image("pizarraAula", "assets/images/classroom/pizarra.png");
-    this.load.image("computer", "assets/images/computer_room/computers.png");
-    this.load.image("chair1", "assets/images/computer_room/chairV1.png");
-    this.load.image("chair2", "assets/images/computer_room/chairV2.png");
-    this.load.image("escritorioAula", "assets/images/classroom/escritorio.png");
+
   }
 
   create() {

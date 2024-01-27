@@ -16,59 +16,7 @@ export class Cubicle2 extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("pisoCubiculo2", "assets/images/cubicle2/pisoC2.png");
-    this.load.image("paredCu2", "assets/images/cubicle2/paredesColor.png");
-    this.load.image(
-      "paredNorteCu2",
-      "assets/images/cubicle2/paredNorteCu2.png"
-    );
-    this.load.image("paredeIzCu2", "assets/images/cubicle2/paredeIzCu2.png");
-    this.load.image(
-      "paredeIzTotalCu2",
-      "assets/images/cubicle2/paredeIzTotalCu2.png"
-    );
-    this.load.image(
-      "cubicle2ParedCentro1",
-      "assets/images/cubicle2/cubicle2ParedCentro1.png"
-    );
-    this.load.image(
-      "cubicle2ParedCentro2",
-      "assets/images/cubicle2/cubicle2ParedCentro2.png"
-    );
-    this.load.image(
-      "cubicle2ParedCentro3",
-      "assets/images/cubicle2/cubicle2ParedCentro3.png"
-    );
-    this.load.image("escalera1Cu2", "assets/images/cubicle2/escalera1Cu2.png");
-    this.load.image("escalera2Cu2", "assets/images/cubicle2/escalera2Cu2.png");
-    this.load.image(
-      "cubicle2ParedSurEste",
-      "assets/images/cubicle2/cubicle2ParedSurEste.png"
-    );
-    this.load.image(
-      "cubicle2ParedMedioVertical",
-      "assets/images/cubicle2/cubicle2ParedMedioVertical.png"
-    );
-    this.load.image(
-      "cubicle2ParedEntrada",
-      "assets/images/cubicle2/cubicle2ParedEntrada.png"
-    );
-    this.load.image(
-      "cubicle2ParedSurMedio",
-      "assets/images/cubicle2/cubicle2ParedSurMedio.png"
-    );
-    this.load.image(
-      "cubicle2ParedSurEste2",
-      "assets/images/cubicle2/cubicle2ParedSurEste2.png"
-    );
-    this.load.image(
-      "cubiculo2Escritorios",
-      "assets/images/cubicle2/cubiculo2Escritorios.png"
-    );
-    this.load.image(
-      "cubiculo2Escritorios2",
-      "assets/images/cubicle2/cubiculo2Escritorios2.png"
-    );
+
   }
 
   create() {
@@ -171,10 +119,14 @@ export class Cubicle2 extends Phaser.Scene {
     let blur = crearPlataforma(758, 550, "redH", plataformaOverlap, 0.5);
     let notBlur = crearPlataforma(758, 610, "redH", plataformaOverlap, 0.5);
 
-    let piso1 = crearPlataforma(750, 830, "redV", plataformas, 0.5);
+    let piso1 = crearPlataforma(721, 845, "redV", plataformas, 0.5);
+    let piso1V = crearPlataforma(760, 840, "redV", plataformas, 0.5);
+    let piso1V2 = crearPlataforma(800, 840, "redV", plataformas, 0.5);
+
     let piso3 = crearPlataforma(940, 825, "redV", plataformas, 0.5);
     let piso2 = crearPlataforma(480, 930, "redV", plataformas, 0.5);
-    let piso1_1 = crearPlataforma(480, 790, "redV", plataformas, 0.5);
+
+
     let piso1b = crearPlataforma(470, 800, "redV", plataformas, 1);
 
     this.avatar = new Avatar(
@@ -198,9 +150,11 @@ export class Cubicle2 extends Phaser.Scene {
       scale
     );
 
-    dimesionesPlataformaIndividual(piso1, 0.1, 1);
+    dimesionesPlataformaIndividual(piso1, 0.9, 1);
+    dimesionesPlataformaIndividual(piso1V, 0.9, 1);
+    dimesionesPlataformaIndividual(piso1V2, 0.9, 1);
+
     dimesionesPlataformaIndividual(piso2, 0.1, 1);
-    dimesionesPlataformaIndividual(piso1_1, 0.1, 1);
     dimesionesPlataformaIndividual(piso3, 0.1, 1);
     // dimesionesPlataformaIndividual(piso1b, 0.1, 1);
 
@@ -215,9 +169,8 @@ export class Cubicle2 extends Phaser.Scene {
       this
     );
 
-    createButtonCircle(this, SCENE.floor1, piso1, 500, 160);
+    createButtonCircle(this, SCENE.floor1, piso1, 585, 150);
     createButtonCircle(this, SCENE.floor2, piso2, 1097, 423);
-    createButtonCircle(this, SCENE.second_floor1, piso1_1, 1194, 490);
 
     createButtonCircle(this, SCENE.floor3, piso3, 983, 549);
     createButtonCircle(this, SCENE.second_floor1, piso1b, 1181, 504);

@@ -54,7 +54,6 @@ const preloadIntro = (scene) => {
     true
   );
 };
-
 const preloadAdmistrativeRoom = (scene) => {
   const path = "assets/images/administrative_room/";
   //piso
@@ -92,12 +91,267 @@ const preloadAdmistrativeRoom = (scene) => {
   scene.load.image("mesa4", `${path}mesa4.png`);
   scene.load.image("poste", `${path}poste.png`);
 };
-const cubicle = (scene) => { };
-const auditorium2 = (scene) => { };
-const classRoom = (scene) => { };
-const computerRoom = (scene) => { };
-const cubicle2 = (scene) => { };
+const cubicle = (scene) => {
+  scene.load.image("pisoCubiculo", "assets/images/cubicle/piso.png");
+  scene.load.image("paredColor", "assets/images/cubicle/cubiculocolor.jpg");
+  scene.load.image("paredIzqC", "assets/images/cubicle/paredIzq.png");
+  scene.load.image("paredSurEste", "assets/images/cubicle/paredSurEste.png");
+  scene.load.image(
+    "paredPuertaIzq",
+    "assets/images/cubicle/paredPuertaIzq.png"
+  );
+  scene.load.image(
+    "paredPuertaSur",
+    "assets/images/cubicle/paredPuertaNorSur.png"
+  );
+  scene.load.image(
+    "paredPuertaNor",
+    "assets/images/cubicle/paredPuertaNor.png"
+  );
+  scene.load.image(
+    "paredPuertaDer",
+    "assets/images/cubicle/paredPuertaDer.png"
+  );
+  scene.load.image("paredNorte", "assets/images/cubicle/paredNorte.png");
+  scene.load.image("paredEscalera", "assets/images/cubicle/paredEscalera.png");
+  scene.load.image("paredSurDer", "assets/images/cubicle/paredSurDer.png");
+  scene.load.image("paredDer", "assets/images/cubicle/paredDer.png");
+
+  scene.load.image("escritoriosA", "assets/images/cubicle/escritoriosA.png");
+  scene.load.image("escritoriosB", "assets/images/cubicle/escritoriosB.png");
+  scene.load.image("escritorioB6", "assets/images/cubicle/escritorioB6.png");
+  scene.load.image("escritoriosC", "assets/images/cubicle/escritoriosC.png");
+  scene.load.image("escritoriosD", "assets/images/cubicle/escritoriosD.png");
+  scene.load.image("sillaB6", "assets/images/accessories/chair/0005.png");
+
+  scene.load.image("escalera", "assets/images/cubicle/escalera.png");
+  scene.load.image("impresora", "assets/images/cubicle/impresora.png");
+  scene.load.image("servidor", "assets/images/cubicle/servidor.png");
+  scene.load.image("anaquel", "assets/images/cubicle/anaquel.png");
+
+  scene.load.image("fotoCarnet", "assets/images/avatars/avatar1.png");
+};
+const commission_area = (scene) => {
+  scene.load.image(
+    "pisoComision",
+    "assets/images/commission_area/PisoComisiones.png"
+  );
+  // scene.load.image("pf", "assets/images/commission_area/pf.png");
+  scene.load.image(
+    "psec",
+    "assets/images/commission_area/paredSurEsteComision.png"
+  );
+  scene.load.image(
+    "psoc",
+    "assets/images/commission_area/paredSurOesteComision.png"
+  );
+  scene.load.image(
+    "puertaSurComision",
+    "assets/images/commission_area/puertaSurComision.png"
+  );
+  scene.load.image(
+    "paredIzqPuertaComision",
+    "assets/images/commission_area/paredIzPuertaComisiones.png"
+  );
+  scene.load.image(
+    "paredMedioComision",
+    "assets/images/commission_area/paredMedioComision.png"
+  );
+  scene.load.image(
+    "paredVerticalComision",
+    "assets/images/commission_area/paredVerticalComision.png"
+  );
+  scene.load.image(
+    "paredCentro2comision",
+    "assets/images/commission_area/paredCentro2Comision.png"
+  );
+  scene.load.image(
+    "paredCentro2Izcomision",
+    "assets/images/commission_area/paredCentro2IzComision.png"
+  );
+  scene.load.image(
+    "paredCentro2Izquierdacomision",
+    "assets/images/commission_area/paredCentro2IzquierdaComision.png"
+  );
+  scene.load.image(
+    "paredCentro2Norcomision",
+    "assets/images/commission_area/paredCentro2NorComision.png"
+  );
+  scene.load.image(
+    "paredCentro3Comision",
+    "assets/images/commission_area/paredCentro3Comision.png"
+  );
+  scene.load.image(
+    "puertaParedNorCentro3Comision",
+    "assets/images/commission_area/puertaParedNorCentro3Comision.png"
+  );
+  scene.load.image(
+    "paredIzComision",
+    "assets/images/commission_area/paredIzComision.png"
+  );
+  scene.load.image(
+    "paredVerticalMedioComision",
+    "assets/images/commission_area/paredVerticalMedioComision.png"
+  );
+  scene.load.image(
+    "paredCentroHorizontal",
+    "assets/images/commission_area/paredCentroHorizontal.png"
+  );
+  scene.load.image(
+    "paredCentroIzVertical",
+    "assets/images/commission_area/paredCentroIzVertical.png"
+  );
+  scene.load.image(
+    "paredSecretariaComision",
+    "assets/images/commission_area/paredSecretariaComision.png"
+  );
+  scene.load.image(
+    "paredHorizontalSurComision",
+    "assets/images/commission_area/paredHorizontalSurComision.png"
+  );
+  scene.load.image(
+    "paredSurCentroVerticalComision",
+    "assets/images/commission_area/paredSurCentroVerticalComision.png"
+  );
+  scene.load.image(
+    "paredSurHorizontalComision",
+    "assets/images/commission_area/paredSurHorizontalComision.png"
+  );
+  scene.load.image(
+    "escaleraComision",
+    "assets/images/commission_area/escaleraComision.png"
+  );
+  scene.load.image(
+    "paredIzquierdaComision",
+    "assets/images/commission_area/paredIzquierdaComision.png"
+  );
+  scene.load.image(
+    "paredCentroComisionTesis",
+    "assets/images/commission_area/paredCentroComisionTesis.png"
+  );
+  scene.load.image(
+    "paredPuertaMedioComision",
+    "assets/images/commission_area/paredPuertaMedioComision.png"
+  );
+  scene.load.image(
+    "accesorios",
+    "assets/images/commission_area/accesorios.png"
+  );
+  scene.load.image("table01", "assets/images/accessories/table/table01.png");
+  scene.load.image("table02", "assets/images/accessories/table/table02.png");
+};
+const auditorium2 = (scene) => {     //piso
+  scene.load.image("Auditorio2", "assets/images/auditorium2/Auditorio2.png");
+  //paredes
+  scene.load.image(
+    "paredDer",
+    "assets/images/auditorium2/paredes/paredDer.png"
+  );
+  scene.load.image(
+    "paredInferior",
+    "assets/images/auditorium2/paredes/paredInferior.png"
+  );
+  scene.load.image(
+    "paredIzq1",
+    "assets/images/auditorium2/paredes/paredIzq1.png"
+  );
+  scene.load.image(
+    "paredIzq2",
+    "assets/images/auditorium2/paredes/paredIzq2.png"
+  );
+  scene.load.image(
+    "paredSuperiorA2",
+    "assets/images/auditorium2/paredes/paredSuperior.png"
+  );
+
+  //
+  scene.load.image("fila1", "assets/images/auditorium2/fila1.png");
+  scene.load.image("fila2", "assets/images/auditorium2/fila2.png");
+  scene.load.image("fila3", "assets/images/auditorium2/fila3.png");
+  scene.load.image("fila4", "assets/images/auditorium2/fila4.png");
+  scene.load.image("fila5", "assets/images/auditorium2/fila5.png");
+  scene.load.image("mesa", "assets/images/auditorium2/mesa.png");
+  scene.load.image("silla2", "assets/images/auditorium2/silla2.png");
+};
+const classRoom = (scene) => {
+  scene.load.image("background2", "assets/images/classroom/piso.png");
+  scene.load.image("paredAula", "assets/images/classroom/paredNorte.png");
+  scene.load.image("paredIzq", "assets/images/classroom/paredIzq.png");
+  scene.load.image("paredDer", "assets/images/classroom/paredDer.png");
+  scene.load.image("paredInf", "assets/images/classroom/paredInf.png");
+  scene.load.image("mesaAula", "assets/images/classroom/mesas.png");
+  scene.load.image("escritorioAula", "assets/images/classroom/escritorio.png");
+  scene.load.image("pizarraAula", "assets/images/classroom/pizarra.png");
+};
+const computerRoom = (scene) => {
+  scene.load.image("background2", "assets/images/classroom/piso.png");
+  scene.load.image("paredAula", "assets/images/classroom/paredNorte.png");
+  scene.load.image("paredIzq", "assets/images/classroom/paredIzq.png");
+  scene.load.image("paredDer", "assets/images/classroom/paredDer.png");
+  scene.load.image("paredInf", "assets/images/classroom/paredInf.png");
+  scene.load.image("pizarraAula", "assets/images/classroom/pizarra.png");
+  scene.load.image("computer", "assets/images/computer_room/computers.png");
+  scene.load.image("chair1", "assets/images/computer_room/chairV1.png");
+  scene.load.image("chair2", "assets/images/computer_room/chairV2.png");
+  scene.load.image("escritorioAula", "assets/images/classroom/escritorio.png");
+};
+const cubicle2 = (scene) => {
+  scene.load.image("pisoCubiculo2", "assets/images/cubicle2/pisoC2.png");
+  scene.load.image("paredCu2", "assets/images/cubicle2/paredesColor.png");
+  scene.load.image(
+    "paredNorteCu2",
+    "assets/images/cubicle2/paredNorteCu2.png"
+  );
+  scene.load.image("paredeIzCu2", "assets/images/cubicle2/paredeIzCu2.png");
+  scene.load.image(
+    "paredeIzTotalCu2",
+    "assets/images/cubicle2/paredeIzTotalCu2.png"
+  );
+  scene.load.image(
+    "cubicle2ParedCentro1",
+    "assets/images/cubicle2/cubicle2ParedCentro1.png"
+  );
+  scene.load.image(
+    "cubicle2ParedCentro2",
+    "assets/images/cubicle2/cubicle2ParedCentro2.png"
+  );
+  scene.load.image(
+    "cubicle2ParedCentro3",
+    "assets/images/cubicle2/cubicle2ParedCentro3.png"
+  );
+  scene.load.image("escalera1Cu2", "assets/images/cubicle2/escalera1Cu2.png");
+  scene.load.image("escalera2Cu2", "assets/images/cubicle2/escalera2Cu2.png");
+  scene.load.image(
+    "cubicle2ParedSurEste",
+    "assets/images/cubicle2/cubicle2ParedSurEste.png"
+  );
+  scene.load.image(
+    "cubicle2ParedMedioVertical",
+    "assets/images/cubicle2/cubicle2ParedMedioVertical.png"
+  );
+  scene.load.image(
+    "cubicle2ParedEntrada",
+    "assets/images/cubicle2/cubicle2ParedEntrada.png"
+  );
+  scene.load.image(
+    "cubicle2ParedSurMedio",
+    "assets/images/cubicle2/cubicle2ParedSurMedio.png"
+  );
+  scene.load.image(
+    "cubicle2ParedSurEste2",
+    "assets/images/cubicle2/cubicle2ParedSurEste2.png"
+  );
+  scene.load.image(
+    "cubiculo2Escritorios",
+    "assets/images/cubicle2/cubiculo2Escritorios.png"
+  );
+  scene.load.image(
+    "cubiculo2Escritorios2",
+    "assets/images/cubicle2/cubiculo2Escritorios2.png"
+  );
+};
 const eletronicRoom = (scene) => {
+  scene.load.image("placa", "assets/placa.png");
   scene.load.image("pisoLab1", "assets/images/electronic_room/pisoLab1.png");
   scene.load.image(
     "escritorio",
@@ -188,10 +442,10 @@ const hallway2 = (scene) => {
   scene.load.image("background3", `${path}pasillo_piso.png`);
   scene.load.image("paredAuditorioHallway2", `${path}pared_auditorio.png`);
   scene.load.image("paredbatMujerHallway2", `${path}pared_batMujer.png`);
-  scene.load.image("paredEsteHallway2", `${path}pared_este.png`);
-  scene.load.image("paredSuperiorHallway2", `${path}pared_frontal.png`);
+  scene.load.image("paredEste", `${path}pared_este.png`);
+  scene.load.image("paredSuperior2Hallway2", `${path}pared_frontal.png`);
   scene.load.image("paredInferiorHallway2", `${path}pared_inferior.png`);
-  scene.load.image("paredInferiorEsteHallway2", `${path}pared_comunidad.png`);
+  scene.load.image("paredEsteHallway2", `${path}pared_comunidad.png`);
 };
 const mainHallway1 = (scene) => {
   const path = "assets/images/mainHallway1/";
@@ -213,7 +467,78 @@ const mainHallway1 = (scene) => {
 };
 const outside = (scene) => {
   scene.load.image("asientoFacci", "assets/images/outside/asientofacci.png");
+  // scene.load.image("floorExample", "assets/images/outside/facci-general.png");
+  scene.load.image("patioFacci", "assets/images/outside/patio-facci.png");
+  scene.load.image("streetEast", "assets/images/outside/calle-este.png");
+  scene.load.image("building", "assets/images/outside/edificio.png");
+  scene.load.image("plant", "assets/images/outside/planta.png");
+  scene.load.image("tree", "assets/images/outside/arbolExterior.png");
+  scene.load.image("tree2", "assets/images/outside/arbolExterior2.png");
+  scene.load.image(
+    "ladoNortePuerta",
+    "assets/images/outside/lado-norte-puerta.png"
+  );
+  scene.load.image("ladoOeste", "assets/images/outside/lado-oeste.png");
+  scene.load.image("puertaFacci", "assets/images/outside/puertaFacci.png");
+  scene.load.image("puertaFacci2", "assets/images/outside/puertaFacci2.png");
+  scene.load.image("asientoPlanta", "assets/images/outside/asientoPlanta.png");
+  /*     scene.load.image("asientoFacci", "assets/images/outside/asientoFacci.png");*/
+  scene.load.image("calleBus", "assets/images/outside/calle-bus.png");
+  scene.load.image("limiteSur", "assets/images/outside/limite-sur-facci.png");
+  scene.load.image("mapaOutside", "assets/images/maps/outsideMap.png");
+  scene.load.image("puntoRed", "assets/images/puntoRed.png");
+  scene.load.image("bMapa", "assets/images/maps/bigMap.png");
+  scene.load.image("iconMap", "assets/images/maps/iconMission.png");
 };
+const hallway300 = (scene) => {
+  scene.load.image(
+    "backgroundHallway300",
+    "assets/images/hallway300/Piso.png"
+  );
+  scene.load.image("pardColor", "assets/images/hallway300/paredesColor.png");
+  scene.load.image("paredSur", "assets/images/hallway300/paredsur.png");
+  scene.load.image("paredNorte300", "assets/images/hallway300/parednorte.png");
+  scene.load.image("cuadro", "assets/images/hallway300/cuadro.png");
+  scene.load.image("paredIzq300", "assets/images/hallway300/paredIzq.png");
+  scene.load.image("pared209", "assets/images/hallway300/pared209.png");
+  scene.load.image(
+    "paredDer300",
+    "assets/images/hallway300/paredes-308-309.png"
+  );
+  scene.load.image(
+    "paredHor1",
+    "assets/images/hallway300/paredHorizontal210.png"
+  );
+  scene.load.image(
+    "paredHor2",
+    "assets/images/hallway300/paredHorizontal210-2.png"
+  );
+  scene.load.image("escalera1", "assets/images/hallway300/escalera1.png");
+  scene.load.image("escalera2", "assets/images/hallway300/escalera2.png");
+  scene.load.image(
+    "escalera2Pared",
+    "assets/images/hallway300/escalera2Pared.png"
+  );
+  scene.load.image("escalera3", "assets/images/hallway300/escalera3.png");
+  scene.load.image("escalera4", "assets/images/hallway300/escalera4.png");
+}
+const login = (scene) => {
+  scene.load.image("background", "assets/images/intro/facci.png");
+  scene.load.image("googleES", "assets/images/login/google2.png");
+  scene.load.image("googleEN", "assets/images/login/google3.png");
+  scene.load.image("facciando2", "assets/images/intro/Facciando2.png");
+  scene.load.image("confirm", "assets/images/login/confirm.png");
+  scene.load.image("save", "assets/images/login/save.png");
+}
+const question = (scene) => {
+
+  scene.load.image("background", "assets/images/intro/facci.png");
+  scene.load.image("googleES", "assets/images/login/google2.png");
+  scene.load.image("googleEN", "assets/images/login/google3.png");
+  scene.load.image("facciando2", "assets/images/intro/Facciando2.png");
+  scene.load.image("confirm", "assets/images/login/confirm.png");
+  scene.load.image("save", "assets/images/login/save.png");
+}
 export const preloads = (scene) => {
   preloadIntro(scene);
   preloadAdmistrativeRoom(scene);
@@ -228,4 +553,8 @@ export const preloads = (scene) => {
   outside(scene);
   mainHallway1(scene);
   eletronicRoom(scene);
-};
+  commission_area(scene);
+  hallway300(scene);
+  login(scene);
+  question(scene);
+}; 

@@ -36,7 +36,7 @@ const data = {
       "1statistics and discrete mathematics, are you interested in those subjects?",
     ],
   },
-  mission3: {
+  mission4: {
     es: [
       "0Hola, ¿usted es el director de la carrera?",
       "1¡Hola! Si, soy el director de la carrera, ¿en que te puedo ayudar?",
@@ -54,7 +54,7 @@ const data = {
       "1Welcome to the Faculty of Life Sciences and Technologies in the Information Technologies career.",
     ],
   },
-  mission4: {
+  mission5: {
     es: [
       "1Hola, ¿Ya tienes proyecto de vinculación?",
       "0no, ni siquiera sé de que se trata la vinculación ",
@@ -72,7 +72,7 @@ const data = {
       "0Ready mate, Thank you very much",
     ],
   },
-  mission4_1: {
+  mission5_1: {
     es: [
       "0Hola, mucho gusto, quisiera saber sobre el proceso de vinculación",
       "1Hola, el proceso de vinculación es muy sencillo, solo debes tener en cuenta los siguientes requisitos:",
@@ -98,7 +98,7 @@ const data = {
       "0Ready, thank you very much! I find it very interesting",
     ],
   },
-  mission5: {
+  mission6: {
     es: [
       "1Y bien, terminó la clase, voy a enviar un proyecto para que lo realices en casa, se trata de un...",
       /* "1proyecto, el cual debe estar vinculado con un web y una aplicación móvil para mostrar los datos.",
@@ -120,7 +120,7 @@ const data = {
       "1I don't have time to explain, a thousand apologies, you can go to the electronics room for information.",
     ],
   },
-  mission5_1: {
+  mission6_1: {
     es: [
       "0Hola, me puede explicar algo sobre IoT?",
       "1Hola, claro que si, IoT es el internet de las cosas, es un concepto que se refiere a la interconexión...",
@@ -141,7 +141,7 @@ const data = {
     ],
 
   },
-  mission5_2: {
+  mission6_2: {
     es: [
       "1Listo, ahora te explico como conectar el sensor de temperatura y humedad a la placa de desarrollo...",
       "1para ello debes conectar el sensor a la placa de desarrollo en los pines correspondientes...",
@@ -164,10 +164,7 @@ const data = {
       "0Thank you very much, see you later.",
     ],
   },
-  mission6: {
-    es: [],
-    en: [],
-  },
+
   mission7: {
     es: [],
     en: [],
@@ -202,11 +199,24 @@ const dataDialogoSegunRespuesta = {
         "1¡Muy bien! Estas asignaturas son fundamentales para desarrollar una base sólida",
         "1en tecnologías de la información. Te proporcionarán las herramientas necesarias...",
         "1para abordar problemas complejos en la carrera.",
+        "0Muchas gracias por la información",
+        "0Antes de irme, ¿Podría decirme donde se encuentra el director de carrera?",
+        "1Claro, el director de carrera se encuentra en el AREA DE COMISIONES...",
+        "1Para llegar a ahí debes subir la escalera que está a la derecha de la..",
+        "1de la puerta principal, frente a la secretaría.",
+        "0Muchas gracias, nos vemos luego.",
+
       ],
       en: [
         "1Very well! These subjects are fundamental to develop a solid base",
         "1in information technologies. They will provide you with the necessary tools...",
         "1to address complex problems in the career.",
+        "0Thank you very much for the information",
+        "0Before I leave, could you tell me where the career director is?",
+        "1Of course, the career director is in the COMMISSIONS AREA...",
+        "1To get there you must climb the stairs on the right of the...",
+        "1from the main door, in front of the secretary.",
+        "0Thank you very much, see you later.",
       ],
     },
     no: {
@@ -214,11 +224,23 @@ const dataDialogoSegunRespuesta = {
         "1Entiendo, no todas las asignaturas son del agrado de todos. Sin embargo,",
         "1estas materias son pilares para comprender conceptos clave en la carrera.",
         "1 Te animo a considerar su importancia para tu formación.",
+        "0Muchas gracias lo tendré en cuenta.",
+        "0Antes de irme, ¿Podría decirme donde se encuentra el director de carrera?",
+        "1Claro, el director de carrera se encuentra en el AREA DE COMISIONES...",
+        "1Para llegar a ahí debes subir la escalera que está a la derecha de la..",
+        "1de la puerta principal, frente a la secretaría.",
+        "0Muchas gracias, nos vemos luego.",
       ],
       en: [
         "1I understand, not all subjects are to everyone's liking. However,",
         "1these subjects are pillars to understand key concepts in the career.",
         "1 I encourage you to consider its importance for your training.",
+        "0Thank you very much, I will keep it in mind.",
+        "0Before I leave, could you tell me where the career director is?",
+        "1Of course, the career director is in the COMMISSIONS AREA...",
+        "1To get there you must climb the stairs on the right of the...",
+        "1from the main door, in front of the secretary.",
+        "0Thank you very much, see you later.",
       ],
     },
   },

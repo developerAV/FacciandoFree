@@ -1,47 +1,28 @@
-import { crearPlataforma } from "../../module/platform.js";
 import { getDiaglogMission } from "../../../data/traslateDialogs.js";
-import { cardDialog } from "../components/dialogCard.js";
-import { alertCard } from "../components/alertCard.js";
-import { endMission } from "../endMission.js";
 import { SCENE } from "../../../utils/constants.js";
+import { crearPlataforma } from "../../module/platform.js";
 import { cardEndMission } from "../components/cardEndMission.js";
-
+import { cardDialog } from "../components/dialogCard.js";
+import { endMission } from "../endMission.js";
 /********************************************************
- ********************* 3ER PISO *************************
+ ****************** COMISION AREA ***********************
  ********************************************************/
 export const mission4 = (scene) => {
+  const director = scene.add.image(370, 798, "dude").setScale(1.3);
   let plataformas = scene.physics.add.staticGroup();
-  //  alertCard(scene);
-  const compain = scene.add.image(1005, 642, "dude").setScale(1.3);
-  const redZone = crearPlataforma(900, 642, "boton", plataformas);
+  const redZone = crearPlataforma(500, 800, "boton", plataformas);
+
   scene.physics.add.overlap(scene.avatar.avatarPlayer, redZone, async () => {
     redZone.destroy();
     const dialogs = getDiaglogMission(); //obtener los dialogos de la mision
-
-    await cardDialog(scene, dialogs, 1005, 642);
-    compain.destroy();
-  });
-};
-
-/********************************************************
- ********************* COMMISION AREA *******************
- ********************************************************/
-export const mission4Final = (scene) => {
-  let plataformas = scene.physics.add.staticGroup();
-  window.moreDialogs = true;
-  window.dialogNumber = 1;
-  const adriana = scene.add.image(935, 244, "dude").setScale(1.3);
-  const redZone = crearPlataforma(950, 244, "boton", plataformas);
-  scene.physics.add.overlap(scene.avatar.avatarPlayer, redZone, async () => {
-    redZone.destroy();
-    const dialogs = getDiaglogMission(); //obtener los dialogos de la mision
-    await cardDialog(scene, dialogs, 935, 244);
-    adriana.destroy();
-    window.moreDialogs = false;
+    await cardDialog(scene, dialogs, 370, 798); //cambiar a pantalla grande
+    director.destroy();
+      
+    /*  CARTER DE QUE LA MISSION TERMINÓ*/
     cardEndMission(scene);
-    await endMission(SCENE.commission_area, {
-      x: scene.avatar.avatarPlayer.x,
-      y: scene.avatar.avatarPlayer.y,
+    await endMission(SCENE.floor3, {
+      x: 800,
+      y: 500,
     });
   });
 };

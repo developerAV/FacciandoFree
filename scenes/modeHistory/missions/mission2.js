@@ -6,6 +6,7 @@ import { endMission } from "../endMission.js";
 import { traslate } from "../../../data/dialogues.js";
 import { style } from "../../components/intro/buttonLogout/styles.js";
 import { cardEndMission } from "../components/cardEndMission.js";
+import { startMission } from "../startMission.js";
 
 export const mission2 = async (scene) => {
   let plataformas = scene.physics.add.staticGroup();
@@ -45,12 +46,11 @@ export const mission2 = async (scene) => {
       });
 
     hiraida.destroy();
-    cardEndMission(scene);
-    window.runTime = false;
-    scene.avatar.runTime(false);
+    await cardEndMission(scene);
     await endMission(SCENE.cubicle, {
       x: 800,
       y: 500,
     });
+    startMission(scene);
   });
 };
