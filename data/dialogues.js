@@ -191,6 +191,15 @@ const traslateIntro = {
     es: "Spanish Latin American Male",
     en: "US English Male",
   },
+  term:{
+    es: "Términos y condiciones",
+    en: "Terms and conditions",
+  },
+  term2:{
+    es: "Acepto los",
+    en: "I accept the",
+  },
+  
   outside: {
     es: "Exterior",
     en: "Outside",
