@@ -3,6 +3,7 @@ import { textButton } from "./module/textButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
 import { traslate } from "../data/dialogues.js";
 import { buttonLogout } from "./components/intro/buttonLogout/buttonLogout.js";
+import { getTop10UserByScore } from "../services/user.service.js";
 
 const COLOR_LIGHT = COLORS.blueDark;
 const COLOR_DARK = 0x03bed0;
@@ -32,6 +33,8 @@ export class Ranking extends Phaser.Scene {
     );
   }
   async create() {
+     //obtener todos los usuarios el name getallusers
+     window.top10UserList = await getTop10UserByScore();
     const background2 = this.add.rectangle(
       this.cameras.main.width / 2, // Posición X centrada en la pantalla
       this.cameras.main.height / 2,

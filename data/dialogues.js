@@ -109,12 +109,12 @@ const traslateIntro = {
     en: "Information",
   },
   newContent: {
-    es: "Te lleva por un recorrido por la historia de la Facultad de Ingeniería de la ULEAM, a través de un juego de preguntas y respuestas.",
-    en: "It takes you on a tour of the history of the Faculty of Engineering of the ULEAM, through a game of questions and answers.",
+    es: "Te lleva por un recorrido por la historia de la Facultad de Ingeniería de la ULEAM, a través de un juego de misiones.",
+    en: "It takes you on a tour of the history of the Faculty of Engineering of the ULEAM, through a mission game.",
   },
   newContent2: {
-    es: "La facultad fue creada en 1971, en la ciudad de Manta, provincia de Manabí, Ecuador.",
-    en: "The faculty was created in 1971, in the city of Manta, province of Manabí, Ecuador.",
+    es: "La facultad fue creada en 2003, en la ciudad de Manta, provincia de Manabí, Ecuador.",
+    en: "The faculty was created in 2003, in the city of Manta, province of Manabí, Ecuador.",
   },
   newContent3: {
     es: "La falcultad cuenta con tres carrera informaticas: Ingeniería en Sistemas, Ingeniería en Tecnologías de la Inforación e Ingeniería en Software.",

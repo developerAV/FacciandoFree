@@ -26,6 +26,7 @@ export class AvatarS extends Phaser.Scene {
     super({ key: "avatarS" });
   }
   preload() {
+    this.load.image("arrowUpdate", "assets/images/intro/arrow_update.png");
     if (this.textures.exists("profile")) this.textures.remove("profile");
     this.load.image("profile", window.imageUrl);
   }
@@ -39,7 +40,7 @@ export class AvatarS extends Phaser.Scene {
     );
     // fondo dinamico
     const background = this.add.sprite(1500, 500, "facciando").setScale(1.6);
-    background.alpha = 0.1;
+    background.alpha = 0.3;
 
     const tween = this.tweens.add({
       targets: background,
@@ -196,15 +197,15 @@ export class AvatarS extends Phaser.Scene {
     this.avatar2.body.allowGravity = false;
     this.avatar3.body.allowGravity = false;
 
-    this.arrowRight = this.add.image(1400, 500, "arrowRight").setScale(0.4);
-    this.arrowLeft = this.add.image(200, 500, "arrowRight").setScale(0.4);
-    this.arrowLeft.flipX = true;
+    this.arrowRight = this.add.image(1500, 700, "arrowUpdate").setScale(0.3);
+    // this.arrowLeft = this.add.image(200, 500, "arrowRight").setScale(0.4);
+    // this.arrowLeft.flipX = true;
 
     this.arrowRight.setInteractive();
-    this.arrowLeft.setInteractive();
+    // this.arrowLeft.setInteractive();
     // Configuración de eventos de clic para las flechas
     this.arrowRight.on("pointerdown", () => this.changeAvatar("right"));
-    this.arrowLeft.on("pointerdown", () => this.changeAvatar("left"));
+    // this.arrowLeft.on("pointerdown", () => this.changeAvatar("left"));
     let trasitionInProgress = false;
     this.changeAvatar = async (direction) => {
       if (direction === "right") {
@@ -224,9 +225,9 @@ export class AvatarS extends Phaser.Scene {
         trasitionInProgress = true;
         await swapButtonPositionsAvatar(
           this,
-          this.avatar1,
+          this.avatar3,
           this.avatar2,
-          this.avatar3
+          this.avatar1,
         );
         this.updateNameAvatar2();
       }
