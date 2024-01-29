@@ -1,4 +1,30 @@
 const traslateIntro = {
+  serverroom: {
+    es: "Sala de servidores",
+    en: "Server room",
+  },
+  auditorium2: {
+    es: "Auditorio 2",
+    en: "Auditorium 2",
+  },
+  auditorium: {
+    es: "Auditorio",
+    en: "Auditorium",
+  },
+  classroom: {
+    es: "Aula",
+    en: "Classroom",
+  },
+  computer_room: {
+    es: "Sala de computación",
+    en: "Computer room",
+  },
+  cubicle2: {
+    es: "Cubículo 2",
+    en: "Cubicle 2",
+  },
+
+
   //navbar out
   goHome: {
     es: "Ir a inicio",
@@ -54,6 +80,14 @@ const traslateIntro = {
   hallway300: {
     es: "Pasillo 300",
     en: "Hallway 300",
+  },
+  electronic_room: {
+    es: "Sala electrónica",
+    en: "Electronic room",
+  },
+  hallway2: {
+    es: "Pasillo secundario",
+    en: "Hallway secondary",
   },
   commission_area: {
     es: "Área de comisiones",
@@ -191,15 +225,15 @@ const traslateIntro = {
     es: "Spanish Latin American Male",
     en: "US English Male",
   },
-  term:{
+  term: {
     es: "Términos y condiciones",
     en: "Terms and conditions",
   },
-  term2:{
+  term2: {
     es: "Acepto los",
     en: "I accept the",
   },
-  
+
   outside: {
     es: "Exterior",
     en: "Outside",
@@ -239,7 +273,7 @@ const traslateIntro = {
     en: "In this short mission you have to go to know where the commissions area is, which is one of the important areas of the faculty.",
   },
   mission3final: {
-   es:"Este es el área de comisiones, aquí esta el director de carrera, el área que lleva el proceso de vinculación y practicas preprofesionales. Es un área importante para los estudiantes de la facultad, más adelante estarás por acá avanzando con los procesos de la carrera.",
+    es: "Este es el área de comisiones, aquí esta el director de carrera, el área que lleva el proceso de vinculación y practicas preprofesionales. Es un área importante para los estudiantes de la facultad, más adelante estarás por acá avanzando con los procesos de la carrera.",
   },
   mission4: {
     es: "Ya tienes todo lo necesario para poder matricularte en la carrera, ahora tienes que darselo al director de carrera y presentar todo los documentos para la matriculación.",
@@ -257,6 +291,14 @@ const traslateIntro = {
   dialog1: {
     es: "Hola, soy el avatar de la facultad de ingeniería en TI, y te voy a guiar en esta aventura, el icono ",
     en: "Hello, I am the avatar of the faculty of engineering in IT, and I will guide you on this adventure.",
+  },
+  "Elige una opcion": {
+    es: "Elige una opcion",
+    en: "Choose an option",
+  },
+  "¿Te interesan esas asignaturas?": {
+    es: "¿Te interesan esas asignaturas?",
+    en: "Are you interested in those subjects?",
   },
   es: "Conocer la entrada principal de la facultad, secretaría y los cubículos de los docentes de la planta baja.",
   en: "Know the main entrance of the faculty, the secretary and the cubicles of the teachers on the ground floor.",

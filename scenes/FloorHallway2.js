@@ -109,6 +109,8 @@ export class FloorHallway2 extends Phaser.Scene {
     crearPlataforma(1333, 580, "mesaHorizontal", plataformas, 0.5);
     crearPlataforma(1207, 580, "mesaHorizontal", plataformas, 0.5);
 
+
+
     crearPlataforma(1197, 865, "mesasAbajo", plataformas);
     crearPlataforma(1438, 834, "mesaAbajoDerecha", plataformas);
     const muro = crearPlataforma(1446, 760, "muroFloor2", plataformas);
@@ -160,6 +162,10 @@ export class FloorHallway2 extends Phaser.Scene {
     ) {
       startMission(this);
     }
+    const severroom = crearPlataforma(635, 477, "redH", escaleras, 0.25);
+    dimesionesPlataformaIndividual(severroom);
+    createButtonCircle(this, SCENE.serverroom, severroom, 1196, 353);
+
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredesSupeiores);

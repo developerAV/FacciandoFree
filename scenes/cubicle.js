@@ -209,7 +209,7 @@ export class Cubicle extends Phaser.Scene {
       }
     }
 
-    if (!window.missionActive && getIndexMission().index === "mission3") {
+    if (!window.missionActive && (getIndexMission().index === "mission3" || getIndexMission().index === "mission2")) {
       startMission(this);
     }
 

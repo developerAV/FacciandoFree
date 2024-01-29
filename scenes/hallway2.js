@@ -100,7 +100,7 @@ export class Hallway2 extends Phaser.Scene {
     bigMap(this);
 
     this.physics.add.collider(this.avatar.avatarPlayer, boton);
-    navbar(this, "hallway");
+    navbar(this, "hallway2");
   }
 
   update() {

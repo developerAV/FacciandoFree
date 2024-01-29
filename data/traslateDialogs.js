@@ -101,13 +101,13 @@ const data = {
   mission6: {
     es: [
       "1Y bien, terminó la clase, voy a enviar un proyecto para que lo realices en casa, se trata de un...",
-      /* "1proyecto, el cual debe estar vinculado con un web y una aplicación móvil para mostrar los datos.",
+      "1proyecto, el cual debe estar vinculado con un web y una aplicación móvil para mostrar los datos.",
       "0Entiendo, ¿cual es el tema del proyecto?",
       "1El proyecto es de IoT el cual debe recoger datos de un sensor de temperatura y humedad... ",
       "1estos datos deben ser enviados a una base de datos en la nube, y desde ahí se debe mostrar...",
       "1en una página web y una aplicación móvil.",
       "0¿Que es IoT?",
-      "1No tengo tiempo para explicarte, mil disculpas, puedes ir a la sala de electronica por informacion.", */
+      "1No tengo tiempo para explicarte, mil disculpas, puedes ir a la sala de electronica por informacion.",
     ],
     en: [
       "1Well, the class is over, I'm going to send a project for you to do at home, it's about a...",

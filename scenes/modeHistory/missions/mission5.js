@@ -18,6 +18,7 @@ export const mission5 = (scene) => {
   const compain = scene.add.image(1005, 642, "dude").setScale(1.3);
   const redZone = crearPlataforma(900, 642, "boton", plataformas);
   scene.physics.add.overlap(scene.avatar.avatarPlayer, redZone, async () => {
+    window.avatarUpdateActivo = false;
     redZone.destroy();
     const dialogs = getDiaglogMission(); //obtener los dialogos de la mision
     await cardDialog(scene, dialogs, 1005, 642);

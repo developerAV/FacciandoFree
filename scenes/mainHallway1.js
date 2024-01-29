@@ -125,6 +125,7 @@ export class mainHallway1 extends Phaser.Scene {
 
     const botonAdministrative = crearPlataforma(775, 790, "redV", boton);
     const botonComission = crearPlataforma(1080, 790, "redV", boton);
+   crearPlataforma(1080 , 220, "redV", boton);
     const botonOutside = crearPlataforma(930, 990, "redH", boton);
 
     //añadir un texto fijo
