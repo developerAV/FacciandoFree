@@ -1,6 +1,5 @@
 export const crearPlataforma = (x, y, imagen, group, scale = 1) => {
   const plataforma = group.create(x, y, imagen).setScale(scale);
-
   return plataforma;
 };
 

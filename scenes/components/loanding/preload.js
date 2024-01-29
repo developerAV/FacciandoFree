@@ -352,6 +352,10 @@ const cubicle2 = (scene) => {
 };
 const eletronicRoom = (scene) => {
   scene.load.image("placa", "assets/placa.png");
+  scene.load.image("up", "assets/up.png");
+  scene.load.image("rigth", "assets/rigth.png");
+  scene.load.image("left", "assets/left.png");
+  scene.load.image("down", "assets/down.png");
   scene.load.image("pisoLab1", "assets/images/electronic_room/pisoLab1.png");
   scene.load.image(
     "escritorio",

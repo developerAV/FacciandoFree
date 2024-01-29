@@ -17,10 +17,11 @@ import { cardDialog } from "./modeHistory/components/dialogCard.js";
 import { getDiaglogMission } from "../data/traslateDialogs.js";
 import { endMission } from "./modeHistory/endMission.js";
 import { createButtonMission } from "./components/common/buttonMission.js";
-import { startMission } from "./modeHistory/startMission.js";
+import { reflexImage, startMission } from "./modeHistory/startMission.js";
 import { style } from "./components/intro/buttonLogout/styles.js";
 import { mission1Final } from "./modeHistory/missions/mission1.js";
 import { getIndexMission } from "./modeHistory/infoMission.js";
+import { arrows } from "./modeHistory/arrows.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -104,6 +105,14 @@ export class Cubicle extends Phaser.Scene {
     let silla = crearPlataforma(330, 330, "sillaB6", sillasB);
 
     let silla2 = crearPlataforma(530, 330, "sillaB6", sillasB);
+    this.listArrow = []
+    if (window.missionActive) {
+      const { index, step } = getIndexMission();
+      arrows[index]?.[step]?.forEach((arrow) => {
+        const {startN1} = reflexImage(this, arrow.x, arrow.y, arrow.name);
+        this.listArrow.push(startN1)
+      });
+    }
 
     this.avatar = new Avatar(
       this,

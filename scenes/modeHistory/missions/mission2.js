@@ -14,6 +14,8 @@ export const mission2 = async (scene) => {
   const redZone2 = crearPlataforma(750, 350, "boton", plataformas);
 
   scene.physics.add.overlap(scene.avatar.avatarPlayer, redZone2, async () => {
+    window.avatarUpdateActivo = true;
+    scene.avatar.moveTo(0, 0, "turn");
     redZone2.destroy();
     const dialogs = getDiaglogMission(); //obtener los dialogos de la mision
 

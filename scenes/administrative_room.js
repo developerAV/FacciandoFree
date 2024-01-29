@@ -9,6 +9,7 @@ import { shortMap, bigMap } from "./components/common/map.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
 import { SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { mission1 } from "./modeHistory/missions/mission1.js";
+import { getIndexMission } from "./modeHistory/infoMission.js";
 
 export class AdministrativeRoom extends Phaser.Scene {
   constructor() {
@@ -123,7 +124,7 @@ export class AdministrativeRoom extends Phaser.Scene {
     bigMap(this);
 
     //mision 1
-    if (window.missionActive && getIndexMission().index === "mission1") {
+    if (window.missionActive && getIndexMission().index === "mission1", getIndexMission().step === "step3") {
       mission1(this);
     }
 
