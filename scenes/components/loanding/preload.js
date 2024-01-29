@@ -244,7 +244,7 @@ const auditorium2 = (scene) => {     //piso
   scene.load.image("Auditorio2", "assets/images/auditorium2/Auditorio2.png");
   //paredes
   scene.load.image(
-    "paredDer",
+    "paredDere",
     "assets/images/auditorium2/paredes/paredDer.png"
   );
   scene.load.image(

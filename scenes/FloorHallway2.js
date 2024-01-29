@@ -9,9 +9,10 @@ import { navbar } from "./components/common/navbar.js";
 import { SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
 import { shortMap, bigMap } from "./components/common/map.js";
-import { startMission } from "./modeHistory/startMission.js";
+import { reflexImage, startMission } from "./modeHistory/startMission.js";
 import { alertCard } from "./modeHistory/components/alertCard.js";
 import { getIndexMission } from "./modeHistory/infoMission.js";
+import { arrows } from "./modeHistory/arrows.js";
 let activeVideo = false;
 
 export class FloorHallway2 extends Phaser.Scene {
@@ -60,6 +61,15 @@ export class FloorHallway2 extends Phaser.Scene {
 
     crearPlataforma(1010, 750, "mesaVertical", plataformas, 0.5);
     crearPlataforma(1438, 731, "mesaMedio", plataformas);
+
+    if (window.missionActive) {
+      const { index, step } = getIndexMission();
+      arrows[index]?.["floorHallway2"]?.[step]?.forEach((arrow) => {
+        reflexImage(this, arrow.x, arrow.y, arrow.name);
+      });
+    }
+
+
     this.avatar = new Avatar(
       this,
       window.avatarX,

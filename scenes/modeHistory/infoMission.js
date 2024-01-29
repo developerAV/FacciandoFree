@@ -56,7 +56,6 @@ const dialogs = {
     step1: "Acercate al compañero de clase",
     step2: "Dirigete a el area de comisiones",
     step3: "Acercate donde esta la ing Adriana",
-    step4: "este es el paso 4 de la mision 4",
   },
   mission6: {
     dialogs: "dialog6",

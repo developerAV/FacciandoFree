@@ -6,9 +6,12 @@ import { endMission } from "../endMission.js";
 import { SCENE } from "../../../utils/constants.js";
 import { cardEndMission } from "../components/cardEndMission.js";
 import { handleSteps } from "../handleSteps.js";
+import { reflexImage } from "../startMission.js";
+import { getIndexMission } from "../infoMission.js";
+import { arrows } from "../arrows.js";
 
 /********************************************************
- ********************* area de estudiantes *************************
+ ********************* area de estudiantes ************************* floorHallway2
  ********************************************************/
 export const mission6 = (scene) => {
   let plataformas = scene.physics.add.staticGroup();
@@ -19,6 +22,14 @@ export const mission6 = (scene) => {
     const dialogs = getDiaglogMission(); //obtener los dialogos de la mision
     await cardDialog(scene, dialogs, 1005, 642);//aca llama a la alerta de dialogo
     compain.destroy();
+
+    const { index, step } = getIndexMission();
+    arrows[index]?.["floorHallway2"]?.[step]?.forEach((arrow) => {
+      reflexImage(scene, arrow.x, arrow.y, arrow.name);
+    });
+    scene.avatar.avatarPlayer.setDepth(1);
+
+
   });
 };
 

@@ -52,7 +52,7 @@ export class Laboratorio1 extends Phaser.Scene {
     crearPlataforma(590, 410, "mesasLab", plataformas, 1.5);
     crearPlataforma(890, 700, "mesasLab", plataformas, 1.5);
 
-    this.avatar = new Avatar(this, 800, 500, SIZE_AVATAR.v2);
+    this.avatar = new Avatar(this, window.avatarX, window.avatarY, SIZE_AVATAR.v2);
 
     //escritorio
     crearPlataforma(1140, 850, "escritorio", plataformas, 2);
