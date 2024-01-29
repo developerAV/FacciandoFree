@@ -192,7 +192,7 @@ export class Cubicle extends Phaser.Scene {
 
     createButtonCircle(this, SCENE.floor1, escaleraX, 592, 251);
 
-    createButtonCircle(this, "aula", escritorioD, 800, 500);
+    // createButtonCircle(this, "aula", escritorioD, 800, 500);
     if (window.missionActive) {
       alertCard(this);
       if (getIndexMission().index === "mission1" && window.user.step === 5) {
