@@ -32,11 +32,13 @@ export const mission1Final = (scene) => {
     window.avatarUpdateActivo = true;
     scene.avatar.moveTo(0, 0, "turn");
     redZone.destroy();
+    scene.listArrow?.forEach(arrow => arrow.destroy())
     await cardEndMission(scene);
     await endMission(SCENE.cubicle, {
       x: scene.avatar.avatarPlayer.x,
       y: scene.avatar.avatarPlayer.y,
     });
+
     startMission(scene);
   });
 };

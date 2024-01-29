@@ -12,6 +12,7 @@ import { shortMap, bigMap } from "./components/common/map.js";
 import { SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { startMission } from "./modeHistory/startMission.js";
 import { URI_API } from "../utils/constants.js";
+import { getIndexMission } from "./modeHistory/infoMission.js";
 
 let activeVideo = false;
 let socket;
@@ -43,7 +44,7 @@ export class Outside extends Phaser.Scene {
     // window.contador = 100;
     // socket = io('http://localhost:3000' ,{ transports :['websocket'] }); // Cambia la URL según tu entorno
 
- 
+
 
     // // socket.on('actualizarPosicion', (data) => {
     // //   console.log(`Recibido: ${data.id} en (${data.x}, ${data.y}, avatar: ${data.nameAvatar})`);
@@ -72,19 +73,19 @@ export class Outside extends Phaser.Scene {
     //     this.avatar2.moveTo(200, 0, "down");
     //     return;
     //   }
-  
+
     //   this.avatar2.moveTo(0, 0, "turn");
 
- 
+
     //   // Actualiza la posición del avatar o realiza otras acciones necesarias
     // });
-  
+
     // socket.on('eliminarAvatar', (data) => {
     //   console.log(`Cliente desconectado: ${data.id}`);
     //   // Elimina el avatar o realiza otras acciones necesarias
     // });
-  
-   
+
+
 
 
     if (window.loadAvatar) {
@@ -180,14 +181,14 @@ export class Outside extends Phaser.Scene {
       window.avatarY,
       SIZE_AVATAR.v1_2
     );
- 
-     // Envía la posición del avatar al servidor cada segundo (solo como ejemplo)
-    
 
-    
+    // Envía la posición del avatar al servidor cada segundo (solo como ejemplo)
 
-    const tree2 = crearPlataforma(1287, 665, "tree2", platform1, 0.75);
-    dimesionesPlataformaIndividual(tree2, 0.2, 47);
+
+
+
+    this.tree2 = crearPlataforma(1287, 665, "tree2", platform1, 0.75);
+    dimesionesPlataformaIndividual(this.tree2, 0.2, 47);
     createButtonCircle(this, SCENE.floor1, puertaFacci, 930, 920, true);
     createButtonCircle(this, SCENE.second_floor1, puertaFacci2, 600, 800);
     //   createButtonCircle(this, "aula", escritorioD, 800, 500);
@@ -229,8 +230,7 @@ export class Outside extends Phaser.Scene {
 
     navbar(this, "outside");
 
-    // endMission();
-    if (window.user.actualMission === 1 && !window.missionActive) {
+    if (getIndexMission().index == "mission1" && !window.missionActive) {
       startMission(this);
     }
 
@@ -239,11 +239,11 @@ export class Outside extends Phaser.Scene {
   update() {
     this.avatar.update();
     // socket.emit('enviarPosicion', { x: this.avatar.avatarPlayer.x, y: this.avatar.avatarPlayer.y , nameAvatar: "spriteGirl" });
-     //enviar un socket diciendo up, down, left, right por mediode una variabe moving
- 
+    //enviar un socket diciendo up, down, left, right por mediode una variabe moving
+
     // console.log(moving);
     // socket.emit('enviarMovimiento', { moving: moving });
- 
+
   }
 }
 // // Manejar la desconexión del juego

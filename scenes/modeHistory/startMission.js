@@ -38,8 +38,17 @@ export const startMission = (scene) => {
       alertCard(scene);
 
       const { index } = getIndexMission();
-      
-      if (index === "mission1" || index === "mission3") {
+
+      if (index === "mission1") {
+        reflexImage(scene, 1034, 619, "rigth");
+        //scene.add.image(1467, 566, "up").scale(0.5);
+        reflexImage(scene, 1467, 566, "up");
+        scene.avatar.avatarPlayer.setDepth(1);
+        scene.tree2.setDepth(2);
+        return;
+      }
+
+      if (index === "mission3") {
         return;
       }
 
@@ -52,7 +61,7 @@ export const startMission = (scene) => {
 };
 const crearBotonMision = (scene, x, y, example) => {
   const startN1 = crearPlataforma(x, y, "logoRedondo", example, 0.04);
-  startN1.setDepth(10000);
+  startN1.setDepth(50);
 
   const Between = Phaser.Math.Between;
 
@@ -72,3 +81,29 @@ const crearBotonMision = (scene, x, y, example) => {
 
   return { startN1 };
 };
+
+export const reflexImage = (scene, x, y, name) => {
+
+  const grupo = scene.physics.add.staticGroup();
+
+  const startN1 = crearPlataforma(x, y, name, grupo, 0.5);
+  startN1.setDepth(0);
+
+
+  const Between = Phaser.Math.Between;
+
+  var postFxPlugin = scene.plugins.get("rexglowfilterpipelineplugin");
+
+  var pipeline = postFxPlugin.add(startN1);
+
+  startN1.glowTask = startN1.scene.tweens.add({
+    targets: pipeline,
+    intensity: 0.02,
+    ease: "Linear",
+    duration: Between(500, 1000),
+    repeat: -1,
+    yoyo: true,
+  });
+
+  return { startN1 };
+}

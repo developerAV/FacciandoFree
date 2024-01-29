@@ -11,6 +11,9 @@ import { shortMap, bigMap } from "./components/common/map.js";
 import { COLORS, COLORS_HEX, SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { alertCard } from "./modeHistory/components/alertCard.js";
 import { traslate } from "../data/dialogues.js";
+import { getIndexMission } from "./modeHistory/infoMission.js";
+import { arrows } from "./modeHistory/arrows.js";
+import { reflexImage } from "./modeHistory/startMission.js";
 
 export class mainHallway1 extends Phaser.Scene {
   constructor() {
@@ -70,6 +73,13 @@ export class mainHallway1 extends Phaser.Scene {
       ptfmOverlap,
       1.61
     );
+    if (window.missionActive) {
+      const { index, step } = getIndexMission();
+      arrows[index]?.["mainHallway1"]?.[step]?.forEach((arrow) => {
+        reflexImage(this, arrow.x, arrow.y, arrow.name);
+      });
+    }
+
     this.avatar = new Avatar(
       this,
       window.avatarX,

@@ -23,7 +23,10 @@ export const cardEndMission = async (scene) => {
   text.setScrollFactor(0);
   boxEndMission.add(text);
 
+
   boxEndMission.setScrollFactor(0);
+
+  boxEndMission.setDepth(51);
 
   window.zoom == 1 ? boxEndMission.setScale(2) : boxEndMission.setScale(1);
 
