@@ -75,7 +75,7 @@ export class mainHallway1 extends Phaser.Scene {
     );
     if (window.missionActive) {
       const { index, step } = getIndexMission();
-      arrows[index]?.[step]?.forEach((arrow) => {
+      arrows[index]?.["mainHallway1"]?.[step]?.forEach((arrow) => {
         reflexImage(this, arrow.x, arrow.y, arrow.name);
       });
     }

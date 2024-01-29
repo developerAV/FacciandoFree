@@ -108,8 +108,8 @@ export class Cubicle extends Phaser.Scene {
     this.listArrow = []
     if (window.missionActive) {
       const { index, step } = getIndexMission();
-      arrows[index]?.[step]?.forEach((arrow) => {
-        const {startN1} = reflexImage(this, arrow.x, arrow.y, arrow.name);
+      arrows[index]?.["cubicle"]?.[step]?.forEach((arrow) => {
+        const { startN1 } = reflexImage(this, arrow.x, arrow.y, arrow.name);
         this.listArrow.push(startN1)
       });
     }
@@ -209,7 +209,7 @@ export class Cubicle extends Phaser.Scene {
       }
     }
 
-    if (!window.missionActive && getIndexMission().index === "mission4") {
+    if (!window.missionActive && getIndexMission().index === "mission3") {
       startMission(this);
     }
 
