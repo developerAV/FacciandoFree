@@ -21,6 +21,7 @@ export const shortMap = (scene, mapa) => {
   miniMapContainer.add(scene.puntoMapa);
   miniMapContainer.setScale(0.3);
   miniMapContainer.setInteractive();
+  miniMapContainer.setDepth(50);
   miniMapContainer.on(
     "pointerdown",
     function (pointer) {

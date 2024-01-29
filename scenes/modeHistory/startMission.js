@@ -7,10 +7,10 @@ import { infoMission } from "./components/infoMission.js";
 import { getIndexMission, getInfoMission } from "./infoMission.js";
 import { PROPERTY } from "../../utils/constants.js";
 import { MISSIONS } from "./missions/index.js";
+import { arrows } from "./arrows.js";
 
 export const startMission = (scene) => {
 
-  window.missionActive = true;
 
   const example = scene.physics.add.staticGroup();
 
@@ -23,6 +23,7 @@ export const startMission = (scene) => {
     scene.avatar.avatarPlayer,
     example,
     async () => {
+      window.missionActive = true;
       const narradorVideo = getInfoMission(PROPERTY.narrador);
       scene.avatar.moveTo(0, 0, "turn");
       scene.iconMap.destroy();
@@ -49,10 +50,17 @@ export const startMission = (scene) => {
       }
 
       if (index === "mission3") {
+        const { index, step } = getIndexMission();
+        arrows[index]?.["cubicle"]?.[step]?.forEach((arrow) => {
+          reflexImage(scene, arrow.x, arrow.y, arrow.name);
+        });
+        scene.avatar.avatarPlayer.setDepth(1);
         return;
       }
 
       MISSIONS[index](scene);
+
+
       return;
     },
     null,

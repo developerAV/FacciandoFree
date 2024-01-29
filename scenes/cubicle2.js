@@ -9,6 +9,9 @@ import { dimesionesPlataforma } from "./module/platform.js";
 import { SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { shortMap, bigMap } from "./components/common/map.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
+import { reflexImage } from "./modeHistory/startMission.js";
+import { arrows } from "./modeHistory/arrows.js";
+import { getIndexMission } from "./modeHistory/infoMission.js";
 
 export class Cubicle2 extends Phaser.Scene {
   constructor() {
@@ -16,7 +19,16 @@ export class Cubicle2 extends Phaser.Scene {
   }
 
   preload() {
-    
+    this.load.plugin(
+      "rexglowfilterpipelineplugin",
+      "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexglowfilterpipelineplugin.min.js",
+      true
+    );
+    this.load.scenePlugin({
+      key: "rexuiplugin",
+      url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
+      sceneKey: "rexUI",
+    });
   }
 
   create() {
@@ -139,7 +151,12 @@ export class Cubicle2 extends Phaser.Scene {
     dimesionesPlataformaIndividual(cubi3, 1, 50);
     
   
-    
+    if (window.missionActive) {
+      const { index, step } = getIndexMission();
+      arrows[index]?.["cubicle2"]?.[step]?.forEach((arrow) => {
+        reflexImage(this, arrow.x, arrow.y, arrow.name);
+      });
+    }
     this.avatar = new Avatar(
       this,
       window.avatarX,

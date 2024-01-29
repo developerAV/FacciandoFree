@@ -9,8 +9,9 @@ import {
 import { SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { createButtonCircle } from "./components/common/buttonCircle.js";
 import { shortMap, bigMap } from "./components/common/map.js";
-import { startMission } from "./modeHistory/startMission.js";
+import { reflexImage, startMission } from "./modeHistory/startMission.js";
 import { getIndexMission } from "./modeHistory/infoMission.js";
+import { arrows } from "./modeHistory/arrows.js";
 export class Hallway300 extends Phaser.Scene {
   constructor() {
     super({ key: "hallway300" });
@@ -94,6 +95,14 @@ export class Hallway300 extends Phaser.Scene {
     crearPlataforma(1036, 545, "paredHor2", plataformas, scale);
     crearPlataforma(791, 543, "escalera1", plataformas, scale);
     this.add.image(1021, 605, "escalera4");
+
+    if (window.missionActive) {
+      const { index, step } = getIndexMission();
+      arrows[index]?.["hallway300"]?.[step]?.forEach((arrow) => {
+        reflexImage(this, arrow.x, arrow.y, arrow.name);
+      });
+    }
+    
     this.avatar = new Avatar(
       this,
       window.avatarX,
@@ -126,8 +135,8 @@ export class Hallway300 extends Phaser.Scene {
     );
 
     createButtonCircle(this, SCENE.cubicle2, cubicle2Floor, 988, 816);
-    createButtonCircle(this, "floorHallway2", floorHallway2Pl, 1105, 375);
-    createButtonCircle(this, "auditorium2", auditorium2Pl, 1105, 375);
+    createButtonCircle(this, SCENE.floor2, floorHallway2Pl, 1105, 375);
+    createButtonCircle(this, SCENE.auditorium2, auditorium2Pl, 496 , 580);
 
     // dimesionesPlataformaIndividual(pared209Plataforma, 0.6, 120);
     dimesionesPlataforma(plataformaNorte, 0.6, 120);

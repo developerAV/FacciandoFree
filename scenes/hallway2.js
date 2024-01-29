@@ -5,6 +5,9 @@ import { dimesionesPlataforma, dimesionesPlataformaIndividual } from "./module/p
 import { createButtonCircle } from "./components/common/buttonCircle.js";
 import { SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { shortMap, bigMap } from "./components/common/map.js";
+import { reflexImage } from "./modeHistory/startMission.js";
+import { arrows } from "./modeHistory/arrows.js";
+import { getIndexMission } from "./modeHistory/infoMission.js";
 
 
 export class Hallway2 extends Phaser.Scene {
@@ -13,7 +16,16 @@ export class Hallway2 extends Phaser.Scene {
   }
 
   preload() {
-
+    this.load.plugin(
+      "rexglowfilterpipelineplugin",
+      "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexglowfilterpipelineplugin.min.js",
+      true
+    );
+    this.load.scenePlugin({
+      key: "rexuiplugin",
+      url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
+      sceneKey: "rexUI",
+    });
   }
 
   create() {
@@ -42,6 +54,13 @@ export class Hallway2 extends Phaser.Scene {
       paredPlataformaSuperior,
       scale
     );
+    if (window.missionActive) {
+      const { index, step } = getIndexMission();
+      arrows[index]?.["hallway2"]?.[step]?.forEach((arrow) => {
+        reflexImage(this, arrow.x, arrow.y, arrow.name);
+      });
+    }
+
     this.avatar = new Avatar(this, window.avatarX, window.avatarY, SIZE_AVATAR.v1_2);
     // this.plataforma = new Platform();
 
@@ -71,7 +90,7 @@ export class Hallway2 extends Phaser.Scene {
       paredPlataformaSuperior
     );
 
-    createButtonCircle(this, SCENE.electronic_room, lineRed2, 1465, 553);
+    createButtonCircle(this, SCENE.electronic_room, lineRed2, 476 , 850);
     createButtonCircle(this, SCENE.floor2, lineRed, 1465, 553);
 
     this.cameras.main.startFollow(this.avatar.avatarPlayer);

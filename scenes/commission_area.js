@@ -13,11 +13,12 @@ import { getEmployees } from "../services/employee.service.js";
 import { createButtonCircle } from "../scenes/components/common/buttonCircle.js";
 import { navbar } from "./components/common/navbar.js";
 import { shortMap, bigMap } from "./components/common/map.js";
-import { startMission } from "./modeHistory/startMission.js";
+import { reflexImage, startMission } from "./modeHistory/startMission.js";
 import { getIndexMission } from "./modeHistory/infoMission.js";
 import { SIZE_AVATAR } from "../utils/constants.js";
 import { mission5Final } from "./modeHistory/missions/mission5.js";
 import { mission3 } from "./modeHistory/missions/mission3.js";
+import { arrows } from "./modeHistory/arrows.js";
 // let window.lan = "en";
 let activeVideo = false;
 
@@ -38,6 +39,11 @@ export class CommissionArea extends Phaser.Scene {
       "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexglowfilterpipelineplugin.min.js",
       true
     );
+    this.load.scenePlugin({
+      key: "rexuiplugin",
+      url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
+      sceneKey: "rexUI",
+    });
 
   }
 
@@ -167,6 +173,14 @@ export class CommissionArea extends Phaser.Scene {
       "table02",
       plataformasOverlap
     );
+
+    if (window.missionActive) {
+      const { index, step } = getIndexMission();
+      arrows[index]?.["commission_area"]?.[step]?.forEach((arrow) => {
+        reflexImage(this, arrow.x, arrow.y, arrow.name);
+      });
+    }
+    
     this.avatar = new Avatar(
       this,
       window.avatarX,
