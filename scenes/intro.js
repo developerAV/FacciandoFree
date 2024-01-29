@@ -44,7 +44,7 @@ export class Intro extends Phaser.Scene {
   async create() {
        //obtener todos los usuarios el name getallusers
       await getAllUsers().then((users) => {
-        console.log(user);
+        // console.log(user);
         users.forEach((user) => {
         const imageUrl = user.imageUrl;
         this.load.image(user.idUserFirebase, imageUrl);

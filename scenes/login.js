@@ -57,7 +57,7 @@ export class Login extends Phaser.Scene {
   terms.setInteractive({ useHandCursor: true });
   terms.on("pointerdown", function () {
     window.open(
-      "https://www.facciando.vercel.app/legal/term_and_conditions.html"
+      "https://facciando.vercel.app/legal/term_and_conditions.html"
       );
     });
     const term2 = this.add.text(680, 590,traslate("term2"), {

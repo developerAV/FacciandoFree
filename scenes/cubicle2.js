@@ -16,7 +16,7 @@ export class Cubicle2 extends Phaser.Scene {
   }
 
   preload() {
-
+    
   }
 
   create() {
@@ -34,7 +34,9 @@ export class Cubicle2 extends Phaser.Scene {
 
     let plataformas = this.physics.add.staticGroup();
     let plataformaOverlap = this.physics.add.staticGroup();
-
+    let escritorio = crearPlataforma(1390, 600, "escritorioB6", plataformas, 1);
+    // escritorio.flipY = true;
+    escritorio.flipX = true;
     crearPlataforma(762, 87, "paredNorteCu2", plataformas, scale);
     crearPlataforma(59, 417, "paredeIzCu2", plataformas, scale);
     crearPlataforma(255, 504, "paredeIzTotalCu2", plataformas, scale);
@@ -70,6 +72,7 @@ export class Cubicle2 extends Phaser.Scene {
       plataformas,
       scale
     );
+  
     let cubicle2ParedMedioVertical = crearPlataforma(
       1037,
       221,
@@ -128,7 +131,15 @@ export class Cubicle2 extends Phaser.Scene {
 
 
     let piso1b = crearPlataforma(470, 800, "redV", plataformas, 1);
-
+    let cubi = crearPlataforma(660, 320, "redV", plataformas, 2);
+    dimesionesPlataformaIndividual(cubi, 1, 50);
+    let cubi2 = crearPlataforma(870, 320, "redV", plataformas, 2);
+    dimesionesPlataformaIndividual(cubi2, 1, 50);
+    let cubi3 = crearPlataforma(1150, 320, "redV", plataformas, 2);
+    dimesionesPlataformaIndividual(cubi3, 1, 50);
+    
+  
+    
     this.avatar = new Avatar(
       this,
       window.avatarX,

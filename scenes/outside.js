@@ -1,5 +1,4 @@
 import { Avatar } from "./player.js";
-import { io } from "https://cdn.socket.io/4.7.2/socket.io.esm.min.js";
 import {
   crearPlataforma,
   dimesionesPlataformaIndividual,
