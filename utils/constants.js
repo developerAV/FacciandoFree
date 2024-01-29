@@ -1,5 +1,9 @@
-export const URI_API = "https://facciando-server.onrender.com/facciando";
-// export const URI_API = "http://localhost:3000/facciando";
+import { io } from "https://cdn.socket.io/4.7.2/socket.io.esm.min.js";
+// export const URI_API = "https://facciando-server.onrender.com/facciando";
+export const URI_API = "http://localhost:3000/facciando";
+
+export const socket = io("http://localhost:3000/", { transports: ["websocket"] });
+
 export const FONT = "Droid Sans";
 export const FONT2 = "Rowdies";
 export const FONT_SIZE = {
