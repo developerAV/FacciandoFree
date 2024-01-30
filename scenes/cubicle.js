@@ -105,6 +105,7 @@ export class Cubicle extends Phaser.Scene {
     let silla = crearPlataforma(330, 330, "sillaB6", sillasB);
 
     let silla2 = crearPlataforma(530, 330, "sillaB6", sillasB);
+    
     this.listArrow = []
     if (window.missionActive) {
       const { index, step } = getIndexMission();

@@ -23,8 +23,8 @@ export const cardDialog = async (scene, dialogs, x, y, endmission = false) => {
         time = dialogs[index + 1][0] === dialog[0] ? 500 : 1500;
       }
 
-      let posX = x;
-      let posY = y;
+      let posX = x-50;
+      let posY = y-50;
 
       if (dialog[0] === "0") {
         //si el dialogo comienza con 0 es para el avatar del jugador
@@ -38,7 +38,7 @@ export const cardDialog = async (scene, dialogs, x, y, endmission = false) => {
 
       const boxBg = scene.add.graphics();
       boxBg.fillStyle(0x00051a, 0.75);
-      boxBg.fillRoundedRect(0, 0, 250, 25, 5);
+      boxBg.fillRoundedRect(0, 0, 10, 10, 5);
       box.add(boxBg);
 
       const message = scene.add

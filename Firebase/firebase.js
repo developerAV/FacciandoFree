@@ -2,6 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebas
 import { getAuth } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
 
+/* NOS DIO PEREZA MOVER ESTO, LO IMPORTANTE ESTA EN MONGO XD */
 const firebaseConfig = {
   apiKey: "AIzaSyDG-EvbMY-i59mFjl_jki9bGanLukBOSJA",
   authDomain: "facciando-1f494.firebaseapp.com",
@@ -12,6 +13,7 @@ const firebaseConfig = {
   appId: "1:693925915373:web:45a8d3d092d5ea436b7ae4",
   measurementId: "G-E3B0E8T1TK"
 };
+/* NOS DIO PEREZA MSOVER ESTO, LO IMPORTANTE ESTA EN MONGO XD */
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);

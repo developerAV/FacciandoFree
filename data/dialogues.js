@@ -287,6 +287,22 @@ const traslateIntro = {
     es: "En esta misión tendras que hacer un proyecto de IoT para una materia, y solicitar ayuda para poder realizarlo.",
     en: "In this mission you will have to make an IoT project for a subject, and ask for help to be able to do it.",
   },
+  mission7: {
+    es: "En esta misíon hablarás con un docente para ver algunas empresas que requieres estudiantes para prácticas pre-profecionales.",
+    en: "In this mission you will talk to a teacher to see some companies that require students for pre-professional practices.",
+  },
+  mission8: {
+    es: "Ahora que ya culminsate ambas prácticas tines que llenar y llevar los Pats necesarios a secretaría para validarlas, este proceso se hace en cada una de las práticas.",
+    en: "Now that you have completed both practices, you have to fill out and take the necessary Pats to the secretary to validate them, this process is done in each of the practices.",
+  },
+  mission9: {
+    es: "Estas a punto de culminar la carrera, pero antes tienes que hacer un proyecto de titulación, para eso tienes que hablar con el director de titulación.",
+    en: "You are about to finish the career, but before that you have to do a titling project, for that you have to talk to the titling director.",
+  },
+  mission10: {
+    es: "Felicidades, ahora solo falta que sustentes tu proyecto frente a un tribunal, y si lo apruebas ya serás un ingeniero en TI. ",
+    en: "Congratulations, now you only need to support your project in front of a court, and if you approve it you will already be an IT engineer.",
+  },
   //dialogos de los videos de las misiones
   dialog1: {
     es: "Hola, soy el avatar de la facultad de ingeniería en TI, y te voy a guiar en esta aventura, el icono ",

@@ -15,7 +15,7 @@ import { navbar } from "./components/common/navbar.js";
 import { shortMap, bigMap } from "./components/common/map.js";
 import { reflexImage, startMission } from "./modeHistory/startMission.js";
 import { getIndexMission } from "./modeHistory/infoMission.js";
-import { SIZE_AVATAR } from "../utils/constants.js";
+import { SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { mission5Final } from "./modeHistory/missions/mission5.js";
 import { mission3 } from "./modeHistory/missions/mission3.js";
 import { arrows } from "./modeHistory/arrows.js";
@@ -173,11 +173,12 @@ export class CommissionArea extends Phaser.Scene {
       "table02",
       plataformasOverlap
     );
-
+    this.listArrow = []
     if (window.missionActive) {
       const { index, step } = getIndexMission();
       arrows[index]?.["commission_area"]?.[step]?.forEach((arrow) => {
-        reflexImage(this, arrow.x, arrow.y, arrow.name);
+        const { startN1 } = reflexImage(this, arrow.x, arrow.y, arrow.name);
+        this.listArrow.push(startN1)
       });
     }
     
@@ -268,29 +269,6 @@ export class CommissionArea extends Phaser.Scene {
       this
     );
 
-    /*   this.physics.add.overlap(
-      this.avatar.avatarPlayer,
-      puertaOverlap1,
-      () => {
-        changeNameOverlap(
-          this,
-          areaPractica,
-          "Area de Prácticas",
-          "Pasillo Comisiones"
-        );
-      },
-      null,
-      this
-    ); this.physics.add.overlap(
-      this.avatar.avatarPlayer,
-      puertaOverlap2,
-      () => {
-        changeNameOverlap(this, secretaria, "Pasillo Comisiones", "Secretaria");
-      },
-      null,
-      this
-    ); */
-
     if (!window.missionActive && getIndexMission().index === "mission4") {
       startMission(this);
     }
@@ -308,7 +286,7 @@ export class CommissionArea extends Phaser.Scene {
     shortMap(this, "commisionMap");
     bigMap(this);
 
-    navbar(this, "Pasillo Comisiones");
+    navbar(this, SCENE.commission_area);
   }
 
   update() {
