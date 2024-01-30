@@ -18,11 +18,11 @@ export const mission5 = (scene) => {
   const compain = scene.add.image(1005, 642, "dude").setScale(1.3);
   const redZone = crearPlataforma(900, 642, "boton", plataformas);
   scene.physics.add.overlap(scene.avatar.avatarPlayer, redZone, async () => {
+    window.avatarUpdateActivo = false;
     redZone.destroy();
     const dialogs = getDiaglogMission(); //obtener los dialogos de la mision
     await cardDialog(scene, dialogs, 1005, 642);
     compain.destroy();
-
     const { index, step } = getIndexMission();
     arrows[index]?.["hallway300"]?.[step]?.forEach((arrow) => {
       reflexImage(scene, arrow.x, arrow.y, arrow.name);
@@ -40,8 +40,6 @@ export const mission5Final = (scene) => {
   let plataformas = scene.physics.add.staticGroup();
   window.moreDialogs = true;
   window.dialogNumber = 1;
-
-
   const adriana = scene.add.image(935, 244, "dude").setScale(1.3);
   const redZone = crearPlataforma(950, 244, "boton", plataformas);
   scene.physics.add.overlap(scene.avatar.avatarPlayer, redZone, async () => {
@@ -49,6 +47,7 @@ export const mission5Final = (scene) => {
     const dialogs = getDiaglogMission(); //obtener los dialogos de la mision
     await cardDialog(scene, dialogs, 935, 244);
     adriana.destroy();
+    scene.listArrow?.forEach(arrow => arrow.destroy())
     window.moreDialogs = false;
     cardEndMission(scene);
     await endMission(SCENE.commission_area, {

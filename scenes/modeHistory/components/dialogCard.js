@@ -6,7 +6,6 @@ export const cardDialog = async (scene, dialogs, x, y, endmission = false) => {
    ** NOTA: En los dialogos, los string que comienzan con "0" **
    ** son para el avatar del jugador                          **
    *************************************************************/
-
   scene.avatar.moveTo(0, 0, "turn");
   window.avatarUpdateActivo = false;
   let time;
@@ -14,9 +13,7 @@ export const cardDialog = async (scene, dialogs, x, y, endmission = false) => {
   const mostrarDialogo = (index) => {
     return new Promise(async (resolve) => {
       if (index >= dialogs.length) {
-        window.avatarUpdateActivo = true;
         handleSteps(true); // cambiar de alerta a la mission actualizando los pasos
-
         !endmission && alertCard(scene);
         return resolve(); // Si se alcanza el final de los diálogos, se detiene
       }
@@ -26,8 +23,8 @@ export const cardDialog = async (scene, dialogs, x, y, endmission = false) => {
         time = dialogs[index + 1][0] === dialog[0] ? 500 : 1500;
       }
 
-      let posX = x;
-      let posY = y;
+      let posX = x-50;
+      let posY = y-50;
 
       if (dialog[0] === "0") {
         //si el dialogo comienza con 0 es para el avatar del jugador
@@ -41,7 +38,7 @@ export const cardDialog = async (scene, dialogs, x, y, endmission = false) => {
 
       const boxBg = scene.add.graphics();
       boxBg.fillStyle(0x00051a, 0.75);
-      boxBg.fillRoundedRect(0, 0, 220, 75, 5);
+      boxBg.fillRoundedRect(0, 0, 10, 10, 5);
       box.add(boxBg);
 
       const message = scene.add
@@ -63,7 +60,7 @@ export const cardDialog = async (scene, dialogs, x, y, endmission = false) => {
       box.setDepth(20);
       if (window.zoom === 1) box.setScale(2);
 
-      await escribirTexto(message, dialog); // Mostrar el mensaje
+      await escribirTexto(message, dialog, boxBg); // Mostrar el mensaje
       // Eliminar el contenedor después de un tiempo
       await scene.time.delayedCall(time, async () => {
         box.destroy();
@@ -73,7 +70,14 @@ export const cardDialog = async (scene, dialogs, x, y, endmission = false) => {
     });
   };
 
-  const escribirTexto = (textObject, dialog) => {
+  const updateBoxSize = (message, boxBg) => {
+    const { width, height } = message.getBounds();
+    boxBg.clear();
+    boxBg.fillStyle(0x00051a, 0.90);
+    boxBg.fillRoundedRect(0, 0, width + 20, height + 3, 5);
+  };
+
+  const escribirTexto = (textObject, dialog, boxbg) => {
     dialog = dialog.substring(1);
     return new Promise((resolve) => {
       let indice = 0;
@@ -81,8 +85,11 @@ export const cardDialog = async (scene, dialogs, x, y, endmission = false) => {
         if (indice <= dialog.length) {
           textObject.setText(dialog.substring(0, indice));
           indice++;
+          updateBoxSize(textObject, boxbg)
           scene.time.delayedCall(50, escribir);
         } else {
+          window.avatarUpdateActivo = true;
+
           resolve(); // Resuelve la promesa cuando el texto se ha mostrado completamente
         }
       };

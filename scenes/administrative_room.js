@@ -37,12 +37,15 @@ export class AdministrativeRoom extends Phaser.Scene {
     const plataformas = this.physics.add.staticGroup();
     const paredPlataforma = this.physics.add.staticGroup();
     const ptfmOverlap = this.physics.add.staticGroup();
+    const paredes = this.physics.add.staticGroup();
+
 
     //paredes
     crearPlataforma(822, 400, "agua1", plataformas);
     this.add.image(800, 500, "piso").setScale(1.28);
-    crearPlataforma(1056, 677, "paredDerechaBotton", plataformas);
-    crearPlataforma(1050, 322, "paredDerechaTop", plataformas);
+    crearPlataforma(1056, 677, "paredDerechaBotton", paredes);
+    crearPlataforma(1050, 322, "paredDerechaTop", paredes);
+    dimesionesPlataforma(paredes);
     crearPlataforma(528, 497, "paredLeft", plataformas);
     crearPlataforma(638, 569, "paredMedioLeft", plataformas);
     crearPlataforma(793, 569, "paredMedioRigth", plataformas);
@@ -71,7 +74,7 @@ export class AdministrativeRoom extends Phaser.Scene {
     crearPlataforma(662, 691, "mesa3", plataformas);
     crearPlataforma(592, 788, "mesa4", plataformas);
     //crearPlataforma(785, 689, "poste", plataformas);
-    const puerta = crearPlataforma(1053, 486, "redV", plataformas);
+    const puerta = crearPlataforma(1028 , 486, "redV", plataformas);
 
     crearPlataforma(800, 827, "paredRi", plataformas, 0.996);
     //crearPlataforma(730, 541, "bordeSuperiorPuerta", plataformas);
@@ -130,6 +133,7 @@ export class AdministrativeRoom extends Phaser.Scene {
 
     this.physics.add.collider(this.avatar.avatarPlayer, plataformas);
     this.physics.add.collider(this.avatar.avatarPlayer, paredPlataforma);
+    this.physics.add.collider(this.avatar.avatarPlayer, paredes);
     navbar(this, SCENE.admin_room);
   }
 

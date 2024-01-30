@@ -101,13 +101,13 @@ const data = {
   mission6: {
     es: [
       "1Y bien, terminó la clase, voy a enviar un proyecto para que lo realices en casa, se trata de un...",
-      /* "1proyecto, el cual debe estar vinculado con un web y una aplicación móvil para mostrar los datos.",
+      "1proyecto, el cual debe estar vinculado con un web y una aplicación móvil para mostrar los datos.",
       "0Entiendo, ¿cual es el tema del proyecto?",
       "1El proyecto es de IoT el cual debe recoger datos de un sensor de temperatura y humedad... ",
       "1estos datos deben ser enviados a una base de datos en la nube, y desde ahí se debe mostrar...",
       "1en una página web y una aplicación móvil.",
       "0¿Que es IoT?",
-      "1No tengo tiempo para explicarte, mil disculpas, puedes ir a la sala de electronica por informacion.", */
+      "1No tengo tiempo para explicarte, mil disculpas, puedes ir a la sala de electronica por informacion.",
     ],
     en: [
       "1Well, the class is over, I'm going to send a project for you to do at home, it's about a...",
@@ -166,28 +166,88 @@ const data = {
   },
 
   mission7: {
-    es: [],
-    en: [],
+    es: [
+      "1Hola, ¿en que te puedo ayudar?",
+      "0Hola, usted es la encargada de las práscticas pre profesionales?",
+      "1Si, soy la encargada, ¿en que te puedo ayudar?",
+      "0No tengo claro como realizar las prácticas pre profesionales, ¿me podría ayudar?",
+      "1Claro, para realizar las prácticas pre profesionales debes tener en cuenta los siguientes puntos:",
+      "11.- Se dividen en dos prácticas I que dira 192 horas y práctica II que durará 48 horas",
+      "12.- Necesitas estar en 7mo semestre y estar cursando Aplicaciones Móviles, para poder realizar las prácticas pre profesionales I",
+      "13.- Necesitas estar en 8vo semestre y estar cursando Sistemas distribuidos, para poder realizar las prácticas pre profesionales II",
+      "14.- En ambas se te asignará una empresa para que trabajes allí y se te asignará un asesor para que esté pendiente de tu trabajo",
+      "15.- Tambien puedes buscar una empresa por tu cuenta y notificarlo, esta empresa debe tener convenio con la universidad",
+      "0Muchas gracias, ya tengo claro como realizar las prácticas pre profesionales",
+    ],
+    en: [
+      "1Hello, how can I help you?",
+      "0Hello, are you in charge of pre-professional practices?",
+      "1Yes, I am in charge, how can I help you?",
+      "0I am not clear how to carry out the pre-professional practices, could you help me?",
+      "1Of course, to carry out the pre-professional practices you must take into account the following points:",
+      "11.- They are divided into two practices I that will say 192 hours and practice II that will last 48 hours",
+      "12.- You need to be in 7th semester and be studying Mobile Applications, to be able to carry out the pre-professional practices I",
+      "13.- You need to be in 8th semester and be studying Distributed Systems, to be able to carry out the pre-professional practices II",
+      "14.- In both you will be assigned a company to work there and an advisor will be assigned to be aware of your work",
+      "15.- You can also look for a company on your own and notify it, this company must have an agreement with the university",
+      "0Thank you very much, I am already clear how to carry out the pre-professional practices",
+
+    ],
   },
   mission8: {
-    es: [],
-    en: [],
+    es: [
+      "0Hola, vengo para validar mis prácticas pre profesionales",
+      "1Listo te voy a validar las prácticas, tienes los todos los documentos?",
+      "0Si, aquí están todos los documentos",
+      "1Muy bien, ya tienes tus prácticas pre profesionales validadas",
+    ],
+    en: [
+      "0Hello, I come to validate my pre-professional practices",
+      "1Ready I am going to validate the practices, do you have all the documents?",
+      "0Yes, here are all the documents",
+      "1Very well, you already have your pre-professional practices validated",
+    ],
   },
   mission9: {
-    es: [],
-    en: [],
+    es: [
+      "0Hola, de que estan hablando?",
+      "1Hola, estamos hablando sobre el tema de nuestro proyecto de titulación",
+      "0¿Ya tienen tema?",
+      "1Si, ya tenemos tema, se trata de un Videojuego para garantizar la insercion del estudiante a nuestra facultad",
+      "0Wow! Que buen proyecto¿Ya tienen asesor?",
+      "1Si, ya tenemos asesor, se trata del ingeniero John Cevallos",
+      "0Muy bien, ya tienen todo listo, solo deben realizar el proyecto y presentarlo",
+      "1Si, y tú ya tienes un tema?",
+      "0Si, ya tengo un tema, se trata de un sistema de control de inventarios para una empresa",
+      "1Muy bien, ve a hablar con el encargado de titulación.",
+    ],
+    en: [
+      "0Hello, what are you talking about?",
+      "1Hello, we are talking about the subject of our degree project",
+      "0Do you already have a theme?",
+      "1Yes, we already have a theme, it is a Video game to guarantee the student's insertion into our faculty",
+      "0Wow! What a good project Do you already have an advisor?",
+      "1Yes, we already have an advisor, it is engineer John Cevallos",
+      "0Very well, you already have everything ready, you just have to do the project and present it",
+      "1Yes, and do you already have a theme?",
+      "0Yes, I already have a theme, it is an inventory control system for a company",
+      "1Very well, go talk to the person in charge of titling.",
+    ],
   },
   mission10: {
-    es: [],
-    en: [],
-  },
-  mission11: {
-    es: [],
-    en: [],
-  },
-  mission12: {
-    es: [],
-    en: [],
+    es: [
+      "0Ese fue mi proyecto de titulación, muchas gracias por su atención",
+      "1Estuvo muy interesante, felicitaciones por su proyecto",
+      "0Muchas gracias",
+      "1Tienes una calificacion final de 20 por todo tu proyecto, ahora eres oficialmente un ingeniero en T.I. Felicitaciones!!!!",
+
+    ],
+    en: [
+      "0That was my degree project, thank you very much for your attention",
+      "1It was very interesting, congratulations on your project",
+      "0Thank you very much",
+      "1You have a final grade of 20 for your entire project, now you are officially an engineer in T.I. Congratulations!!!!",
+    ],
   },
 
 };

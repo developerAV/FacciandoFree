@@ -41,51 +41,6 @@ export class Outside extends Phaser.Scene {
   }
 
   create() {
-    // window.contador = 100;
-    // socket = io('http://localhost:3000' ,{ transports :['websocket'] }); // Cambia la URL según tu entorno
-
-
-
-    // // socket.on('actualizarPosicion', (data) => {
-    // //   console.log(`Recibido: ${data.id} en (${data.x}, ${data.y}, avatar: ${data.nameAvatar})`);
-    // //  this.avatar2.avatarPlayer.x = data.x;
-    // //   this.avatar2.avatarPlayer.y = data.y;
-    // //   this.avatar2.avatarPlayer.anims.play(data.nameAvatar, true);
-
-
-    // //   // Actualiza la posición del avatar o realiza otras acciones necesarias
-    // // });
-    // socket.on('actualizarPosicion', (data) => {
-    //   console.log(`Recibido: ${data.id} en (${data.moving})`);
-    //   if (data.moving == "left") {
-    //     this.avatar2.moveTo(0, -200, "left");
-    //     return;
-    //   }
-    //   if (data.moving == "right") {
-    //     this.avatar2.moveTo(0, 200, "right");
-    //     return;
-    //   }
-    //   if ( data.moving == "up") {
-    //     this.avatar2.moveTo(-200, 0, "up");
-    //     return;
-    //   }
-    //   if (data.moving == "down") {
-    //     this.avatar2.moveTo(200, 0, "down");
-    //     return;
-    //   }
-
-    //   this.avatar2.moveTo(0, 0, "turn");
-
-
-    //   // Actualiza la posición del avatar o realiza otras acciones necesarias
-    // });
-
-    // socket.on('eliminarAvatar', (data) => {
-    //   console.log(`Cliente desconectado: ${data.id}`);
-    //   // Elimina el avatar o realiza otras acciones necesarias
-    // });
-
-
 
 
     if (window.loadAvatar) {

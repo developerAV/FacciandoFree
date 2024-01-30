@@ -47,6 +47,7 @@ export const COLORS_HEX = {
 };
 
 export const SCENE = {
+  serverroom: "serverroom",
   cubicle: "cubicle",
   floor2: "floorHallway2",
   auditorium2: "auditorium2",

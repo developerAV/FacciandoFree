@@ -1,5 +1,16 @@
 import { googleFont } from "../../../utils/font.js";
+const serverRoom = (scene) => {
 
+  scene.load.image("refeee", "assets/images/serverroom/Areaservidores.png");
+  scene.load.image("pisoAS", "assets/images/serverroom/pisoAS.png");
+  scene.load.image("paredleftAS", "assets/images/serverroom/paredleft.png");
+  scene.load.image("paredupAS", "assets/images/serverroom/paredup.png");
+  scene.load.image("pareddownAS", "assets/images/serverroom/pareddown.png");
+  scene.load.image("paredrigthAS", "assets/images/serverroom/paredrigth.png");
+  scene.load.image("mesaAS", "assets/images/serverroom/mesa.png");
+  
+
+}
 const preloadIntro = (scene) => {
   scene.load.scenePlugin({
     key: "rexuiplugin",
@@ -561,4 +572,5 @@ export const preloads = (scene) => {
   hallway300(scene);
   login(scene);
   question(scene);
+  serverRoom(scene);
 }; 
