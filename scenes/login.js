@@ -47,85 +47,85 @@ export class Login extends Phaser.Scene {
 
     //letras facciando2
     this.add.image(800, 375, "facciando2").setScale(1);
-   //terminos y condiciones y tenga enlace
-   const terms = this.add.text(787, 590, traslate("term") , {
-    fontFamily: FONT,
-    fontSize: "20px",
-    color: COLORS_HEX.blue,
-    
-  });
-  terms.setInteractive({ useHandCursor: true });
-  terms.on("pointerdown", function () {
-    window.open(
-      "https://facciando.vercel.app/legal/term_and_conditions.html"
+    //terminos y condiciones y tenga enlace
+    const terms = this.add.text(787, 590, traslate("term"), {
+      fontFamily: FONT,
+      fontSize: "20px",
+      color: COLORS_HEX.blue,
+
+    });
+    terms.setInteractive({ useHandCursor: true });
+    terms.on("pointerdown", function () {
+      window.open(
+        "https://facciando.vercel.app/legal/term_and_conditions.html"
       );
     });
-    const term2 = this.add.text(680, 590,traslate("term2"), {
+    const term2 = this.add.text(680, 590, traslate("term2"), {
       fontFamily: FONT,
       fontSize: "20px",
       color: "#fff",
-      
-      
+
+
     });
-  
+
     const googleButton = this.add.image(800, 500, "googleEN");
 
     googleButton.setName("google");
 
     //   googleButton.setInteractive();
     //   googleButton.on("pointerdown", function () {
-      //     window.hook = false;
-      // loginGoogle(this);
-      
-      //   });
-      
-      const btnLanguage = this.add.image(1537, 70, "language").setScale(0.4);
-      btnLanguage.setInteractive();
-      
-      this.languages = (lan) => {
-        if (lan === "es") {
-          googleButton.setTexture("googleES").setScale(0.13);
-          terms.setText("Términos y condiciones");
-          term2.setText("Acepto los");
-          return;
-        }
-        terms.setText("Terms and conditions");
-        term2.setText("I accept the");
-        googleButton.setTexture("googleEN").setScale(0.1);
-      };
-      buttonEnglish(btnLanguage, this);
+    //     window.hook = false;
+    // loginGoogle(this);
+
+    //   });
+
+    const btnLanguage = this.add.image(1537, 70, "language").setScale(0.4);
+    btnLanguage.setInteractive();
+
+    this.languages = (lan) => {
+      if (lan === "es") {
+        googleButton.setTexture("googleES").setScale(0.13);
+        terms.setText("Términos y condiciones");
+        term2.setText("Acepto los");
+        return;
+      }
+      terms.setText("Terms and conditions");
+      term2.setText("I accept the");
+      googleButton.setTexture("googleEN").setScale(0.1);
+    };
+    buttonEnglish(btnLanguage, this);
+    this.languages(window.lan);
+
+    let checkbox = this.add.rexCheckbox(650, 600, 30, 30, {
+      color: COLORS.blue,
+      // circleBox: true,
+
+      checked: true,
+      // animationDuration: 2000
+    });
+    checkbox.setInteractive();
+    checkbox.on("pointerdown", function () {
+      console.log("click");
+      if (checkbox.checked) {
+        console.log("checked");
+        //google button inactivo
+        googleButton.disableInteractive();
+
+      } else {
+        console.log("no checked");
+        //google button activo
+        googleButton.setInteractive();
+      }
+    });
+
+
+
+
+
+    blurButton(googleButton, this);
+    this.updateScene = () => {
       this.languages(window.lan);
-      
-      let checkbox = this.add.rexCheckbox(650, 600, 30, 30, {
-        color: COLORS.blue,
-        // circleBox: true,
-        
-        checked: true,
-        // animationDuration: 2000
-      });
-      checkbox.setInteractive();
-      checkbox.on("pointerdown", function () {
-        console.log("click");
-        if (checkbox.checked) {
-          console.log("checked");
-          //google button inactivo
-          googleButton.disableInteractive();
-          
-        }else{
-          console.log("no checked");
-          //google button activo
-          googleButton.setInteractive();
-        }
-      });
-      
-   
-        
-        
-    
-        blurButton(googleButton, this);
-        this.updateScene = () => {
-          this.languages(window.lan);
-          
-        };
+
+    };
   }
 }

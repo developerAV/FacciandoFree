@@ -1,9 +1,12 @@
+import { preloads } from "./components/loanding/preload.js";
+
 export class Uleam extends Phaser.Scene {
     constructor() {
 
         super({ key: "uleam" });
     }
     preload() {
+        preloads(this);
         this.load.image("logoUleam1", "assets/images/logos/ULEAM_color.png");
     }
     create() {

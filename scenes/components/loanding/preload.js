@@ -8,7 +8,7 @@ const serverRoom = (scene) => {
   scene.load.image("pareddownAS", "assets/images/serverroom/pareddown.png");
   scene.load.image("paredrigthAS", "assets/images/serverroom/paredrigth.png");
   scene.load.image("mesaAS", "assets/images/serverroom/mesa.png");
-  
+
 
 }
 const preloadIntro = (scene) => {
@@ -536,24 +536,12 @@ const hallway300 = (scene) => {
   );
   scene.load.image("escalera3", "assets/images/hallway300/escalera3.png");
   scene.load.image("escalera4", "assets/images/hallway300/escalera4.png");
-}
-const login = (scene) => {
-  scene.load.image("background", "assets/images/intro/facci.png");
-  scene.load.image("googleES", "assets/images/login/google2.png");
-  scene.load.image("googleEN", "assets/images/login/google3.png");
-  scene.load.image("facciando2", "assets/images/intro/Facciando2.png");
-  scene.load.image("confirm", "assets/images/login/confirm.png");
-  scene.load.image("save", "assets/images/login/save.png");
-}
-const question = (scene) => {
+  scene.load.image("decana", "assets/images/avatars/avatar2.png");
 
-  scene.load.image("background", "assets/images/intro/facci.png");
-  scene.load.image("googleES", "assets/images/login/google2.png");
-  scene.load.image("googleEN", "assets/images/login/google3.png");
-  scene.load.image("facciando2", "assets/images/intro/Facciando2.png");
-  scene.load.image("confirm", "assets/images/login/confirm.png");
-  scene.load.image("save", "assets/images/login/save.png");
+
 }
+
+
 export const preloads = (scene) => {
   preloadIntro(scene);
   preloadAdmistrativeRoom(scene);
@@ -570,7 +558,5 @@ export const preloads = (scene) => {
   eletronicRoom(scene);
   commission_area(scene);
   hallway300(scene);
-  login(scene);
-  question(scene);
   serverRoom(scene);
 }; 

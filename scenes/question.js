@@ -1,8 +1,7 @@
 // import { blurButton } from "./module/blurButton.js";
 import { buttonEnglish } from "./module/buttonEnglish.js";
 import { traslate } from "../data/dialogues.js";
-import { loginGoogle } from "../Firebase/googleLogin.js";
-import { blurButton } from "./module/blurButton.js";
+
 import { putUser } from "../services/user.service.js";
 export class Question extends Phaser.Scene {
   constructor() {
@@ -15,6 +14,12 @@ export class Question extends Phaser.Scene {
       true
     );
 
+    this.load.image("background", "assets/images/intro/facci.png");
+    this.load.image("googleES", "assets/images/login/google2.png");
+    this.load.image("googleEN", "assets/images/login/google3.png");
+    this.load.image("facciando2", "assets/images/intro/Facciando2.png");
+    this.load.image("confirm", "assets/images/login/confirm.png");
+    this.load.image("save", "assets/images/login/save.png");
   }
 
   create() {
