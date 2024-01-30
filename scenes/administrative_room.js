@@ -10,6 +10,7 @@ import { createButtonCircle } from "./components/common/buttonCircle.js";
 import { SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { mission1 } from "./modeHistory/missions/mission1.js";
 import { getIndexMission } from "./modeHistory/infoMission.js";
+import { crearCard } from "./module/card.js";
 
 export class AdministrativeRoom extends Phaser.Scene {
   constructor() {
@@ -29,8 +30,7 @@ export class AdministrativeRoom extends Phaser.Scene {
   }
 
   async create() {
-    window.updateUser = false;
-    window.avatarUpdateActivo = true;
+    window.avatarUpdateActivo = true
     // Para iniciar con un desenfoque
     this.cameras.main.fadeIn(500);
 
@@ -70,11 +70,14 @@ export class AdministrativeRoom extends Phaser.Scene {
     crearPlataforma(582, 715, "agua", plataformas);
     crearPlataforma(1010, 243, "bote", plataformas);
     //crearPlataforma(680, 400, "bote1", plataformas);
-    crearPlataforma(740, 382, "mesa", plataformas);
+    const mesa = crearPlataforma(740, 382, "mesa", plataformas);
+
+    crearCard(this, window.dataEmployees[3], "decana", mesa, 700, 300);
+
     crearPlataforma(662, 691, "mesa3", plataformas);
     crearPlataforma(592, 788, "mesa4", plataformas);
     //crearPlataforma(785, 689, "poste", plataformas);
-    const puerta = crearPlataforma(1028 , 486, "redV", plataformas);
+    const puerta = crearPlataforma(1028, 486, "redV", plataformas);
 
     crearPlataforma(800, 827, "paredRi", plataformas, 0.996);
     //crearPlataforma(730, 541, "bordeSuperiorPuerta", plataformas);

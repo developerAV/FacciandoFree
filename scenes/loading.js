@@ -14,7 +14,6 @@ export class Loading extends Phaser.Scene {
   }
 
   preload() {
-    preloads(this);
     this.load.spritesheet("dude", "../assets/images/player/game.png", {
       frameWidth: 25.92,
       frameHeight: 32,
@@ -77,7 +76,7 @@ export class Loading extends Phaser.Scene {
 
     if (window.loadOut) {
       this.time.delayedCall(
-        1000,
+        500,
         () => {
           window.avatarX = window.user.position.x ?? 800;
           window.avatarY = window.user.position.y ?? 500;

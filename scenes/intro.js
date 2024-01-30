@@ -22,12 +22,21 @@ import { getForum } from "../services/forum.service.js";
 import { getAllUsers } from "../services/user.service.js";
 
 import { createButtonMission } from "./components/common/buttonMission.js";
+import { getEmployees } from "../services/employee.service.js";
 export class Intro extends Phaser.Scene {
   constructor() {
     super({ key: "intro" });
+    this.preloadCubicle();
+
   }
+  preloadCubicle() {
+    getEmployees().then((data) => {
+      window.dataEmployees = data;
+    });
+  }
+
   preload() {
- 
+
     this.load.plugin(
       "rexlineprogresscanvasplugin",
       "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexlineprogresscanvasplugin.min.js",
@@ -42,16 +51,16 @@ export class Intro extends Phaser.Scene {
     });
   }
   async create() {
-       //obtener todos los usuarios el name getallusers
-      await getAllUsers().then((users) => {
-        // console.log(user);
-        users.forEach((user) => {
+    //obtener todos los usuarios el name getallusers
+    await getAllUsers().then((users) => {
+      // console.log(user);
+      users.forEach((user) => {
         const imageUrl = user.imageUrl;
         this.load.image(user.idUserFirebase, imageUrl);
         this.load.start();
-        }
-        );
-      });
+      }
+      );
+    });
     window.loadOut = true;
     window.avatarSprite = window.user.sprite;
     if (window.mode === undefined) {

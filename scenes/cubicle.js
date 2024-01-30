@@ -13,12 +13,7 @@ import { navbar } from "./components/common/navbar.js";
 import { SCENE, SIZE_AVATAR } from "../utils/constants.js";
 import { alertCard } from "./modeHistory/components/alertCard.js";
 import { shortMap, bigMap } from "./components/common/map.js";
-import { cardDialog } from "./modeHistory/components/dialogCard.js";
-import { getDiaglogMission } from "../data/traslateDialogs.js";
-import { endMission } from "./modeHistory/endMission.js";
-import { createButtonMission } from "./components/common/buttonMission.js";
 import { reflexImage, startMission } from "./modeHistory/startMission.js";
-import { style } from "./components/intro/buttonLogout/styles.js";
 import { mission1Final } from "./modeHistory/missions/mission1.js";
 import { getIndexMission } from "./modeHistory/infoMission.js";
 import { arrows } from "./modeHistory/arrows.js";
@@ -29,12 +24,6 @@ export class Cubicle extends Phaser.Scene {
   constructor() {
     super({ key: "cubicle" });
 
-    this.preloadCubicle();
-  }
-  preloadCubicle() {
-    getEmployees().then((data) => {
-      this.dataEmployees = data;
-    });
   }
   preload() {
     this.load.plugin(
@@ -105,7 +94,7 @@ export class Cubicle extends Phaser.Scene {
     let silla = crearPlataforma(330, 330, "sillaB6", sillasB);
 
     let silla2 = crearPlataforma(530, 330, "sillaB6", sillasB);
-    
+
     this.listArrow = []
     if (window.missionActive) {
       const { index, step } = getIndexMission();
@@ -189,9 +178,9 @@ export class Cubicle extends Phaser.Scene {
     dimesionesPlataformaIndividual(impresora, 0.6, 60);
     dimesionesPlataformaIndividual(escritoriosB, 0.6, 60);
     dimesionesPlataformaIndividual(escritoriosB6, 0.6, 60);
-    crearCard(this, this.dataEmployees[0], "fotoCarnet", silla, 330, 160);
+    crearCard(this, window.dataEmployees[0], "fotoCarnet", silla, 330, 160);
 
-    crearCard(this, this.dataEmployees[1], "fotoCarnet", silla2, 530, 160);
+    crearCard(this, window.dataEmployees[1], "fotoCarnet", silla2, 530, 160);
 
     this.physics.add.collider(
       this.avatar.avatarPlayer,
