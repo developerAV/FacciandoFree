@@ -17,7 +17,7 @@ const preloadIntro = (scene) => {
     url: "https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js",
     sceneKey: "rexUI",
   });
-  scene.load.image("boton", "assets/images/boton.png");
+  //scene.load.image("boton", "assets/images/boton.png");
 
   // scene.load.image("profile", "assets/images/intro/profile.jpg");
   scene.load.image("backgroundIntro", "assets/images/intro/intro.png");
@@ -42,8 +42,8 @@ const preloadIntro = (scene) => {
   scene.load.image("lock", "assets/images/intro/lock.png");
   scene.load.image("modox", "assets/images/intro/modox.png");
   scene.load.image("insigniaOro", "assets/images/intro/insigniaOro.png");
-  scene.load.image("ava", "assets/images/player/ava.png");
-  scene.load.image("ava2", "assets/images/player/ava2.png");
+  //scene.load.image("ava", "assets/images/player/ava.png");
+  //scene.load.image("ava2", "assets/images/player/ava2.png");
 
   scene.load.image("frame", "assets/images/info/frame.png");
   scene.load.image("exit", "assets/images/info/exit.png");
@@ -308,7 +308,7 @@ const computerRoom = (scene) => {
 };
 const cubicle2 = (scene) => {
   scene.load.image("pisoCubiculo2", "assets/images/cubicle2/pisoC2.png");
-  scene.load.image("paredCu2", "assets/images/cubicle2/paredesColor.png");
+  //scene.load.image("paredCu2", "assets/images/cubicle2/paredesColor.png");
   scene.load.image(
     "paredNorteCu2",
     "assets/images/cubicle2/paredNorteCu2.png"
@@ -406,7 +406,7 @@ const floorHallway2 = (scene) => {
   const path = "assets/images/2FloorHallway/";
   //piso
   scene.load.image("pisoFloorHallway2", `${path}piso.png`);
-  scene.load.image("PasilloPiso2", `${path}PasilloPiso2.png`);
+  //scene.load.image("PasilloPiso2", `${path}PasilloPiso2.png`);
   //
   scene.load.image("escaleraArriba", `${path}escaleraArriba.png`);
   scene.load.image("escaleraAbajo", `${path}escaleraAbajo.png`);
