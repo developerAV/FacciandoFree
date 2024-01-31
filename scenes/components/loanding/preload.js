@@ -24,8 +24,8 @@ const preloadIntro = (scene) => {
   scene.load.image("backgroundIntro2", "assets/images/intro/intro2.png");
   scene.load.image("play", "assets/images/intro/start.png");
   scene.load.image("mode", "assets/images/intro/mode.png");
-  scene.load.image("mode2", "assets/images/intro/mode2.png");
-  scene.load.image("score", "assets/images/intro/score.png");
+  //scene.load.image("mode2", "assets/images/intro/mode2.png");
+  //scene.load.image("score", "assets/images/intro/score.png");
   //scene.load.image("avatar", "assets/images/intro/avatar.png");
   scene.load.image("fullscreen", "assets/images/intro/fullscreen.png");
   scene.load.image("mute", "assets/images/intro/mute.png");
@@ -482,7 +482,6 @@ const mainHallway1 = (scene) => {
 };
 const outside = (scene) => {
   scene.load.image("asientoFacci", "assets/images/outside/asientofacci.png");
-  // scene.load.image("floorExample", "assets/images/outside/facci-general.png");
   scene.load.image("patioFacci", "assets/images/outside/patio-facci.png");
   scene.load.image("streetEast", "assets/images/outside/calle-este.png");
   scene.load.image("building", "assets/images/outside/edificio.png");
